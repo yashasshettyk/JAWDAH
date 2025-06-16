@@ -394,36 +394,56 @@ body.night-mode {
   grid-template-columns: minmax(16rem, 1fr) 2fr minmax(10rem, 1fr) 2fr;
   gap: 10px;
 
-  & > div:last-child .label {
-    color: var(--theme-grey-1);
-    font-variant-numeric: lining-nums tabular-nums;
-    font-feature-settings: "liga" off, "clig" off;
-    font-size: 0.75rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
-    letter-spacing: 0.0126rem;
-  }
-
-  & > div:last-child span {
-    color: var(--theme-black);
-    font-variant-numeric: lining-nums tabular-nums;
-    font-feature-settings: "liga" off, "clig" off;
-    font-size: 1rem;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
-    letter-spacing: 0.0168rem;
+  & > div {
+    position: relative;
+    padding: 4px 8px;
   }
 
   & > div:last-child {
     display: grid;
     gap: 10px;
 
+    & .label {
+      color: var(--theme-grey-1);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "liga" off, "clig" off;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: 0.0126rem;
+    }
+
+    & span {
+      color: var(--theme-black);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "liga" off, "clig" off;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: 0.0168rem;
+    }
+
     & > div:nth-child(2) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
     }
+  }
+
+  & > div:not(:last-child)::after {
+    content: "";
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(238, 238, 238, 0) 0%,
+      #d8d8d8 50.02%,
+      rgba(238, 238, 238, 0) 100%
+    );
+    position: absolute;
+    top: 0;
+    right: -6px;
   }
 }
