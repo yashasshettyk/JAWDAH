@@ -302,3 +302,25 @@ body.night-mode {
   font-weight: 500;
   color: var(--white);
 }
+
+.details-date-template {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+
+  & > div:nth-child(1) svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  & > div:nth-child(2) {
+    color: var(--theme-grey);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.0168rem;
+  }
+}
