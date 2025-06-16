@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Converter Tool</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+      h1 {
+        color: #81d4fa;
+        text-align: center;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      textarea {
+        width: 100%;
+        min-height: 300px;
+        padding: 12px;
+        font-size: 16px;
+        border: 2px solid #2979ff;
+        border-radius: 5px;
+        resize: vertical;
+        background-color: #1e1e1e;
+        color: #e0e0e0;
+      }
+      .buttons {
+        display: flex;
+        gap: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #2979ff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #5393ff;
+      }
+      #status {
+        color: #4caf50;
+        font-weight: bold;
+        min-height: 20px;
+        text-align: center;
+      }
+      .info {
+        background-color: #1e1e1e;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: #b0b0b0;
+        border: 1px solid #333;
+      }
+      .section-divider {
+        border-top: 1px solid #444;
+        margin: 30px 0;
+      }
+      .section-title {
+        color: #81d4fa;
+        margin-bottom: 15px;
+      }
+      .preview-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 10px;
+      }
+
+      .preview-box {
+        flex: 1;
+        border: 1px solid #444;
+        border-radius: 5px;
+        padding: 10px;
+        min-height: 150px;
+        background-color: #2c2c2c;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .preview-title {
+        font-size: 14px;
+        color: #b0b0b0;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .svg-preview {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: auto;
+      }
+
+      .svg-preview svg {
+        max-width: 100%;
+        max-height: 200px;
+      }
+
+      .download-btn {
+        background-color: #4caf50;
+        margin-top: 10px;
+      }
+
+      .download-btn:hover {
+        background-color: #45a049;
+      }
+
+      .svg-type {
+        background-color: #1e1e1e;
+        padding: 8px 12px;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-size: 14px;
+        border: 1px solid #444;
+        text-align: center;
+      }
+
+      .svg-type-tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin: 0 4px;
+        font-weight: bold;
+      }
+
+      .tag-stroke {
+        background-color: #3949ab;
+        color: white;
+      }
+
+      .tag-fill {
+        background-color: #00897b;
+        color: white;
+      }
+
+      .tag-both {
+        background-color: #7b1fa2;
+        color: white;
+      }
+
+      .color-picker-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 10px 0;
+        background-color: #1e1e1e;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #444;
+      }
+
+      .color-picker-container label {
+        flex: 1;
+        font-size: 14px;
+      }
+
+      .color-picker {
+        width: 60px;
+        height: 30px;
+        border: none;
+        border-radius: 4px;
+        background-color: #0051d4;
+        cursor: pointer;
+      }
+
+      .color-picker::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      .color-picker::-webkit-color-swatch {
+        border: none;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Text Format Converter</h1>
+
+    <div class="container">
+      <div class="info">
+        <p>Paste your text in the box below. The converter will:</p>
+        <ol>
+          <li>Change all double quotes (") to single quotes (')</li>
+          <li>Copy the result to your clipboard automatically</li>
+        </ol>
+      </div>
+
+      <textarea id="inputText" placeholder="Paste your text here..."></textarea>
+
+      <div class="buttons">
+        <button id="convertBtn">Convert & Copy to Clipboard</button>
+        <button id="clearBtn">Clear</button>
+      </div>
+
+      <div id="status"></div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="container">
+      <h2 class="section-title">SVG Color Converter</h2>
+
+      <div class="info">
+        <p>Paste your SVG code below. The converter will:</p>
+        <ol>
+          <li>Detect if the SVG uses stroke or fill attributes</li>
+          <li>Change those colors to your selected color</li>
+          <li>Set SVG dimensions to 30x30</li>
+          <li>Show a preview of before and after</li>
+          <li>Allow you to download the converted SVG</li>
+        </ol>
+      </div>
+
+      <div class="color-picker-container">
+        <label for="targetColorPicker"
+          >Select target color for conversion:</label
+        >
+        <input
+          type="color"
+          id="targetColorPicker"
+          class="color-picker"
+          value="#0051d4"
+        />
+      </div>
+
+      <textarea
+        id="svgInput"
+        placeholder="Paste your SVG code here..."
+      ></textarea>
+
+      <div id="svgTypeInfo" class="svg-type">
+        SVG type will be detected when you paste or convert
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-box">
+          <div class="preview-title">Original SVG</div>
+          <div id="originalPreview" class="svg-preview"></div>
+        </div>
+        <div class="preview-box">
+          <div class="preview-title">Converted SVG</div>
+          <div id="convertedPreview" class="svg-preview"></div>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button id="svgConvertBtn">Convert SVG Colors</button>
+        <button id="svgCopyBtn">Copy to Clipboard</button>
+        <button id="svgDownloadBtn" class="download-btn">Download SVG</button>
+        <button id="svgClearBtn">Clear</button>
+      </div>
+
+      <div id="svgStatus"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const inputText = document.getElementById("inputText");
+        const convertBtn = document.getElementById("convertBtn");
+        const clearBtn = document.getElementById("clearBtn");
+        const status = document.getElementById("status");
+
+        // Auto conversion when text is pasted
+        inputText.addEventListener("paste", function (e) {
+          setTimeout(() => {
+            convertAndCopy();
+          }, 100);
+        });
+
+        // Manual conversion button
+        convertBtn.addEventListener("click", function () {
+          convertAndCopy();
+        });
+
+        // Clear button
+        clearBtn.addEventListener("click", function () {
+          inputText.value = "";
+          status.textContent = "Cleared!";
+          setTimeout(() => {
+            status.textContent = "";
+          }, 2000);
+        });
+
+        function convertAndCopy() {
+          // Get the original text
+          let convertedText = inputText.value;
+
+          // Convert double quotes to single quotes
+          convertedText = convertedText.replace(/"/g, "'");
+
+          // Update text area with converted text
+          inputText.value = convertedText;
+
+          // Copy to clipboard
+          inputText.select();
+          document.execCommand("copy");
+
+          // Show success message
+          status.textContent = "Converted and copied to clipboard!";
+          setTimeout(() => {
+            status.textContent = "";
+          }, 2000);
+        }
+
+        // SVG Color Converter
+        const svgInput = document.getElementById("svgInput");
+        const svgConvertBtn = document.getElementById("svgConvertBtn");
+        const svgCopyBtn = document.getElementById("svgCopyBtn");
+        const svgDownloadBtn = document.getElementById("svgDownloadBtn");
+        const svgClearBtn = document.getElementById("svgClearBtn");
+        const svgStatus = document.getElementById("svgStatus");
+        const originalPreview = document.getElementById("originalPreview");
+        const convertedPreview = document.getElementById("convertedPreview");
+        const svgTypeInfo = document.getElementById("svgTypeInfo");
+        const targetColorPicker = document.getElementById("targetColorPicker");
+
+        // Default target color
+        let targetColor = "#0051d4";
+
+        // Load saved color from localStorage if available
+        if (localStorage.getItem("svgTargetColor")) {
+          targetColor = localStorage.getItem("svgTargetColor");
+          targetColorPicker.value = targetColor;
+        }
+
+        // Update target color when picker changes
+        targetColorPicker.addEventListener("change", function () {
+          targetColor = this.value;
+          // Save to localStorage
+          localStorage.setItem("svgTargetColor", targetColor);
+        });
+
+        // Keep track of converted SVG code
+        let convertedSvgCode = "";
+
+        // Auto preview when SVG is pasted
+        svgInput.addEventListener("paste", function (e) {
+          setTimeout(() => {
+            updateOriginalPreview();
+            detectSvgType();
+          }, 100);
+        });
+
+        // Update original preview on input
+        svgInput.addEventListener("input", function () {
+          updateOriginalPreview();
+          detectSvgType();
+        });
+
+        // Manual SVG conversion button
+        svgConvertBtn.addEventListener("click", function () {
+          convertSvg();
+        });
+
+        // Copy button
+        svgCopyBtn.addEventListener("click", function () {
+          if (convertedSvgCode) {
+            navigator.clipboard.writeText(convertedSvgCode).then(() => {
+              svgStatus.textContent = "Converted SVG copied to clipboard!";
+              setTimeout(() => {
+                svgStatus.textContent = "";
+              }, 2000);
+            });
+          } else {
+            svgStatus.textContent = "Convert SVG first!";
+            setTimeout(() => {
+              svgStatus.textContent = "";
+            }, 2000);
+          }
+        });
+
+        // Download button
+        svgDownloadBtn.addEventListener("click", function () {
+          if (convertedSvgCode) {
+            const blob = new Blob([convertedSvgCode], {
+              type: "image/svg+xml",
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "converted_svg.svg";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            svgStatus.textContent = "SVG downloaded!";
+            setTimeout(() => {
+              svgStatus.textContent = "";
+            }, 2000);
+          } else {
+            svgStatus.textContent = "Convert SVG first!";
+            setTimeout(() => {
+              svgStatus.textContent = "";
+            }, 2000);
+          }
+        });
+
+        // Clear SVG button
+        svgClearBtn.addEventListener("click", function () {
+          svgInput.value = "";
+          originalPreview.innerHTML = "";
+          convertedPreview.innerHTML = "";
+          convertedSvgCode = "";
+          svgStatus.textContent = "Cleared!";
+          setTimeout(() => {
+            svgStatus.textContent = "";
+          }, 2000);
+        });
+
+        function detectSvgType() {
+          const svgCode = svgInput.value;
+
+          if (
+            !svgCode ||
+            (!svgCode.includes("<svg") && !svgCode.includes("<?xml"))
+          ) {
+            svgTypeInfo.innerHTML =
+              "SVG type will be detected when you paste or convert";
+            return;
+          }
+
+          // Create a temporary DOM to parse the SVG
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(svgCode, "image/svg+xml");
+          const svgElement = doc.querySelector("svg");
+
+          if (!svgElement) {
+            svgTypeInfo.innerHTML = "Invalid SVG structure detected";
+            return;
+          }
+
+          // Get all child elements inside the SVG, excluding the SVG element itself
+          const innerElements = Array.from(svgElement.querySelectorAll("*"));
+
+          let hasStroke = false;
+          let hasFill = false;
+
+          // Check each inner element for stroke and fill attributes
+          for (const element of innerElements) {
+            // Check for stroke attribute
+            if (
+              element.hasAttribute("stroke") ||
+              (element.hasAttribute("style") &&
+                element.getAttribute("style").includes("stroke"))
+            ) {
+              hasStroke = true;
+            }
+
+            // Check for fill attribute
+            if (
+              element.hasAttribute("fill") ||
+              (element.hasAttribute("style") &&
+                element.getAttribute("style").includes("fill"))
+            ) {
+              hasFill = true;
+            }
+
+            // If we've found both, no need to check the rest
+            if (hasStroke && hasFill) break;
+          }
+
+          let typeHtml = "SVG Type: ";
+
+          if (hasStroke && hasFill) {
+            typeHtml +=
+              '<span class="svg-type-tag tag-both">Both Stroke & Fill</span>';
+          } else if (hasStroke) {
+            typeHtml += '<span class="svg-type-tag tag-stroke">Stroke</span>';
+          } else if (hasFill) {
+            typeHtml += '<span class="svg-type-tag tag-fill">Fill</span>';
+          } else {
+            typeHtml +=
+              "<span>No stroke or fill attributes detected in inner elements</span>";
+          }
+
+          svgTypeInfo.innerHTML = typeHtml;
+        }
+
+        function updateOriginalPreview() {
+          const svgCode = svgInput.value;
+          if (
+            svgCode &&
+            (svgCode.includes("<svg") || svgCode.includes("<?xml"))
+          ) {
+            // Set the inner HTML of the preview container
+            originalPreview.innerHTML = svgCode;
+            // Clear converted preview until conversion happens
+            convertedPreview.innerHTML = "";
+            convertedSvgCode = "";
+          } else {
+            originalPreview.innerHTML = "";
+          }
+        }
+
+        function convertSvg() {
+          // Get the original SVG code
+          let svgCode = svgInput.value;
+
+          if (
+            !svgCode ||
+            (!svgCode.includes("<svg") && !svgCode.includes("<?xml"))
+          ) {
+            svgStatus.textContent = "No valid SVG code detected!";
+            setTimeout(() => {
+              svgStatus.textContent = "";
+            }, 2000);
+            return;
+          }
+
+          let changes = {
+            stroke: 0,
+            fill: 0,
+            size: false
+          };
+
+          // Parse the SVG to modify it properly
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(svgCode, "image/svg+xml");
+          const svgElement = doc.querySelector("svg");
+
+          if (svgElement) {
+            // Set fixed dimensions
+            svgElement.setAttribute("width", "30");
+            svgElement.setAttribute("height", "30");
+            changes.size = true;
+            
+            // Convert back to string for further processing
+            svgCode = new XMLSerializer().serializeToString(doc);
+          }
+
+          // Replace stroke colors - use the current targetColor from the picker
+          svgCode = svgCode.replace(
+            /stroke\s*=\s*["']([^"']*)["']/gi,
+            function (match, color) {
+              // Skip if already the target color or none
+              if (color === targetColor || color === "none") return match;
+              changes.stroke++;
+              return `stroke="${targetColor}"`;
+            }
+          );
+
+          // Replace fill colors - use the current targetColor from the picker
+          svgCode = svgCode.replace(
+            /fill\s*=\s*["']([^"']*)["']/gi,
+            function (match, color) {
+              // Skip if already the target color or none
+              if (color === targetColor || color === "none") return match;
+              changes.fill++;
+              return `fill="${targetColor}"`;
+            }
+          );
+
+          // Replace inline style fill and stroke - use the current targetColor from the picker
+          svgCode = svgCode.replace(
+            /style\s*=\s*["']([^"']*)["']/gi,
+            function (match, styles) {
+              let newStyles = styles.replace(
+                /fill\s*:\s*([^;]*);?/gi,
+                function (m, color) {
+                  if (color === targetColor || color === "none") return m;
+                  changes.fill++;
+                  return `fill: ${targetColor};`;
+                }
+              );
+
+              newStyles = newStyles.replace(
+                /stroke\s*:\s*([^;]*);?/gi,
+                function (m, color) {
+                  if (color === targetColor || color === "none") return m;
+                  changes.stroke++;
+                  return `stroke: ${targetColor};`;
+                }
+              );
+
+              return `style="${newStyles}"`;
+            }
+          );
+
+          // Store the converted SVG code
+          convertedSvgCode = svgCode;
+
+          // Update the converted preview
+          convertedPreview.innerHTML = convertedSvgCode;
+
+          // Show success message with details
+          let message = "SVG converted! ";
+          if (changes.stroke > 0 || changes.fill > 0 || changes.size) {
+            message += `Changed: `;
+            if (changes.stroke > 0)
+              message += `${changes.stroke} stroke${
+                changes.stroke > 1 ? "s" : ""
+              } `;
+            if (changes.fill > 0)
+              message += `${changes.fill} fill${changes.fill > 1 ? "s" : ""} `;
+            if (changes.stroke > 0 || changes.fill > 0)
+              message += `to ${targetColor}`;
+            if (changes.size) {
+              if (changes.stroke > 0 || changes.fill > 0) message += " and ";
+              message += "size to 30x30";
+            }
+          } else {
+            message += "No changes needed.";
+          }
+
+          svgStatus.textContent = message;
+          setTimeout(() => {
+            svgStatus.textContent = "";
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
