@@ -363,7 +363,8 @@ body.night-mode {
 
 .details-application-info-wrapper {
   text-align: center;
-  
+  width: fit-content;
+
   & > div:nth-child(1) {
     color: var(--theme-blue);
     font-variant-numeric: lining-nums tabular-nums;
@@ -373,6 +374,17 @@ body.night-mode {
     font-weight: 600;
     line-height: 150%; /* 27px */
     letter-spacing: 0.02rem;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
+  }
+
+  & .tag {
+    color: var(--white);
+    text-align: center;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    height: 1.5rem;
+    width: 100%;
   }
 }
