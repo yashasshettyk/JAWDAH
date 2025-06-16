@@ -31,6 +31,8 @@
   --grey-dark: #8d96a3;
   --grey-light-1: #404040;
   --grey-dark-1: #cfc8c8;
+  --blue-light: #2a475c;
+  --blue-dark: #a7c1d3;
 }
 
 html {
@@ -59,6 +61,7 @@ body {
   --theme-grey: var(--grey-light);
   --theme-grey-1: var(--grey-light-1);
   --theme-black: var(--black);
+  --theme-blue: var(--blue-light);
 }
 
 body.dark {
@@ -70,4 +73,5 @@ body.dark {
   --theme-grey: var(--grey-dark);
   --theme-grey-1: var(--grey-dark-1);
   --theme-black: var(--white);
+  --theme-blue: var(--blue-dark);
 }

@@ -360,3 +360,19 @@ body.night-mode {
     }
   }
 }
+
+.details-application-info-wrapper {
+  text-align: center;
+  
+  & > div:nth-child(1) {
+    color: var(--theme-blue);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 27px */
+    letter-spacing: 0.02rem;
+    margin-bottom: 10px;
+  }
+}
