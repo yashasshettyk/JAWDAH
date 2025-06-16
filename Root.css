@@ -29,6 +29,10 @@
   --screen-background-dark: #111418;
   --grey-light: #898989;
   --grey-dark: #8d96a3;
+  --grey-light-1: #404040;
+  --grey-dark-1: #cfc8c8;
+  --blue-light: #2a475c;
+  --blue-dark: #a7c1d3;
   --table-header-background-light: #40799d;
   --table-header-background-dark: #40799d;
   --table-odd-row-background-light: white;
@@ -71,14 +75,6 @@ body {
   --screen-background: var(--white);
   --toggle-switch-background: var(--white);
   --theme-grey: var(--grey-light);
-  --table-header-background: var(--table-header-background-light);
-  --table-odd-row-background: var(--table-odd-row-background-light);
-  --table-even-row-background: var(--table-even-row-background-light);
-  --table-data-color: var(--table-data-color-light);
-  --scrollbar-track-bg: var(--scrollbar-track-bg-light);
-  --scrollbar-thumb-bg: var(--scrollbar-thumb-bg-light);
-  --scrollbar-thumb-hover-bg: var(--scrollbar-thumb-hover-bg-light);
-  --border-color: var(--border-color-light);
 }
 
 body.dark {
@@ -90,12 +86,4 @@ body.dark {
   --active-sidemenu-border-color: var(--active-sidemenu-border-color-dark);
   --toggle-switch-background: var(--black);
   --theme-grey: var(--grey-dark);
-  --table-header-background: var(--table-header-background-dark);
-  --table-odd-row-background: var(--table-odd-row-background-dark);
-  --table-even-row-background: var(--table-even-row-background-dark);
-  --table-data-color: var(--table-data-color-dark);
-  --scrollbar-track-bg: var(--scrollbar-track-bg-dark);
-  --scrollbar-thumb-bg: var(--scrollbar-thumb-bg-dark);
-  --scrollbar-thumb-hover-bg: var(--scrollbar-thumb-hover-bg-dark);
-  --border-color: var(--border-color-dark);
 }
