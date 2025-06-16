@@ -447,3 +447,55 @@ body.night-mode {
     right: -6px;
   }
 }
+
+.TableWrapperContainer {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+  overflow-y: auto;
+  padding-bottom: 10px;
+}
+.table {
+  border: none;
+}
+.TableWrapperContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.TableWrapperContainer::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-bg);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.TableWrapperContainer::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-bg);
+  padding-block: 2px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.TableWrapperContainer::-webkit-scrollbar-thumb:hover {
+  background-color: var(--grey-dark);
+}
+
+.table tr {
+  border: none;
+}
+
+.TableWrapperContainer + .pagination-drodown-container .pagination-counter {
+  gap: 10px;
+  display: flex;
+
+  & .dropdown {
+    padding: 5px 10px;
+    min-height: max-content;
+    height: 32px;
+    width: 60px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--content-background);
+    color: var(--content-color);
+  }
+}

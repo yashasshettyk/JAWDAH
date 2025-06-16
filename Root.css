@@ -33,6 +33,22 @@
   --grey-dark-1: #cfc8c8;
   --blue-light: #2a475c;
   --blue-dark: #a7c1d3;
+  --table-header-background-light: #40799d;
+  --table-header-background-dark: #40799d;
+  --table-odd-row-background-light: white;
+  --table-odd-row-background-dark: white;
+  --table-even-row-background-light: #fbfbfb;
+  --table-even-row-background-dark: #fbfbfb;
+  --table-data-color-light: #2a475c;
+  --table-data-color-dark: #2a475c;
+  --scrollbar-track-bg-light: white;
+  --scrollbar-track-bg-dark: #222831;
+  --scrollbar-thumb-bg-light: #cdcdcd;
+  --scrollbar-thumb-bg-dark: #555;
+  --scrollbar-thumb-hover-bg-light: #a0a0a0;
+  --scrollbar-thumb-hover-bg-dark: #777;
+  --border-color-light: #e0e0e0;
+  --border-color-dark: #444;
 }
 
 html {
@@ -59,19 +75,15 @@ body {
   --screen-background: var(--white);
   --toggle-switch-background: var(--white);
   --theme-grey: var(--grey-light);
-  --theme-grey-1: var(--grey-light-1);
-  --theme-black: var(--black);
-  --theme-blue: var(--blue-light);
 }
 
 body.dark {
   --theme-background: var(--dark-theme-background);
+  --content-background: var(--dark-theme-background);
+  --content-color: var(--white);
   --screen-background: var(--screen-background-dark);
   --active-menu-bg: var(--active-menu-bg-dark);
   --active-sidemenu-border-color: var(--active-sidemenu-border-color-dark);
   --toggle-switch-background: var(--black);
   --theme-grey: var(--grey-dark);
-  --theme-grey-1: var(--grey-dark-1);
-  --theme-black: var(--white);
-  --theme-blue: var(--blue-dark);
 }
