@@ -29,6 +29,8 @@
   --screen-background-dark: #111418;
   --grey-light: #898989;
   --grey-dark: #8d96a3;
+  --grey-light-1: #404040;
+  --grey-dark-1: #cfc8c8;
 }
 
 html {
@@ -55,6 +57,8 @@ body {
   --screen-background: var(--white);
   --toggle-switch-background: var(--white);
   --theme-grey: var(--grey-light);
+  --theme-grey-1: var(--grey-light-1);
+  --theme-black: var(--black);
 }
 
 body.dark {
@@ -64,4 +68,6 @@ body.dark {
   --active-sidemenu-border-color: var(--active-sidemenu-border-color-dark);
   --toggle-switch-background: var(--black);
   --theme-grey: var(--grey-dark);
+  --theme-grey-1: var(--grey-dark-1);
+  --theme-black: var(--white);
 }
