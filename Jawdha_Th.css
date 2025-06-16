@@ -324,3 +324,9 @@ body.night-mode {
     letter-spacing: 0.0168rem;
   }
 }
+
+.details-user-info-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+}
