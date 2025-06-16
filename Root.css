@@ -52,7 +52,7 @@ body {
   --active-menu-bg: var(--active-menu-bg-light);
   --screen-background: var(--white);
   --toggle-switch-background: var(--white);
-  --example-css:purple;
+  
 }
 
 body.dark {
