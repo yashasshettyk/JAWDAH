@@ -296,3 +296,59 @@ svg {
   .osui-tooltip__balloon-wrapper__balloon:before {
   border-color: transparent var(--content-background) transparent transparent;
 }
+
+.table-header th {
+  --innner-color: var(--white);
+  background: var(--table-header-background);
+  color: var(--innner-color);
+  text-align: center;
+
+  & .sortable-icon::before {
+    border-bottom: 4px solid var(--innner-color);
+  }
+
+  & .sortable-icon::after {
+    border-top: 4px solid var(--innner-color);
+  }
+}
+.table {
+  border-radius: 8px;
+  text-align: center;
+}
+.table .table-row:nth-child(odd) td {
+  background: var(--table-odd-row-background);
+}
+
+.table .table-row:nth-child(even) td {
+  background: var(--table-even-row-background);
+}
+
+.table-header th:first-child {
+  border-radius: 8px 0px 0px 0px;
+}
+.table-header th:last-child {
+  border-radius: 0px 8px 0px 0px;
+}
+
+.table td {
+  font-weight: 500;
+  color: var(--table-data-color);
+  width: max-content;
+  max-width: max-content;
+  border: none;
+}
+
+.table td span {
+  white-space: nowrap;
+}
+
+.table td a {
+  font-weight: 700;
+  &:hover {
+    text-decoration: none;
+    color: var(--table-data-color);
+    opacity: 0.7;
+    cursor: pointer;
+  }
+}
+
