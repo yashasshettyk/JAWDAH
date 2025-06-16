@@ -1,0 +1,63 @@
+:root {
+  --color-primary: #1c4362;
+  --white: #ffffff;
+  --black: #000000;
+  --content-size: 16px;
+  --active-menu-bg-light: #2d6286;
+  --active-menu-bg-dark: #082238;
+  --side-menu-size-expanded: 14.25rem;
+  --side-menu-size-collapsed: 4.1875rem;
+  --sidemenu-margin: 0.75rem;
+  --sidemenu-items-padding: 0.1rem 0.75rem;
+  --sidemenu-border-radius: 8px;
+  --active-sidemenu-border-color-light: #5b95ba;
+  --active-sidemenu-border-color-dark: #134e79;
+  --sidemenu-items-min-height: 3rem;
+  --hover-opacity: 1;
+  --hover-brightness: brightness(0.9);
+  --move-and-hide: move-and-hide 0s ease-out forwards;
+  --move-and-show: move-and-show 0.3s ease-out forwards;
+  --sidemenu-item-gap: 0.7rem;
+  --transition: all 0.3s ease-out;
+  --logo-seperator-color-light: #728492;
+  --header-size: 4rem;
+  --tooltip-background-light: #ffffff;
+  --box-shadow-light: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  --box-shadow-dark: rgba(255, 255, 255, 0.2);
+  --dark-theme-background: #222831;
+  --screen-background-dark: #111418;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: var(--content-size);
+}
+
+body {
+  font-size: var(--content-size);
+  --content-background: var(--white);
+  --tooltip-background: var(--tooltip-background-light);
+  --theme-background: var(--color-primary);
+  --sidemenu-text: var(--white);
+  --hover-background: var(--hover-menu-bg-light);
+  --logo-seperator: var(--logo-seperator-color-light);
+  --content-color: var(--black);
+  --content-inverted-color: var(--white);
+  --theme-box-shadow: var(--box-shadow-light);
+  --active-sidemenu-border-color: var(--active-sidemenu-border-color-light);
+  --active-menu-bg: var(--active-menu-bg-light);
+  --screen-background: var(--white);
+  --toggle-switch-background: var(--white);
+}
+
+body.dark {
+  --theme-background: var(--dark-theme-background);
+  --screen-background: var(--screen-background-dark);
+  --active-menu-bg: var(--active-menu-bg-dark);
+  --active-sidemenu-border-color: var(--active-sidemenu-border-color-dark);
+  --toggle-switch-background: var(--black);
+}

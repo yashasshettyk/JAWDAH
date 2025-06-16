@@ -1,0 +1,298 @@
+/* Layout */
+.layout.layout-side.jawdah-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--screen-background);
+}
+
+.layout.layout-side.jawdah-layout
+  .aside-navigation.jawdah-nav
+  .app-menu-content {
+  position: relative;
+  inset: unset;
+  height: calc(100% - calc(var(--sidemenu-margin) * 2));
+  transform: none;
+  font-size: 0.875rem;
+  font-weight: 400;
+  width: var(--side-menu-size-collapsed);
+  background: var(--theme-background);
+  color: var(--sidemenu-text);
+  transition: var(--transition);
+  margin: var(--sidemenu-margin);
+  border-radius: var(--sidemenu-border-radius);
+  overflow: hidden;
+}
+
+.jawdah-layout-main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  overflow-y: hidden;
+}
+
+.aside-navigation.jawdah-nav {
+  height: 100%;
+}
+.aside-navigation.jawdah-nav > div {
+  height: 100%;
+}
+
+.layout.layout-side.jawdah-layout.menu-visible
+  .aside-navigation.jawdah-nav
+  .app-menu-content {
+  width: var(--side-menu-size-expanded);
+  overflow: hidden;
+}
+
+.menu-icon.jawdh-sidemenu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-direction: row;
+  transition: var(--transition);
+  padding: var(--sidemenu-items-padding);
+  margin: 0;
+  min-height: var(--sidemenu-items-min-height);
+  width: 100%;
+  user-select: none;
+  border-radius: var(--sidemenu-border-radius) var(--sidemenu-border-radius) 0 0;
+
+  &:hover {
+    opacity: var(--hover-opacity);
+    filter: var(--hover-brightness);
+    background: var(--hover-background);
+  }
+}
+.menu-icon.jawdh-sidemenu-toggle > div:nth-child(2) {
+  animation: var(--move-and-hide);
+  transition: var(--transition);
+  position: relative;
+}
+.layout.layout-side.jawdah-layout.menu-visible
+  .menu-icon.jawdh-sidemenu-toggle {
+  justify-content: flex-start;
+  gap: var(--sidemenu-item-gap);
+}
+.layout.layout-side.jawdah-layout.menu-visible
+  .menu-icon.jawdh-sidemenu-toggle
+  > div:nth-child(2) {
+  animation: var(--move-and-show);
+}
+
+.menu-icon.jawdh-sidemenu-toggle {
+  & > div {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+
+      & > div {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+
+        & > div {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+      }
+    }
+  }
+}
+.is-rtl .menu-icon.jawdh-sidemenu-toggle {
+  & > div:nth-child(1) {
+    transform: rotate(180deg);
+  }
+}
+.header.jawdah-header {
+  background: var(--theme-background);
+}
+
+.layout.layout-side .main {
+  margin: 0;
+}
+
+.main-content.jawdah-main-content {
+  padding: var(--sidemenu-margin);
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 0px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.main.jawdah-main {
+  overflow-y: auto;
+  max-height: calc(100% - calc(var(--sidemenu-margin)));
+}
+
+.osui-inline-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layout-side .app-menu-links a,
+.menu-visible .app-menu-links a {
+  border: none;
+  padding: 0;
+  margin: 0;
+  /* height: fit-content; */
+}
+.layout-side .app-menu-links a > div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.app-menu-links a {
+  & .link-item-wrapper > div:nth-child(2) {
+    animation: var(--move-and-hide);
+  }
+}
+
+.menu-visible {
+  & .app-menu-links a {
+    & .link-item-wrapper > div:nth-child(2) {
+      opacity: 0;
+      animation: var(--move-and-show);
+      animation-delay: 0.1s;
+      line-height: 0;
+    }
+  }
+}
+
+body .app-menu-content .app-menu-links {
+  padding: 0;
+  padding-top: 10px;
+  gap: 3px;
+  overflow: hidden;
+  background: var(--theme-background);
+}
+
+.app-menu-links a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--sidemenu-items-padding);
+  height: var(--sidemenu-items-min-height);
+  color: var(--sidemenu-text) !important;
+  text-decoration: none;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.menu-visible {
+  & .app-menu-links .link-item-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+    position: relative;
+    padding: var(--sidemenu-items-padding);
+    min-height: var(--sidemenu-items-min-height);
+    cursor: pointer;
+    width: 100%;
+    gap: var(--sidemenu-item-gap);
+  }
+}
+
+.app-menu-links {
+  & .link-item-wrapper {
+    width: calc(100% - 0.62rem);
+    margin: 0.31rem;
+    border-radius: 6px;
+    height: 100%;
+    display: flex;
+    padding: var(--sidemenu-items-padding);
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      opacity: var(--hover-opacity);
+      filter: var(--hover-brightness);
+      background: var(--active-menu-bg);
+    }
+
+    & > div:nth-child(2) {
+      animation: var(--move-and-hide);
+    }
+  }
+}
+
+.app-menu-links a.active {
+  border: none;
+  background: none;
+}
+
+.app-menu-links {
+  & > div {
+    display: flex;
+    height: 100%;
+  }
+}
+
+.layout-side .app-menu-links a.active {
+  & .link-item-wrapper {
+    background: var(--active-menu-bg);
+    color: var(--white);
+    justify-content: center;
+    border: 2px solid var(--active-sidemenu-border-color);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  background: transparent;
+  border: none;
+}
+
+svg {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.osui-tooltip__balloon-wrapper--is-open {
+  overflow: visible;
+}
+.osui-tooltip__balloon-wrapper__balloon {
+  background-color: var(--tooltip-background);
+  box-shadow: var(--theme-box-shadow);
+  color: var(--content-color);
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.osui-tooltip__balloon-wrapper.bottom
+  .osui-tooltip__balloon-wrapper__balloon:before,
+.osui-tooltip__balloon-wrapper.bottom-left
+  .osui-tooltip__balloon-wrapper__balloon:before,
+.osui-tooltip__balloon-wrapper.bottom-right
+  .osui-tooltip__balloon-wrapper__balloon:before {
+  border-color: transparent transparent var(--content-background) transparent;
+}
+
+.osui-tooltip__balloon-wrapper.right
+  .osui-tooltip__balloon-wrapper__balloon:before {
+  border-color: transparent var(--content-background) transparent transparent;
+}
