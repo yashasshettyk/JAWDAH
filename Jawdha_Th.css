@@ -388,3 +388,42 @@ body.night-mode {
     width: 100%;
   }
 }
+
+.application-details-top {
+  display: grid;
+  grid-template-columns: minmax(16rem, 1fr) 2fr minmax(10rem, 1fr) 2fr;
+  gap: 10px;
+
+  & > div:last-child .label {
+    color: var(--theme-grey-1);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0126rem;
+  }
+
+  & > div:last-child span {
+    color: var(--theme-black);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0168rem;
+  }
+
+  & > div:last-child {
+    display: grid;
+    gap: 10px;
+
+    & > div:nth-child(2) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+}
