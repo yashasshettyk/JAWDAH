@@ -345,27 +345,7 @@ svg {
 .table td a {
   /* font-weight: 700; */
   color: var(--table-data-color);
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
   &:hover {
     text-decoration: none;
     color: var(--table-data-color);
@@ -373,4 +353,3 @@ svg {
     cursor: pointer;
   }
 }
-
