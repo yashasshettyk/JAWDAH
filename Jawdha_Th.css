@@ -690,6 +690,15 @@ body.night-mode {
   }
 }
 
+/* Adaptive Column Wrapper */
+.adaptive-column-template-wrapper {
+  & > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
 /* ----------------------- DIXITH --------------------- */
 
 /* ----------------------- DIXITH --------------------- */
