@@ -281,6 +281,7 @@ svg {
   color: var(--content-color);
   font-weight: 500;
   font-size: 0.875rem;
+
 }
 
 .osui-tooltip__balloon-wrapper.bottom
@@ -289,7 +290,7 @@ svg {
   .osui-tooltip__balloon-wrapper__balloon:before,
 .osui-tooltip__balloon-wrapper.bottom-right
   .osui-tooltip__balloon-wrapper__balloon:before {
-  border-color: transparent transparent var(--content-background) transparent;
+  border-color: transparent transparent var(--tooltip-background) transparent;
 }
 
 .osui-tooltip__balloon-wrapper.right
@@ -302,6 +303,8 @@ svg {
   background: var(--table-header-background);
   color: var(--innner-color);
   text-align: center;
+  height: 3rem;
+  padding: 0rem 1.5rem;
 
   & .sortable-icon::before {
     border-bottom: 4px solid var(--innner-color);
@@ -336,6 +339,7 @@ svg {
   width: max-content;
   max-width: max-content;
   border: none;
+  height: 3.125rem;
 }
 
 .table td span {

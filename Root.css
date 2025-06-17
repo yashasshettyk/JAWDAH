@@ -22,6 +22,7 @@
   --logo-seperator-color-light: #728492;
   --header-size: 4rem;
   --tooltip-background-light: #ffffff;
+  --tooltip-background-dark: #373f4b;
   --box-shadow-light: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   --box-shadow-dark: rgba(255, 255, 255, 0.2);
@@ -98,9 +99,11 @@ body {
 body.dark {
   --theme-background: var(--dark-theme-background);
   --content-background: var(--dark-theme-background);
+  --tooltip-background: var(--tooltip-background-dark);
   --content-color: var(--white);
   --screen-background: var(--screen-background-dark);
   --active-menu-bg: var(--active-menu-bg-dark);
+  --theme-box-shadow: var(--box-shadow-dark);
   --active-sidemenu-border-color: var(--active-sidemenu-border-color-dark);
   --toggle-switch-background: var(--black);
   --theme-grey: var(--grey-dark);
