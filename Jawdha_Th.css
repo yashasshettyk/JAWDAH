@@ -395,6 +395,8 @@ body.night-mode {
   gap: 10px;
 
   & > div {
+    display: grid;
+    justify-content: center;
     position: relative;
     padding: 4px 8px;
   }
