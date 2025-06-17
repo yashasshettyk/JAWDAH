@@ -667,7 +667,7 @@ body.night-mode {
   grid-template-columns: 1fr;
   width: 100%;
 
-  & > div:nth-child(1) {
+  & > div:nth-child(1) label {
     color: var(--theme-grey-1);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
@@ -697,6 +697,61 @@ body.night-mode {
     flex-wrap: wrap;
     gap: 10px;
   }
+}
+
+/* Hide */
+.hide-phone-number-wrapper {
+  & label {
+    color: var(--theme-grey-1);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0126rem;
+  }
+  & > div {
+    display: grid;
+    grid-template-columns: 1fr 2.5rem;
+
+    & span {
+      color: var(--theme-black);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "liga" off, "clig" off;
+      font-size: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: 0.0168rem;
+    }
+  }
+  & svg path {
+    stroke: var(--black);
+  }
+}
+
+/* Accordion */
+.osui-accordion-item {
+  border-radius: 16px;
+  border: 1px solid #eaeaea;
+  background: #fff;
+}
+
+.osui-accordion :last-child:not(.list) > .osui-accordion-item, .osui-accordion .list :last-child > .osui-accordion-item {
+    border-bottom-width: var(--border-size-s);
+    border-radius: var(--content-size);
+    border-bottom-left-radius: var(--content-size);
+    border-bottom-right-radius: var(--content-size);
+}
+
+.osui-accordion :first-child:not(.list) > .osui-accordion-item::after {
+    border-top-left-radius: var(--content-size);
+    border-top-right-radius: var(--content-size);
+}
+
+.osui-accordion-item:after {
+  border-width: 0px;
 }
 
 /* ----------------------- DIXITH --------------------- */
