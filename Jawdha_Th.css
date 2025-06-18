@@ -776,9 +776,10 @@ body.night-mode {
   border: 1px solid var(--doc-attach-border-color);
   background: var(--doc-attach-border-bg);
   border-radius: 8px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 30px 200px auto;
   min-width: 294px;
-  width: fit-content;
+  width: 100%;
   padding: 0.6rem 0.8rem 0.6rem 0.8rem;
   align-items: center;
   gap: 10px;
@@ -788,14 +789,22 @@ body.night-mode {
     border: 1px solid var(--white);
     background: var(--white);
     display: flex;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     padding: 0.2439rem 0.2283rem 0.2561rem 0.2717rem;
     justify-content: center;
     align-items: center;
+
+    & > img{
+      flex-shrink:0;
+      height:100%;
+    }
   }
 
   & > div:nth-child(2) {
+    display: grid;
+    width: 100%;
+
     & > div:nth-child(1) span {
       width: 100%;
       overflow: hidden;
