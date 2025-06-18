@@ -415,3 +415,69 @@ svg {
 .osui-accordion-item__icon--caret:after {
   color: var(--content-color);
 }
+
+.osui-tabs--is-horizontal .osui-tabs__content {
+  border: none;
+}
+
+.osui-tabs__header-item {
+  background: var(--content-background);
+}
+
+.osui-tabs__header-item {
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%);
+  background-color: var(--content-background);
+  padding: 0.625rem 1.25rem;
+  border: none;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  transform: translateX(2px);
+}
+
+.osui-tabs__header-item .display-contents {
+  position: relative;
+  z-index: 1;
+  /* padding: 0px 40px; */
+  display: block;
+}
+
+.display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:nth-child(1)
+  .osui-tabs__header-item {
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.osui-tabs--is-horizontal > .osui-tabs__header .osui-tabs__header-item {
+  padding-inline: 1.875rem 2.5rem;
+  color: var(--content-color);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 19.5px */
+  position: relative;
+  transform: translateX(0px);
+}
+
+.display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(:first-child)
+  .osui-tabs__header-item {
+  padding-inline: 3.125rem;
+  transform: translateX(-2.2875rem);
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 16% 100%);
+}
+
+.osui-tabs--is-horizontal .osui-tabs__header__indicator {
+  display: none;
+}
+
+.osui-tabs--is-horizontal
+  > .osui-tabs__header
+  .osui-tabs__header-item.osui-tabs--is-active {
+  background-color: var(--active-tab-bg);
+  color: var(--white);
+  color: #fff;
+  font-weight: 500;
+}
