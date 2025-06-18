@@ -394,7 +394,7 @@ body.night-mode {
   grid-template-columns: minmax(16rem, 1fr) 2fr minmax(10rem, 1fr) 2fr;
   gap: 10px;
   padding: 1rem 1.5625rem;
-  position:relative;
+  position: relative;
   align-items: center;
   background: var(--content-background);
   border: 1px solid var(--content-border);
@@ -412,15 +412,6 @@ body.night-mode {
     display: grid;
     gap: 10px;
     padding-inline: 15px;
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     & .label {
       color: var(--theme-grey-1);
@@ -450,9 +441,9 @@ body.night-mode {
       gap: 10px;
     }
   }
-& > div{
-  position:relative;
-}
+  & > div {
+    position: relative;
+  }
   & > div:not(:last-child)::after {
     content: "";
     width: 1px;
@@ -467,8 +458,6 @@ body.night-mode {
     top: -25px;
     right: -6px;
   }
-
-  
 }
 
 .TableWrapperContainer {
@@ -723,9 +712,6 @@ body.night-mode {
 
 /* Hide */
 .hide-phone-number-wrapper {
-
-
-  
   & label {
     color: var(--theme-text);
     font-variant-numeric: lining-nums tabular-nums;
@@ -784,6 +770,66 @@ body.night-mode {
   + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
   margin-top: 10px;
   display: block;
+}
+
+.document-attachment-wrapper {
+  border: 1px solid var(--doc-attach-border-color);
+  background: var(--doc-attach-border-bg);
+  border-radius: 8px;
+  display: flex;
+  min-width: 294px;
+  width: fit-content;
+  padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+  align-items: center;
+  gap: 10px;
+
+  & .document-attachment-img-wrapper {
+    border-radius: 100%;
+    border: 1px solid var(--white);
+    background: var(--white);
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.2439rem 0.2283rem 0.2561rem 0.2717rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & > div:nth-child(2) {
+    & > div:nth-child(1) span {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      color: var(--theme-text);
+      font-size: 0.875rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 1.25rem; /* 142.857% */
+    }
+
+    & > div:nth-child(2) {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      & > div:nth-child(1),
+      & > div:nth-child(3) {
+        color: #909090;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 1.25rem; /* 142.857% */
+      }
+
+      & .document-attachment-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 100%;
+        background: #808080;
+      }
+    }
+  }
 }
 
 /* ----------------------- DIXITH --------------------- */
