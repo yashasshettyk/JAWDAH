@@ -721,6 +721,7 @@ body.night-mode {
     line-height: 150%;
     letter-spacing: 0.0126rem;
   }
+
   & > div {
     display: grid;
     grid-template-columns: 1fr 2.5rem;
@@ -769,75 +770,6 @@ body.night-mode {
   + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
   margin-top: 10px;
   display: block;
-}
-
-.document-attachment-wrapper {
-  border: 1px solid var(--doc-attach-border-color);
-  background: var(--doc-attach-border-bg);
-  border-radius: 8px;
-  display: grid;
-  grid-template-columns: 30px 12.5rem auto;
-  min-width: 294px;
-  width: 100%;
-  padding: 0.6rem 0.8rem 0.6rem 0.8rem;
-  align-items: center;
-  gap: 10px;
-
-  & .document-attachment-img-wrapper {
-    border-radius: 100%;
-    border: 1px solid var(--white);
-    background: var(--white);
-    display: grid;
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 0.2439rem 0.2283rem 0.2561rem 0.2717rem;
-    justify-content: center;
-    align-items: center;
-
-    & > img {
-      flex-shrink: 0;
-      height: 100%;
-    }
-  }
-
-  & > div:nth-child(2) {
-    display: grid;
-    width: 100%;
-
-    & > div:nth-child(1) span {
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      color: var(--theme-text);
-      font-size: 0.875rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 1.25rem; /* 142.857% */
-    }
-
-    & > div:nth-child(2) {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-
-      & > div:nth-child(1),
-      & > div:nth-child(3) {
-        color: #909090;
-        font-size: 0.875rem;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 1.25rem; /* 142.857% */
-      }
-
-      & .document-attachment-dot {
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 100%;
-        background: #808080;
-      }
-    }
-  }
 }
 
 /* ----------------------- DIXITH --------------------- */
