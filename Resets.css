@@ -381,9 +381,29 @@ svg {
 }
 
 .osui-accordion-item__content.osui-accordion-item__content--is-expanded {
-  padding: 16px;
+  padding: 0px 16px;
+  animation: add-padding 0.3s ease-out forwards;
+}
+
+@keyframes add-padding {
+  from {
+    padding: 0px 16px;
+  }
+  to {
+    padding: 16px;
+  }
 }
 
 .osui-accordion-item__content {
-  padding: 0px;
+  padding: 16px;
+  animation: remove-padding 0.3s ease-out forwards;
+}
+
+@keyframes remove-padding {
+  from {
+    padding: 16px;
+  }
+  to {
+    padding: 0 16px;
+  }
 }
