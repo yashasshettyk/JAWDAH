@@ -875,6 +875,15 @@ body.night-mode {
         letter-spacing: 0.0147rem;
       }
     }
+
+    & > div:nth-child(2) .osui-progress-bar {
+      color: var(--white);
+      text-align: center;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
   }
 }
 
