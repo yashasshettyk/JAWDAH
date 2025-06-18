@@ -56,6 +56,11 @@
   --loading-bg-dark-1: rgb(44, 44, 44);
   --loading-bg-light-2: rgb(243, 243, 243);
   --loading-bg-dark-2: rgb(160, 160, 160);
+  --content-border-light: #eaeaea;
+  --content-border-dark: #3c3c3c;
+  --content-border-radius: 16px;
+  --theme-text-light: #2a475c;
+  --theme-text-dark: #ffffff;
 }
 
 html {
@@ -79,7 +84,7 @@ body {
   --theme-box-shadow: var(--box-shadow-light);
   --active-sidemenu-border-color: var(--active-sidemenu-border-color-light);
   --active-menu-bg: var(--active-menu-bg-light);
-  --screen-background: var(--white);
+  --screen-background: #f9fdfe;
   --toggle-switch-background: var(--white);
   --theme-grey: var(--grey-light);
   --table-header-background: var(--table-header-background-light);
@@ -94,6 +99,8 @@ body {
   --table-loading-table-bg: var(--table-loading-table-bg-light);
   --loading-bg-1: var(--loading-bg-light-1);
   --loading-bg-2: var(--loading-bg-light-2);
+  --content-border: var(--content-border-light);
+  --theme-text: var(--theme-text-light);
 }
 
 body.dark {
@@ -119,5 +126,6 @@ body.dark {
   --table-loading-table-bg: var(--table-loading-table-bg-dark);
   --loading-bg-1: var(--loading-bg-dark-1);
   --loading-bg-2: var(--loading-bg-dark-2);
+  --content-border: var(--content-border-dark);
+  --theme-text: var(--theme-text-dark);
 }
-

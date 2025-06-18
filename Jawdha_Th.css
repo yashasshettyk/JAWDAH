@@ -366,7 +366,7 @@ body.night-mode {
   width: fit-content;
 
   & > div:nth-child(1) {
-    color: var(--theme-blue);
+    color: var(--theme-text);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
     font-size: 1.125rem;
@@ -393,6 +393,12 @@ body.night-mode {
   display: grid;
   grid-template-columns: minmax(16rem, 1fr) 2fr minmax(10rem, 1fr) 2fr;
   gap: 10px;
+  padding: 1rem 1.5625rem;
+  align-items: center;
+  background: var(--content-background);
+  border: 1px solid var(--content-border);
+  border-radius: 0px var(--content-border-radius) var(--content-border-radius)
+    var(--content-border-radius);
 
   & > div {
     display: grid;
@@ -420,7 +426,7 @@ body.night-mode {
       color: var(--theme-black);
       font-variant-numeric: lining-nums tabular-nums;
       font-feature-settings: "liga" off, "clig" off;
-      font-size: 1rem;
+      font-size: 0.9375rem;
       font-style: normal;
       font-weight: 500;
       line-height: 150%;
@@ -695,7 +701,8 @@ body.night-mode {
   & > div {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    column-gap: 116px;
+    row-gap: 10px;
   }
 }
 
@@ -738,20 +745,27 @@ body.night-mode {
   background: #fff;
 }
 
-.osui-accordion :last-child:not(.list) > .osui-accordion-item, .osui-accordion .list :last-child > .osui-accordion-item {
-    border-bottom-width: var(--border-size-s);
-    border-radius: var(--content-size);
-    border-bottom-left-radius: var(--content-size);
-    border-bottom-right-radius: var(--content-size);
+.osui-accordion :last-child:not(.list) > .osui-accordion-item,
+.osui-accordion .list :last-child > .osui-accordion-item {
+  border-bottom-width: var(--border-size-s);
+  border-radius: var(--content-size);
+  border-bottom-left-radius: var(--content-size);
+  border-bottom-right-radius: var(--content-size);
 }
 
 .osui-accordion :first-child:not(.list) > .osui-accordion-item::after {
-    border-top-left-radius: var(--content-size);
-    border-top-right-radius: var(--content-size);
+  border-top-left-radius: var(--content-size);
+  border-top-right-radius: var(--content-size);
 }
 
 .osui-accordion-item:after {
   border-width: 0px;
+}
+
+[data-block="COMPONENTS.AdaptiveColumnTemplate"]
+  + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+  margin-top: 10px;
+  display: block;
 }
 
 /* ----------------------- DIXITH --------------------- */

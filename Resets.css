@@ -281,7 +281,6 @@ svg {
   color: var(--content-color);
   font-weight: 500;
   font-size: 0.875rem;
-
 }
 
 .osui-tooltip__balloon-wrapper.bottom
@@ -356,4 +355,35 @@ svg {
     opacity: 0.7;
     cursor: pointer;
   }
+}
+
+.osui-tabs__content-item {
+  padding: 0rem;
+}
+
+.osui-accordion-item {
+  margin-top: 0.5rem;
+}
+
+.osui-accordion-item__title__placeholder {
+  color: var(--active-menu-bg);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.269px;
+}
+
+.osui-accordion-item--is-open > .osui-accordion-item__title {
+  border-bottom: 1px solid var(--content-border);
+}
+
+.osui-accordion-item__content.osui-accordion-item__content--is-expanded {
+  padding: 16px;
+}
+
+.osui-accordion-item__content {
+  padding: 0px;
 }
