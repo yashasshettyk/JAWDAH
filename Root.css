@@ -63,6 +63,10 @@
   --theme-icon-color-dark: #a7c1d3;
   --theme-primary-text-light: var(--color-primary);
   --theme-primary-text-dark: #a7c1d3;
+  --doc-attach-border-color-light: #56a7da;
+  --doc-attach-border-color-dark: #424b52;
+  --doc-attach-border-bg-light: #f6fcff;
+  --doc-attach-border-bg-dark: #2c3440;
   --active-tab-bg-light: #40799d;
   --active-tab-bg-dark: #29303b;
 }
@@ -107,6 +111,8 @@ body {
   --theme-text: var(--grey-light-1);
   --theme-icon-color: var(--theme-icon-color-light);
   --theme-primary-text: var(--theme-primary-text-light);
+  --doc-attach-border-color: var(--doc-attach-border-color-light);
+  --doc-attach-border-bg: var(--doc-attach-border-bg-light);
   --active-tab-bg: var(--active-tab-bg-light);
 }
 
@@ -137,5 +143,7 @@ body.dark {
   --theme-text: var(--grey-dark-1);
   --theme-icon-color: var(--theme-icon-color-dark);
   --theme-primary-text: var(--theme-primary-text-dark);
+  --doc-attach-border-color: var(--doc-attach-border-color-dark);
+  --doc-attach-border-bg: var(--doc-attach-border-bg-dark);
   --active-tab-bg: var(--active-tab-bg-dark);
 }
