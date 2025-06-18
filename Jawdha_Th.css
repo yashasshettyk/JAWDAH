@@ -843,8 +843,8 @@ body.night-mode {
 /* Details Card */
 .details-card {
   border-radius: 8px;
-  border: 1px solid #eaeaea;
-  background: #fff;
+  border: 1px solid var(--content-border);
+  background: var(--content-background);
   display: grid;
   gap: 10px;
   padding: 1rem;
@@ -865,7 +865,7 @@ body.night-mode {
       }
 
       & > div:nth-child(2) {
-        color: var(--theme-grey-1);
+        color: var(--theme-grey);
         font-variant-numeric: lining-nums tabular-nums;
         font-feature-settings: "liga" off, "clig" off;
         font-size: 0.875rem;
