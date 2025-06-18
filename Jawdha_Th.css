@@ -394,6 +394,7 @@ body.night-mode {
   grid-template-columns: minmax(16rem, 1fr) 2fr minmax(10rem, 1fr) 2fr;
   gap: 10px;
   padding: 1rem 1.5625rem;
+  position:relative;
   align-items: center;
   background: var(--content-background);
   border: 1px solid var(--content-border);
@@ -410,6 +411,16 @@ body.night-mode {
   & > div:last-child {
     display: grid;
     gap: 10px;
+    padding-inline: 15px;
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     & .label {
       color: var(--theme-grey-1);
@@ -423,7 +434,7 @@ body.night-mode {
     }
 
     & span {
-      color: var(--theme-black);
+      color: var(--content-color);
       font-variant-numeric: lining-nums tabular-nums;
       font-feature-settings: "liga" off, "clig" off;
       font-size: 0.9375rem;
@@ -439,11 +450,13 @@ body.night-mode {
       gap: 10px;
     }
   }
-
+& > div{
+  position:relative;
+}
   & > div:not(:last-child)::after {
     content: "";
     width: 1px;
-    height: 100%;
+    height: 100px;
     background: linear-gradient(
       180deg,
       rgba(238, 238, 238, 0) 0%,
@@ -451,9 +464,11 @@ body.night-mode {
       rgba(238, 238, 238, 0) 100%
     );
     position: absolute;
-    top: 0;
+    top: -25px;
     right: -6px;
   }
+
+  
 }
 
 .TableWrapperContainer {
@@ -674,7 +689,7 @@ body.night-mode {
   width: 100%;
 
   & > div:nth-child(1) label {
-    color: var(--theme-grey-1);
+    color: var(--theme-text);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
     font-size: 0.75rem;
@@ -685,7 +700,7 @@ body.night-mode {
   }
 
   & span {
-    color: var(--theme-black);
+    color: var(--content-color);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
     font-size: 1rem;
@@ -708,8 +723,11 @@ body.night-mode {
 
 /* Hide */
 .hide-phone-number-wrapper {
+
+
+  
   & label {
-    color: var(--theme-grey-1);
+    color: var(--theme-text);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
     font-size: 0.75rem;
@@ -723,7 +741,7 @@ body.night-mode {
     grid-template-columns: 1fr 2.5rem;
 
     & span {
-      color: var(--theme-black);
+      color: var(--content-color);
       font-variant-numeric: lining-nums tabular-nums;
       font-feature-settings: "liga" off, "clig" off;
       font-size: 1rem;
@@ -734,7 +752,7 @@ body.night-mode {
     }
   }
   & svg path {
-    stroke: var(--black);
+    stroke: var(--theme-icon-color);
   }
 }
 
@@ -742,7 +760,7 @@ body.night-mode {
 .osui-accordion-item {
   border-radius: 16px;
   border: 1px solid #eaeaea;
-  background: #fff;
+  background: var(--content-background);
 }
 
 .osui-accordion :last-child:not(.list) > .osui-accordion-item,

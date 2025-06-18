@@ -59,8 +59,10 @@
   --content-border-light: #eaeaea;
   --content-border-dark: #3c3c3c;
   --content-border-radius: 16px;
-  --theme-text-light: #2a475c;
-  --theme-text-dark: #ffffff;
+  --theme-icon-color-light: #40799d;
+  --theme-icon-color-dark: #a7c1d3;
+  --theme-primary-text-light: var(--color-primary);
+  --theme-primary-text-dark: #a7c1d3;
 }
 
 html {
@@ -100,7 +102,9 @@ body {
   --loading-bg-1: var(--loading-bg-light-1);
   --loading-bg-2: var(--loading-bg-light-2);
   --content-border: var(--content-border-light);
-  --theme-text: var(--theme-text-light);
+  --theme-text: var(--grey-light-1);
+  --theme-icon-color: var(--theme-icon-color-light);
+  --theme-primary-text: var(--theme-primary-text-light);
 }
 
 body.dark {
@@ -127,5 +131,7 @@ body.dark {
   --loading-bg-1: var(--loading-bg-dark-1);
   --loading-bg-2: var(--loading-bg-dark-2);
   --content-border: var(--content-border-dark);
-  --theme-text: var(--theme-text-dark);
+  --theme-text: var(--grey-dark-1);
+  --theme-icon-color: var(--theme-icon-color-dark);
+  --theme-primary-text: var(--theme-primary-text-dark);
 }

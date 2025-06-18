@@ -366,7 +366,7 @@ svg {
 }
 
 .osui-accordion-item__title__placeholder {
-  color: var(--active-menu-bg);
+  color: var(--theme-primary-text);
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
   font-size: 1rem;
@@ -406,4 +406,12 @@ svg {
   to {
     padding: 0 16px;
   }
+}
+
+.osui-accordion-item--is-open > .osui-accordion-item__title {
+  padding: 0.625rem 1.25rem 0.625rem 0.625rem;
+}
+
+.osui-accordion-item__icon--caret:after {
+  color: var(--content-color);
 }
