@@ -917,20 +917,28 @@ body.night-mode {
   background: #58999d;
   border-radius: 22px;
   display: grid;
-  grid-template-columns: 1fr 30px;
+  grid-template-columns: 1fr 16px;
   padding: 0.5rem 0.75rem 0.5rem 1.0625rem;
   justify-content: center;
   align-items: center;
   gap: 10px;
   width: fit-content;
+  
+  
+  
+  
 
   & > div:nth-child(1) {
     color: var(--white);
     text-align: center;
     font-size: 0.75rem;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
+  }
+
+  & > div:nth-child(2) svg {
+    width: 16px;
   }
 }
 /* Pills */
