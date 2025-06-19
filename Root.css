@@ -69,6 +69,8 @@
   --doc-attach-border-bg-dark: #2c3440;
   --active-tab-bg-light: #40799d;
   --active-tab-bg-dark: #29303b;
+  --doc-image-bg-light: #ffffff;
+  --doc-image-bg-dark: #ffffff;
 }
 
 html {
@@ -114,6 +116,7 @@ body {
   --doc-attach-border-color: var(--doc-attach-border-color-light);
   --doc-attach-border-bg: var(--doc-attach-border-bg-light);
   --active-tab-bg: var(--active-tab-bg-light);
+  --doc-image-bg: var(--doc-image-bg-light);
 }
 
 body.dark {
@@ -146,4 +149,5 @@ body.dark {
   --doc-attach-border-color: var(--doc-attach-border-color-dark);
   --doc-attach-border-bg: var(--doc-attach-border-bg-dark);
   --active-tab-bg: var(--active-tab-bg-dark);
+  --doc-image-bg: var(--doc-image-bg-dark);
 }

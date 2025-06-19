@@ -375,6 +375,9 @@ svg {
   line-height: 150%; /* 24px */
   letter-spacing: 0.269px;
 }
+.osui-accordion-item__title {
+  padding: 0.9375rem;
+}
 
 .osui-accordion-item--is-open > .osui-accordion-item__title {
   border-bottom: 1px solid var(--content-border);

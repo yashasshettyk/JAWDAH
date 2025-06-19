@@ -672,7 +672,7 @@ body.night-mode {
   }
 }
 
-.input-with-label-wrapper {
+.expression-with-label-wrapper {
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
@@ -705,7 +705,12 @@ body.night-mode {
   & > div {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    column-gap: 124px;
+    row-gap: 20px;
+  }
+
+  &.doc-grid > div {
+    gap: 0.9375rem;
   }
 }
 
@@ -722,7 +727,7 @@ body.night-mode {
     letter-spacing: 0.0126rem;
   }
 
-  & > div {
+  & > div:not(:first-child) {
     display: grid;
     grid-template-columns: 1fr 2.5rem;
 
@@ -745,7 +750,7 @@ body.night-mode {
 /* Accordion */
 .osui-accordion-item {
   border-radius: 16px;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--border-color);
   background: var(--content-background);
 }
 
@@ -768,7 +773,7 @@ body.night-mode {
 
 [data-block="COMPONENTS.AdaptiveColumnTemplate"]
   + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
-  margin-top: 10px;
+  margin-top: 20px;
   display: block;
 }
 
@@ -787,17 +792,35 @@ body.night-mode {
 
   & .document-attachment-img-wrapper {
     border-radius: 100%;
-    border: 1px solid var(--white);
-    background: var(--white);
+    /* border: 1px solid var(--border-color); */
+    background: var(--doc-image-bg);
     width: 2.5rem;
     display: grid;
     place-items: center;
     height: 2.5rem;
     padding: 0.2439rem 0.2283rem 0.2561rem 0.2717rem;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     & > img {
       flex-shrink: 0;
-      height: 80%;
+      height: 70%;
     }
   }
 
@@ -923,10 +946,6 @@ body.night-mode {
   align-items: center;
   gap: 10px;
   width: fit-content;
-  
-  
-  
-  
 
   & > div:nth-child(1) {
     color: var(--white);
