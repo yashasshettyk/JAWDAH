@@ -501,6 +501,16 @@ body.night-mode {
   }
 }
 
+.is-rtl .application-details-top {
+  border-radius: var(--content-border-radius) 0px var(--content-border-radius)
+    var(--content-border-radius);
+
+  & > div::after {
+    right: unset;
+    left: 0px;
+  }
+}
+
 .TableWrapperContainer {
   width: 100%;
   max-width: 100%;

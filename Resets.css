@@ -451,6 +451,13 @@ svg {
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
+.is-rtl
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:nth-child(1)
+  .osui-tabs__header-item {
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
 .osui-tabs--is-horizontal > .osui-tabs__header .osui-tabs__header-item {
   padding-inline: 1.875rem 2.5rem;
   color: var(--content-color);
@@ -470,6 +477,14 @@ svg {
   padding-inline: 3.125rem;
   transform: translateX(-2.2875rem);
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 16% 100%);
+}
+.is-rtl
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(:first-child)
+  .osui-tabs__header-item {
+  padding-inline: 3.125rem;
+  transform: translateX(2.2875rem);
+  clip-path: polygon(20% 0%, 100% 0%, 84% 100%, 0% 100%);
 }
 
 .osui-tabs--is-horizontal .osui-tabs__header__indicator {
@@ -546,6 +561,9 @@ svg {
     &:hover {
       background: var(--button-primary-hover-bg);
       color: var(--white);
+      & .stroke svg path {
+        stroke: var(--white);
+      }
     }
 
     & .stroke svg path {
