@@ -991,3 +991,13 @@ body.night-mode {
     grid-template-columns: 23.3125rem 45.625rem auto;
   }
 }
+
+/* Expand Collapse */
+.expand-collapse-wrapper {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  padding: 0.5rem 1rem;
+  width: fit-content;
+}
+/* Expand Collapse */
