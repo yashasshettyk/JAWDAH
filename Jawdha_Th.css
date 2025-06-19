@@ -842,6 +842,55 @@ body.night-mode {
 }
 /* Document Attachment */
 
+/* Details Card */
+.details-card {
+  border-radius: 8px;
+  border: 1px solid var(--content-border);
+  background: var(--content-background);
+  display: grid;
+  gap: 10px;
+  padding: 1rem;
+  width: fit-content;
+
+  & .dc-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    & > div:nth-child(1) {
+      & > div:nth-child(1) {
+        color: var(--theme-text);
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+
+      & > div:nth-child(2) {
+        color: var(--theme-grey);
+        font-variant-numeric: lining-nums tabular-nums;
+        font-feature-settings: "liga" off, "clig" off;
+        font-size: 0.875rem;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%; /* 21px */
+        letter-spacing: 0.0147rem;
+      }
+    }
+
+    & > div:nth-child(2) .osui-progress-bar {
+      color: var(--white);
+      text-align: center;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+}
+
+/* Details Card */
+
 /* ----------------------- DIXITH --------------------- */
 
 /* ----------------------- DIXITH --------------------- */
