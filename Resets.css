@@ -14,7 +14,7 @@
   inset: unset;
   height: calc(100% - calc(var(--sidemenu-margin) * 2));
   transform: none;
-  font-size: 0.875rem;
+  font-size: .875rem;
   font-weight: 400;
   width: var(--side-menu-size-collapsed);
   background: var(--theme-background);
@@ -221,8 +221,8 @@ body .app-menu-content .app-menu-links {
 
 .app-menu-links {
   & .link-item-wrapper {
-    width: calc(100% - 0.62rem);
-    margin: 0.31rem;
+    width: calc(100% - .62rem);
+    margin: .31rem;
     border-radius: 6px;
     height: 100%;
     display: flex;
@@ -280,7 +280,7 @@ svg {
   box-shadow: var(--theme-box-shadow);
   color: var(--content-color);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: .875rem;
 }
 
 .osui-tooltip__balloon-wrapper.bottom
@@ -362,7 +362,7 @@ svg {
 }
 
 .osui-accordion-item {
-  margin-top: 0.5rem;
+  margin-top: .5rem;
 }
 
 .osui-accordion-item__title__placeholder {
@@ -373,10 +373,10 @@ svg {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
-  letter-spacing: 0.269px;
+  letter-spacing: .2688px;
 }
 .osui-accordion-item__title {
-  padding: 0.9375rem;
+  padding: .9375rem;
 }
 
 .osui-accordion-item--is-open > .osui-accordion-item__title {
@@ -412,7 +412,7 @@ svg {
 }
 
 .osui-accordion-item--is-open > .osui-accordion-item__title {
-  padding: 0.625rem 1.25rem 0.625rem 0.625rem;
+  padding: .625rem 1.25rem .625rem .625rem;
 }
 
 .osui-accordion-item__icon--caret:after {
@@ -430,7 +430,7 @@ svg {
 .osui-tabs__header-item {
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%);
   background-color: var(--content-background);
-  padding: 0.625rem 1.25rem;
+  padding: .625rem 1.25rem;
   border: none;
   display: inline-block;
   position: relative;
@@ -456,10 +456,10 @@ svg {
   color: var(--content-color);
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
-  font-size: 0.8125rem;
+  font-size: .8125rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 150%; /* 19.5px */
+  line-height: 150%; /* 19.5008px */
   position: relative;
   transform: translateX(0px);
 }
@@ -484,3 +484,66 @@ svg {
   color: #fff;
   font-weight: 500;
 }
+
+.form-control[data-input],
+.form-control[data-textarea],
+.dropdown-container > div.dropdown-display,
+.dropdown-container > select.dropdown-display {
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text-color);
+  font-size: .9375rem;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.input-with-label-wrapper {
+  position: relative;
+
+  & .form-control[data-input],
+  .form-control[data-textarea],
+  .dropdown-container > div.dropdown-display,
+  .dropdown-container > select.dropdown-display {
+    border-radius: var(--input-border-radius);
+  }
+
+  & label {
+    color: var(--theme-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: .75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 18px */
+    letter-spacing: .0126rem;
+  }
+
+  & > div:nth-child(1) {
+    position: absolute;
+    padding: .0625rem .1875rem;
+    height: 1.25rem;
+    z-index: 2;
+    width: max-content;
+    background: var(--content-background);
+    top: 0;
+    border-radius: 3px;
+    left: 0;
+    transform: translateX(10px) translateY(-50%);
+  }
+}
+
+
+.btn{
+  min-width: 8.3125rem;
+  border-radius: 8px;
+  padding: .5rem 1.0625rem;
+  height: 2.5rem;
+
+
+  &.btn-primary{
+    
+  }
+
+  
+}
+

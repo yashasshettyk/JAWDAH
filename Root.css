@@ -2,29 +2,29 @@
   --color-primary: #1c4362;
   --white: #ffffff;
   --black: #000000;
-  --content-size: 16px;
+  --content-size: 1rem;
   --active-menu-bg-light: #2d6286;
   --active-menu-bg-dark: #082238;
-  --side-menu-size-expanded: 14.25rem;
-  --side-menu-size-collapsed: 4.1875rem;
-  --sidemenu-margin: 0.75rem;
-  --sidemenu-items-padding: 0.1rem 0.75rem;
-  --sidemenu-border-radius: 8px;
+  --side-menu-size-expanded: 228px;
+  --side-menu-size-collapsed: 67px;
+  --sidemenu-margin: 12px;
+  --sidemenu-items-padding: 1.6px 12px;
+  --sidemenu-border-radius: 0.5rem;
   --active-sidemenu-border-color-light: #5b95ba;
   --active-sidemenu-border-color-dark: #134e79;
-  --sidemenu-items-min-height: 3rem;
+  --sidemenu-items-min-height: 48px;
   --hover-opacity: 1;
   --hover-brightness: brightness(0.9);
   --move-and-hide: move-and-hide 0s ease-out forwards;
   --move-and-show: move-and-show 0.3s ease-out forwards;
-  --sidemenu-item-gap: 0.7rem;
+  --sidemenu-item-gap: 11.2px;
   --transition: all 0.3s ease-out;
   --logo-seperator-color-light: #728492;
   --header-size: 4rem;
   --tooltip-background-light: #ffffff;
   --tooltip-background-dark: #373f4b;
-  --box-shadow-light: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  --box-shadow-light: rgba(50, 50, 93, 0.25) 0rem 0.375rem 0.75rem -0.125rem,
+    rgba(0, 0, 0, 0.3) 0rem 0.1875rem 0.4375rem -0.1875rem;
   --box-shadow-dark: rgba(255, 255, 255, 0.2);
   --dark-theme-background: #222831;
   --screen-background-dark: #111418;
@@ -34,7 +34,7 @@
   --grey-dark-1: #cfc8c8;
   --blue-light: #2a475c;
   --blue-dark: #a7c1d3;
-  --red: #FF3939;
+  --red: #ff3939;
   --table-header-background-light: #40799d;
   --table-header-background-dark: #29303b;
   --table-odd-row-background-light: white;
@@ -59,7 +59,7 @@
   --loading-bg-dark-2: rgb(160, 160, 160);
   --content-border-light: #eaeaea;
   --content-border-dark: #3c3c3c;
-  --content-border-radius: 16px;
+  --content-border-radius: 1rem;
   --theme-icon-color-light: #40799d;
   --theme-icon-color-dark: #a7c1d3;
   --theme-primary-text-light: var(--color-primary);
@@ -72,11 +72,11 @@
   --active-tab-bg-dark: #29303b;
   --doc-image-bg-light: #ffffff;
   --doc-image-bg-dark: #384251;
-  --input-bg-light:#FFFFFF;
+  --input-bg-light: #ffffff;
   --input-bg-dark: #2c3440;
-  --input-border-light: #e0e0e0;
-  --input-border-dark: #595959;
-  --input-text-color-light: #2a475c;
+  --input-border-light: #acacac;
+  --input-border-dark: #707c8a;
+  --input-text-color-light: #535353;
   --input-text-color-dark: #ffffff;
   --input-placeholder-color-light: #898989;
   --input-placeholder-color-dark: #8d96a3;
@@ -84,7 +84,64 @@
   --input-disabled-bg-dark: #3c3c3c;
   --input-disabled-text-color-light: #a0a0a0;
   --input-disabled-text-color-dark: #777777;
+  --input-border-radius: 0.5rem;
+  --input-height: 2.5rem;
+  --input-padding: 0.125rem 1rem 0.125rem 0.9375rem;
+  --content-bg-highlight-light: #F6FCFF;
+  --content-bg-highlight-dark: #2c3440;
 
+
+
+
+
+  /* Button Colors */
+  /* Primary */
+  --button-primary-bg-light: #40799d;
+  --button-primary-bg-dark: #29303b;
+  --button-primary-text-light: #ffffff;
+  --button-primary-text-dark: #a7c1d3;
+  --button-primary-border-light: #40799d;
+  --button-primary-border-dark: #29303b;
+  --button-primary-hover-bg-light: #2d6286;
+  --button-primary-hover-bg-dark: #082238;
+
+  /* Secondary */
+  --button-secondary-bg-light: #f0f0f0;
+  --button-secondary-bg-dark: #3c3c3c;
+  --button-secondary-text-light: #535353;
+  --button-secondary-text-dark: #ffffff;
+  --button-secondary-border-light: #acacac;
+  --button-secondary-border-dark: #707c8a;
+  --button-secondary-hover-bg-light: #e0e0e0;
+  --button-secondary-hover-bg-dark: #595959;
+
+
+  /* Success */
+  --button-success-bg-light: #56a7da;
+  --button-success-bg-dark: #424b52;
+  --button-success-text-light: #ffffff;
+  --button-success-text-dark: #a7c1d3;
+  --button-success-border-light: #56a7da;
+  --button-success-border-dark: #424b52;
+  --button-success-hover-bg-light: #40799d;
+  --button-success-hover-bg-dark: #29303b;
+  
+  /* Reject */
+  --button-reject-bg-light: #ff3939;
+  --button-reject-bg-dark: #a7c1d3;
+  --button-reject-text-light: #ffffff;
+  --button-reject-text-dark: #ffffff;
+  --button-reject-border-light: #ff3939;
+  --button-reject-border-dark: #a7c1d3;
+  --button-reject-hover-bg-light: #e02d2d;
+  --button-reject-hover-bg-dark: #7a9ba8;
+
+
+
+
+
+
+  /* Button Colors */
 }
 
 html {
@@ -137,6 +194,23 @@ body {
   --input-placeholder-color: var(--input-placeholder-color-light);
   --input-disabled-bg: var(--input-disabled-bg-light);
   --input-disabled-text-color: var(--input-disabled-text-color-light);
+  --content-bg-highlight: var(--content-bg-highlight-light);
+  --button-primary-bg: var(--button-primary-bg-light);
+  --button-primary-text: var(--button-primary-text-light);
+  --button-primary-border: var(--button-primary-border-light);
+  --button-primary-hover-bg: var(--button-primary-hover-bg-light);
+  --button-secondary-bg: var(--button-secondary-bg-light);
+  --button-secondary-text: var(--button-secondary-text-light);
+  --button-secondary-border: var(--button-secondary-border-light);
+  --button-secondary-hover-bg: var(--button-secondary-hover-bg-light);
+  --button-success-bg: var(--button-success-bg-light);
+  --button-success-text: var(--button-success-text-light);
+  --button-success-border: var(--button-success-border-light);
+  --button-success-hover-bg: var(--button-success-hover-bg-light);
+  --button-reject-bg: var(--button-reject-bg-light);
+  --button-reject-text: var(--button-reject-text-light);
+  --button-reject-border: var(--button-reject-border-light);
+  --button-reject-hover-bg: var(--button-reject-hover-bg-light);
 
 }
 
@@ -177,7 +251,22 @@ body.dark {
   --input-placeholder-color: var(--input-placeholder-color-dark);
   --input-disabled-bg: var(--input-disabled-bg-dark);
   --input-disabled-text-color: var(--input-disabled-text-color-dark);
+  --content-bg-highlight: var(--content-bg-highlight-dark);
+  --button-primary-bg: var(--button-primary-bg-dark);
+  --button-primary-text: var(--button-primary-text-dark);
+  --button-primary-border: var(--button-primary-border-dark);
+  --button-primary-hover-bg: var(--button-primary-hover-bg-dark);
+  --button-secondary-bg: var(--button-secondary-bg-dark);
+  --button-secondary-text: var(--button-secondary-text-dark);
+  --button-secondary-border: var(--button-secondary-border-dark);
+  --button-secondary-hover-bg: var(--button-secondary-hover-bg-dark);
+  --button-success-bg: var(--button-success-bg-dark);
+  --button-success-text: var(--button-success-text-dark);
+  --button-success-border: var(--button-success-border-dark);
+  --button-success-hover-bg: var(--button-success-hover-bg-dark);
+  --button-reject-bg: var(--button-reject-bg-dark);
+  --button-reject-text: var(--button-reject-text-dark);
+  --button-reject-border: var(--button-reject-border-dark);
+  --button-reject-hover-bg: var(--button-reject-hover-bg-dark);
   
-
-
 }

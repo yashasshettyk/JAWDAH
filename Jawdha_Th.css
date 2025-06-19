@@ -975,8 +975,14 @@ body.night-mode {
 
 /* Search Template Wrapper */
 
+.content-highlight-wrapper {
+  background: var(--content-bg-highlight);
+  padding: 20px 10px;
+  border-radius: 12px;
+  gap: 6px;
 
-
-.content-highlight-wrapper{
-  background: var(--content-highlight-bg);
+  &.cal-req-info-bgh {
+    display: grid;
+    grid-template-columns: 23.3125rem 45.625rem auto;
+  }
 }
