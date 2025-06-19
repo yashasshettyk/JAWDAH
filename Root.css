@@ -71,7 +71,20 @@
   --active-tab-bg-light: #40799d;
   --active-tab-bg-dark: #29303b;
   --doc-image-bg-light: #ffffff;
-  --doc-image-bg-dark: #ffffff;
+  --doc-image-bg-dark: #384251;
+  --input-bg-light:#FFFFFF;
+  --input-bg-dark: #2c3440;
+  --input-border-light: #e0e0e0;
+  --input-border-dark: #595959;
+  --input-text-color-light: #2a475c;
+  --input-text-color-dark: #ffffff;
+  --input-placeholder-color-light: #898989;
+  --input-placeholder-color-dark: #8d96a3;
+  --input-disabled-bg-light: #f0f0f0;
+  --input-disabled-bg-dark: #3c3c3c;
+  --input-disabled-text-color-light: #a0a0a0;
+  --input-disabled-text-color-dark: #777777;
+
 }
 
 html {
@@ -118,6 +131,13 @@ body {
   --doc-attach-border-bg: var(--doc-attach-border-bg-light);
   --active-tab-bg: var(--active-tab-bg-light);
   --doc-image-bg: var(--doc-image-bg-light);
+  --input-bg: var(--input-bg-light);
+  --input-border: var(--input-border-light);
+  --input-text-color: var(--input-text-color-light);
+  --input-placeholder-color: var(--input-placeholder-color-light);
+  --input-disabled-bg: var(--input-disabled-bg-light);
+  --input-disabled-text-color: var(--input-disabled-text-color-light);
+
 }
 
 body.dark {
@@ -151,4 +171,13 @@ body.dark {
   --doc-attach-border-bg: var(--doc-attach-border-bg-dark);
   --active-tab-bg: var(--active-tab-bg-dark);
   --doc-image-bg: var(--doc-image-bg-dark);
+  --input-bg: var(--input-bg-dark);
+  --input-border: var(--input-border-dark);
+  --input-text-color: var(--input-text-color-dark);
+  --input-placeholder-color: var(--input-placeholder-color-dark);
+  --input-disabled-bg: var(--input-disabled-bg-dark);
+  --input-disabled-text-color: var(--input-disabled-text-color-dark);
+  
+
+
 }
