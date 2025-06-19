@@ -799,24 +799,6 @@ body.night-mode {
     place-items: center;
     height: 2.5rem;
     padding: 0.2439rem 0.2283rem 0.2561rem 0.2717rem;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     & > img {
       flex-shrink: 0;
@@ -984,6 +966,8 @@ body.night-mode {
 
 /* Count Tag */
 
-/* ----------------------- DIXITH --------------------- */
 
-/* ----------------------- DIXITH --------------------- */
+
+.content-highlight-wrapper{
+  background: var(--content-highlight-bg);
+}
