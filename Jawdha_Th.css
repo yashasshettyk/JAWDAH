@@ -966,6 +966,15 @@ body.night-mode {
 
 /* Count Tag */
 
+/* Search Template Wrapper */
+.search-template-wrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Search Template Wrapper */
+
 
 
 .content-highlight-wrapper{
