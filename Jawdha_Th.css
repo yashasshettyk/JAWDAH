@@ -923,10 +923,6 @@ body.night-mode {
   align-items: center;
   gap: 10px;
   width: fit-content;
-  
-  
-  
-  
 
   & > div:nth-child(1) {
     color: var(--white);
@@ -942,6 +938,28 @@ body.night-mode {
   }
 }
 /* Pills */
+
+/* Count Tag */
+.count-tag-wrapper {
+  background-color: var(--red);
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 100%;
+
+  & > div {
+    color: var(--white);
+    text-align: center;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.5625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 13.5px */
+    letter-spacing: 0.0094rem;
+  }
+}
+
+/* Count Tag */
 
 /* ----------------------- DIXITH --------------------- */
 
