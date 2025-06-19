@@ -971,6 +971,11 @@ body.night-mode {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+
+  & > div:nth-child(1) {
+    display: grid;
+    gap: 10px;
+  }
 }
 
 /* Search Template Wrapper */
