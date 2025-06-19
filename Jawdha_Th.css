@@ -387,6 +387,11 @@ body.night-mode {
     height: 1.5rem;
     width: 100%;
   }
+
+  &.flex {
+    display: flex;
+    gap: 20px;
+  }
 }
 
 .application-details-top {
@@ -457,6 +462,42 @@ body.night-mode {
     position: absolute;
     top: -25px;
     right: -6px;
+  }
+
+  &.app-req-det-hdr-temp {
+    display: flex;
+    border: none;
+
+    & > div {
+      padding: 0;
+    }
+
+    & > div:not(:nth-child(1))::after {
+      content: none;
+    }
+
+    & > div:nth-child(1) {
+      padding-inline-end: 10px;
+    }
+
+    & .details-date-template {
+      align-items: center;
+
+      & > div {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    & > div:nth-child(3) {
+      display: flex;
+      align-items: center;
+    }
+
+    & > div::after {
+      height: 50px;
+      transform: translateY(0.9375rem);
+    }
   }
 }
 
@@ -754,17 +795,9 @@ body.night-mode {
   background: var(--content-background);
 }
 
-.osui-accordion :last-child:not(.list) > .osui-accordion-item,
-.osui-accordion .list :last-child > .osui-accordion-item {
-  border-bottom-width: var(--border-size-s);
-  border-radius: var(--content-size);
-  border-bottom-left-radius: var(--content-size);
-  border-bottom-right-radius: var(--content-size);
-}
-
-.osui-accordion :first-child:not(.list) > .osui-accordion-item::after {
-  border-top-left-radius: var(--content-size);
-  border-top-right-radius: var(--content-size);
+.osui-accordion .osui-accordion-item {
+  border-radius: var(--content-size) !important;
+  border-width: 1px !important;
 }
 
 .osui-accordion-item:after {
@@ -987,7 +1020,61 @@ body.night-mode {
   gap: 6px;
 
   &.cal-req-info-bgh {
-    display: grid;
-    grid-template-columns: 23.3125rem 45.625rem auto;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    & > div:nth-child(1) {
+      width: 23.3125rem;
+    }
+
+    & > div:nth-child(2) {
+      width: 40.625rem;
+    }
+
+    & > div:nth-child(3) {
+      width: max-content;
+    }
   }
+}
+
+.button-wrapper-template {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+
+  & .btn {
+    margin: 0 !important;
+  }
+}
+
+.accordian-title-template {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  & .title {
+    display: flex;
+    align-items: center;
+  }
+
+  & .accordian-custom-placeholder {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 20px;
+
+    .btn {
+      height: 34px;
+    }
+  }
+}
+
+.btn-inner-template {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  align-items: center;
+  gap: 10px;
 }
