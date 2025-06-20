@@ -989,12 +989,12 @@ body.night-mode {
     line-height: normal;
   }
 
-  &  > div:nth-child(2){
-    display:flex;
-    align-items:center;
-    justify-content:flex-start;
-    flex-wrap:wrap;
-    gap:10px;
+  & > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
   }
 }
 /* Filter Template */
@@ -1028,8 +1028,6 @@ body.night-mode {
     width: 1rem;
     height: 1rem;
     cursor: pointer;
-    
-    
 
     & svg {
       width: 1rem;
@@ -1067,7 +1065,8 @@ body.night-mode {
   justify-content: space-between;
   gap: 10px;
   margin-block: 17px;
-  
+
+  margin-bottom: 17px;
 
   & > div:nth-child(1) {
     display: flex;
@@ -1249,6 +1248,7 @@ body.night-mode {
   justify-content: space-between;
   align-items: center;
   width: fit-content;
+  height: 2.5rem;
   padding: 0.625rem 1.25rem;
   gap: 40px;
   border-radius: 8px;
@@ -1258,6 +1258,8 @@ body.night-mode {
     gap: 10px;
 
     & > div {
+      margin: 0;
+
       & label {
         color: var(--theme-grey);
       }
@@ -1268,6 +1270,8 @@ body.night-mode {
       }
 
       & .radio-button:checked:before {
+        border: 0.125rem solid var(--radio-btn-border-color);
+        padding: 0.129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
         padding: 0.129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
@@ -1346,3 +1350,38 @@ body.night-mode {
     width: 13.875rem;
   }
 }
+
+/* Popup */
+[data-popup] {
+  border-radius: 12px;
+  background: var(--white);
+
+  /* Shadow/xl */
+  box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
+    0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+}
+/* Popup */
+
+/* Confirmation Popup */
+.confirmation-popup-template {
+  display: grid;
+  justify-items: center;
+  gap: 40px;
+
+  & > div:nth-child(1) {
+    height: 3.8rem;
+    & .success-svg {
+      transform: scale(2.5);
+    }
+  }
+
+  & > div:nth-child(2) {
+    color: var(--theme-text);
+    text-align: center;
+    font-size: 1.125rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.75rem; /* 155.556% */
+  }
+}
+/* Confirmation Popup */
