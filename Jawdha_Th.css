@@ -1255,6 +1255,8 @@ body.night-mode {
       }
 
       & .radio-button:checked:before {
+        border: .125rem solid var(--radio-btn-border-color);
+        padding: .129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
         padding: 0.129rem;
         background-clip: content-box;
