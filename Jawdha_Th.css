@@ -988,6 +988,14 @@ body.night-mode {
     font-weight: 600;
     line-height: normal;
   }
+
+  &  > div:nth-child(2){
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+  }
 }
 /* Filter Template */
 
@@ -1019,6 +1027,9 @@ body.night-mode {
     justify-content: center;
     width: 1rem;
     height: 1rem;
+    cursor: pointer;
+    
+    
 
     & svg {
       width: 1rem;
@@ -1043,7 +1054,7 @@ body.night-mode {
     font-size: 0.5625rem;
     font-style: normal;
     font-weight: 600;
-    line-height: 150%; /* 13.5px */
+    /* line-height: 150%; */ /* 13.5px */
     letter-spacing: 0.0094rem;
   }
 }
@@ -1055,6 +1066,8 @@ body.night-mode {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  margin-block: 17px;
+  
   margin-bottom: 17px;
 
   & > div:nth-child(1) {
@@ -1264,6 +1277,8 @@ body.night-mode {
         padding: 0.129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
         padding: 0.129rem;
+        border: 0.125rem solid var(--radio-btn-border-color);
+        padding: 0.129rem;
         background-clip: content-box;
         background-color: var(--radio-btn-bg-color);
       }
@@ -1279,6 +1294,61 @@ body.night-mode {
     align-items: center;
     gap: 0.25rem;
     align-self: stretch;
+    background: var(--button-group-bg);
+    box-shadow: var(--button-group-box-shadow);
+    border-radius: 14px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    & .button-group-item.button-group-selected-item {
+      background: var(--button-group-selected-bg);
+      color: var(--button-group-selected-text);
+      box-shadow: var(--button-group-selected-box-shadow);
+
+      & .fill svg path {
+        fill: var(--button-group-selected-text);
+      }
+
+      & .stroke svg path {
+        stroke: var(--button-group-selected-text);
+      }
+    }
+
+    & .button-group-item {
+      color: var(--button-group-text);
+      background: var(--button-group-bg);
+      display: flex;
+      padding: 0.25rem 0.75rem;
+      align-items: center;
+      gap: 6px;
+      align-self: stretch;
+      border: none;
+      background: transparent;
+      border-radius: 0.75rem;
+      height: 2rem;
+    }
+
+    & .fill svg path {
+      fill: var(--button-group-text);
+    }
+
+    & .stroke svg path {
+      stroke: var(--button-group-text);
+    }
+  }
+}
+
+.header-input-wrapper {
+  max-width: 13.875rem;
+  width: 13.875rem;
+
+  & input {
+    width: 13.875rem;
   }
 }
 
