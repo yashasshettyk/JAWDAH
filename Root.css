@@ -91,8 +91,10 @@
   --content-bg-highlight-dark: #2c3440;
   --box-shadow-spread-value: 15px;
   --radio-btn-border-color-light: #40799d;
-  --radio-btn-border-color-dark: #32617e;
-  --light-blue: #f6fcff;
+  --radio-btn-border-color-dark: #4d7d9a;
+  --radio-btn-bg-color-light: var(--color-primary);
+  --radio-btn-bg-color-dark: #85b4d2;
+  --light-blue-light: #f6fcff;
 
   /* Button Colors */
   /* Primary */
@@ -273,7 +275,8 @@ body {
   --button-reject-hover-box-shadow: var(--button-reject-hover-box-shadow-light);
   --button-reject-hover-border: var(--button-reject-hover-border-light);
   --radio-btn-border-color: var(--radio-btn-border-color-light);
-  --light-blue: var(--light-blue);
+  --radio-btn-bg-color: var(--radio-btn-bg-color-light);
+  --light-blue: var(--light-blue-light);
 }
 
 body.dark {
@@ -353,6 +356,6 @@ body.dark {
   --button-success-hover-border: var(--button-success-hover-border-dark);
   --button-reject-hover-box-shadow: var(--button-reject-hover-box-shadow-dark);
   --button-reject-hover-border: var(--button-reject-hover-border-dark);
-  --radio-btn-border-color: var(--radio-btn-border-color-dark);
+  --radio-btn-bg-color: var(--radio-btn-bg-color-dark);
   --light-blue: var(--content-background);
 }
