@@ -14,7 +14,7 @@
   inset: unset;
   height: calc(100% - calc(var(--sidemenu-margin) * 2));
   transform: none;
-  font-size: .875rem;
+  font-size: 0.875rem;
   font-weight: 400;
   width: var(--side-menu-size-collapsed);
   background: var(--theme-background);
@@ -221,8 +221,8 @@ body .app-menu-content .app-menu-links {
 
 .app-menu-links {
   & .link-item-wrapper {
-    width: calc(100% - .62rem);
-    margin: .31rem;
+    width: calc(100% - 0.62rem);
+    margin: 0.31rem;
     border-radius: 6px;
     height: 100%;
     display: flex;
@@ -280,7 +280,7 @@ svg {
   box-shadow: var(--theme-box-shadow);
   color: var(--content-color);
   font-weight: 500;
-  font-size: .875rem;
+  font-size: 0.875rem;
 }
 
 .osui-tooltip__balloon-wrapper.bottom
@@ -362,7 +362,7 @@ svg {
 }
 
 .osui-accordion-item {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .osui-accordion-item__title__placeholder {
@@ -373,10 +373,10 @@ svg {
   font-style: normal;
   font-weight: 700;
   line-height: 150%; /* 24px */
-  letter-spacing: .2688px;
+  letter-spacing: 0.2688px;
 }
 .osui-accordion-item__title {
-  padding: .9375rem;
+  padding: 0.9375rem;
 }
 
 .osui-accordion-item--is-open > .osui-accordion-item__title {
@@ -412,7 +412,7 @@ svg {
 }
 
 .osui-accordion-item--is-open > .osui-accordion-item__title {
-  padding: .625rem 1.25rem .625rem .625rem;
+  padding: 0.625rem 1.25rem 0.625rem 0.625rem;
 }
 
 .osui-accordion-item__icon--caret:after {
@@ -430,7 +430,7 @@ svg {
 .osui-tabs__header-item {
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%);
   background-color: var(--content-background);
-  padding: .625rem 1.25rem;
+  padding: 0.625rem 1.25rem;
   border: none;
   display: inline-block;
   position: relative;
@@ -451,12 +451,19 @@ svg {
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
+.is-rtl
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:nth-child(1)
+  .osui-tabs__header-item {
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
 .osui-tabs--is-horizontal > .osui-tabs__header .osui-tabs__header-item {
   padding-inline: 1.875rem 2.5rem;
   color: var(--content-color);
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
-  font-size: .8125rem;
+  font-size: 0.8125rem;
   font-style: normal;
   font-weight: 400;
   line-height: 150%; /* 19.5008px */
@@ -470,6 +477,14 @@ svg {
   padding-inline: 3.125rem;
   transform: translateX(-2.2875rem);
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 16% 100%);
+}
+.is-rtl
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(:first-child)
+  .osui-tabs__header-item {
+  padding-inline: 3.125rem;
+  transform: translateX(2.2875rem);
+  clip-path: polygon(20% 0%, 100% 0%, 84% 100%, 0% 100%);
 }
 
 .osui-tabs--is-horizontal .osui-tabs__header__indicator {
@@ -492,7 +507,7 @@ svg {
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   color: var(--input-text-color);
-  font-size: .9375rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   line-height: normal;
 }
@@ -511,16 +526,16 @@ svg {
     color: var(--theme-text);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
-    font-size: .75rem;
+    font-size: 0.75rem;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 150%; /* 18px */
-    letter-spacing: .0126rem;
+    letter-spacing: 0.0126rem;
   }
 
   & > div:nth-child(1) {
     position: absolute;
-    padding: .0625rem .1875rem;
+    padding: 0.0625rem 0.1875rem;
     height: 1.25rem;
     z-index: 2;
     width: max-content;
@@ -532,18 +547,60 @@ svg {
   }
 }
 
-
-.btn{
+.btn {
   min-width: 8.3125rem;
   border-radius: 8px;
-  padding: .5rem 1.0625rem;
+  padding: 0.5rem 1.0625rem;
   height: 2.5rem;
 
+  &.btn-primary {
+    background: var(--button-primary-bg);
+    color: var(--button-primary-text);
+    border: 1px solid var(--button-primary-border);
 
-  &.btn-primary{
-    
+    &:hover {
+      background: var(--button-primary-hover-bg);
+      color: var(--white);
+      & .stroke svg path {
+        stroke: var(--white);
+      }
+    }
+
+    & .stroke svg path {
+      stroke: var(--button-primary-text);
+    }
   }
 
-  
-}
+  &.btn-secondary {
+    background: var(--button-secondary-bg);
+    color: var(--button-secondary-text);
+    border: 1px solid var(--button-secondary-border);
 
+    &:hover {
+      background: var(--button-secondary-hover-bg);
+      color: var(--white);
+    }
+  }
+
+  &.btn-success {
+    background: var(--button-success-bg);
+    color: var(--button-success-text);
+    border: 1px solid var(--button-success-border);
+
+    &:hover {
+      background: var(--button-success-hover-bg);
+      color: var(--white);
+    }
+  }
+
+  &.btn-reject {
+    background: var(--button-reject-bg);
+    color: var(--button-reject-text);
+    border: 1px solid var(--button-reject-border);
+
+    &:hover {
+      background: var(--button-reject-hover-bg);
+      color: var(--white);
+    }
+  }
+}

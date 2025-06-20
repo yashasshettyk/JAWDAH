@@ -87,23 +87,19 @@
   --input-border-radius: 0.5rem;
   --input-height: 2.5rem;
   --input-padding: 0.125rem 1rem 0.125rem 0.9375rem;
-  --content-bg-highlight-light: #F6FCFF;
+  --content-bg-highlight-light: #f6fcff;
   --content-bg-highlight-dark: #2c3440;
-
-
-
-
 
   /* Button Colors */
   /* Primary */
-  --button-primary-bg-light: #40799d;
-  --button-primary-bg-dark: #29303b;
-  --button-primary-text-light: #ffffff;
-  --button-primary-text-dark: #a7c1d3;
-  --button-primary-border-light: #40799d;
-  --button-primary-border-dark: #29303b;
-  --button-primary-hover-bg-light: #2d6286;
-  --button-primary-hover-bg-dark: #082238;
+  --button-primary-bg-light: #f5fbff;
+  --button-primary-bg-dark: #445164;
+  --button-primary-text-light: #2a475c;
+  --button-primary-text-dark: #f0f9ff;
+  --button-primary-border-light: #2a475c;
+  --button-primary-border-dark: #566988;
+  --button-primary-hover-bg-light: #2a475c;
+  --button-primary-hover-bg-dark: #03192c;
 
   /* Secondary */
   --button-secondary-bg-light: #f0f0f0;
@@ -115,7 +111,6 @@
   --button-secondary-hover-bg-light: #e0e0e0;
   --button-secondary-hover-bg-dark: #595959;
 
-
   /* Success */
   --button-success-bg-light: #56a7da;
   --button-success-bg-dark: #424b52;
@@ -125,23 +120,23 @@
   --button-success-border-dark: #424b52;
   --button-success-hover-bg-light: #40799d;
   --button-success-hover-bg-dark: #29303b;
-  
+
   /* Reject */
-  --button-reject-bg-light: #ff3939;
-  --button-reject-bg-dark: #a7c1d3;
-  --button-reject-text-light: #ffffff;
-  --button-reject-text-dark: #ffffff;
+  --button-reject-bg-light: #fffafa;
+  --button-reject-bg-dark: #4b3333;
+  --button-reject-text-light: #ff3939;
+  --button-reject-text-dark: #ff3939;
   --button-reject-border-light: #ff3939;
-  --button-reject-border-dark: #a7c1d3;
-  --button-reject-hover-bg-light: #e02d2d;
-  --button-reject-hover-bg-dark: #7a9ba8;
-
-
-
-
-
+  --button-reject-border-dark: #ff3939;
+  --button-reject-hover-bg-light: #ff3939;
+  --button-reject-hover-bg-dark: #ff3939;
 
   /* Button Colors */
+
+  --logout-item-bg-light: #ffeded;
+  --logout-item-bg-dark: #4b3333;
+  --logout-svg-color-light: #ff3939;
+  --logout-svg-color-dark: #ff3636;
 }
 
 html {
@@ -211,7 +206,8 @@ body {
   --button-reject-text: var(--button-reject-text-light);
   --button-reject-border: var(--button-reject-border-light);
   --button-reject-hover-bg: var(--button-reject-hover-bg-light);
-
+  --logout-item-bg: var(--logout-item-bg-light);
+  --logout-svg-color: var(--logout-svg-color-light);
 }
 
 body.dark {
@@ -268,5 +264,6 @@ body.dark {
   --button-reject-text: var(--button-reject-text-dark);
   --button-reject-border: var(--button-reject-border-dark);
   --button-reject-hover-bg: var(--button-reject-hover-bg-dark);
-  
+  --logout-item-bg: var(--logout-item-bg-dark);
+  --logout-svg-color: var(--logout-svg-color-dark);
 }
