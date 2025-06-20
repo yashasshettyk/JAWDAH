@@ -104,8 +104,10 @@
   --button-primary-border-dark: #566988;
   --button-primary-hover-bg-light: #2a475c;
   --button-primary-hover-bg-dark: #03192c;
-  --button-primary-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value) rgb(22 47 65 / 61%);
-  --button-primary-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value) rgb(36 23 23 / 38%);
+  --button-primary-hover-box-shadow-light: 0px 0px
+    var(--box-shadow-spread-value) rgb(22 47 65 / 61%);
+  --button-primary-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
+    rgb(36 23 23 / 38%);
   --button-primary-hover-border-light: #ffffff;
   --button-primary-hover-border-dark: #566988;
 
@@ -180,6 +182,25 @@
   --logout-item-bg-dark: #4b3333;
   --logout-svg-color-light: #ff3939;
   --logout-svg-color-dark: #ff3636;
+
+  --button-group-bg-light: #e2f4ff;
+  --button-group-bg-dark: #2c3440;
+  --button-group-selected-bg-light: #2a475c;
+  --button-group-selected-bg-dark: #29303b;
+  --button-group-selected-text-light: #ffffff;
+  --button-group-selected-text-dark: #a7c1d3;
+  --button-group-text-light: #2a475c;
+  --button-group-text-dark: #a7c1d3;
+  --button-group-box-shadow-light: 0px 1px 2px 0px rgba(97, 97, 97, 0.2) inset,
+    0px 2px 4px 0px rgba(97, 97, 97, 0.2) inset;
+  --button-group-box-shadow-dark: 0px 1px 2px 0px rgba(97, 97, 97, 0.2) inset,
+    0px 2px 4px 0px rgba(97, 97, 97, 0.2) inset;
+  --button-group-selected-box-shadow-light: 0px 1px 2px 0px
+      rgba(15, 86, 179, 0.2),
+    0px 2px 4px 0px rgba(15, 86, 179, 0.2);
+  --button-group-selected-box-shadow-dark: 0px 1px 2px 0px
+      rgba(15, 86, 179, 0.2),
+    0px 2px 4px 0px rgba(15, 86, 179, 0.2);
 }
 
 html {
@@ -274,6 +295,16 @@ body {
   --button-reject-hover-border: var(--button-reject-hover-border-light);
   --radio-btn-border-color: var(--radio-btn-border-color-light);
   --light-blue: var(--light-blue);
+
+  /* Button Group Colors */
+  --button-group-bg: var(--button-group-bg-light);
+  --button-group-selected-bg: var(--button-group-selected-bg-light);
+  --button-group-selected-text: var(--button-group-selected-text-light);
+  --button-group-text: var(--button-group-text-light);
+  --button-group-box-shadow: var(--button-group-box-shadow-light);
+  --button-group-selected-box-shadow: var(
+    --button-group-selected-box-shadow-light
+  );
 }
 
 body.dark {
@@ -355,4 +386,14 @@ body.dark {
   --button-reject-hover-border: var(--button-reject-hover-border-dark);
   --radio-btn-border-color: var(--radio-btn-border-color-dark);
   --light-blue: var(--content-background);
+
+  /* Button Group Colors */
+  --button-group-bg: var(--button-group-bg-dark);
+  --button-group-selected-bg: var(--button-group-selected-bg-dark);
+  --button-group-selected-text: var(--button-group-selected-text-dark);
+  --button-group-text: var(--button-group-text-dark);
+  --button-group-box-shadow: var(--button-group-box-shadow-dark);
+  --button-group-selected-box-shadow: var(
+    --button-group-selected-box-shadow-dark
+  );
 }

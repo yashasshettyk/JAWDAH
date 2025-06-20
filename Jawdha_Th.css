@@ -1056,14 +1056,6 @@ body.night-mode {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 17px;
-  
-  
-  
-  
-  
-  
-  
-  
 
   & > div:nth-child(1) {
     display: flex;
@@ -1251,8 +1243,8 @@ body.night-mode {
       }
 
       & .radio-button:checked:before {
-        border: .125rem solid var(--radio-btn-border-color);
-        padding: .129rem;
+        border: 0.125rem solid var(--radio-btn-border-color);
+        padding: 0.129rem;
         background-clip: content-box;
         background-color: var(--color-primary);
       }
@@ -1261,4 +1253,12 @@ body.night-mode {
 }
 /* Highlighted Content Wrapper */
 
-
+.button-group-template-wrapper {
+  & .button-group {
+    display: flex;
+    padding: 0.25rem;
+    align-items: center;
+    gap: 0.25rem;
+    align-self: stretch;
+  }
+}
