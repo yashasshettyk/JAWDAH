@@ -546,7 +546,10 @@ svg {
     transform: translateX(10px) translateY(-50%);
   }
 }
-
+.desktop .btn:hover {
+    -webkit-filter: brightness(1);
+    filter: brightness(1);
+}
 .btn {
   min-width: 8.3125rem;
   border-radius: 8px;
@@ -560,14 +563,24 @@ svg {
 
     &:hover {
       background: var(--button-primary-hover-bg);
+      border-color: var(--button-primary-hover-border);
+      box-shadow: var(--button-primary-hover-box-shadow);
       color: var(--white);
       & .stroke svg path {
         stroke: var(--white);
+      }
+
+      & .fill svg path {
+        fill: var(--white);
       }
     }
 
     & .stroke svg path {
       stroke: var(--button-primary-text);
+    }
+
+    & .fill svg path {
+      fill: var(--button-primary-text);
     }
   }
 
@@ -578,6 +591,8 @@ svg {
 
     &:hover {
       background: var(--button-secondary-hover-bg);
+      border-color: var(--button-secondary-hover-border);
+      box-shadow: var(--button-secondary-hover-box-shadow);
       color: var(--white);
     }
   }
@@ -589,6 +604,8 @@ svg {
 
     &:hover {
       background: var(--button-success-hover-bg);
+      border-color: var(--button-success-hover-border);
+      box-shadow: var(--button-success-hover-box-shadow);
       color: var(--white);
     }
   }
@@ -600,7 +617,38 @@ svg {
 
     &:hover {
       background: var(--button-reject-hover-bg);
+      border-color: var(--button-reject-hover-border);
+      box-shadow: var(--button-reject-hover-box-shadow);
       color: var(--white);
+    }
+  }
+
+  &.btn-light {
+    background: var(--button-light-bg);
+    color: var(--button-light-text);
+    border: 1px solid var(--button-light-border);
+
+    &:hover {
+      background: var(--button-light-hover-bg);
+      color: var(--button-light-hover-text);
+      border-color: var(--button-light-hover-border);
+      box-shadow: var(--button-light-hover-box-shadow);
+
+      & .stroke svg path {
+        stroke: var(--button-light-hover-text);
+      }
+
+      & .fill svg path {
+        fill: var(--button-light-hover-text);
+      }
+    }
+
+    & .stroke svg path {
+      stroke: var(--button-light-text);
+    }
+
+    & .fill svg path {
+      fill: var(--button-light-text);
     }
   }
 }

@@ -89,6 +89,7 @@
   --input-padding: 0.125rem 1rem 0.125rem 0.9375rem;
   --content-bg-highlight-light: #f6fcff;
   --content-bg-highlight-dark: #2c3440;
+  --box-shadow-spread-value: 15px;
 
   /* Button Colors */
   /* Primary */
@@ -100,6 +101,10 @@
   --button-primary-border-dark: #566988;
   --button-primary-hover-bg-light: #2a475c;
   --button-primary-hover-bg-dark: #03192c;
+  --button-primary-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value) rgb(22 47 65 / 61%);
+  --button-primary-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value) rgb(36 23 23 / 38%);
+  --button-primary-hover-border-light: #ffffff;
+  --button-primary-hover-border-dark: #566988;
 
   /* Secondary */
   --button-secondary-bg-light: #f0f0f0;
@@ -110,6 +115,30 @@
   --button-secondary-border-dark: #707c8a;
   --button-secondary-hover-bg-light: #e0e0e0;
   --button-secondary-hover-bg-dark: #595959;
+  --button-secondary-hover-box-shadow-light: 0px 0px
+    var(--box-shadow-spread-value) rgba(42, 71, 92, 0.2);
+  --button-secondary-hover-box-shadow-dark: 0px 0px
+    var(--box-shadow-spread-value) rgba(42, 71, 92, 0.2);
+  --button-secondary-hover-border-light: #acacac;
+  --button-secondary-hover-border-dark: #707c8a;
+
+  /* Light */
+  --button-light-bg-light: #ffffff;
+  --button-light-bg-dark: #212730;
+  --button-light-text-light: #2a475c;
+  --button-light-text-dark: #a7c1d3;
+  --button-light-border-light: #2a475c;
+  --button-light-border-dark: #65737f;
+  --button-light-hover-bg-light: #f8fcff;
+  --button-light-hover-bg-dark: #384251;
+  --button-light-hover-text-light: #2a475c;
+  --button-light-hover-text-dark: #a7c1d3;
+  --button-light-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value)
+    rgb(42 71 92 / 33%);
+  --button-light-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
+    rgb(255 255 255 / 38%);
+  --button-light-hover-border-light: #ffffff;
+  --button-light-hover-border-dark: #5784ab;
 
   /* Success */
   --button-success-bg-light: #56a7da;
@@ -120,6 +149,12 @@
   --button-success-border-dark: #424b52;
   --button-success-hover-bg-light: #40799d;
   --button-success-hover-bg-dark: #29303b;
+  --button-success-hover-box-shadow-light: 0px 0px
+    var(--box-shadow-spread-value) rgba(42, 71, 92, 0.2);
+  --button-success-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
+    rgba(42, 71, 92, 0.2);
+  --button-success-hover-border-light: #56a7da;
+  --button-success-hover-border-dark: #424b52;
 
   /* Reject */
   --button-reject-bg-light: #fffafa;
@@ -130,9 +165,14 @@
   --button-reject-border-dark: #ff3939;
   --button-reject-hover-bg-light: #ff3939;
   --button-reject-hover-bg-dark: #ff3939;
+  --button-reject-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value)
+    rgba(42, 71, 92, 0.2);
+  --button-reject-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
+    rgba(42, 71, 92, 0.2);
+  --button-reject-hover-border-light: #ff3939;
+  --button-reject-hover-border-dark: #ff3939;
 
   /* Button Colors */
-
   --logout-item-bg-light: #ffeded;
   --logout-item-bg-dark: #4b3333;
   --logout-svg-color-light: #ff3939;
@@ -208,6 +248,27 @@ body {
   --button-reject-hover-bg: var(--button-reject-hover-bg-light);
   --logout-item-bg: var(--logout-item-bg-light);
   --logout-svg-color: var(--logout-svg-color-light);
+  --button-light-bg: var(--button-light-bg-light);
+  --button-light-text: var(--button-light-text-light);
+  --button-light-border: var(--button-light-border-light);
+  --button-light-hover-bg: var(--button-light-hover-bg-light);
+  --button-light-hover-text: var(--button-light-hover-text-light);
+  --button-light-hover-box-shadow: var(--button-light-hover-box-shadow-light);
+  --button-light-hover-border: var(--button-light-hover-border-light);
+  --button-secondary-hover-box-shadow: var(
+    --button-secondary-hover-box-shadow-light
+  );
+  --button-secondary-hover-border: var(--button-secondary-hover-border-light);
+  --button-primary-hover-box-shadow: var(
+    --button-primary-hover-box-shadow-light
+  );
+  --button-primary-hover-border: var(--button-primary-hover-border-light);
+  --button-success-hover-box-shadow: var(
+    --button-success-hover-box-shadow-light
+  );
+  --button-success-hover-border: var(--button-success-hover-border-light);
+  --button-reject-hover-box-shadow: var(--button-reject-hover-box-shadow-light);
+  --button-reject-hover-border: var(--button-reject-hover-border-light);
 }
 
 body.dark {
@@ -266,4 +327,25 @@ body.dark {
   --button-reject-hover-bg: var(--button-reject-hover-bg-dark);
   --logout-item-bg: var(--logout-item-bg-dark);
   --logout-svg-color: var(--logout-svg-color-dark);
+  --button-light-bg: var(--button-light-bg-dark);
+  --button-light-text: var(--button-light-text-dark);
+  --button-light-border: var(--button-light-border-dark);
+  --button-light-hover-bg: var(--button-light-hover-bg-dark);
+  --button-light-hover-text: var(--button-light-hover-text-dark);
+  --button-light-hover-box-shadow: var(--button-light-hover-box-shadow-dark);
+  --button-light-hover-border: var(--button-light-hover-border-dark);
+  --button-secondary-hover-box-shadow: var(
+    --button-secondary-hover-box-shadow-dark
+  );
+  --button-secondary-hover-border: var(--button-secondary-hover-border-dark);
+  --button-primary-hover-box-shadow: var(
+    --button-primary-hover-box-shadow-dark
+  );
+  --button-primary-hover-border: var(--button-primary-hover-border-dark);
+  --button-success-hover-box-shadow: var(
+    --button-success-hover-box-shadow-dark
+  );
+  --button-success-hover-border: var(--button-success-hover-border-dark);
+  --button-reject-hover-box-shadow: var(--button-reject-hover-box-shadow-dark);
+  --button-reject-hover-border: var(--button-reject-hover-border-dark);
 }
