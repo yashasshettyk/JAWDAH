@@ -1057,7 +1057,6 @@ body.night-mode {
   gap: 10px;
   margin-bottom: 17px;
 
-
   & > div:nth-child(1) {
     display: flex;
     gap: 10px;
@@ -1256,8 +1255,8 @@ body.night-mode {
       }
 
       & .radio-button:checked:before {
-        border: .125rem solid var(--radio-btn-border-color);
-        padding: .129rem;
+        border: 0.125rem solid var(--radio-btn-border-color);
+        padding: 0.129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
         padding: 0.129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
@@ -1277,5 +1276,60 @@ body.night-mode {
     align-items: center;
     gap: 0.25rem;
     align-self: stretch;
+    background: var(--button-group-bg);
+    box-shadow: var(--button-group-box-shadow);
+    border-radius: 14px;
+
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    & .button-group-item.button-group-selected-item {
+      background: var(--button-group-selected-bg);
+      color: var(--button-group-selected-text);
+      box-shadow: var(--button-group-selected-box-shadow);
+
+      & .fill svg path {
+        fill: var(--button-group-selected-text);
+      }
+
+      & .stroke svg path {
+        stroke: var(--button-group-selected-text);
+      }
+    }
+
+    & .button-group-item {
+      color: var(--button-group-text);
+      background: var(--button-group-bg);
+      display: flex;
+      padding: 0.25rem 0.75rem;
+      align-items: center;
+      gap: 6px;
+      align-self: stretch;
+      border: none;
+      background: transparent;
+      border-radius: 0.75rem;
+      height: 2rem;
+    }
+
+    & .fill svg path {
+      fill: var(--button-group-text);
+    }
+
+    & .stroke svg path {
+      stroke: var(--button-group-text);
+    }
+  }
+}
+
+.header-input-wrapper {
+  max-width: 13.875rem;
+  width: 13.875rem;
+
+  & input {
+    width: 13.875rem;
   }
 }

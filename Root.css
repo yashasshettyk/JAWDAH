@@ -184,19 +184,17 @@
   --logout-item-bg-dark: #4b3333;
   --logout-svg-color-light: #ff3939;
   --logout-svg-color-dark: #ff3636;
-
   --button-group-bg-light: #e2f4ff;
-  --button-group-bg-dark: #2c3440;
-  --button-group-selected-bg-light: #2a475c;
-  --button-group-selected-bg-dark: #29303b;
-  --button-group-selected-text-light: #ffffff;
-  --button-group-selected-text-dark: #a7c1d3;
+  --button-group-bg-dark: #303d51;
+  --button-group-selected-bg-light: #ffffff;
+  --button-group-selected-bg-dark: #8799b5;
+  --button-group-selected-text-light: #000000;
+  --button-group-selected-text-dark: #04090d;
   --button-group-text-light: #2a475c;
-  --button-group-text-dark: #a7c1d3;
+  --button-group-text-dark: #d3edff;
   --button-group-box-shadow-light: 0px 1px 2px 0px rgba(97, 97, 97, 0.2) inset,
     0px 2px 4px 0px rgba(97, 97, 97, 0.2) inset;
-  --button-group-box-shadow-dark: 0px 1px 2px 0px rgba(97, 97, 97, 0.2) inset,
-    0px 2px 4px 0px rgba(97, 97, 97, 0.2) inset;
+  --button-group-box-shadow-dark: 0px 1px 2px 0px rgb(107 107 107 / 35%) inset, 0px 2px 4px 0px rgb(107 107 107 / 0%) inset;
   --button-group-selected-box-shadow-light: 0px 1px 2px 0px
       rgba(15, 86, 179, 0.2),
     0px 2px 4px 0px rgba(15, 86, 179, 0.2);
