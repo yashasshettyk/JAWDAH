@@ -1057,6 +1057,7 @@ body.night-mode {
   gap: 10px;
   margin-bottom: 17px;
 
+
   & > div:nth-child(1) {
     display: flex;
     gap: 10px;
@@ -1223,6 +1224,15 @@ body.night-mode {
 
 /* Highlighted Content Wrapper */
 .highlighted-content-wrapper {
+  background: var(--light-blue);
+  color: var(--theme-text);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 18px */
+  letter-spacing: 0.0126rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1230,23 +1240,30 @@ body.night-mode {
   padding: 0.625rem 1.25rem;
   gap: 40px;
   border-radius: 8px;
-  background: var(--light-blue);
-  color: var(--theme-text);
 
   & .radio-group > div {
     display: flex;
     gap: 10px;
 
     & > div {
+      & label {
+        color: var(--theme-grey);
+      }
+
       & .radio-button::before {
-        border: 2px solid var(--radio-btn-border-color);
+        border: 0.125rem solid var(--radio-btn-border-color);
+        background-color: var(--light-blue);
       }
 
       & .radio-button:checked:before {
+        border: .125rem solid var(--radio-btn-border-color);
+        padding: .129rem;
+        border: 0.125rem solid var(--radio-btn-border-color);
+        padding: 0.129rem;
         border: 0.125rem solid var(--radio-btn-border-color);
         padding: 0.129rem;
         background-clip: content-box;
-        background-color: var(--color-primary);
+        background-color: var(--radio-btn-bg-color);
       }
     }
   }
