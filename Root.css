@@ -132,6 +132,11 @@
   --button-reject-hover-bg-dark: #ff3939;
 
   /* Button Colors */
+
+  --logout-item-bg-light: #ffeded;
+  --logout-item-bg-dark: #4b3333;
+  --logout-svg-color-light: #ff3939;
+  --logout-svg-color-dark: #ff3636;
 }
 
 html {
@@ -201,6 +206,8 @@ body {
   --button-reject-text: var(--button-reject-text-light);
   --button-reject-border: var(--button-reject-border-light);
   --button-reject-hover-bg: var(--button-reject-hover-bg-light);
+  --logout-item-bg: var(--logout-item-bg-light);
+  --logout-svg-color: var(--logout-svg-color-light);
 }
 
 body.dark {
@@ -257,4 +264,6 @@ body.dark {
   --button-reject-text: var(--button-reject-text-dark);
   --button-reject-border: var(--button-reject-border-dark);
   --button-reject-hover-bg: var(--button-reject-hover-bg-dark);
+  --logout-item-bg: var(--logout-item-bg-dark);
+  --logout-svg-color: var(--logout-svg-color-dark);
 }
