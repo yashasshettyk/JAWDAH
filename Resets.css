@@ -412,7 +412,7 @@ svg {
 }
 
 .osui-accordion-item--is-open > .osui-accordion-item__title {
-  padding: 0.625rem 1.25rem 0.625rem 0.625rem;
+  padding: 0.825rem 1.25rem 0.625rem 0.625rem;
 }
 
 .osui-accordion-item__icon--caret:after {
@@ -428,9 +428,9 @@ svg {
 }
 
 .osui-tabs__header-item {
-  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%);
+  clip-path: polygon(0% 0%, 77% 0%, 100% 100%, 20% 100%);
   background-color: var(--content-background);
-  padding: 0.625rem 1.25rem;
+  padding: 0.825rem 1.25rem;
   border: none;
   display: inline-block;
   position: relative;
@@ -442,13 +442,15 @@ svg {
   position: relative;
   z-index: 1;
   /* padding: 0px 40px; */
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(1)
   .osui-tabs__header-item {
-  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 84% 0%, 100% 100%, 0% 100%);
 }
 
 .is-rtl
@@ -459,7 +461,7 @@ svg {
 }
 
 .osui-tabs--is-horizontal > .osui-tabs__header .osui-tabs__header-item {
-  padding-inline: 1.875rem 2.5rem;
+  padding-inline: 2.76rem 2.5rem;
   color: var(--content-color);
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
@@ -469,15 +471,24 @@ svg {
   line-height: 150%; /* 19.5008px */
   position: relative;
   transform: translateX(0px);
+  box-shadow: var(--tab-box-shadow);
+}
+.display-contents > [data-block="Navigation.TabsHeaderItem"]:not(:first-child) {
+  position: relative;
+  display: block !important;
+  transform: translateX(-2.2875rem);
+}
+.display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:nth-child(3)
+  .osui-tabs__header-item {
+  transform: translateX(-2.3875rem);
+}
+.display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:nth-child(4)
+  .osui-tabs__header-item {
+  transform: translateX(-5.075rem);
 }
 
-.display-contents
-  > [data-block="Navigation.TabsHeaderItem"]:not(:first-child)
-  .osui-tabs__header-item {
-  padding-inline: 3.125rem;
-  transform: translateX(-2.2875rem);
-  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 16% 100%);
-}
 .is-rtl
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:not(:first-child)
@@ -547,8 +558,8 @@ svg {
   }
 }
 .desktop .btn:hover {
-    -webkit-filter: brightness(1);
-    filter: brightness(1);
+  -webkit-filter: brightness(1);
+  filter: brightness(1);
 }
 .btn {
   min-width: 8.3125rem;
