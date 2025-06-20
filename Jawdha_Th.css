@@ -1142,6 +1142,7 @@ body.night-mode {
   grid-template-columns: 1.5rem 1fr;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
 /* Expand Collapse */
