@@ -615,7 +615,7 @@ svg {
 }
 
 .osui-tabs--is-horizontal > .osui-tabs__header::-webkit-scrollbar {
-  height: 3px;
+  display: none;
 }
 
 .osui-tabs--is-horizontal
@@ -630,13 +630,22 @@ svg {
 .form-control[data-input],
 .form-control[data-textarea],
 .dropdown-container > div.dropdown-display,
-.dropdown-container > select.dropdown-display {
+.dropdown-container > select.dropdown-display,
+.vscomp-toggle-button {
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   color: var(--input-text-color);
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: normal;
+}
+
+.form-control[data-input]::placeholder,
+.form-control[data-textarea]::placeholder,
+.dropdown-container > div.dropdown-display::placeholder,
+.dropdown-container > select.dropdown-display::placeholder,
+.vscomp-wrapper:not(.has-value) .vscomp-value {
+  color: var(--input-placeholder-color);
 }
 
 .input-with-label-wrapper {
@@ -662,7 +671,7 @@ svg {
 
   & > div:nth-child(1) {
     position: absolute;
-    padding: 0.0625rem 0.1875rem;
+    padding: 0.0625rem 0.3875rem;
     height: 1.25rem;
     z-index: 2;
     width: max-content;
@@ -682,6 +691,7 @@ svg {
   border-radius: 8px;
   padding: 0.5rem 1.0625rem;
   height: 2.5rem;
+  font-weight: 500;
 
   &.btn-primary {
     background: var(--button-primary-bg);
@@ -778,4 +788,77 @@ svg {
       fill: var(--button-light-text);
     }
   }
+}
+
+.osui-sidebar {
+  height: calc(100% - 1.25rem);
+  top: 0.625rem;
+  border-radius: 8px;
+  background: var(--content-background);
+  border: 1px solid var(--border-color);
+
+  &.osui-sidebar--is-right {
+    right: 10px;
+  }
+}
+
+.layout-side {
+  & .background-layer {
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    transform-origin: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:has(.osui-sidebar--is-open) .background-layer {
+    background: var(--layer-background);
+    transform: scale(1);
+    display: block;
+    z-index: 12;
+    backdrop-filter: blur(1px);
+  }
+}
+
+.osui-sidebar__header,
+.osui-sidebar__content {
+  padding: 0;
+}
+
+.vscomp-wrapper.multiple .vscomp-search-container {
+  background: var(--input-bg);
+}
+
+.vscomp-search-input {
+  background: var(--input-bg);
+  color: var(--input-text-color);
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+  }
+}
+
+.vscomp-wrapper .checkbox-icon {
+  background: var(--checkbox-bg);
+}
+
+.vscomp-wrapper.has-no-options .vscomp-no-options {
+  background: var(--content-background);
+  color: var(--content-color);
+}
+
+.pop-comp-wrapper {
+  background: var(--content-background);
+  color: var(--content-color);
+  border-radius: 4px;
+  border: 1px solid var(--border-color-1);
+}
+
+.vscomp-dropbox {
+  border: none;
+  border-radius: 4px;
 }

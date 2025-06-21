@@ -31,7 +31,7 @@
   --grey-light: #898989;
   --grey-dark: #8d96a3;
   --grey-light-1: #404040;
-  --grey-dark-1: #cfc8c8;
+  --grey-dark-1: #ffffff;
   --blue-light: #2a475c;
   --blue-dark: #a7c1d3;
   --red: #ff3939;
@@ -79,7 +79,7 @@
   --input-text-color-light: #535353;
   --input-text-color-dark: #ffffff;
   --input-placeholder-color-light: #898989;
-  --input-placeholder-color-dark: #8d96a3;
+  --input-placeholder-color-dark: #a3adbc;
   --input-disabled-bg-light: #f0f0f0;
   --input-disabled-bg-dark: #3c3c3c;
   --input-disabled-text-color-light: #a0a0a0;
@@ -105,7 +105,7 @@
   --button-primary-border-light: #2a475c;
   --button-primary-border-dark: #566988;
   --button-primary-hover-bg-light: #2a475c;
-  --button-primary-hover-bg-dark: #03192c;
+  --button-primary-hover-bg-dark: #3b6b94;
   --button-primary-hover-box-shadow-light: 0px 0px
     var(--box-shadow-spread-value) rgb(22 47 65 / 61%);
   --button-primary-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
@@ -194,7 +194,8 @@
   --button-group-text-dark: #d3edff;
   --button-group-box-shadow-light: 0px 1px 2px 0px rgba(97, 97, 97, 0.2) inset,
     0px 2px 4px 0px rgba(97, 97, 97, 0.2) inset;
-  --button-group-box-shadow-dark: 0px 1px 2px 0px rgb(107 107 107 / 35%) inset, 0px 2px 4px 0px rgb(107 107 107 / 0%) inset;
+  --button-group-box-shadow-dark: 0px 1px 2px 0px rgb(107 107 107 / 35%) inset,
+    0px 2px 4px 0px rgb(107 107 107 / 0%) inset;
   --button-group-selected-box-shadow-light: 0px 1px 2px 0px
       rgba(15, 86, 179, 0.2),
     0px 2px 4px 0px rgba(15, 86, 179, 0.2);
@@ -205,6 +206,18 @@
   --tab-box-shadow-dark: 0px 1px 2px 0px rgb(107 107 107 / 35%);
   --active-tab-hover-bg-light: #9bc3dc;
   --active-tab-hover-bg-dark: #565f6d;
+  --layer-background-light: rgba(0, 0, 0, 0.5);
+  --layer-background-dark: rgb(0 0 0 / 45%);
+  --sidebar-border-color-light: #c0e7ff;
+  --sidebar-border-color-dark: #2c3440;
+  --checkbox-bg-light: #ffffff;
+  --checkbox-bg-dark: #2c3440;
+  --checkbox-border-light: #acacac;
+  --checkbox-border-dark: #707c8a;
+  --border-color-1-light: #e0e0e0;
+  --border-color-1-dark: #7c7979;
+  --timeline-sb-bg-light: #fafdff;
+  --timeline-sb-bg-dark: #2c3440;
 }
 
 html {
@@ -313,6 +326,13 @@ body {
   );
   --tab-box-shadow: var(--tab-box-shadow-light);
   --active-tab-hover-bg: var(--active-tab-hover-bg-light);
+  --layer-background: var(--layer-background-light);
+  --primary-text: var(--color-primary);
+  --sidebar-border-color: var(--sidebar-border-color-light);
+  --checkbox-bg: var(--checkbox-bg-light);
+  --checkbox-border: var(--checkbox-border-light);
+  --border-color-1: var(--border-color-1-light);
+  --timeline-sb-bg: var(--timeline-sb-bg-light);
 }
 
 body.dark {
@@ -406,4 +426,11 @@ body.dark {
   );
   --tab-box-shadow: var(--tab-box-shadow-dark);
   --active-tab-hover-bg: var(--active-tab-hover-bg-dark);
+  --layer-background: var(--layer-background-dark);
+  --primary-text: var(--white);
+  --sidebar-border-color: var(--sidebar-border-color-dark);
+  --checkbox-bg: var(--checkbox-bg-dark);
+  --checkbox-border: var(--checkbox-border-dark);
+  --border-color-1: var(--border-color-1-dark);
+  --timeline-sb-bg: var(--timeline-sb-bg-dark);
 }
