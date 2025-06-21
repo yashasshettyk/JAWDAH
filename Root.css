@@ -69,7 +69,7 @@
   --doc-attach-border-bg-light: #f6fcff;
   --doc-attach-border-bg-dark: #2c3440;
   --active-tab-bg-light: #40799d;
-  --active-tab-bg-dark: #29303b;
+  --active-tab-bg-dark: #394456;
   --doc-image-bg-light: #ffffff;
   --doc-image-bg-dark: #384251;
   --input-bg-light: #ffffff;
@@ -201,6 +201,10 @@
   --button-group-selected-box-shadow-dark: 0px 1px 2px 0px
       rgba(15, 86, 179, 0.2),
     0px 2px 4px 0px rgba(15, 86, 179, 0.2);
+  --tab-box-shadow-light: -2px 2px 10px 6px rgb(97 97 97 / 36%);
+  --tab-box-shadow-dark: 0px 1px 2px 0px rgb(107 107 107 / 35%);
+  --active-tab-hover-bg-light: #9bc3dc;
+  --active-tab-hover-bg-dark: #565f6d;
 }
 
 html {
@@ -307,6 +311,8 @@ body {
   --button-group-selected-box-shadow: var(
     --button-group-selected-box-shadow-light
   );
+  --tab-box-shadow: var(--tab-box-shadow-light);
+  --active-tab-hover-bg: var(--active-tab-hover-bg-light);
 }
 
 body.dark {
@@ -398,4 +404,6 @@ body.dark {
   --button-group-selected-box-shadow: var(
     --button-group-selected-box-shadow-dark
   );
+  --tab-box-shadow: var(--tab-box-shadow-dark);
+  --active-tab-hover-bg: var(--active-tab-hover-bg-dark);
 }
