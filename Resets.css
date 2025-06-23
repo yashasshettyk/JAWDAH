@@ -451,7 +451,7 @@ svg {
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(1)
   .osui-tabs__header-item {
-  clip-path: polygon(0% 0%, 84% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
 }
 
 .is-rtl
@@ -490,8 +490,14 @@ svg {
 .display-contents > [data-block="Navigation.TabsHeaderItem"]:not(:first-child) {
   position: relative;
   display: block !important;
-  transform: translateX(-2.2875rem);
+  transform: translateX(-2.5875rem);
 }
+
+.is-rtl .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(:first-child) {
+  transform: translateX(-2.1875rem);
+}
+
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(3)
   .osui-tabs__header-item {
@@ -552,7 +558,7 @@ svg {
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(2)
   .osui-tabs__header-item {
-  transform: translateX(calc(2.4395rem * 2));
+  transform: translateX(calc(2.5395rem * 2));
 }
 
 .is-rtl
