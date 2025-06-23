@@ -1620,3 +1620,28 @@ body.night-mode {
   --sidebar-width-cs: 30.625rem;
   width: var(--sidebar-width-cs) !important;
 }
+
+/* Popup Template */
+.popup-template-wrapper {
+  & > div:nth-child(1) {
+    display: grid;
+    grid-template-columns: 1fr 30px;
+    gap: 10px;
+
+    & > div:nth-child(1) {
+      color: var(--theme-text);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "liga" off, "clig" off;
+      font-size: 1.25rem;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 150%; /* 30px */
+      letter-spacing: 0.021rem;
+    }
+
+    & > div:nth-child(2) .fill svg path {
+      fill: var(--red);
+    }
+  }
+}
+/* Popup Template */
