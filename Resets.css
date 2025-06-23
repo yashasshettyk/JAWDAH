@@ -797,8 +797,6 @@ svg {
   background: var(--content-background);
   border: 1px solid var(--border-color);
   overflow: hidden;
-  
-  
 
   &.osui-sidebar--is-right {
     right: 10px;
@@ -865,3 +863,14 @@ svg {
   border: none;
   border-radius: 4px;
 }
+
+/* Popup */
+[data-popup] {
+  border-radius: 12px;
+  background: var(--white);
+
+  /* Shadow/xl */
+  box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
+    0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+}
+/* Popup */
