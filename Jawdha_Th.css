@@ -1149,8 +1149,15 @@ body.night-mode {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 10px;
+  font-weight: 500;
   padding: 0.5rem 1rem;
   width: fit-content;
+  transition: var(--transition);
+  color: var(--primary-text);
+
+  & .fill svg path {
+    fill: var(--primary-text);
+  }
 }
 /* Expand Collapse */
 
