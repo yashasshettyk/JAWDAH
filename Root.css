@@ -22,10 +22,10 @@
   --logo-seperator-color-light: #728492;
   --header-size: 4rem;
   --tooltip-background-light: #ffffff;
-  --tooltip-background-dark: #373f4b;
+  --tooltip-background-dark: #5b687b;
   --box-shadow-light: rgba(50, 50, 93, 0.25) 0rem 0.375rem 0.75rem -0.125rem,
     rgba(0, 0, 0, 0.3) 0rem 0.1875rem 0.4375rem -0.1875rem;
-  --box-shadow-dark: rgba(255, 255, 255, 0.2);
+  --box-shadow-dark: rgb(255 255 255 / 14%);
   --dark-theme-background: #222831;
   --screen-background-dark: #111418;
   --grey-light: #898989;
@@ -54,9 +54,9 @@
   --table-loading-table-bg-light: #ffffff;
   --table-loading-table-bg-dark: #20282f;
   --loading-bg-light-1: rgb(221, 221, 221);
-  --loading-bg-dark-1: rgb(44, 44, 44);
+  --loading-bg-dark-1: rgb(70, 80, 105);
   --loading-bg-light-2: rgb(243, 243, 243);
-  --loading-bg-dark-2: rgb(160, 160, 160);
+  --loading-bg-dark-2: rgb(103, 110, 121);
   --content-border-light: #eaeaea;
   --content-border-dark: #3c3c3c;
   --content-border-radius: 1rem;
@@ -189,7 +189,7 @@
   --button-group-bg-light: #e2f4ff;
   --button-group-bg-dark: #303d51;
   --button-group-selected-bg-light: #ffffff;
-  --button-group-selected-bg-dark: #8799b5;
+  --button-group-selected-bg-dark: #c9d4e6;
   --button-group-selected-text-light: #000000;
   --button-group-selected-text-dark: #04090d;
   --button-group-text-light: #2a475c;
@@ -220,6 +220,8 @@
   --border-color-1-dark: #7c7979;
   --timeline-sb-bg-light: #fafdff;
   --timeline-sb-bg-dark: #2c3440;
+  --th-hover-text-color-light: #1b2f3d;
+  --th-hover-text-color-dark: #9fb7ca;
 }
 
 html {
@@ -336,6 +338,7 @@ body {
   --border-color-1: var(--border-color-1-light);
   --timeline-sb-bg: var(--timeline-sb-bg-light);
   --tab-bg: var(--tab-bg-light);
+  --th-hover-text-color: var(--th-hover-text-color-light);
 }
 
 body.dark {
@@ -437,4 +440,5 @@ body.dark {
   --border-color-1: var(--border-color-1-dark);
   --timeline-sb-bg: var(--timeline-sb-bg-dark);
   --tab-bg: var(--tab-bg-dark);
+  --th-hover-text-color: var(--th-hover-text-color-dark);
 }
