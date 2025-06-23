@@ -1612,5 +1612,11 @@ body.night-mode {
 }
 
 .osui-sidebar {
-  --sidebar-width: 31.25rem !important;
+  --sidebar-width-cs: 27.4375rem;
+  width: var(--sidebar-width-cs) !important;
+}
+
+.osui-sidebar:has(.timeline-sb) {
+  --sidebar-width-cs: 30.625rem;
+  width: var(--sidebar-width-cs) !important;
 }
