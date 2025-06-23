@@ -881,8 +881,8 @@ svg {
 /* Popup */
 [data-popup] {
   border-radius: 12px;
-  background: var(--white);
-  min-width: 63.5rem;
+  background: var(--content-background);
+  min-width: fit-content;
 
   /* Shadow/xl */
   box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
@@ -891,7 +891,7 @@ svg {
 
 .popup-dialog {
   padding: 0;
-  max-width: 63.5rem;
+  max-width: fit-content;
 }
 /* Popup */
 
@@ -909,3 +909,32 @@ label {
 .osui-tabs--is-horizontal {
   padding-inline: 1px;
 }
+
+/* Breadcrumbs */
+.breadcrumbs .breadcrumbs-content {
+  & .breadcrumbs-item {
+    color: var(--theme-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.0168rem;
+
+    .icon {
+      color: var(--theme-text);
+    }
+  }
+  & > div:nth-last-child(1) .breadcrumbs-item {
+    color: var(--theme-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0168rem;
+  }
+}
+/* Breadcrumbs */
