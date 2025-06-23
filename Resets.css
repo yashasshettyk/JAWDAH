@@ -360,6 +360,7 @@ svg {
 
 .osui-tabs__content-item {
   padding: 0rem;
+  overflow: visible;
 }
 
 .osui-accordion-item {
@@ -430,7 +431,7 @@ svg {
 
 .osui-tabs__header-item {
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%);
-  background-color: var(--content-background);
+  background-color: var(--tab-bg);
   padding: 0.825rem 1.25rem;
   border: none;
   display: inline-block;
@@ -469,7 +470,7 @@ svg {
   font-size: 0.8125rem;
   font-style: normal;
   white-space: nowrap;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 150%; /* 19.5008px */
   position: relative;
   border: 1px solid var(--border-color);
@@ -493,7 +494,8 @@ svg {
   transform: translateX(-2.5875rem);
 }
 
-.is-rtl .display-contents
+.is-rtl
+  .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:not(:first-child) {
   transform: translateX(-2.1875rem);
 }
@@ -501,7 +503,7 @@ svg {
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(3)
   .osui-tabs__header-item {
-  transform: translateX(-2.3875rem);
+  transform: translateX(-2.6875rem);
 }
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(4)
@@ -672,6 +674,7 @@ svg {
     font-style: normal;
     font-weight: 600;
     line-height: 150%; /* 18px */
+    white-space: nowrap;
     letter-spacing: 0.0126rem;
   }
 
@@ -681,7 +684,12 @@ svg {
     height: 1.25rem;
     z-index: 2;
     width: max-content;
-    background: var(--content-background);
+    white-space: nowrap;
+    background: linear-gradient(
+      to bottom,
+      var(--content-background) 0%,
+      var(--input-bg)
+    );
     top: 0;
     border-radius: 3px;
     left: 0;
@@ -886,3 +894,18 @@ svg {
   max-width: 63.5rem;
 }
 /* Popup */
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--theme-text);
+}
+
+.radio-button {
+  height: 1rem;
+  width: 1rem;
+}
+
+.osui-tabs--is-horizontal {
+  padding-inline: 1px;
+}

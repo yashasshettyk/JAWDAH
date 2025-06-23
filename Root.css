@@ -50,7 +50,7 @@
   --scrollbar-thumb-hover-bg-light: #a0a0a0;
   --scrollbar-thumb-hover-bg-dark: #777;
   --border-color-light: #e0e0e0;
-  --border-color-dark: #595959;
+  --border-color-dark: #3d4859;
   --table-loading-table-bg-light: #ffffff;
   --table-loading-table-bg-dark: #20282f;
   --loading-bg-light-1: rgb(221, 221, 221);
@@ -69,7 +69,9 @@
   --doc-attach-border-bg-light: #f6fcff;
   --doc-attach-border-bg-dark: #2c3440;
   --active-tab-bg-light: #40799d;
-  --active-tab-bg-dark: #394456;
+  --active-tab-bg-dark: #61708bb5;
+  --tab-bg-light: #f6fcff;
+  --tab-bg-dark: #1b2430;
   --doc-image-bg-light: #ffffff;
   --doc-image-bg-dark: #384251;
   --input-bg-light: #ffffff;
@@ -99,11 +101,11 @@
   /* Button Colors */
   /* Primary */
   --button-primary-bg-light: #f5fbff;
-  --button-primary-bg-dark: #445164;
+  --button-primary-bg-dark: #44516487;
   --button-primary-text-light: #2a475c;
   --button-primary-text-dark: #f0f9ff;
   --button-primary-border-light: #2a475c;
-  --button-primary-border-dark: #566988;
+  --button-primary-border-dark: #6c7f9f;
   --button-primary-hover-bg-light: #2a475c;
   --button-primary-hover-bg-dark: #3b6b94;
   --button-primary-hover-box-shadow-light: 0px 0px
@@ -148,19 +150,19 @@
   --button-light-hover-border-dark: #5784ab;
 
   /* Success */
-  --button-success-bg-light: #56a7da;
-  --button-success-bg-dark: #424b52;
-  --button-success-text-light: #ffffff;
-  --button-success-text-dark: #a7c1d3;
-  --button-success-border-light: #56a7da;
-  --button-success-border-dark: #424b52;
-  --button-success-hover-bg-light: #40799d;
-  --button-success-hover-bg-dark: #29303b;
+  --button-success-bg-light: #f8fff8;
+  --button-success-bg-dark: #213921;
+  --button-success-text-light: #379c2f;
+  --button-success-text-dark: #379c2f;
+  --button-success-border-light: #379c2f;
+  --button-success-border-dark: #379c2f;
+  --button-success-hover-bg-light: #379c2f;
+  --button-success-hover-bg-dark: #379c2f;
   --button-success-hover-box-shadow-light: 0px 0px
-    var(--box-shadow-spread-value) rgba(42, 71, 92, 0.2);
+    var(--box-shadow-spread-value) #60b35a;
   --button-success-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
     rgba(42, 71, 92, 0.2);
-  --button-success-hover-border-light: #56a7da;
+  --button-success-hover-border-light: #ffffff;
   --button-success-hover-border-dark: #424b52;
 
   /* Reject */
@@ -173,10 +175,10 @@
   --button-reject-hover-bg-light: #ff3939;
   --button-reject-hover-bg-dark: #ff3939;
   --button-reject-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value)
-    rgba(42, 71, 92, 0.2);
+    #ff3939;
   --button-reject-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
     rgba(42, 71, 92, 0.2);
-  --button-reject-hover-border-light: #ff3939;
+  --button-reject-hover-border-light: #ffffff;
   --button-reject-hover-border-dark: #ff3939;
 
   /* Button Colors */
@@ -333,6 +335,7 @@ body {
   --checkbox-border: var(--checkbox-border-light);
   --border-color-1: var(--border-color-1-light);
   --timeline-sb-bg: var(--timeline-sb-bg-light);
+  --tab-bg: var(--tab-bg-light);
 }
 
 body.dark {
@@ -413,7 +416,7 @@ body.dark {
   --button-reject-hover-box-shadow: var(--button-reject-hover-box-shadow-dark);
   --button-reject-hover-border: var(--button-reject-hover-border-dark);
   --radio-btn-bg-color: var(--radio-btn-bg-color-dark);
-  --light-blue: var(--content-background);
+  --light-blue: #353f4d;
 
   /* Button Group Colors */
   --button-group-bg: var(--button-group-bg-dark);
@@ -433,4 +436,5 @@ body.dark {
   --checkbox-border: var(--checkbox-border-dark);
   --border-color-1: var(--border-color-1-dark);
   --timeline-sb-bg: var(--timeline-sb-bg-dark);
+  --tab-bg: var(--tab-bg-dark);
 }
