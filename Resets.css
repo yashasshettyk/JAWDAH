@@ -868,9 +868,15 @@ svg {
 [data-popup] {
   border-radius: 12px;
   background: var(--white);
+  min-width: 63.5rem;
 
   /* Shadow/xl */
   box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
     0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+}
+
+.popup-dialog {
+  padding: 0;
+  max-width: 63.5rem;
 }
 /* Popup */
