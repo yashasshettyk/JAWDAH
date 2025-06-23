@@ -867,8 +867,8 @@ svg {
 /* Popup */
 [data-popup] {
   border-radius: 12px;
-  background: var(--white);
-  min-width: 63.5rem;
+  background: var(--content-background);
+  min-width: fit-content;
 
   /* Shadow/xl */
   box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
@@ -877,6 +877,6 @@ svg {
 
 .popup-dialog {
   padding: 0;
-  max-width: 63.5rem;
+  max-width: fit-content;
 }
 /* Popup */
