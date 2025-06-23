@@ -1704,3 +1704,40 @@ body.night-mode {
 }
 
 /* Popup Template */
+
+/* Breadcrumbs Template */
+.breadcrumbs-template-wrapper {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr 3.6875rem;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+
+  & > div:nth-child(1) .stroke svg path {
+    stroke: var(--theme-text);
+  }
+
+  & .tag {
+    color: var(--white);
+    line-height: 1;
+    min-width: 2rem;
+    word-break: normal;
+    background: #bf9e61;
+    width: 3.6875rem;
+    height: 1.4375rem;
+    padding: 0rem 0.5rem 0rem 0.75rem;
+    align-items: center;
+    flex-shrink: 0;
+
+    & > span {
+      font-feature-settings: "liga" off, "clig" off;
+
+      /* Actions/XS Bold */
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.125rem; /* 150% */
+    }
+  }
+}
+/* Breadcrumbs Template */
