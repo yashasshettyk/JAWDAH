@@ -1101,4 +1101,8 @@ label {
   line-height: 150%; /* 24px */
   letter-spacing: 0.0168rem;
 }
+
+.wizard-wrapper [data-block*=WizardItem] .wizard-wrapper-item {
+  align-items: center;
+}
 /* Wizard */
