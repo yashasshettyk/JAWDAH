@@ -871,6 +871,11 @@ body.night-mode {
 .osui-accordion .osui-accordion-item {
   border-radius: var(--content-size) !important;
   border-width: 1px !important;
+
+  &.tab-first-child {
+    margin-top: 0px;
+    border-start-start-radius: 0px !important;
+  }
 }
 
 .osui-accordion-item:after {
@@ -1447,9 +1452,15 @@ body.night-mode {
 .confirmation-popup-template {
   display: grid;
   justify-items: center;
-  gap: 40px;
+  gap: 25px;
   padding: 1.25rem 1.5625rem;
   min-width: 25rem;
+  
+  
+  
+  
+  
+  
 
   & > div:nth-child(1) {
     height: 3.8rem;
@@ -2011,3 +2022,32 @@ body.night-mode {
   }
 }
 /* Page Header Wrapper */
+
+.chs-met-dropdown {
+  width: 47.8125rem;
+}
+
+.accordian-body {
+  height: 100%;
+  & .accordian-content {
+    padding: 16px;
+  }
+
+  & .accordian-footer {
+    display: none;
+    padding: 16px;
+  }
+
+  &.has-footer {
+    & .accordian-footer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      border-top: 1px solid var(--border-color);
+    }
+  }
+}
+
+.osui-accordion-item__content:has(.accordian-body) {
+  padding: 0px !important;
+}
