@@ -222,6 +222,17 @@
   --timeline-sb-bg-dark: #2c3440;
   --th-hover-text-color-light: #1b2f3d;
   --th-hover-text-color-dark: #9fb7ca;
+
+  /* wizard */
+  --wizard-bg-light: #ffffff;
+  --wizard-bg-dark: #ffffff;
+  --wizard-past-border-light: #2BFF2B;
+  --wizard-past-border-dark: #2BFF2B;
+  --wizard-line-color-neutral-light: #EAEAEA;
+  --wizard-line-color-neutral-dark: #3C3C3C;
+  --wizard-line-color-active-light: #2BFF2B;
+  --wizard-line-color-active-dark: #2BFF2B;
+  /* wizard */
 }
 
 html {
@@ -339,6 +350,12 @@ body {
   --timeline-sb-bg: var(--timeline-sb-bg-light);
   --tab-bg: var(--tab-bg-light);
   --th-hover-text-color: var(--th-hover-text-color-light);
+  /* wizard */
+  --wizard-bg: var(--wizard-bg-light);
+  --wizard-past-border: var(--wizard-past-border-light);
+  --wizard-line-color-neutral: var(--wizard-line-color-neutral-light);
+  --wizard-line-color-active: var(--wizard-line-color-active-light);
+  /* wizard */
 }
 
 body.dark {
@@ -441,4 +458,10 @@ body.dark {
   --timeline-sb-bg: var(--timeline-sb-bg-dark);
   --tab-bg: var(--tab-bg-dark);
   --th-hover-text-color: var(--th-hover-text-color-dark);
+  /* wizard */
+  --wizard-bg: var(--wizard-bg-dark);
+  --wizard-past-border: var(--wizard-past-border-dark);
+  --wizard-line-color-neutral: var(--wizard-line-color-neutral-dark);
+  --wizard-line-color-active: var(--wizard-line-color-active-dark);
+  /* wizard */
 }
