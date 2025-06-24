@@ -1013,3 +1013,57 @@ label {
     transform: translateY(-50px);
   }
 }
+
+/* Wizard */
+.wizard-item-icon {
+  border: 0.25rem solid var(--wizard-line-color-neutral);
+  width: 2.8875rem;
+  height: 2.8875rem;
+}
+
+.wizard-wrapper-item.past .wizard-item-icon {
+  background-color: var(--wizard-bg);
+  border-color: var(--wizard-past-border);
+}
+
+.wizard-wrapper-item.active .wizard-item-icon-wrapper:before {
+  background-color: var(--wizard-line-color-active);
+}
+
+.wizard-item-icon-wrapper:before {
+  content: "";
+  height: 0.25rem;
+  position: absolute;
+  right: calc(50% + 0.75rem);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: calc(100% - 1.5rem);
+  z-index: var(--layer-global-screen);
+}
+
+.wizard-wrapper-item.past .wizard-item-label {
+  color: var(--primary-text);
+  text-align: center;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.0168rem;
+}
+
+.wizard-wrapper-item.active .wizard-item-label {
+  color: var(--primary-text);
+  text-align: center;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.0168rem;
+}
+/* Wizard */
