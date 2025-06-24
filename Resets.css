@@ -911,8 +911,8 @@ body.dark input::-webkit-calendar-picker-indicator {
   min-width: fit-content;
 
   /* Shadow/xl */
-  box-shadow: 0px 20px 24px -4px rgba(16, 24, 40, 0.08),
-    0px 8px 8px -4px rgba(16, 24, 40, 0.03);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow-popup);
 }
 
 .popup-dialog {
