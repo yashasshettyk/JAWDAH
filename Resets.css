@@ -531,9 +531,8 @@ body.dark th.sortable:hover {
   > [data-block="Navigation.TabsHeaderItem"]:not(:first-child) {
   transform: translateX(-2.1875rem);
 }
-.display-contents
-  > [data-block="Navigation.TabsHeaderItem"]:not(.osui-tabs--is-active) {
-  .osui-tabs__header-item::before {
+.display-contents > [data-block="Navigation.TabsHeaderItem"] {
+  .osui-tabs__header-item:not(.osui-tabs--is-active)::before {
     content: "";
     position: absolute;
     height: 6.25rem;
@@ -759,6 +758,18 @@ body.dark input::-webkit-calendar-picker-indicator {
     left: 0;
     transform: translateX(10px) translateY(-50%);
   }
+}
+
+.is-rtl .input-with-label-wrapper {
+  & > div:nth-child(1) {
+    left: unset;
+    right: 0;
+    transform: translateX(-10px) translateY(-50%);
+  }
+}
+
+.is-rtl .table-header th {
+  text-align: center;
 }
 .desktop .btn:hover {
   -webkit-filter: brightness(1);
@@ -1266,7 +1277,6 @@ label {
 
 .dropdown-container .dropdown-popup-row {
   color: var(--content-color);
- 
 
   &:hover {
     color: var(--white);
@@ -1278,14 +1288,33 @@ label {
   color: var(--white);
   background: var(--active-menu-bg);
   border-block: 1px solid var(--active-sidemenu-border-color);
-  
 }
 
 body.dark .dropdown-container .dropdown-popup-row-selected {
- filter:brightness(1.5);
-  
+  filter: brightness(1.5);
 }
 .osui-accordion-item .choices__list.choices__list--dropdown,
 .osui-accordion-item [data-dropdown] > div.dropdown-list {
   position: absolute;
+}
+
+[data-checkbox]:checked:before {
+  background: var(--checkbox-checked-bg);
+  border: var(--border-size-s) solid var(--checkbox-border);
+}
+
+[data-checkbox]:before {
+  background: var(--checkbox-bg);
+}
+
+[data-checkbox]:checked:after {
+  border-color: var(--checkbox-tick-color);
+}
+
+.dropdown-expanded.dropdown-container:after {
+  border-color: var(--content-color);
+}
+
+.dropdown-container.dropdown-expanded > div.dropdown-display {
+  border: var(--border-size-s) solid var(--selected-input-border-color);
 }

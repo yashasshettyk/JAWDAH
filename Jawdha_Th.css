@@ -1840,12 +1840,24 @@ a {
 /* Popup Template */
 
 /* Breadcrumbs Template */
+
+.is-rtl .breadcrumbs-template-wrapper {
+  
+  & > div:nth-child(1){
+    position:relative;
+    transform:rotate(180deg);
+    
+  }
+
+}
 .breadcrumbs-template-wrapper {
   display: grid;
   grid-template-columns: 1.5rem 1fr 3.6875rem;
   align-items: center;
   gap: 10px;
   width: fit-content;
+
+  
 
   & > div:nth-child(1) .stroke svg path {
     stroke: var(--theme-text);

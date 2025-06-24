@@ -70,7 +70,7 @@
   --doc-attach-border-bg-dark: #2c3440;
   --active-tab-bg-light: #40799d;
   --active-tab-bg-dark: #61708bb5;
-  --tab-bg-light: #f6fcff;
+  --tab-bg-light: #ffffff;
   --tab-bg-dark: #1b2430;
   --doc-image-bg-light: #ffffff;
   --doc-image-bg-dark: #384251;
@@ -227,6 +227,8 @@
   --timeline-sb-bg-dark: #2c3440;
   --th-hover-text-color-light: #1b2f3d;
   --th-hover-text-color-dark: #9fb7ca;
+  --selected-input-border-color-light: #40799d;
+  --selected-input-border-color-dark: #6c7f9f;
 
   /* wizard */
   --wizard-bg-light: #ffffff;
@@ -395,6 +397,7 @@ body {
   --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-light);
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-light);
   --confirmation-svg-path: var(--confirmation-svg-path-light);
+  --selected-input-border-color: var(--selected-input-border-color-light);
 }
 
 body.dark {
@@ -511,4 +514,5 @@ body.dark {
   --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-dark);
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-dark);
   --confirmation-svg-path: var(--confirmation-svg-path-dark);
+  --selected-input-border-color: var(--selected-input-border-color-dark);
 }
