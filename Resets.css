@@ -918,6 +918,17 @@ body.dark input::-webkit-calendar-picker-indicator {
 .popup-dialog {
   padding: 0;
   max-width: fit-content;
+  transition: var(--transition);
+
+  &:has(.btn-success:hover) {
+    border-color: var(--button-success-border);
+    background: var(--button-success-bg);
+  }
+
+  &:has(.btn-reject:hover) {
+    border-color: var(--button-reject-border);
+    background: var(--button-reject-bg);
+  }
 }
 /* Popup */
 
@@ -1021,7 +1032,7 @@ label {
   height: 2.8875rem;
 
   & > div:nth-child(1) {
-        height: 2.4375rem;
+    height: 2.4375rem;
     width: 2.4375rem;
     background: #ffffff;
     border-radius: 50%;

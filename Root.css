@@ -153,9 +153,9 @@
   --button-success-bg-light: #f8fff8;
   --button-success-bg-dark: #213921;
   --button-success-text-light: #379c2f;
-  --button-success-text-dark: #379c2f;
+  --button-success-text-dark: #5dc555;
   --button-success-border-light: #379c2f;
-  --button-success-border-dark: #379c2f;
+  --button-success-border-dark: #53c14a;
   --button-success-hover-bg-light: #379c2f;
   --button-success-hover-bg-dark: #379c2f;
   --button-success-hover-box-shadow-light: 0px 0px
@@ -226,13 +226,19 @@
   /* wizard */
   --wizard-bg-light: #ffffff;
   --wizard-bg-dark: #ffffff;
-  --wizard-past-border-light: #2BFF2B;
-  --wizard-past-border-dark: #2BFF2B;
-  --wizard-line-color-neutral-light: #EAEAEA;
-  --wizard-line-color-neutral-dark: #3C3C3C;
-  --wizard-line-color-active-light: #2BFF2B;
-  --wizard-line-color-active-dark: #2BFF2B;
+  --wizard-past-border-light: #2bff2b;
+  --wizard-past-border-dark: #2bff2b;
+  --wizard-line-color-neutral-light: #eaeaea;
+  --wizard-line-color-neutral-dark: #3c3c3c;
+  --wizard-line-color-active-light: #2bff2b;
+  --wizard-line-color-active-dark: #2bff2b;
   /* wizard */
+  --confirmation-svg-rect-1-light: #d1fadf;
+  --confirmation-svg-rect-1-dark: #346d47;
+  --confirmation-svg-rect-2-light: #ecfdf3;
+  --confirmation-svg-rect-2-dark: #68c891d6;
+  --confirmation-svg-path-light: #039855;
+  --confirmation-svg-path-dark: #1a593d;
 }
 
 html {
@@ -356,6 +362,10 @@ body {
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-light);
   --wizard-line-color-active: var(--wizard-line-color-active-light);
   /* wizard */
+
+  --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-light);
+  --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-light);
+  --confirmation-svg-path: var(--confirmation-svg-path-light);
 }
 
 body.dark {
@@ -464,4 +474,8 @@ body.dark {
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-dark);
   --wizard-line-color-active: var(--wizard-line-color-active-dark);
   /* wizard */
+
+  --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-dark);
+  --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-dark);
+  --confirmation-svg-path: var(--confirmation-svg-path-dark);
 }
