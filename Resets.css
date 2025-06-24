@@ -1080,6 +1080,13 @@ label {
 .wizard-wrapper-item.active .wizard-item-icon {
   background-color: var(--wizard-bg);
   border-color: var(--wizard-active-border);
+  background-color: var(--wizard-bg);
+  border-color: var(--wizard-active-border);
+}
+
+.wizard-wrapper-item.active.rejected .wizard-item-icon {
+  background-color: var(--wizard-bg);
+  border-color: var(--wizard-reject-border);
 }
 
 .wizard-wrapper-item.active .wizard-item-icon-wrapper:before {
@@ -1146,9 +1153,38 @@ label {
 }
 
 .wizard-wrapper [data-block*="WizardItem"] .wizard-wrapper-item {
+.wizard-wrapper [data-block*="WizardItem"] .wizard-wrapper-item {
   align-items: center;
 }
 /* Wizard */
+
+/* Generate Receipt Template */
+.generate-receipt-template {
+  display: grid;
+  grid-template-columns: 1fr 1.875rem;
+  gap: 10px;
+  align-items: center;
+  padding: 0.625rem;
+  background: var(--content-bg-highlight);
+  color: var(--primary-text);
+  border: 0.125rem dashed var(--border-dashed-blue);
+  border-radius: 8px;
+  width: 43.8125rem;
+  height: 3.3125rem;
+  flex-shrink: 0;
+
+  & > div:nth-child(1) {
+    color: var(--primary-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 21px */
+    letter-spacing: 0.0147rem;
+  }
+}
+/* Generate Receipt Template */
 
 [data-checkbox]:checked:before {
   background: var(--checkbox-checked-bg);

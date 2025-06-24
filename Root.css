@@ -92,6 +92,7 @@
   --content-bg-highlight-light: #f6fcff;
   --content-bg-highlight-dark: #2c3440;
   --box-shadow-spread-value: 15px;
+  --border-dashed-blue: #40799d;
   --radio-btn-border-color-light: #40799d;
   --radio-btn-border-color-dark: #4d7d9a;
   --radio-btn-bg-color-light: var(--color-primary);
@@ -229,6 +230,17 @@
 
   /* wizard */
   --wizard-bg-light: #ffffff;
+  --wizard-bg-dark: #ffffff;
+  --wizard-past-border-light: #2bff2b;
+  --wizard-past-border-dark: #2bff2b;
+  --wizard-active-border-light: #ffb200;
+  --wizard-active-border-dark: #ffb200;
+  --wizard-reject-border-light: #ff3939;
+  --wizard-reject-border-dark: #ff3939;
+  --wizard-line-color-neutral-light: #eaeaea;
+  --wizard-line-color-neutral-dark: #3c3c3c;
+  --wizard-line-color-active-light: #2bff2b;
+  --wizard-line-color-active-dark: #2bff2b;
   --wizard-bg-dark: #757575;
   --wizard-past-border-light: #2bff2b;
   --wizard-past-border-dark: #2bff2b;
@@ -375,6 +387,7 @@ body {
   --wizard-bg: var(--wizard-bg-light);
   --wizard-past-border: var(--wizard-past-border-light);
   --wizard-active-border: var(--wizard-active-border-light);
+  --wizard-reject-border: var(--wizard-reject-border-light);
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-light);
   --wizard-line-color-active: var(--wizard-line-color-active-light);
   /* wizard */
@@ -490,6 +503,7 @@ body.dark {
   --wizard-bg: var(--wizard-bg-dark);
   --wizard-past-border: var(--wizard-past-border-dark);
   --wizard-active-border: var(--wizard-active-border-dark);
+  --wizard-reject-border: var(--wizard-reject-border-dark);
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-dark);
   --wizard-line-color-active: var(--wizard-line-color-active-dark);
   /* wizard */
