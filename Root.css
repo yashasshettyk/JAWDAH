@@ -211,9 +211,13 @@
   --layer-background-light: rgba(0, 0, 0, 0.5);
   --layer-background-dark: rgb(0 0 0 / 45%);
   --sidebar-border-color-light: #c0e7ff;
-  --sidebar-border-color-dark: #2c3440;
+  --sidebar-border-color-dark: #4b5c74;
   --checkbox-bg-light: #ffffff;
   --checkbox-bg-dark: #2c3440;
+  --checkbox-checked-bg-light: #295070;
+  --checkbox-checked-bg-dark: #123950;
+  --checkbox-tick-color-light: #ffffff;
+  --checkbox-tick-color-dark: #ffffff;
   --checkbox-border-light: #acacac;
   --checkbox-border-dark: #707c8a;
   --border-color-1-light: #e0e0e0;
@@ -225,18 +229,18 @@
 
   /* wizard */
   --wizard-bg-light: #ffffff;
-  --wizard-bg-dark: #ffffff;
-  --wizard-past-border-light: #2BFF2B;
-  --wizard-past-border-dark: #2BFF2B;
-  --wizard-active-border-light: #FFB200;
-  --wizard-active-border-dark: #FFB200;
-  --wizard-line-color-neutral-light: #EAEAEA;
-  --wizard-line-color-neutral-dark: #3C3C3C;
-  --wizard-line-color-active-light: #2BFF2B;
-  --wizard-line-color-active-dark: #2BFF2B;
+  --wizard-bg-dark: #757575;
   --wizard-past-border-light: #2bff2b;
   --wizard-past-border-dark: #2bff2b;
+  --wizard-active-border-light: #ffb200;
+  --wizard-active-border-dark: #ffb200;
   --wizard-line-color-neutral-light: #eaeaea;
+  --wizard-line-color-neutral-dark: #3c3c3c;
+  --wizard-line-color-active-light: #2bff2b;
+  --wizard-line-color-active-dark: #2bff2b;
+  --wizard-past-border-light: #2bff2b;
+  --wizard-past-border-dark: #2bff2b;
+  --wizard-line-color-neutral-light: #e2e2e2;
   --wizard-line-color-neutral-dark: #3c3c3c;
   --wizard-line-color-active-light: #2bff2b;
   --wizard-line-color-active-dark: #2bff2b;
@@ -258,6 +262,7 @@ html {
 }
 
 body {
+  scroll-behavior: smooth;
   font-size: var(--content-size);
   --content-background: var(--white);
   --tooltip-background: var(--tooltip-background-light);
@@ -359,6 +364,8 @@ body {
   --primary-text: var(--color-primary);
   --sidebar-border-color: var(--sidebar-border-color-light);
   --checkbox-bg: var(--checkbox-bg-light);
+  --checkbox-checked-bg: var(--checkbox-checked-bg-light);
+  --checkbox-tick-color: var(--checkbox-tick-color-light);
   --checkbox-border: var(--checkbox-border-light);
   --border-color-1: var(--border-color-1-light);
   --timeline-sb-bg: var(--timeline-sb-bg-light);
@@ -472,6 +479,8 @@ body.dark {
   --primary-text: var(--white);
   --sidebar-border-color: var(--sidebar-border-color-dark);
   --checkbox-bg: var(--checkbox-bg-dark);
+  --checkbox-checked-bg: var(--checkbox-checked-bg-dark);
+  --checkbox-tick-color: var(--checkbox-tick-color-dark);
   --checkbox-border: var(--checkbox-border-dark);
   --border-color-1: var(--border-color-1-dark);
   --timeline-sb-bg: var(--timeline-sb-bg-dark);

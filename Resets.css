@@ -127,11 +127,12 @@
 }
 
 *::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #ffffff;
+  transition:var(--transition);
   border-radius: 0px;
 }
 
@@ -140,7 +141,7 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--content-bg);
 }
 
 .main.jawdah-main {
@@ -1030,24 +1031,55 @@ label {
   border: 0.25rem solid var(--wizard-line-color-neutral);
   width: 2.8875rem;
   height: 2.8875rem;
+  /* filter: drop-shadow(1px 3px 4px rgba(0, 0, 0, 0.10)); */
+  
 
   & > div:nth-child(1) {
     height: 2.4375rem;
     width: 2.4375rem;
-    background: #ffffff;
+    background: var;
     border-radius: 50%;
     filter: drop-shadow(1px 3px 4px rgba(0, 0, 0, 0.25));
   }
 }
 
 .wizard-wrapper-item.past .wizard-item-icon {
-  background-color: var(--wizard-bg);
+  /* background-color: var(--wizard-bg); */
   border-color: var(--wizard-past-border);
 }
+.wizard-item-icon{
+  background-color: var(--content-background) !important;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
+  & .fill svg path{
+    fill:var(--primary-text);
+  }
+
+  & .stroke svg path{
+    stroke:var(--primary-text);
+  }
+}
 .wizard-wrapper-item.active .wizard-item-icon {
-    background-color: var(--wizard-bg);
-    border-color: var(--wizard-active-border);
+  background-color: var(--wizard-bg);
+  border-color: var(--wizard-active-border);
 }
 
 .wizard-wrapper-item.active .wizard-item-icon-wrapper:before {
@@ -1113,7 +1145,21 @@ label {
   letter-spacing: 0.0168rem;
 }
 
-.wizard-wrapper [data-block*=WizardItem] .wizard-wrapper-item {
+.wizard-wrapper [data-block*="WizardItem"] .wizard-wrapper-item {
   align-items: center;
 }
 /* Wizard */
+
+[data-checkbox]:checked:before {
+  background: var(--checkbox-checked-bg);
+  border: 1px solid var(--checkbox-border);
+}
+
+[data-checkbox]:before {
+  background: var(--checkbox-bg);
+  border: 1px solid var(--checkbox-border);
+}
+
+[data-checkbox]:checked:after {
+  border-color: var(--checkbox-tick-color);
+}

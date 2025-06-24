@@ -901,6 +901,16 @@ body.night-mode {
   padding: 0.6rem 0.8rem 0.6rem 0.8rem;
   gap: 10px;
 
+  &.has-checkbox {
+    grid-template-columns: 1.375rem 2.5rem 12.5rem auto;
+
+    & .checkbox-wrapper {
+      & span {
+        display: flex;
+      }
+    }
+  }
+
   & .document-attachment-img-wrapper {
     border-radius: 100%;
     /* border: 1px solid var(--border-color); */
@@ -917,9 +927,10 @@ body.night-mode {
     }
   }
 
-  & > div:nth-child(2) {
+  & .doc-info {
     display: grid;
     width: 100%;
+    color: var(--content-color);
 
     & > div:nth-child(1) span {
       color: var(--theme-text);
@@ -1227,6 +1238,15 @@ body.night-mode {
   white-space: nowrap;
 }
 
+a {
+  &:has(.btn-inner-template) {
+    text-decoration: none !important;
+    color: var(--primary-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}
+
 /* Expand Collapse */
 .expand-collapse-wrapper {
   display: grid;
@@ -1461,10 +1481,9 @@ body.night-mode {
     & .success-svg {
       transform: scale(2.5);
 
-     
       & svg rect:nth-child(2) {
         fill: var(--confirmation-svg-rect-2);
-        stroke:var(--confirmation-svg-rect-1);
+        stroke: var(--confirmation-svg-rect-1);
       }
 
       & svg path {
@@ -1604,6 +1623,9 @@ body.night-mode {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 10px;
+    align-items: center;
+    
+    
 
     & .fill svg path {
       fill: var(--primary-text);
@@ -1825,9 +1847,10 @@ body.night-mode {
     background: #bf9e61;
     width: 3.6875rem;
     height: 1.4375rem;
-    padding: 0rem 0.5rem 0rem 0.75rem;
+    padding: 0rem 0.5rem 0rem 0.5rem;
     align-items: center;
     flex-shrink: 0;
+    
 
     & > span {
       font-feature-settings: "liga" off, "clig" off;
@@ -1852,8 +1875,6 @@ body.night-mode {
   border-end-end-radius: 8px;
   color: var(--content-color);
   /* overflow: hidden; */
-  
-  
 
   & .tab-header {
     color: var(--primary-text);
@@ -2016,7 +2037,13 @@ body.night-mode {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  /* padding: 1rem 1.5rem; */
+  margin-bottom: 20px;
+  
+  
+  
+  
+  
 
   & > div:nth-child(2) button {
     gap: 12px;
@@ -2061,16 +2088,84 @@ body.night-mode {
 /* Wizard Wrapper */
 .wizard-wrapper-template {
   overflow-x: auto;
+  margin-bottom: 20px;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   &::-webkit-scrollbar {
     height: 5px;
-}
-&::-webkit-scrollbar-thumb {
+  }
+  &::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 0px;
-}
-&::-webkit-scrollbar-track {
+  }
+  &::-webkit-scrollbar-track {
     background: #f1f1f1;
-}
+  }
 }
 /* Wizard Wrapper */
+
+.sb-accordian-all-files-wrapper {
+  & .sb-af-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    /* border-bottom: 1px solid var(--sidebar-border-color); */
+    /* margin-bottom: 20px; */
+
+    & > div:nth-child(2) {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      & span {
+        display: flex;
+      }
+    }
+
+    &.sb-af-header {
+      & .stroke svg path {
+        stroke: var(--primary-text);
+      }
+    }
+  }
+
+  & .sb-af-list-wrapper {
+    & .list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 10px;
+
+      & > div {
+        flex: 1;
+        display: block;
+      }
+    }
+  }
+
+  .osui-accordion-item--is-open > .osui-accordion-item__title {
+    border-bottom: none;
+  }
+
+  .osui-accordion-item {
+    border: none;
+    border-top: 2px solid var(--sidebar-border-color);
+    border-radius: 0px !important;
+  }
+
+  .osui-accordion-item__content {
+    padding-inline: 0px !important;
+  }
+}
