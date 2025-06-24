@@ -92,6 +92,7 @@
   --content-bg-highlight-light: #f6fcff;
   --content-bg-highlight-dark: #2c3440;
   --box-shadow-spread-value: 15px;
+  --border-dashed-blue: #40799d;
   --radio-btn-border-color-light: #40799d;
   --radio-btn-border-color-dark: #4d7d9a;
   --radio-btn-bg-color-light: var(--color-primary);
