@@ -760,6 +760,12 @@ body.night-mode {
     row-gap: 20px;
   }
 
+  &.expand-collapse-container{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    
+  }
   &.doc-grid > div > div {
     gap: 0.9375rem;
     display: flex;
@@ -871,6 +877,12 @@ body.night-mode {
 .osui-accordion .osui-accordion-item {
   border-radius: var(--content-size) !important;
   border-width: 1px !important;
+  overflow: visible;
+  
+  
+  
+  
+  
 
   &.tab-first-child {
     margin-top: 0px;
@@ -1895,7 +1907,7 @@ a {
 
   & .tab-content {
     height: max-content;
-    overflow-y: auto;
+    overflow: visible;
     padding: 20px;
   }
 
