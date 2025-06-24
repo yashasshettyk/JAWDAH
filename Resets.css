@@ -538,19 +538,19 @@ body.dark th.sortable:hover {
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(5)
   .osui-tabs__header-item {
-  transform: translateX(-7.7625rem);
+  transform: translateX(-8.06625rem);
 }
 
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(6)
   .osui-tabs__header-item {
-  transform: translateX(-10.45rem);
+  transform: translateX(-10.745rem);
 }
 
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(7)
   .osui-tabs__header-item {
-  transform: translateX(-13.1375rem);
+  transform: translateX(-13.4375rem);
 }
 
 .display-contents
@@ -679,7 +679,9 @@ body.dark th.sortable:hover {
 .vscomp-wrapper:not(.has-value) .vscomp-value {
   color: var(--input-placeholder-color);
 }
-
+body.dark input::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
 .input-with-label-wrapper {
   position: relative;
 
