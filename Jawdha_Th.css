@@ -1741,3 +1741,21 @@ body.night-mode {
   }
 }
 /* Breadcrumbs Template */
+
+/* Page Header Wrapper */
+.page-header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+
+  & > div:nth-child(2) button {
+    gap: 12px;
+
+    & svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+}
+/* Page Header Wrapper */
