@@ -228,6 +228,8 @@
   --wizard-bg-dark: #ffffff;
   --wizard-past-border-light: #2BFF2B;
   --wizard-past-border-dark: #2BFF2B;
+  --wizard-active-border-light: #FFB200;
+  --wizard-active-border-dark: #FFB200;
   --wizard-line-color-neutral-light: #EAEAEA;
   --wizard-line-color-neutral-dark: #3C3C3C;
   --wizard-line-color-active-light: #2BFF2B;
@@ -353,6 +355,7 @@ body {
   /* wizard */
   --wizard-bg: var(--wizard-bg-light);
   --wizard-past-border: var(--wizard-past-border-light);
+  --wizard-active-border: var(--wizard-active-border-light);
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-light);
   --wizard-line-color-active: var(--wizard-line-color-active-light);
   /* wizard */
@@ -461,6 +464,7 @@ body.dark {
   /* wizard */
   --wizard-bg: var(--wizard-bg-dark);
   --wizard-past-border: var(--wizard-past-border-dark);
+  --wizard-active-border: var(--wizard-active-border-dark);
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-dark);
   --wizard-line-color-active: var(--wizard-line-color-active-dark);
   /* wizard */
