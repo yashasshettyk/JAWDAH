@@ -1315,6 +1315,8 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
   border-color: var(--content-color);
 }
 
-.dropdown-container.dropdown-expanded > div.dropdown-display {
+.dropdown-container.dropdown-expanded > div.dropdown-display,
+.form-control[data-input]:focus,
+.form-control[data-textarea]:focus {
   border: var(--border-size-s) solid var(--selected-input-border-color);
 }
