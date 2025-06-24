@@ -1050,6 +1050,11 @@ label {
     border-color: var(--wizard-active-border);
 }
 
+.wizard-wrapper-item.active.rejected .wizard-item-icon {
+    background-color: var(--wizard-bg);
+    border-color: var(--wizard-reject-border);
+}
+
 .wizard-wrapper-item.active .wizard-item-icon-wrapper:before {
   background-color: var(--wizard-line-color-active);
 }
