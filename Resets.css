@@ -1045,6 +1045,11 @@ label {
   border-color: var(--wizard-past-border);
 }
 
+.wizard-wrapper-item.active .wizard-item-icon {
+    background-color: var(--wizard-bg);
+    border-color: var(--wizard-active-border);
+}
+
 .wizard-wrapper-item.active .wizard-item-icon-wrapper:before {
   background-color: var(--wizard-line-color-active);
 }
@@ -1062,12 +1067,15 @@ label {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  width: calc(100% - 1.5rem);
+  width: 100%;
   z-index: var(--layer-global-screen);
 }
 
 .wizard-wrapper [data-block*="WizardItem"] .wizard-item-label {
   color: #a2b5c1;
+  width: 11.25rem;
+  max-width: max-content;
+  margin-inline: 0.625rem;
   text-align: center;
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
@@ -1100,7 +1108,12 @@ label {
   font-size: 1rem;
   font-style: normal;
   font-weight: 500;
+  /* min-width: 183px; */
   line-height: 150%; /* 24px */
   letter-spacing: 0.0168rem;
+}
+
+.wizard-wrapper [data-block*=WizardItem] .wizard-wrapper-item {
+  align-items: center;
 }
 /* Wizard */

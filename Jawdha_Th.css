@@ -2057,3 +2057,20 @@ body.night-mode {
 .osui-accordion-item__content:has(.accordian-body) {
   padding: 0px !important;
 }
+
+/* Wizard Wrapper */
+.wizard-wrapper-template {
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+}
+&::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 0px;
+}
+&::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+}
+/* Wizard Wrapper */
