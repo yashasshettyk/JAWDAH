@@ -289,10 +289,6 @@ html {
   text-rendering: optimizeLegibility;
   font-family: "IBM Plex Sans", sans-serif;
   font-size: var(--content-size);
-
-  &:has(body.dark) {
-    color-scheme: dark;
-  }
 }
 
 body {
@@ -434,7 +430,7 @@ body {
 }
 
 body.dark {
-  color-scheme: dark;
+  color-scheme: light;
   --theme-background: var(--dark-theme-background);
   --content-background: var(--dark-theme-background);
   --tooltip-background: var(--tooltip-background-dark);
@@ -544,14 +540,12 @@ body.dark {
   --wizard-line-color-neutral: var(--wizard-line-color-neutral-dark);
   --wizard-line-color-active: var(--wizard-line-color-active-dark);
   /* wizard */
-
   --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-dark);
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-dark);
   --confirmation-svg-path: var(--confirmation-svg-path-dark);
   --selected-input-border-color: var(--selected-input-border-color-dark);
   --input-bg-disabled: var(--input-bg-disabled-dark);
   --calendar-bg: var(--calendar-bg-dark);
-
   --calendar-prev-month-text-color: var(--calendar-prev-month-text-color-dark);
   --calendar-hover-day-bg: var(--calendar-hover-day-bg-dark);
   --calendar-hover-day-text-color: var(--calendar-hover-day-text-color-dark);
