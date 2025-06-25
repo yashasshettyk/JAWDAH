@@ -1803,16 +1803,14 @@ a {
       fill: var(--red);
     }
 
-    & > div:nth-child(2){
-
-      & svg{
-        position:relative;
-        transition:var(--transition);
+    & > div:nth-child(2) {
+      & svg {
+        position: relative;
+        transition: var(--transition);
       }
 
-      & svg:hover{
-        transform:rotate(90deg);
-        
+      & svg:hover {
+        transform: rotate(90deg);
       }
     }
   }
@@ -2009,9 +2007,21 @@ a {
   & .sec-1 {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    gap: 20px;
+    gap: 1.25rem;
     margin-bottom: 10px;
     width: 100%;
+
+    &.certificate-details-section-header {
+      & > div:nth-child(1) {
+        gap: 1.5125rem;
+      }
+
+      & > div:nth-child(2) {
+        & textarea {
+          height: 6.475rem;
+        }
+      }
+    }
 
     & > div:nth-child(1) {
       display: flex;
@@ -2328,6 +2338,5 @@ a {
 /* Device Transfer to Lab */
 .device-transfer-to-lab.adaptive-column-template-wrapper > div {
   display: block;
-
 }
 /* Device Transfer to Lab */
