@@ -2180,7 +2180,8 @@ a {
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 10px;
-    padding: 1.25rem 0.625rem;
+    height: 2.6875rem;
+    padding: 0rem 0.625rem;
 
     & span {
       color: var(--theme-text);
@@ -2208,6 +2209,14 @@ a {
     grid-template-columns: 1fr auto;
     align-items: center;
     gap: 10px;
+
+    & > div:nth-child(1) {
+      height: 1.5rem;
+
+      & span {
+        height: 1.5rem;
+      }
+    }
   }
 
   & > div:nth-child(2) label {

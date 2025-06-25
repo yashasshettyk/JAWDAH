@@ -1333,3 +1333,10 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
 .form-control[data-textarea]:focus {
   border: var(--border-size-s) solid var(--selected-input-border-color);
 }
+
+/* Input */
+.form-control[data-input] {
+    height: 2.5rem;
+    padding: var(--space-none) var(--space-base);
+}
+/* Input */
