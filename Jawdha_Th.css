@@ -760,11 +760,10 @@ body.night-mode {
     row-gap: 20px;
   }
 
-  &.expand-collapse-container{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    
+  &.expand-collapse-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
   &.doc-grid > div > div {
     gap: 0.9375rem;
@@ -878,11 +877,6 @@ body.night-mode {
   border-radius: var(--content-size) !important;
   border-width: 1px !important;
   overflow: visible;
-  
-  
-  
-  
-  
 
   &.tab-first-child {
     margin-top: 0px;
@@ -1636,8 +1630,6 @@ a {
     grid-template-columns: 1fr auto;
     gap: 10px;
     align-items: center;
-    
-    
 
     & .fill svg path {
       fill: var(--primary-text);
@@ -1842,13 +1834,10 @@ a {
 /* Breadcrumbs Template */
 
 .is-rtl .breadcrumbs-template-wrapper {
-  
-  & > div:nth-child(1){
-    position:relative;
-    transform:rotate(180deg);
-    
+  & > div:nth-child(1) {
+    position: relative;
+    transform: rotate(180deg);
   }
-
 }
 .breadcrumbs-template-wrapper {
   display: grid;
@@ -1856,8 +1845,6 @@ a {
   align-items: center;
   gap: 10px;
   width: fit-content;
-
-  
 
   & > div:nth-child(1) .stroke svg path {
     stroke: var(--theme-text);
@@ -1874,7 +1861,6 @@ a {
     padding: 0rem 0.5rem 0rem 0.5rem;
     align-items: center;
     flex-shrink: 0;
-    
 
     & > span {
       font-feature-settings: "liga" off, "clig" off;
@@ -2063,11 +2049,6 @@ a {
   justify-content: space-between;
   /* padding: 1rem 1.5rem; */
   margin-bottom: 20px;
-  
-  
-  
-  
-  
 
   & > div:nth-child(2) button {
     gap: 12px;
@@ -2113,18 +2094,6 @@ a {
 .wizard-wrapper-template {
   overflow-x: auto;
   margin-bottom: 20px;
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   &::-webkit-scrollbar {
     height: 5px;
@@ -2193,3 +2162,57 @@ a {
     padding-inline: 0px !important;
   }
 }
+
+/* Customer Service Review - Content Hightlight Checkbox */
+.content-hightlight-checkbox.adaptive-column-template-wrapper > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  & .content-highlight-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+
+    & span {
+      color: var(--theme-text);
+    }
+  }
+}
+/* Customer Service Review - Content Hightlight Checkbox */
+
+/* Checkbox With Label */
+.checkbox-with-label-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+
+  &.checkbox-horizontal {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 10px;
+  }
+
+  & > div:nth-child(2) label {
+    color: var(--theme-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0126rem;
+  }
+
+  & span {
+    color: var(--content-color);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0168rem;
+  }
+}
+/* Checkbox With Label */
