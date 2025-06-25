@@ -760,6 +760,16 @@ body.night-mode {
     row-gap: 20px;
   }
 
+  &.device-transfer-lab-row{
+     & > div {
+       column-gap:80px;
+
+       & > div:last-child{
+         flex:1;
+       }
+     }
+  }
+
   &.popup-comment-upload-wrapper {
     & > div {
       display: grid;

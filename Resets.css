@@ -508,7 +508,10 @@ body.dark th.sortable:hover {
   transform: translateX(0px);
   box-shadow: var(--tab-box-shadow);
   transition: var(--transition);
-  min-width: 14.6875rem;
+  min-width: 15.6875rem;
+  
+  
+  
 
   &:hover {
     background-color: var(--active-tab-hover-bg);
@@ -523,7 +526,7 @@ body.dark th.sortable:hover {
 .display-contents > [data-block="Navigation.TabsHeaderItem"]:not(:first-child) {
   position: relative;
   display: block !important;
-  transform: translateX(-2.8875rem);
+  transform: translateX(-3.0875rem);
 }
 
 .is-rtl
@@ -558,13 +561,13 @@ body.dark th.sortable:hover {
     right: unset;
     left: 1px;
     transform-origin: bottom;
-    transform: rotate(47.5deg);
+    transform: rotate(49.5deg);
   }
 }
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(3)
   .osui-tabs__header-item {
-  transform: translateX(-2.9875rem);
+  transform: translateX(-3.0875rem);
 }
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(4)
@@ -581,7 +584,7 @@ body.dark th.sortable:hover {
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(6)
   .osui-tabs__header-item {
-  transform: translateX(-12.245rem);
+  transform: translateX(-12.345rem);
 }
 
 .display-contents
@@ -621,35 +624,35 @@ body.dark th.sortable:hover {
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(2)
   .osui-tabs__header-item {
-  transform: translateX(calc(2.5395rem * 2));
+  transform: translateX(calc(2.6395rem * 2));
 }
 
 .is-rtl
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(3)
   .osui-tabs__header-item {
-  transform: translateX(calc(2.6695rem * 3));
+  transform: translateX(calc(2.7895rem * 3));
 }
 
 .is-rtl
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(4)
   .osui-tabs__header-item {
-  transform: translateX(calc(2.7275rem * 4));
+  transform: translateX(calc(2.8875rem * 4));
 }
 
 .is-rtl
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(5)
   .osui-tabs__header-item {
-  transform: translateX(13.8055rem);
+  transform: translateX(14.7055rem);
 }
 
 .is-rtl
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(6)
   .osui-tabs__header-item {
-  transform: translateX(16.79925rem);
+  transform: translateX(17.79925rem);
 }
 .is-rtl
   .display-contents
