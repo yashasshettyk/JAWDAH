@@ -2174,6 +2174,11 @@ a {
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
+  column-gap: 10px;
+
+  & > div:nth-child(1) {
+    min-width: 25.9375rem;
+  }
 
   & .content-highlight-wrapper {
     display: grid;
@@ -2181,7 +2186,7 @@ a {
     align-items: center;
     gap: 10px;
     height: 2.6875rem;
-    padding: 0rem 0.625rem;
+    padding: 0rem 1.625rem;
 
     & span {
       color: var(--theme-text);
