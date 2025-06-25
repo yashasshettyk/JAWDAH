@@ -265,6 +265,8 @@
   --confirmation-svg-rect-2-dark: #68c891d6;
   --confirmation-svg-path-light: #039855;
   --confirmation-svg-path-dark: #1a593d;
+  --input-bg-disabled-light: #F8F8F8;
+  --input-bg-disabled-dark: #414c5d;
 }
 
 html {
@@ -398,6 +400,7 @@ body {
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-light);
   --confirmation-svg-path: var(--confirmation-svg-path-light);
   --selected-input-border-color: var(--selected-input-border-color-light);
+  --input-bg-disabled: var(--input-bg-disabled-light);
 }
 
 body.dark {
@@ -515,4 +518,5 @@ body.dark {
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-dark);
   --confirmation-svg-path: var(--confirmation-svg-path-dark);
   --selected-input-border-color: var(--selected-input-border-color-dark);
+  --input-bg-disabled: var(--input-bg-disabled-dark);
 }

@@ -141,7 +141,7 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: var(--content-bg);
+  background: var(--content-background);
 }
 
 .main.jawdah-main {
@@ -508,7 +508,7 @@ body.dark th.sortable:hover {
   transform: translateX(0px);
   box-shadow: var(--tab-box-shadow);
   transition: var(--transition);
-  min-width: 235px;
+  min-width: 14.6875rem;
 
   &:hover {
     background-color: var(--active-tab-hover-bg);
@@ -536,12 +536,12 @@ body.dark th.sortable:hover {
     content: "";
     position: absolute;
     height: 6.25rem;
-    width: 2px;
+    width: 0.125rem;
     background: var(--border-color);
-    bottom: -2px;
-    right: 0px;
+    bottom: -0.125rem;
+    right: 0rem;
     transform-origin: bottom;
-    transform: rotate(-47.5deg);
+    transform: rotate(-49deg);
   }
 }
 
@@ -569,7 +569,7 @@ body.dark th.sortable:hover {
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(4)
   .osui-tabs__header-item {
-  transform: translateX(-5.875rem);
+  transform: translateX(-6.175rem);
 }
 
 .display-contents
@@ -719,8 +719,10 @@ body.dark th.sortable:hover {
 body.dark input::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
+
 .input-with-label-wrapper {
   position: relative;
+  width: 100%;
 
   & .form-control[data-input],
   .form-control[data-textarea],
@@ -1299,9 +1301,9 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
 }
 
 [data-checkbox] {
-    height: 1.5rem;
-    padding: var(--space-none);
-    width: 1.5rem;
+  height: 1.5rem;
+  padding: var(--space-none);
+  width: 1.5rem;
 }
 
 [data-checkbox]:checked:before {
@@ -1321,7 +1323,7 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
   height: 0.25rem;
   width: 0.75rem;
   left: 0.3125rem;
-  top: 0.4375rem
+  top: 0.4375rem;
 }
 
 .dropdown-expanded.dropdown-container:after {
@@ -1336,7 +1338,16 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
 
 /* Input */
 .form-control[data-input] {
-    height: 2.5rem;
-    padding: var(--space-none) var(--space-base);
+  height: 2.5rem;
+  padding: var(--space-none) var(--space-base);
 }
 /* Input */
+
+.form-control[data-input][disabled],
+.form-control[data-textarea][disabled] {
+  background: var(--input-bg-disabled);
+}
+
+.file-upload-message {
+  color: var(--primary-text);
+}
