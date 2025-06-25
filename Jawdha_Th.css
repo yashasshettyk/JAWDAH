@@ -2185,6 +2185,13 @@ a {
 
     & span {
       color: var(--theme-text);
+      font-variant-numeric: lining-nums tabular-nums;
+      font-feature-settings: "liga" off, "clig" off;
+      font-size: 0.75rem;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 18px */
+      letter-spacing: 0.0126rem;
     }
   }
 }
