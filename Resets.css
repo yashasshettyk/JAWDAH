@@ -1341,6 +1341,12 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
   height: 2.5rem;
   padding: var(--space-none) var(--space-base);
 }
+
+.form-control[data-input][disabled], .form-control[data-textarea][disabled] {
+    background-color: var(--input-bg);
+    border: var(--border-size-s) solid var(--input-border);
+    color: var(--input-text-color);
+}
 /* Input */
 
 .form-control[data-input][disabled],
