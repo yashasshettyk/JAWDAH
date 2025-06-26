@@ -28,7 +28,7 @@
   --box-shadow-dark: rgb(255 255 255 / 14%);
   --dark-theme-background: #222831;
   --screen-background-dark: #111418;
-  --grey-light: #898989;
+  --grey-light: #808080;
   --grey-dark: #8d96a3;
   --grey-light-1: #535353;
   --grey-dark-1: #ffffff;
@@ -287,6 +287,8 @@
   --calnedar-selected-day-bg-dark: #2b6791;
   --calnedar-selected-day-border-color-light: #ffffff;
   --calnedar-selected-day-border-color-dark: #325d7b;
+  --theme-text-2-light: #404040;
+  --theme-text-2-dark: #d3d3d3;
 }
 
 html {
@@ -436,6 +438,7 @@ body {
   --calnedar-selected-day-border-color: var(
     --calnedar-selected-day-border-color-light
   );
+  --theme-text-2: var(--theme-text-2-light);
 }
 
 body.dark {
@@ -568,4 +571,5 @@ body.dark {
   --calnedar-selected-day-border-color: var(
     --calnedar-selected-day-border-color-dark
   );
+  --theme-text-2: var(--theme-text-2-dark);
 }

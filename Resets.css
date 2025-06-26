@@ -374,12 +374,8 @@ body.dark th.sortable:hover {
 .table td a {
   font-weight: 700;
   color: var(--table-data-color);
-  
-  
-  
 
   &:hover {
-   
     color: var(--table-data-color);
     opacity: 0.7;
     cursor: pointer;
@@ -486,6 +482,7 @@ body.dark th.sortable:hover {
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(1)
   .osui-tabs__header-item {
   clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+  border-start-start-radius: 8px;
 }
 
 .is-rtl
@@ -507,9 +504,8 @@ body.dark th.sortable:hover {
   line-height: 150%; /* 19.5008px */
   display: flex;
   position: relative;
-  /* border: 1px solid var(--border-color); */
+  border: 1px solid var(--border-color);
   transform: translateX(0px);
-  box-shadow: var(--tab-box-shadow);
   transition: var(--transition);
   min-width: 15.6875rem;
   
@@ -1108,15 +1104,12 @@ label {
     & .upload-link {
       position: relative;
       cursor: pointer;
-      
-      
 
       & .file-upload-widget {
         top: 0;
         position: absolute;
         cursor: pointer;
         z-index: 1;
-        
 
         & input {
           width: 100%;
