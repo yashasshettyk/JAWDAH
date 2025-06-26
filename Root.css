@@ -169,10 +169,10 @@
   /* Reject */
   --button-reject-bg-light: #fffafa;
   --button-reject-bg-dark: #4b3333;
-  --button-reject-text-light: #ff3939;
-  --button-reject-text-dark: #ff3939;
+  --button-reject-text-light: #ff7575;
+  --button-reject-text-dark: #ff1414;
   --button-reject-border-light: #ff3939;
-  --button-reject-border-dark: #ff3939;
+  --button-reject-border-dark: #ff1d1d;
   --button-reject-hover-bg-light: #ff3939;
   --button-reject-hover-bg-dark: #ff3939;
   --button-reject-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value)
@@ -265,6 +265,12 @@
   --confirmation-svg-rect-2-dark: #68c891d6;
   --confirmation-svg-path-light: #039855;
   --confirmation-svg-path-dark: #1a593d;
+  --confirmation-svg-rect-1-fail-light: #a13f3f;
+  --confirmation-svg-rect-1-fail-dark: #d4000099;
+  --confirmation-svg-rect-2-fail-light: #ffebeb;
+  --confirmation-svg-rect-2-fail-dark: #ff5050;
+  --confirmation-svg-path-fail-light: #ff3939;
+  --confirmation-svg-path-fail-dark: #ffdddd;
   --input-bg-disabled-light: #f8f8f8;
   --input-bg-disabled-dark: #414c5d;
   --calendar-bg-light: #f5f5f5;
@@ -413,6 +419,9 @@ body {
   --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-light);
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-light);
   --confirmation-svg-path: var(--confirmation-svg-path-light);
+  --confirmation-svg-rect-1-fail: var(--confirmation-svg-rect-1-fail-light);
+  --confirmation-svg-rect-2-fail: var(--confirmation-svg-rect-2-fail-light);
+  --confirmation-svg-path-fail: var(--confirmation-svg-path-fail-light);
   --selected-input-border-color: var(--selected-input-border-color-light);
   --input-bg-disabled: var(--input-bg-disabled-light);
   --calendar-bg: var(--calendar-bg-light);
@@ -543,6 +552,9 @@ body.dark {
   --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-dark);
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-dark);
   --confirmation-svg-path: var(--confirmation-svg-path-dark);
+  --confirmation-svg-rect-1-fail: var(--confirmation-svg-rect-1-fail-dark);
+  --confirmation-svg-rect-2-fail: var(--confirmation-svg-rect-2-fail-dark);
+  --confirmation-svg-path-fail: var(--confirmation-svg-path-fail-dark);
   --selected-input-border-color: var(--selected-input-border-color-dark);
   --input-bg-disabled: var(--input-bg-disabled-dark);
   --calendar-bg: var(--calendar-bg-dark);

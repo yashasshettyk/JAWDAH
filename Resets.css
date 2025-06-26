@@ -509,9 +509,6 @@ body.dark th.sortable:hover {
   box-shadow: var(--tab-box-shadow);
   transition: var(--transition);
   min-width: 15.6875rem;
-  
-  
-  
 
   &:hover {
     background-color: var(--active-tab-hover-bg);
@@ -787,6 +784,12 @@ body.dark input::-webkit-calendar-picker-indicator {
   padding: 0.5rem 1.0625rem;
   height: 2.5rem;
   font-weight: 500;
+
+  &.btn-small {
+    max-width: min-content;
+    min-width: max-content;
+    padding-inline: 0.625rem;
+  }
 
   &.btn-primary {
     background: var(--button-primary-bg);
@@ -1560,4 +1563,3 @@ span.flatpickr-weekday {
   color: var(--content-color);
 }
 /* FlatPicker */
-
