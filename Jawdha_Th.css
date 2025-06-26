@@ -912,7 +912,7 @@ body.night-mode {
 
 [data-block="COMPONENTS.AdaptiveColumnTemplate"]
   + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
-  margin-top: 20px;
+  margin-top: 1.625rem;
   display: block;
 }
 
@@ -1012,6 +1012,19 @@ body.night-mode {
   gap: 10px;
   padding: 1rem;
   width: 100%;
+
+  & .osui-progress-bar__container {
+    min-height: 1.5rem;
+  }
+
+  & .osui-progress-bar {
+    min-height: 1.5rem;
+    position: relative;
+  }
+
+  & .osui-progress-bar__value {
+    height: var(--thickness);
+  }
 
   & .dc-header {
     display: grid;
@@ -1510,21 +1523,18 @@ a {
   padding: 1.25rem 1.5625rem;
   min-width: 25rem;
 
-  & > div:nth-child(3){
-    min-width:80%;
-    max-width:max-content;
+  & > div:nth-child(3) {
+    min-width: 80%;
+    max-width: max-content;
   }
 
-  & .button-wrapper-template{
-    display:flex;
+  & .button-wrapper-template {
+    display: flex;
     width: 100%;
-    justify-content:center;
-    
-    
-    
-    
-    & > button{
-      flex:1;
+    justify-content: center;
+
+    & > button {
+      flex: 1;
       width: 100%;
     }
   }
@@ -1893,6 +1903,8 @@ a {
       & .popup-template-content {
         height: calc(100% - 4.25rem);
         max-height: 50vh;
+        overflow: auto;
+
         &::-webkit-scrollbar {
           width: 3px;
         }
@@ -1905,6 +1917,7 @@ a {
         padding: 0.9375rem;
         border-top: 1px solid var(--sidebar-border-color);
         gap: 10px;
+        height: 4rem;
 
         & .btn {
           margin: 0;
@@ -1998,7 +2011,7 @@ a {
     & .tab-content {
       height: calc(100% - 4.0625rem - 4.0625rem);
       width: 100%;
-      overflow: hidden;
+      /* overflow: hidden; */
     }
 
     & .tab-footer {

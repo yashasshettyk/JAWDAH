@@ -374,9 +374,12 @@ body.dark th.sortable:hover {
 .table td a {
   font-weight: 700;
   color: var(--table-data-color);
+  
+  
+  
 
   &:hover {
-    text-decoration: none;
+   
     color: var(--table-data-color);
     opacity: 0.7;
     cursor: pointer;
@@ -504,11 +507,12 @@ body.dark th.sortable:hover {
   line-height: 150%; /* 19.5008px */
   display: flex;
   position: relative;
-  border: 1px solid var(--border-color);
+  /* border: 1px solid var(--border-color); */
   transform: translateX(0px);
   box-shadow: var(--tab-box-shadow);
   transition: var(--transition);
   min-width: 15.6875rem;
+  
 
   &:hover {
     background-color: var(--active-tab-hover-bg);
@@ -1077,6 +1081,66 @@ label {
       cursor: pointer;
     }
   }
+
+  &:has(.file-upload-message .upload-link:hover) {
+    & .camera-svg {
+      display: none;
+    }
+  }
+
+  & .camera-svg {
+    display: none;
+  }
+
+  &.click-picture {
+    & .file-upload-message {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      & a {
+        color: var(--primary-text);
+        font-weight: 500;
+        text-decoration: none;
+      }
+    }
+
+    & .upload-link {
+      position: relative;
+      cursor: pointer;
+      
+      
+
+      & .file-upload-widget {
+        top: 0;
+        position: absolute;
+        cursor: pointer;
+        z-index: 1;
+        
+
+        & input {
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          opacity: 0;
+        }
+      }
+    }
+
+    &:has(.file-upload-message .cam-link:hover) {
+      & .upload-svg {
+        display: none;
+      }
+
+      & .camera-svg {
+        display: flex;
+      }
+
+      & .camera-svg svg path {
+        animation: none;
+      }
+    }
+  }
 }
 
 @keyframes move-up-continous {
@@ -1156,7 +1220,7 @@ label {
   color: #a2b5c1;
   width: 11.25rem;
   max-width: max-content;
-  margin-inline: 0.625rem;
+  margin-inline: auto;
   text-align: center;
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
