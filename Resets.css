@@ -364,9 +364,35 @@ body.dark th.sortable:hover {
   /* max-width: max-content; */
   border: none;
   height: 3.125rem;
-  padding: 5px 11px;
+  padding: 0.3125rem 0.6875rem;
   /* min-width: 218px; */
-  max-width: 212px;
+  max-width: 13.25rem;
+
+  &:has(.osui-progress-bar) {
+    min-width: 15.3rem;
+    max-width: max-content;
+  }
+}
+
+.osui-progress-bar__content {
+  font-size: 0.75rem;
+  color: var(--white);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.osui-progress-bar {
+  min-height: 2rem;
+  position: relative;
+}
+
+.osui-progress-bar__container {
+  min-height: 2rem;
+  position: relative;
+}
+.osui-progress-bar__value {
+  min-height: 2rem;
+  color: var(--white);
 }
 .table td:has(a) {
   min-width: 225px;
@@ -508,7 +534,6 @@ body.dark th.sortable:hover {
   transform: translateX(0px);
   transition: var(--transition);
   min-width: 15.6875rem;
-  
 
   &:hover {
     background-color: var(--active-tab-hover-bg);
@@ -1620,3 +1645,7 @@ span.flatpickr-weekday {
   color: var(--content-color);
 }
 /* FlatPicker */
+
+.wizard-wrapper {
+  gap: 0.625rem;
+}

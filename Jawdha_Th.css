@@ -1030,12 +1030,23 @@ body.night-mode {
   }
 
   & .osui-progress-bar {
+    height: 1.5rem;
     min-height: 1.5rem;
     position: relative;
+    /* width: fit-content; */
   }
 
   & .osui-progress-bar__value {
     height: 1.5rem;
+    max-height: 1.5rem;
+    min-height: 1.5rem;
+  }
+
+  & .osui-progress-bar__content{
+
+    span{
+      white-space:nowrap;
+    }
   }
 
   & .dc-header {
@@ -1071,6 +1082,7 @@ body.night-mode {
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+      /* width: 100%; */
     }
   }
 }
@@ -1782,8 +1794,11 @@ a {
       & .timeline-header {
         display: grid;
         grid-template-columns: 1fr auto;
-        align-items: center;
+        align-items: flex-start;
         gap: 10px;
+        
+        
+        
 
         & .right {
           display: flex;
