@@ -786,8 +786,31 @@ body.dark input::-webkit-calendar-picker-indicator {
     left: 0;
     transform: translateX(10px) translateY(-50%);
   }
+
+  &.curr-ip {
+    & > div:nth-child(3) {
+      position: absolute;
+      inset-inline-end: 0;
+      inset-block-start: 0;
+      transform: translateY(calc(50% - 0.15rem)) translateX(-0.625rem);
+      font-weight: 600;
+      color: var(--theme-text);
+    }
+  }
 }
 
+.is-rtl .input-with-label-wrapper {
+  &.curr-ip {
+    & > div:nth-child(3) {
+      inset-inline-end: 1.25rem;
+    }
+  }
+}
+
+.form span.validation-message {
+  bottom: -1.6rem;
+  font-size: 0.6rem;
+}
 .is-rtl .input-with-label-wrapper {
   & > div:nth-child(1) {
     left: unset;
@@ -815,7 +838,10 @@ body.dark input::-webkit-calendar-picker-indicator {
     min-width: max-content;
     padding-inline: 0.625rem;
   }
-
+  &[disabled] {
+    filter: saturate(0) brightness(0.9) opacity(0.5);
+    pointer-events: none;
+  }
   &.btn-primary {
     background: var(--button-primary-bg);
     color: var(--button-primary-text);
@@ -1004,13 +1030,13 @@ body.dark input::-webkit-calendar-picker-indicator {
   transition: var(--transition);
 
   &:has(.btn-success:hover) {
-    border-color: var(--button-success-border);
-    background: var(--button-success-bg);
+    /* border-color: var(--button-success-border); */
+    /* background: var(--button-success-bg); */
   }
 
   &:has(.btn-reject:hover) {
-    border-color: var(--button-reject-border);
-    background: var(--button-reject-bg);
+    /* border-color: var(--button-reject-border); */
+    /* background: var(--button-reject-bg); */
   }
 }
 /* Popup */

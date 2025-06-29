@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo Capture Component</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .camera-container {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      video,
+      canvas {
+        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .controls {
+        margin: 20px 0;
+      }
+
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        margin: 5px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+
+      .error {
+        color: #dc3545;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="camera-container">
+      <h1>📸 Photo Capture</h1>
+
+      <video id="video" style="display: none"></video>
+      <canvas id="canvas" style="display: none;"></canvas>
+
+      <div id="error" class="error"></div>
+    </div>
+
+    <script src="photoCapture.js"></script>
+    <script>
+      const videoElId  = $parameters.videoId;
+      const canvasELId = $parameters.canvasId;
+      const errorElId  = $parameters.errorId;
+
+      // Set video attributes via JS using OutSystems parameter
+      const videoElem = document.getElementById(videoElId);
+      if (videoElem) {
+        videoElem.setAttribute("autoplay", "");
+        videoElem.setAttribute("playsinline", "");
+      }
+
+      // Global instance for OutSystems access - Initialize immediately
+      let photoCapture = new PhotoCapture();
+      photoCapture.initializeComponent(videoElId, canvasELId, errorElId);
+
+      // OutSystems callable functions
+      window.initializePhotoCapture = function () {
+        // Already initialized, just ensure it's ready
+        if (!photoCapture.isInitialized) {
+          photoCapture.initializeComponent(videoElId, canvasELId, errorElId);
+        }
+      };
+
+      window.startPhotoCamera = async function () {
+        await photoCapture.startCamera();
+      };
+
+      window.capturePhotoImage = function () {
+        return photoCapture.capturePhoto();
+      };
+
+      window.stopPhotoCamera = function () {
+        photoCapture.stopCamera();
+      };
+    </script>
+  </body>
+</html>
