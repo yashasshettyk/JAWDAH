@@ -1239,6 +1239,10 @@ label {
   border-color: var(--wizard-reject-border);
 }
 
+.wizard-wrapper-item.past .wizard-item-icon-wrapper:before {
+  background-color: var(--wizard-line-color-active);
+}
+
 .wizard-wrapper-item.active .wizard-item-icon-wrapper:before {
   background-color: var(--wizard-line-color-active);
 }
