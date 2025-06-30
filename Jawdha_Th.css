@@ -1689,6 +1689,21 @@ a {
     }
   }
 
+  &.total-price-wrapper {
+    & > div {
+      align-items: flex-end;
+
+      & .highlighted-content-wrapper {
+        min-width: 20.875rem;
+        justify-content: space-between;
+
+        & .stroke svg path {
+          stroke: var(--primary-text);
+        }
+      }
+    }
+  }
+
   &.popup-doc-wrapper {
     & .list {
       display: grid;
@@ -1779,7 +1794,7 @@ a {
       position: absolute;
       content: "";
       width: 3px;
-      height: 100%;
+      height: calc(100% - 4.375rem);
       background: #37d681;
       top: 0px;
       left: 0px;
@@ -2536,4 +2551,8 @@ a {
     font-weight: 400;
     color: var(--content-color);
   }
+}
+
+.small-input-td {
+  max-width: 7rem !important;
 }

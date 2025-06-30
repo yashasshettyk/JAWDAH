@@ -346,6 +346,10 @@ body.dark th.sortable:hover {
 .table-header th:first-child {
   border-radius: 8px 0px 0px 0px;
 }
+.table-header th:has(.checkbox){
+  display:flex;
+  align-items:center;
+}
 .is-rtl .table-header th:first-child {
   border-radius: 0px 8px 0px 0px;
 }
@@ -1028,16 +1032,6 @@ body.dark input::-webkit-calendar-picker-indicator {
   padding: 0;
   max-width: fit-content;
   transition: var(--transition);
-
-  &:has(.btn-success:hover) {
-    /* border-color: var(--button-success-border); */
-    /* background: var(--button-success-bg); */
-  }
-
-  &:has(.btn-reject:hover) {
-    /* border-color: var(--button-reject-border); */
-    /* background: var(--button-reject-bg); */
-  }
 }
 /* Popup */
 
@@ -1235,8 +1229,8 @@ label {
 }
 
 .wizard-wrapper-item.past.rejected .wizard-item-icon {
-    background-color: var(--wizard-bg);
-    border-color: var(--wizard-reject-border);
+  background-color: var(--wizard-bg);
+  border-color: var(--wizard-reject-border);
 }
 
 .wizard-wrapper-item.active.rejected .wizard-item-icon {
@@ -1479,8 +1473,14 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
 /* Input */
 
 .form-control[data-input][disabled],
-.form-control[data-textarea][disabled] {
+.form-control[data-textarea][disabled],
+div.dropdown-display.dropdown-disabled,
+div.dropdown-display[disabled],
+select.dropdown-display.dropdown-disabled,
+select.dropdown-display[disabled],
+.osui-datepicker input.flatpickr-input[disabled] + input {
   background: var(--input-bg-disabled);
+  border: var(--border-size-s) solid transparent;
 }
 
 .file-upload-message {
@@ -1683,4 +1683,18 @@ span.flatpickr-weekday {
 
 .wizard-wrapper {
   gap: 0.625rem;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  margin: 0;
+  cursor: pointer;
+}
+
+.flatpickr-calendar input[type="number"]::-webkit-inner-spin-button,
+.flatpickr-calendar input[type="number"]::-webkit-outer-spin-button,
+.curr-ip input[type="number"]::-webkit-inner-spin-button,
+.curr-ip input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
 }
