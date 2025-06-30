@@ -1234,6 +1234,11 @@ label {
   border-color: var(--wizard-active-border);
 }
 
+.wizard-wrapper-item.past.rejected .wizard-item-icon {
+    background-color: var(--wizard-bg);
+    border-color: var(--wizard-reject-border);
+}
+
 .wizard-wrapper-item.active.rejected .wizard-item-icon {
   background-color: var(--wizard-bg);
   border-color: var(--wizard-reject-border);
