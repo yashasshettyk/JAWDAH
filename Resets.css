@@ -422,7 +422,7 @@ body.dark th.sortable:hover {
 }
 
 .osui-accordion-item {
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
 }
 
 .osui-accordion-item__title__placeholder {
@@ -1702,4 +1702,21 @@ input[type="number"]::-webkit-outer-spin-button {
 .curr-ip input[type="number"]::-webkit-inner-spin-button,
 .curr-ip input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
+}
+
+.osui-accordion {
+  display: grid;
+  gap: 10px;
+}
+
+.osui-accordion .list :first-child > .osui-accordion-item {
+  margin-top: 0px;
+}
+
+.osui-accordion > div:nth-child(1) .osui-accordion-item {
+  border-start-start-radius: 0px !important;
+}
+
+.osui-accordion > div:nth-child(1) .osui-accordion-item.not-first-child {
+  border-start-start-radius:8px !important;
 }

@@ -403,8 +403,13 @@ body.night-mode {
   align-items: center;
   background: var(--content-background);
   border: 1px solid var(--content-border);
+  margin-bottom: 10px;
   border-radius: 0px var(--content-border-radius) var(--content-border-radius)
     var(--content-border-radius);
+  
+  
+  
+  
 
   & > div {
     display: grid;
@@ -906,7 +911,7 @@ body.night-mode {
   overflow: visible;
 
   &.tab-first-child {
-    margin-top: 0px;
+    margin-top: 0px !important;
     border-start-start-radius: 0px !important;
   }
 }
