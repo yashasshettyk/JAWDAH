@@ -2579,6 +2579,17 @@ a {
       position: absolute;
       top: 0;
       left: 0;
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
       & svg {
         width: 4.9rem;
@@ -2603,6 +2614,8 @@ a {
       font-style: normal;
       font-weight: 600;
       line-height: normal;
+      position: relative;
+      z-index: 1;
     }
 
     & > div:nth-child(4) {
