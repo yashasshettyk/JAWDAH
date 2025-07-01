@@ -346,9 +346,9 @@ body.dark th.sortable:hover {
 .table-header th:first-child {
   border-radius: 8px 0px 0px 0px;
 }
-.table-header th:has(.checkbox){
-  display:flex;
-  align-items:center;
+.table-header th:has(.checkbox) {
+  display: flex;
+  align-items: center;
 }
 .is-rtl .table-header th:first-child {
   border-radius: 0px 8px 0px 0px;
@@ -816,7 +816,7 @@ body.dark input::-webkit-calendar-picker-indicator {
   font-size: 0.6rem;
 }
 .form textarea[data-textarea] + span.validation-message {
-    bottom: -10px;
+  bottom: -10px;
 }
 .is-rtl .input-with-label-wrapper {
   & > div:nth-child(1) {
