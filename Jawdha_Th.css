@@ -417,6 +417,7 @@ body.night-mode {
     display: grid;
     gap: 10px;
     padding-inline: 15px;
+    justify-content: start;
 
     & .label {
       color: var(--theme-grey-1);
@@ -2397,6 +2398,7 @@ a {
     font-size: 0.75rem;
     font-style: normal;
     font-weight: 500;
+    margin: 0;
     line-height: 150%;
     letter-spacing: 0.0126rem;
   }

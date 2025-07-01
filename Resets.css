@@ -815,6 +815,9 @@ body.dark input::-webkit-calendar-picker-indicator {
   bottom: -1.6rem;
   font-size: 0.6rem;
 }
+.form textarea[data-textarea] + span.validation-message {
+    bottom: -10px;
+}
 .is-rtl .input-with-label-wrapper {
   & > div:nth-child(1) {
     left: unset;
@@ -1481,6 +1484,8 @@ select.dropdown-display[disabled],
 .osui-datepicker input.flatpickr-input[disabled] + input {
   background: var(--input-bg-disabled);
   border: var(--border-size-s) solid transparent;
+  font-weight: 600;
+  color: var(--input-disabled-text-color);
 }
 
 .file-upload-message {
