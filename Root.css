@@ -84,8 +84,8 @@
   --input-placeholder-color-dark: #a3adbc;
   --input-disabled-bg-light: #f0f0f0;
   --input-disabled-bg-dark: #3c3c3c;
-  --input-disabled-text-color-light: #a0a0a0;
-  --input-disabled-text-color-dark: #777777;
+  --input-disabled-text-color-light: #181818;
+  --input-disabled-text-color-dark: #ffffff;
   --input-border-radius: 0.5rem;
   --input-height: 2.5rem;
   --input-padding: 0.125rem 1rem 0.125rem 0.9375rem;
@@ -230,13 +230,6 @@
   --selected-input-border-color-light: #104a6f;
   --selected-input-border-color-dark: #aec1e2;
 
-  /* External Portal Dashboard Card */
-  --ep-dashboard-card-bg-created: #56A7DA;
-  --ep-dashboard-card-bg-in-progress: #369FFF;
-  --ep-dashboard-card-bg-completed: #48DD48;
-  --ep-dashboard-card-bg-rejected: #E99068;
-  /* External Portal Dashboard Card */
-
   /* wizard */
   --wizard-bg-light: #ffffff;
   --wizard-bg-dark: #ffffff;
@@ -298,7 +291,6 @@
   --theme-text-2-dark: #d3d3d3;
   --canvas-bg-light: #e8e8e8;
   --canvas-bg-dark: #2c3440;
-
 }
 
 html {

@@ -1821,8 +1821,8 @@ a {
 
         & .left {
           font-size: 0.875rem;
-          color: var(--theme-text);
-          font-weight: 500;
+          color: var(--content-color);
+          font-weight: 400;
         }
       }
 
@@ -1834,6 +1834,12 @@ a {
           padding-inline-start: 5px;
           font-weight: 600;
         }
+      }
+
+      & .source {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--content-color);
       }
 
       & .application-number {
@@ -2666,3 +2672,85 @@ a {
   }
 }
 /* External Portal Dashboard */
+
+/* Details Tab Loading */
+.tab-details-loader {
+  height: 100%;
+  width: 100%;
+
+  & .tab-details-loader-header {
+    height: 2.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    & > div {
+      width: 16.625rem;
+      position: relative;
+      height: 2.375rem;
+      clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 20% 100%);
+    }
+
+    & > div:nth-child(1) {
+      clip-path: polygon(0% 0%, 80% 0%, 100% 100%, 0% 100%);
+    }
+
+    & > div:nth-child(2) {
+      transform: translateX(-3.2rem);
+    }
+    & > div:nth-child(3) {
+      transform: translateX(-6.4rem);
+    }
+
+    & > div:nth-child(4) {
+      transform: translateX(-9.6rem);
+    }
+  }
+  & .tab-details-loader-body {
+    border: 1px solid var(--border-color);
+    border-start-end-radius: 8px;
+    border-end-end-radius: 8px;
+    border-end-start-radius: 8px;
+    background: var(--content-background);
+  }
+  & .tab-details-loader-body-header {
+    height: 3.12rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 10px;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+
+    & > div {
+      height: 1rem;
+      width: 1rem;
+    }
+
+    & > div:nth-child(1) {
+      min-width: 30rem;
+    }
+  }
+
+  .tab-details-loader-body-content {
+    display: grid;
+    gap: 20px;
+    padding: 20px;
+    & .tab-details-loader-body-content-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+      & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1;
+        & > div {
+          height: 1rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+/* Details Tab Loading */
