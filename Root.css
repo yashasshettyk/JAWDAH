@@ -230,6 +230,13 @@
   --selected-input-border-color-light: #104a6f;
   --selected-input-border-color-dark: #aec1e2;
 
+  /* External Portal Dashboard Card */
+  --ep-dashboard-card-bg-created: #56A7DA;
+  --ep-dashboard-card-bg-in-progress: #369FFF;
+  --ep-dashboard-card-bg-completed: #48DD48;
+  --ep-dashboard-card-bg-rejected: #E99068;
+  /* External Portal Dashboard Card */
+
   /* wizard */
   --wizard-bg-light: #ffffff;
   --wizard-bg-dark: #ffffff;
