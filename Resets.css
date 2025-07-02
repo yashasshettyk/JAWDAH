@@ -1716,3 +1716,21 @@ input[type="number"]::-webkit-outer-spin-button {
 .osui-accordion > div:nth-child(1) .osui-accordion-item.not-first-child {
   border-start-start-radius: 8px !important;
 }
+
+/* Media Query for Screen Size below 1025px */
+@media (max-width: 1024px) {
+  .tablet .form-control[data-input],
+  .phone .form-control[data-input] {
+    font-size: var(--font-size-base);
+    height: 2.125rem;
+  }
+
+  .input-with-label-wrapper {
+    &.curr-ip {
+        & > div:nth-child(3) {
+            transform: translateY(calc(50% - 0.4rem)) translateX(-0.625rem);
+        }
+    }
+}
+}
+/* Media Query for Screen Size below 1025px */

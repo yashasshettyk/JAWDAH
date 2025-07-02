@@ -2225,9 +2225,8 @@ a {
   }
 
   /* Page Header Wrapper */
-  .page-header-wrapper{
+  .page-header-wrapper {
     display: flex !important;
-    
   }
   .page-header-wrapper {
     display: flex;
@@ -2788,10 +2787,42 @@ a {
 
 /* Media Query for Screen Size below 1025px */
 @media (max-width: 1024px) {
-.details-card {
+  .details-card {
     & .dc-header {
-        grid-template-columns: 1fr 16rem;
+      grid-template-columns: 1fr 16rem;
     }
-}
+  }
+
+  /* Wizard Wrapper */
+  .wizard-wrapper-template {
+    overflow-x: auto;
+    margin-bottom: 20px;
+
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 0px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+  }
+  /* Wizard Wrapper */
+
+  .osui-accordion {
+    & .review-details-wrapper {
+      & .sec-1 {
+        grid-template-columns: auto 1fr;
+      }
+    }
+  }
+
+  .osui-accordion {
+    .chs-met-dropdown {
+      width: 35.3125rem;
+    }
+  }
 }
 /* Media Query for Screen Size below 1025px */
