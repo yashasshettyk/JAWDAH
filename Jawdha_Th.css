@@ -2785,3 +2785,13 @@ a {
   }
 }
 /* Details Tab Loading */
+
+/* Media Query for Screen Size below 1025px */
+@media (max-width: 1024px) {
+.details-card {
+    & .dc-header {
+        grid-template-columns: 1fr 16rem;
+    }
+}
+}
+/* Media Query for Screen Size below 1025px */
