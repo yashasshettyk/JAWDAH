@@ -421,10 +421,6 @@ body.dark th.sortable:hover {
   display: none;
 }
 
-.osui-accordion-item {
-  /* margin-top: 0.5rem; */
-}
-
 .osui-accordion-item__title__placeholder {
   color: var(--theme-primary-text);
   font-variant-numeric: lining-nums tabular-nums;
@@ -1718,5 +1714,5 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .osui-accordion > div:nth-child(1) .osui-accordion-item.not-first-child {
-  border-start-start-radius:8px !important;
+  border-start-start-radius: 8px !important;
 }
