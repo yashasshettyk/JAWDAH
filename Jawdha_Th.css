@@ -2824,5 +2824,34 @@ a {
       width: 35.3125rem;
     }
   }
+
+  .adaptive-column-template-wrapper {
+    &.col-2 {
+      & > div {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  }
+
+  .adaptive-column-template-wrapper {
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 6.25rem;
+      row-gap: 20px;
+    }
+  }
+
+  .osui-accordion {
+    .content-hightlight-checkbox.adaptive-column-template-wrapper > div {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      column-gap: 10px;
+    }
+  }
 }
 /* Media Query for Screen Size below 1025px */

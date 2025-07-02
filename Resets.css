@@ -1722,7 +1722,7 @@ input[type="number"]::-webkit-outer-spin-button {
   .tablet .form-control[data-input],
   .phone .form-control[data-input] {
     font-size: 0.9375rem;
-    height: 2.125rem;
+    height: 3.2125rem;
   }
 
   .input-with-label-wrapper {
@@ -1750,8 +1750,16 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 0.9375rem;
   }
 
-  .wizard-wrapper [data-block*=WizardItem] {
+  .wizard-wrapper [data-block*="WizardItem"] {
     min-width: 9.75rem;
+  }
+
+  .tablet div.dropdown-display,
+  .tablet select.dropdown-display,
+  .phone div.dropdown-display,
+  .phone select.dropdown-display {
+    font-size: 0.9375rem;
+    height: 3.2125rem;
   }
 }
 /* Media Query for Screen Size below 1025px */
