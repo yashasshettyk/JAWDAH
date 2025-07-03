@@ -1758,6 +1758,53 @@ input[type="number"]::-webkit-outer-spin-button {
   border-start-start-radius: 8px !important;
 }
 
+/* Media Query for Screen Size below 1025px */
+@media (max-width: 1024px) {
+  .tablet .form-control[data-input],
+  .phone .form-control[data-input] {
+    font-size: 0.9375rem;
+    height: 3.2125rem;
+  }
+
+  .input-with-label-wrapper {
+    &.curr-ip {
+      & > div:nth-child(3) {
+        transform: translateY(calc(50% - 0.4rem)) translateX(-0.625rem);
+      }
+    }
+  }
+
+  .tablet .form-control[data-textarea],
+  .phone .form-control[data-textarea] {
+    font-size: 0.9375rem;
+    height: auto;
+  }
+
+  .tablet div.dropdown-display .dropdown-display-content > span,
+  .tablet div.dropdown-display .dropdown-display-content > div,
+  .tablet select.dropdown-display .dropdown-display-content > span,
+  .tablet select.dropdown-display .dropdown-display-content > div,
+  .phone div.dropdown-display .dropdown-display-content > span,
+  .phone div.dropdown-display .dropdown-display-content > div,
+  .phone select.dropdown-display .dropdown-display-content > span,
+  .phone select.dropdown-display .dropdown-display-content > div {
+    font-size: 0.9375rem;
+  }
+
+  .wizard-wrapper [data-block*="WizardItem"] {
+    min-width: 9.75rem;
+  }
+
+  .tablet div.dropdown-display,
+  .tablet select.dropdown-display,
+  .phone div.dropdown-display,
+  .phone select.dropdown-display {
+    font-size: 0.9375rem;
+    height: 3.2125rem;
+  }
+}
+/* Media Query for Screen Size below 1025px */
+
 .mb-20 {
   margin-bottom: 15px;
 }

@@ -2234,6 +2234,28 @@ a {
     text-align: right;
   }
 
+  /* Page Header Wrapper */
+  .page-header-wrapper {
+    display: flex !important;
+  }
+  .page-header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 1rem 1.5rem; */
+    margin-bottom: 20px;
+
+    & > div:nth-child(2) button {
+      gap: 12px;
+
+      & svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+    }
+  }
+  /* Page Header Wrapper */
+
   .chs-met-dropdown {
     width: 47.8125rem;
   }
@@ -2779,6 +2801,77 @@ a {
   }
 }
 /* Details Tab Loading */
+
+/* Media Query for Screen Size below 1025px */
+@media (max-width: 1024px) {
+  .details-card {
+    & .dc-header {
+      grid-template-columns: 1fr 16rem;
+    }
+  }
+
+  /* Wizard Wrapper */
+  .wizard-wrapper-template {
+    overflow-x: auto;
+    margin-bottom: 20px;
+
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 0px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+  }
+  /* Wizard Wrapper */
+
+  .osui-accordion {
+    & .review-details-wrapper {
+      & .sec-1 {
+        grid-template-columns: auto 1fr;
+      }
+    }
+  }
+
+  .osui-accordion {
+    .chs-met-dropdown {
+      width: 35.3125rem;
+    }
+  }
+
+  .adaptive-column-template-wrapper {
+    &.col-2 {
+      & > div {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        align-items: center;
+      }
+    }
+  }
+
+  .adaptive-column-template-wrapper {
+    & > div {
+      display: flex;
+      flex-wrap: wrap;
+      column-gap: 6.25rem;
+      row-gap: 20px;
+    }
+  }
+
+  .osui-accordion {
+    .content-hightlight-checkbox.adaptive-column-template-wrapper > div {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      column-gap: 10px;
+    }
+  }
+}
+/* Media Query for Screen Size below 1025px */
 
 .page-header-wrapper {
   display: flex;
