@@ -912,9 +912,12 @@ body.night-mode {
 }
 
 .osui-accordion .osui-accordion-item {
-  border-radius: var(--content-size) !important;
+  border-radius: 8px !important;
   border-width: 1px !important;
   overflow: visible;
+  
+  
+  
 
   &.tab-first-child {
     margin-top: 0px !important;
