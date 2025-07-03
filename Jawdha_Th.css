@@ -2873,6 +2873,21 @@ a {
       column-gap: 10px;
     }
   }
+
+  .sb-af-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+
+    & > div:nth-child(2) {
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
 }
 /* Media Query for Screen Size below 1025px */
 
