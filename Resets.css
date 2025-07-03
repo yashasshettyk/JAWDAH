@@ -1802,6 +1802,24 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 0.9375rem;
     height: 3.2125rem;
   }
+
+  .tablet [data-checkbox],
+  .phone [data-checkbox] {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .tablet [data-checkbox]:before,
+  .phone [data-checkbox]:before {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+
+  .tablet [data-checkbox]:checked:after,
+  .phone [data-checkbox]:checked:after {
+    left: 0.30rem;
+    top: 0.49rem;
+  }
 }
 /* Media Query for Screen Size below 1025px */
 
