@@ -376,6 +376,16 @@ body.dark th.sortable:hover {
     min-width: 15.3rem;
     max-width: max-content;
   }
+
+  &:has([data-checkbox]) {
+    min-width: min-content;
+    width: 4rem;
+    max-width: min-content;
+  }
+
+  &.small-td {
+    width: 5rem;
+  }
 }
 
 .osui-progress-bar__content {
@@ -745,9 +755,18 @@ body.dark input::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
+div:has(> .input-with-label-wrapper.mul-col-ip) {
+  flex: 1;
+  display: block;
+}
+
 .input-with-label-wrapper {
   position: relative;
   width: 100%;
+
+  &.mul-col-ip {
+    min-width: 15.625rem;
+  }
 
   & .form-control[data-input],
   .form-control[data-textarea],
@@ -832,9 +851,10 @@ body.dark input::-webkit-calendar-picker-indicator {
 .btn {
   min-width: 8.3125rem;
   border-radius: 8px;
-  padding: 0.5rem 1.0625rem;
+  padding: 0.5rem 1.06rem;
   height: 2.5rem;
   font-weight: 500;
+  box-sizing: border-box;
 
   &.btn-small {
     max-width: min-content;
@@ -1484,6 +1504,27 @@ select.dropdown-display[disabled],
   color: var(--input-disabled-text-color);
 }
 
+[data-input]::placeholder,
+[data-textarea]::placeholder {
+  color: var(--input-placeholder-color) !important;
+}
+
+/* Optional vendor prefixes for older browser support */
+[data-input]::-webkit-input-placeholder,
+[data-textarea]::-webkit-input-placeholder {
+  color: var(--input-placeholder-color) !important;
+}
+
+[data-input]::-moz-placeholder,
+[data-textarea]::-moz-placeholder {
+  color: var(--input-placeholder-color) !important;
+}
+
+[data-input]:-ms-input-placeholder,
+[data-textarea]:-ms-input-placeholder {
+  color: var(--input-placeholder-color) !important;
+}
+
 .file-upload-message {
   color: var(--primary-text);
 }
@@ -1715,4 +1756,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .osui-accordion > div:nth-child(1) .osui-accordion-item.not-first-child {
   border-start-start-radius: 8px !important;
+}
+
+.mb-20 {
+  margin-bottom: 15px;
 }

@@ -5,19 +5,19 @@
   --content-size: 1rem;
   --active-menu-bg-light: #2d6286;
   --active-menu-bg-dark: #082238;
-  --side-menu-size-expanded: 228px;
-  --side-menu-size-collapsed: 67px;
-  --sidemenu-margin: 12px;
-  --sidemenu-items-padding: 1.6px 12px;
+  --side-menu-size-expanded: 14.25rem;
+  --side-menu-size-collapsed: 4.1875rem;
+  --sidemenu-margin: 0.75rem;
+  --sidemenu-items-padding: 0.1rem 0.75rem;
   --sidemenu-border-radius: 0.5rem;
   --active-sidemenu-border-color-light: #5b95ba;
   --active-sidemenu-border-color-dark: #134e79;
-  --sidemenu-items-min-height: 48px;
+  --sidemenu-items-min-height: 3rem;
   --hover-opacity: 1;
   --hover-brightness: brightness(0.9);
   --move-and-hide: move-and-hide 0s ease-out forwards;
   --move-and-show: move-and-show 0.3s ease-out forwards;
-  --sidemenu-item-gap: 11.2px;
+  --sidemenu-item-gap: 0.7rem;
   --transition: all 0.3s ease-out;
   --logo-seperator-color-light: #728492;
   --header-size: 4rem;
@@ -86,6 +86,8 @@
   --input-disabled-bg-dark: #3c3c3c;
   --input-disabled-text-color-light: #181818;
   --input-disabled-text-color-dark: #ffffff;
+  --input-placeholder-color-light: #898989;
+  --input-placeholder-color-dark: #a3adbc;
   --input-border-radius: 0.5rem;
   --input-height: 2.5rem;
   --input-padding: 0.125rem 1rem 0.125rem 0.9375rem;
@@ -231,13 +233,13 @@
   --selected-input-border-color-dark: #aec1e2;
 
   /* External Portal Dashboard Card */
-  --ep-dashboard-card-bg-created-light: #56A7DA;
+  --ep-dashboard-card-bg-created-light: #56a7da;
   --ep-dashboard-card-bg-created-dark: #376f92;
-  --ep-dashboard-card-bg-in-progress-light: #369FFF;
+  --ep-dashboard-card-bg-in-progress-light: #369fff;
   --ep-dashboard-card-bg-in-progress-dark: #1c578f;
-  --ep-dashboard-card-bg-completed-light: #48DD48;
+  --ep-dashboard-card-bg-completed-light: #48dd48;
   --ep-dashboard-card-bg-completed-dark: #287728;
-  --ep-dashboard-card-bg-rejected-light: #E99068;
+  --ep-dashboard-card-bg-rejected-light: #e99068;
   --ep-dashboard-card-bg-rejected-dark: #994b2a;
   /* External Portal Dashboard Card */
 
@@ -355,6 +357,7 @@ body {
   --input-placeholder-color: var(--input-placeholder-color-light);
   --input-disabled-bg: var(--input-disabled-bg-light);
   --input-disabled-text-color: var(--input-disabled-text-color-light);
+  --input-placeholder-color: var(--input-placeholder-color-light);
   --content-bg-highlight: var(--content-bg-highlight-light);
   --button-primary-bg: var(--button-primary-bg-light);
   --button-primary-text: var(--button-primary-text-light);
@@ -502,6 +505,7 @@ body.dark {
   --input-placeholder-color: var(--input-placeholder-color-dark);
   --input-disabled-bg: var(--input-disabled-bg-dark);
   --input-disabled-text-color: var(--input-disabled-text-color-dark);
+  --input-placeholder-color: var(--input-placeholder-color-dark);
   --content-bg-highlight: var(--content-bg-highlight-dark);
   --button-primary-bg: var(--button-primary-bg-dark);
   --button-primary-text: var(--button-primary-text-dark);
@@ -576,7 +580,7 @@ body.dark {
   --wizard-line-color-active: var(--wizard-line-color-active-dark);
   /* wizard */
 
-    /* External Portal Dashboard Card */
+  /* External Portal Dashboard Card */
   --ep-dashboard-card-bg-created: var(--ep-dashboard-card-bg-created-dark);
   --ep-dashboard-card-bg-in-progress: var(
     --ep-dashboard-card-bg-in-progress-dark
