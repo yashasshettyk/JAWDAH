@@ -2755,6 +2755,7 @@ a:has(.btn-inner-template) {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 
   & > div:nth-child(2) {
     display: flex;
