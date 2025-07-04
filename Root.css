@@ -328,7 +328,7 @@ body {
   --theme-box-shadow: var(--box-shadow-light);
   --active-sidemenu-border-color: var(--active-sidemenu-border-color-light);
   --active-menu-bg: var(--active-menu-bg-light);
-  --screen-background: #f9fdfe;
+  --screen-background: #F9FDFF;
   --toggle-switch-background: var(--white);
   --theme-grey: var(--grey-light);
   --table-header-background: var(--table-header-background-light);
@@ -442,7 +442,6 @@ body {
   --ep-dashboard-card-bg-completed: var(--ep-dashboard-card-bg-completed-light);
   --ep-dashboard-card-bg-rejected: var(--ep-dashboard-card-bg-rejected-light);
   /* External Portal Dashboard Card */
-
   --confirmation-svg-rect-1: var(--confirmation-svg-rect-1-light);
   --confirmation-svg-rect-2: var(--confirmation-svg-rect-2-light);
   --confirmation-svg-path: var(--confirmation-svg-path-light);
@@ -452,7 +451,6 @@ body {
   --selected-input-border-color: var(--selected-input-border-color-light);
   --input-bg-disabled: var(--input-bg-disabled-light);
   --calendar-bg: var(--calendar-bg-light);
-
   --calendar-prev-month-text-color: var(--calendar-prev-month-text-color-light);
   --calendar-hover-day-bg: var(--calendar-hover-day-bg-light);
   --calendar-hover-day-text-color: var(--calendar-hover-day-text-color-light);

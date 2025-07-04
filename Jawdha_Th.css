@@ -886,6 +886,11 @@ body.night-mode {
   gap: 10px;
   padding: 1rem;
   width: 100%;
+
+  & .osui-progress-bar__content {
+    position: relative;
+    transform: translateY(4px);
+  }
 }
 .details-card .expression-with-label-wrapper > div:nth-child(1) label {
   color: var(--theme-grey);
@@ -899,8 +904,7 @@ body.night-mode {
   height: 1.5rem;
   min-height: 1.5rem;
   position: relative;
-  /* width: fit-content;
-	 */
+  width: max-content;
 }
 .details-card .osui-progress-bar__value {
   height: 1.5rem;
@@ -914,6 +918,11 @@ body.night-mode {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+
+  & > div:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 .details-card .dc-header > div:nth-child(1) > div:nth-child(1) {
   color: var(--primary-text);
@@ -1866,23 +1875,7 @@ a:has(.btn-inner-template) {
   .osui-accordion-item {
   border-radius: 8px !important;
 }
-.osui-accordion {
-  /* Page Header Wrapper */
-  /* Page Header Wrapper */
-  /* Wizard Wrapper */
-  /* Wizard Wrapper */
-  /* Customer Service Review - Content Hightlight Checkbox */
-  /* Customer Service Review - Content Hightlight Checkbox */
-  /* Checkbox With Label */
-  /* Checkbox With Label */
-  /* Column Two Wrapper */
-  /* Column Two Wrapper */
-  /* Device Transfer to Lab */
-  /* Device Transfer to Lab */
-  /* External Portal Dashboard */
-  /* External Portal Dashboard */
-  /* Details Tab Loading */
-}
+
 .osui-accordion .multi-section-item .tab-content {
   padding-inline: 0px !important;
 }
@@ -1964,10 +1957,10 @@ a:has(.btn-inner-template) {
   position: relative;
   transform: translateX(-0.605rem);
 }
-.osui-accordion .table-content-left {
+.table-content-left {
   text-align: left;
 }
-.osui-accordion .is-rtl .table-content-left {
+.is-rtl .table-content-left {
   text-align: right;
 }
 .osui-accordion .page-header-wrapper {
