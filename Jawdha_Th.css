@@ -2703,16 +2703,19 @@ a:has(.btn-inner-template) {
   row-gap: 16px;
   grid-template-columns: 15.375rem 1fr;
   justify-content: flex-start;
+
+  & .content-highlight-wrapper {
+    padding: 10px;
+  }
 }
 
-.view-folder-template-wrapper .content-highlight-wrapper {
-  padding: 10px;
+.view-folder-template-wrapper {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  align-items: center;
+  gap: 8px;
 
-  & > div:nth-child(1) {
-    display: grid;
-    grid-template-columns: 1.5rem 1fr;
-    align-items: center;
-    gap: 8px;
+  & span {
     color: var(--theme-text);
     font-variant-numeric: lining-nums tabular-nums;
     font-feature-settings: "liga" off, "clig" off;
@@ -2722,34 +2725,36 @@ a:has(.btn-inner-template) {
     line-height: 150%; /* 18px */
     letter-spacing: 0.0126rem;
   }
-
-  & > div:nth-child(2) {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    height: 2.6875rem;
-
-    & span {
-      color: var(--primary-text);
-      font-variant-numeric: lining-nums tabular-nums;
-      font-feature-settings: "liga" off, "clig" off;
-      font-size: 0.9375rem;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%; /* 22.5px */
-      letter-spacing: 0.0158rem;
-    }
-
-    &:hover span {
-      text-decoration: underline;
-    }
-
-    & svg path {
-      stroke: var(--primary-text);
-    }
-  }
 }
 /* View Certificate Folder */
+
+/* External Link Template */
+.external-link-template {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 2.6875rem;
+
+  & span {
+    color: var(--primary-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 22.5px */
+    letter-spacing: 0.0158rem;
+  }
+
+  &:hover span {
+    text-decoration: underline;
+  }
+
+  & svg path {
+    stroke: var(--primary-text);
+  }
+}
+/* External Link Template */
 
 .sb-af-header {
   display: flex;
