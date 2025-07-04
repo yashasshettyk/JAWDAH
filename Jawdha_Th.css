@@ -2742,3 +2742,9 @@ a:has(.btn-inner-template) {
   }
 }
 /* View Certificate Folder */
+
+.sb-af-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
