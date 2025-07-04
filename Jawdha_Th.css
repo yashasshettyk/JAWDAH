@@ -730,6 +730,7 @@ body.night-mode {
   display: grid;
   grid-template-columns: 9.0625rem 1fr 1fr;
   gap: 10px;
+  align-items: center;
 }
 .adaptive-column-template-wrapper.col-1 > div {
   display: grid;
@@ -1912,9 +1913,13 @@ a:has(.btn-inner-template) {
 .osui-accordion .review-details-wrapper .sec-1 > div:nth-child(2) {
   width: 100%;
   display: block;
+  & > div {
+    height: 100%;
+    display: block;
+  }
 }
 .osui-accordion .text-area-count-wrapper-template {
-  position: relative;
+  /* position: relative; */
   height: max-content;
 }
 .osui-accordion .text-area-count-wrapper-template span {
@@ -1924,6 +1929,7 @@ a:has(.btn-inner-template) {
 }
 .osui-accordion .text-area-count-wrapper-template [data-textarea] {
   resize: none;
+  height: 5.6875rem;
 }
 .osui-accordion .text-area-count-wrapper-template .count {
   position: absolute;
