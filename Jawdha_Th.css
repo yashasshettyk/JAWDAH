@@ -2749,3 +2749,21 @@ a:has(.btn-inner-template) {
   align-items: center;
   gap: 10px;
 }
+
+/* Customer Contact Details */
+.customer-contact-details-a1 {
+  display: flex;
+}
+/* Customer Contact Details */
+
+/* ILC Item Specification */
+.ilc-item-specification-a1 {
+  display: flex;
+}
+/* ILC Item Specification */
+
+/* IsRTL - Tab */
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(1) {
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+/* IsRTL - Tab */
