@@ -2782,6 +2782,120 @@ a:has(.btn-inner-template) {
   gap: 10px;
 }
 
+/* Customer Contact Details */
+.customer-contact-details-a1 > div {
+  display: flex;
+}
+
+.customer-contact-details-a2 > div {
+  display: flex;
+  column-gap: 6rem;
+}
+/* Customer Contact Details */
+
+/* ILC Item Specification */
+
+.ilc-item-specification-a1 > div {
+  display: flex;
+  align-items: center;
+  column-gap: 4.1875rem;
+
+  & > div:nth-child(1) {
+    width: 61.875rem;
+  }
+
+  & .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0px;
+  }
+  .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
+    > div:nth-child(1) {
+    width: 23.3125rem;
+  }
+  .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
+    > div:nth-child(2) {
+    width: 26.9075rem;
+  }
+  .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
+    > div:nth-child(3) {
+    width: max-content;
+  }
+}
+
+.ilc-item-specification-a2 > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+
+  & > div:nth-child(1) .adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  & > div:nth-child(2) .adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  &
+    [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+    + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+    margin-top: 0;
+    display: block;
+  }
+}
+
+.ilc-item-specification-a3 > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+
+  & > div:nth-child(1) .adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  & > div:nth-child(2) .adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  &
+    [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+    + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+    margin-top: 0;
+    display: block;
+  }
+}
+
+.ilc-item-specification-a4 > div {
+  display: flex;
+}
+/* ILC Item Specification */
+
+/* IsRTL - Tab */
+.is-rtl .tab-details-loader .tab-details-loader-header > div {
+  width: 16.625rem;
+  position: relative;
+  height: 2.375rem;
+  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(1) {
+  clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(2) {
+  transform: translateX(3.2rem);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(3) {
+  transform: translateX(6.4rem);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(4) {
+  transform: translateX(9.6rem);
+}
+/* IsRTL - Tab */
+
 .show-comment {
   border-radius: 16px;
   background: var(--content-bg-highlight);
