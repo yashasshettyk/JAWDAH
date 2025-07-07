@@ -2763,13 +2763,48 @@ a:has(.btn-inner-template) {
 
 /* ILC Item Specification */
 
+.ilc-item-specification-a1 > div {
+  display: flex;
+  column-gap: 4.1875rem;
+
+  & > div:nth-child(1) {
+    width: 61.875rem;
+  }
+
+  & .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
+    > div:nth-child(1) {
+    width: 23.3125rem;
+  }
+  .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
+    > div:nth-child(2) {
+    width: 24.1875rem;
+  }
+  .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
+    > div:nth-child(3) {
+    width: max-content;
+  }
+}
+
 .ilc-item-specification-a2 > div {
   display: flex;
   column-gap: 7.375rem;
-  
+
   & .adaptive-column-template-wrapper > div {
     display: flex;
     column-gap: 5.5625rem;
+  }
+
+  &
+    [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+    + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+    margin-top: 0;
+    display: block;
   }
 }
 
@@ -2780,6 +2815,13 @@ a:has(.btn-inner-template) {
   & .adaptive-column-template-wrapper > div {
     display: flex;
     column-gap: 7.9375rem;
+  }
+
+  &
+    [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+    + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+    margin-top: 0;
+    display: block;
   }
 }
 
