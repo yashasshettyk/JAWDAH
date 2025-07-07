@@ -655,7 +655,7 @@ body.night-mode {
   color: var(--theme-text-2);
   font-variant-numeric: lining-nums tabular-nums;
   font-feature-settings: "liga" off, "clig" off;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
@@ -2798,7 +2798,40 @@ a:has(.btn-inner-template) {
 .ilc-item-specification-a1 > div {
   display: flex;
   align-items: center;
-  column-gap: 4.1875rem;
+  column-gap: 40px;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
   & > div:nth-child(1) {
     width: 61.875rem;
@@ -2816,7 +2849,7 @@ a:has(.btn-inner-template) {
   }
   .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
     > div:nth-child(2) {
-    width: 26.9075rem;
+    width: 27.9075rem;
   }
   .content-highlight-wrapper.cal-req-info-bgh.ilc-item-specification
     > div:nth-child(3) {
