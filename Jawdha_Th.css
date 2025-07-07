@@ -2110,9 +2110,9 @@ a:has(.btn-inner-template) {
   column-gap: 10px;
   gap: 10px;
 
-	  & .adaptive-column-template-wrapper > div{
-		  display:flex;
-	  }
+  & .adaptive-column-template-wrapper > div {
+    display: flex;
+  }
 }
 .osui-accordion
   .content-hightlight-checkbox.adaptive-column-template-wrapper
@@ -2160,9 +2160,9 @@ a:has(.btn-inner-template) {
   width: 100%;
   height: 100%;
 
-	& .fill svg path{
-		fill:var(--primary-text);
-	}
+  & .fill svg path {
+    fill: var(--primary-text);
+  }
 }
 .osui-accordion
   .content-hightlight-column2
@@ -2750,3 +2750,32 @@ a:has(.btn-inner-template) {
   }
 }
 /* View Certificate Folder */
+
+.payment-validate-sec {
+  display: grid;
+  grid-template-columns: 26rem 1fr;
+  gap: 20px;
+
+  & > div:nth-child(1) {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  & .highlighted-content-wrapper {
+    width: 100%;
+  }
+
+  & textarea {
+    height: 10rem;
+  }
+}
+
+.btn-inner-template.reverse {
+  flex-direction: row-reverse;
+  display: flex;
+  cursor: pointer;
+}
+
+.form-control[data-textarea] {
+  height: 5.55rem;
+}

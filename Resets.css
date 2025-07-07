@@ -320,6 +320,10 @@ body.dark th.sortable:hover {
   /* min-width: 218px;
 	 */
   max-width: 13.25rem;
+
+  &:has(.table-content-left) {
+    min-width: 11rem;
+  }
 }
 .table td:has(.osui-progress-bar) {
   width: 13.3rem;
@@ -894,7 +898,7 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   transition: all 0.3s ease-in-out;
 }
 .layout-side:has(.osui-sidebar--is-open) .background-layer {
-  background: var(--layer-background);
+  /* background: var(--layer-background); */
   transform: scale(1);
   display: block;
   z-index: 12;
@@ -1647,4 +1651,10 @@ input[type="number"]::-webkit-outer-spin-button {
 input:has(+ .validation-message) {
   border: 1px solid var(--red) !important;
   box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.671);
+}
+
+span:has(textarea) {
+  display: block;
+  height: 100%;
+  width: 100%;
 }
