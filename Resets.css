@@ -813,12 +813,25 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   background: var(--button-primary-bg);
   color: var(--button-primary-text);
   border: 1px solid var(--button-primary-border);
+
+  & .fill-stroke.print svg path:not(:last-child) {
+    stroke: var(--button-primary-border);
+  }
+  & .fill-stroke.print svg path:last-child {
+    fill: var(--button-primary-border);
+  }
 }
 .btn.btn-primary:hover {
   background: var(--button-primary-hover-bg);
   border-color: var(--button-primary-hover-border);
   box-shadow: var(--button-primary-hover-box-shadow);
   color: var(--white);
+  & .fill-stroke.print svg path:not(:last-child) {
+    stroke: var(--button-primary-hover-border);
+  }
+  & .fill-stroke.print svg path:last-child {
+    fill: var(--button-primary-hover-border);
+  }
 }
 .btn.btn-primary:hover .stroke svg path {
   stroke: var(--white);
@@ -847,12 +860,19 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   background: var(--button-success-bg);
   color: var(--button-success-text);
   border: 1px solid var(--button-success-border);
+
+  & .stroke svg path {
+    stroke: var(--button-success-border);
+  }
 }
 .btn.btn-success:hover {
   background: var(--button-success-hover-bg);
   border-color: var(--button-success-hover-border);
   box-shadow: var(--button-success-hover-box-shadow);
   color: var(--white);
+  & .stroke svg path {
+    stroke: var(--white);
+  }
 }
 .btn.btn-reject {
   background: var(--button-reject-bg);
@@ -965,6 +985,15 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   padding: 0;
   max-width: fit-content;
   transition: var(--transition);
+  margin: 0;
+  max-height: 95vh;
+  overflow: hidden;
+}
+
+.popup-content {
+  max-height: 95vh;
+  overflow: hidden;
+  height: 100%;
 }
 /* Popup */
 label {

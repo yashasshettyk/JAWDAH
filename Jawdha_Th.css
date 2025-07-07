@@ -746,6 +746,11 @@ body.night-mode {
   .doc-upload {
   max-width: 21.5625rem;
 }
+
+.uploaded-count {
+  font-size: 0.75rem;
+  margin-top: 5px;
+}
 .adaptive-column-template-wrapper.expand-collapse-container > div {
   display: flex;
   align-items: center;
@@ -1717,14 +1722,21 @@ a:has(.btn-inner-template) {
 /* Popup Template */
 .popup-template-wrapper > div:nth-child(1) {
   display: grid;
-  grid-template-columns: 1fr 24px;
+  grid-template-columns: auto 1fr 1.5rem;
   align-items: center;
   gap: 10px;
+  height: 4.0625rem;
   padding: 0.75rem 1.25rem;
   border-bottom: 1px solid var(--content-border);
   /* max-width: 63.5rem;
 	 */
   min-width: 63.5rem;
+
+  & [data-block="ICONS.Close"] {
+    & .fill svg path {
+      fill: var(--red);
+    }
+  }
 }
 .popup-template-wrapper > div:nth-child(1) > div:nth-child(1) {
   color: var(--theme-text);
@@ -1737,14 +1749,14 @@ a:has(.btn-inner-template) {
   /* 30px */
   letter-spacing: 0.021rem;
 }
-.popup-template-wrapper > div:nth-child(1) > div:nth-child(2) .fill svg path {
+.popup-template-wrapper > div:nth-child(1) > div:nth-child(3) .fill svg path {
   fill: var(--red);
 }
-.popup-template-wrapper > div:nth-child(1) > div:nth-child(2) svg {
+.popup-template-wrapper > div:nth-child(1) > div:nth-child(3) svg {
   position: relative;
   transition: var(--transition);
 }
-.popup-template-wrapper > div:nth-child(1) > div:nth-child(2) svg:hover {
+.popup-template-wrapper > div:nth-child(1) > div:nth-child(3) svg:hover {
   transform: rotate(90deg);
 }
 .popup-template-wrapper .popup-template-body {
@@ -2988,4 +3000,27 @@ a:has(.btn-inner-template) {
       }
     }
   }
+}
+
+.popup-template-wrapper.doc-view {
+  max-height: 95vh;
+
+  & .popup-template-body {
+    height: max-content;
+    overflow-y: auto;
+    max-height: calc(95vh - 4.0625rem);
+  }
+}
+
+.popup-template-wrapper.doc-view {
+  & .popup-template-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+}
+
+.popup-backdrop {
+  background-color: var(--overlay-background);
+  backdrop-filter: blur(7px);
 }

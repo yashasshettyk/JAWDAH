@@ -110,8 +110,7 @@
   --button-primary-border-dark: #6c7f9f;
   --button-primary-hover-bg-light: #2a475c;
   --button-primary-hover-bg-dark: #3b6b94;
-  --button-primary-hover-box-shadow-light: 0px 0px
-    var(--box-shadow-spread-value) #000;
+  --button-primary-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value) #346f9a;
   --button-primary-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
     #000;
   --button-primary-hover-border-light: #fff;
@@ -237,17 +236,17 @@
   /* External Portal Dashboard Card */
   /* wizard */
   --wizard-bg-light: #fff;
---wizard-bg-dark: #757575;
---wizard-past-border-light: #2bff2b;
---wizard-past-border-dark: #2bff2b;
---wizard-active-border-light: #ffb200;
---wizard-active-border-dark: #ffb200;
---wizard-reject-border-light: #ff3939;
---wizard-reject-border-dark: #ff3939;
---wizard-line-color-neutral-light: #e2e2e2;
---wizard-line-color-neutral-dark: #3c3c3c;
---wizard-line-color-active-light: #2bff2b;
---wizard-line-color-active-dark: #2bff2b;
+  --wizard-bg-dark: #757575;
+  --wizard-past-border-light: #2bff2b;
+  --wizard-past-border-dark: #2bff2b;
+  --wizard-active-border-light: #ffb200;
+  --wizard-active-border-dark: #ffb200;
+  --wizard-reject-border-light: #ff3939;
+  --wizard-reject-border-dark: #ff3939;
+  --wizard-line-color-neutral-light: #e2e2e2;
+  --wizard-line-color-neutral-dark: #3c3c3c;
+  --wizard-line-color-active-light: #2bff2b;
+  --wizard-line-color-active-dark: #2bff2b;
 
   /* wizard */
   --confirmation-svg-rect-1-light: #d1fadf;
