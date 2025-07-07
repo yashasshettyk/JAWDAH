@@ -746,6 +746,17 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
 .animated-label-input .form-control[data-textarea] {
   margin-top: 0px;
   padding: 10px;
+  height: 100%;
+}
+.animated-label {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+	& .animated-label-input{
+		height:100%;
+	}
 }
 .animated-label-text {
   top: 0.6575rem;
