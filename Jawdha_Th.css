@@ -2831,7 +2831,22 @@ a:has(.btn-inner-template) {
 /* ILC Item Specification */
 
 /* IsRTL - Tab */
+.is-rtl .tab-details-loader .tab-details-loader-header > div {
+  width: 16.625rem;
+  position: relative;
+  height: 2.375rem;
+  clip-path: polygon(20% 0%, 100% 0%, 80% 100%, 0% 100%);
+}
 .is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(1) {
   clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(2) {
+  transform: translateX(3.2rem);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(3) {
+  transform: translateX(6.4rem);
+}
+.is-rtl .tab-details-loader .tab-details-loader-header > div:nth-child(4) {
+  transform: translateX(9.6rem);
 }
 /* IsRTL - Tab */
