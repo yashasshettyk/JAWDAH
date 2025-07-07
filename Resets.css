@@ -749,14 +749,14 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   height: 100%;
 }
 .animated-label {
-    position: relative;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
-	& .animated-label-input{
-		height:100%;
-	}
+  & .animated-label-input {
+    height: 100%;
+  }
 }
 .animated-label-text {
   top: 0.6575rem;
@@ -898,6 +898,10 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
 }
 .osui-sidebar.osui-sidebar--is-right {
   right: 10px;
+}
+
+.osui-sidebar.osui-sidebar--is-left {
+  left: 10px;
 }
 .layout-side .background-layer {
   position: fixed;
