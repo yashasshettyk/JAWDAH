@@ -2751,13 +2751,39 @@ a:has(.btn-inner-template) {
 }
 
 /* Customer Contact Details */
-.customer-contact-details-a1 {
+.customer-contact-details-a1 > div {
   display: flex;
+}
+
+.customer-contact-details-a2 > div {
+  display: flex;
+  column-gap: 6rem;
 }
 /* Customer Contact Details */
 
 /* ILC Item Specification */
-.ilc-item-specification-a1 {
+
+.ilc-item-specification-a2 > div {
+  display: flex;
+  column-gap: 7.375rem;
+  
+  & .adaptive-column-template-wrapper > div {
+    display: flex;
+    column-gap: 5.5625rem;
+  }
+}
+
+.ilc-item-specification-a3 > div {
+  display: flex;
+  column-gap: 7.875rem;
+
+  & .adaptive-column-template-wrapper > div {
+    display: flex;
+    column-gap: 7.9375rem;
+  }
+}
+
+.ilc-item-specification-a4 > div {
   display: flex;
 }
 /* ILC Item Specification */
