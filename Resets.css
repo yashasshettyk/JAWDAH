@@ -113,8 +113,8 @@
 }
 .main-content.jawdah-main-content {
   padding: var(--sidemenu-margin);
-  max-width: 88.75rem;
-  margin: 0 auto;
+  /* max-width: 88.75rem;
+  margin: 0 auto; */
 }
 *::-webkit-scrollbar {
   width: 2px;
