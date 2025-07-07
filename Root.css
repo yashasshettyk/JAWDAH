@@ -237,32 +237,18 @@
   /* External Portal Dashboard Card */
   /* wizard */
   --wizard-bg-light: #fff;
-  --wizard-bg-dark: #fff;
-  --wizard-past-border-light: #2bff2b;
-  --wizard-past-border-dark: #2bff2b;
-  --wizard-active-border-light: #ffb200;
-  --wizard-active-border-dark: #ffb200;
-  --wizard-reject-border-light: #ff3939;
-  --wizard-reject-border-dark: #ff3939;
-  --wizard-line-color-neutral-light: #eaeaea;
-  --wizard-line-color-neutral-dark: #3c3c3c;
-  --wizard-line-color-active-light: #2bff2b;
-  --wizard-line-color-active-dark: #2bff2b;
-  --wizard-bg-dark: #757575;
-  --wizard-past-border-light: #2bff2b;
-  --wizard-past-border-dark: #2bff2b;
-  --wizard-active-border-light: #ffb200;
-  --wizard-active-border-dark: #ffb200;
-  --wizard-line-color-neutral-light: #eaeaea;
-  --wizard-line-color-neutral-dark: #3c3c3c;
-  --wizard-line-color-active-light: #2bff2b;
-  --wizard-line-color-active-dark: #2bff2b;
-  --wizard-past-border-light: #2bff2b;
-  --wizard-past-border-dark: #2bff2b;
-  --wizard-line-color-neutral-light: #e2e2e2;
-  --wizard-line-color-neutral-dark: #3c3c3c;
-  --wizard-line-color-active-light: #2bff2b;
-  --wizard-line-color-active-dark: #2bff2b;
+--wizard-bg-dark: #757575;
+--wizard-past-border-light: #2bff2b;
+--wizard-past-border-dark: #2bff2b;
+--wizard-active-border-light: #ffb200;
+--wizard-active-border-dark: #ffb200;
+--wizard-reject-border-light: #ff3939;
+--wizard-reject-border-dark: #ff3939;
+--wizard-line-color-neutral-light: #e2e2e2;
+--wizard-line-color-neutral-dark: #3c3c3c;
+--wizard-line-color-active-light: #2bff2b;
+--wizard-line-color-active-dark: #2bff2b;
+
   /* wizard */
   --confirmation-svg-rect-1-light: #d1fadf;
   --confirmation-svg-rect-1-dark: #346d47;
@@ -346,7 +332,6 @@ body {
   --input-bg: var(--input-bg-light);
   --input-border: var(--input-border-light);
   --input-text-color: var(--input-text-color-light);
-  --input-placeholder-color: var(--input-placeholder-color-light);
   --input-disabled-bg: var(--input-disabled-bg-light);
   --input-disabled-text-color: var(--input-disabled-text-color-light);
   --input-placeholder-color: var(--input-placeholder-color-light);
@@ -392,7 +377,6 @@ body {
   --button-reject-hover-border: var(--button-reject-hover-border-light);
   --radio-btn-border-color: var(--radio-btn-border-color-light);
   --radio-btn-bg-color: var(--radio-btn-bg-color-light);
-  --light-blue: var(--light-blue-light);
   --light-blue: var(--light-blue);
   /* Button Group Colors */
   --button-group-bg: var(--button-group-bg-light);
@@ -490,7 +474,6 @@ body.dark {
   --input-bg: var(--input-bg-dark);
   --input-border: var(--input-border-dark);
   --input-text-color: var(--input-text-color-dark);
-  --input-placeholder-color: var(--input-placeholder-color-dark);
   --input-disabled-bg: var(--input-disabled-bg-dark);
   --input-disabled-text-color: var(--input-disabled-text-color-dark);
   --input-placeholder-color: var(--input-placeholder-color-dark);
