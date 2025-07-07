@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Hide printable content on screen by default */
+      .printable {
+        display: none;
+      }
+
+      @media print {
+        @page {
+          margin: 0.5in;
+          size: auto;
+        }
+        body * {
+          visibility: hidden;
+        }
+        .printable,
+        .printable * {
+          visibility: visible;
+        }
+        .printable {
+          display: block;
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          max-width: 100%;
+          height: auto;
+          overflow: hidden;
+          transform-origin: top left;
+          box-sizing: border-box;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+        }
+        /* Ensure tables and wide content fit */
+        .printable table {
+          width: 100% !important;
+          table-layout: fixed;
+        }
+        .printable * {
+          max-width: 100% !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>Non-printable content</div>
+
+    <div class="printable" id="print-section">
+      <h2>This will be printed</h2>
+      <p>Only this section prints</p>
+    </div>
+
+    <div>More non-printable content</div>
+
+    <button onclick="window.print()">Print Section</button>
+  </body>
+</html>
