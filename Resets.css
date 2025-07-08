@@ -864,6 +864,10 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   & .stroke svg path {
     stroke: var(--button-success-border);
   }
+
+  & .fill svg path {
+    fill: var(--button-success-border);
+  }
 }
 .btn.btn-success:hover {
   background: var(--button-success-hover-bg);
@@ -873,17 +877,28 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   & .stroke svg path {
     stroke: var(--white);
   }
+
+  & .fill svg path {
+    fill: var(--white);
+  }
 }
 .btn.btn-reject {
   background: var(--button-reject-bg);
   color: var(--button-reject-text);
   border: 1px solid var(--button-reject-border);
+
+  & .fill svg path {
+    fill: var(--button-reject-border);
+  }
 }
 .btn.btn-reject:hover {
   background: var(--button-reject-hover-bg);
   border-color: var(--button-reject-hover-border);
   box-shadow: var(--button-reject-hover-box-shadow);
   color: var(--white);
+  & .fill svg path {
+    fill: var(--white);
+  }
 }
 .btn.btn-light {
   background: var(--button-light-bg);
