@@ -1719,3 +1719,50 @@ span:has(textarea) {
   height: 100%;
   width: 100%;
 }
+
+/* Content 12 */
+.content-12
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]
+  .osui-tabs__header-item:not(.osui-tabs--is-active)::before {
+  content: "";
+  position: absolute;
+  height: 6.25rem;
+  width: 0.125rem;
+  background: var(--border-color);
+  bottom: -0.125rem;
+  right: 0rem;
+  transform-origin: bottom;
+  transform: rotate(-42deg);
+}
+
+.content-13
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]
+  .osui-tabs__header-item:not(.osui-tabs--is-active)::before {
+  content: "";
+  position: absolute;
+  height: 6.25rem;
+  width: 0.125rem;
+  background: var(--border-color);
+  bottom: -0.125rem;
+  right: 0rem;
+  transform-origin: bottom;
+  transform: rotate(-44deg);
+}
+
+.content-14
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]
+  .osui-tabs__header-item:not(.osui-tabs--is-active)::before {
+  content: "";
+  position: absolute;
+  height: 6.25rem;
+  width: 0.125rem;
+  background: var(--border-color);
+  bottom: -0.125rem;
+  right: 0rem;
+  transform-origin: bottom;
+  transform: rotate(-47deg);
+}
+/* Content 12 */
