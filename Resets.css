@@ -510,7 +510,7 @@ body.dark th.sortable:hover {
   bottom: -0.125rem;
   right: 0rem;
   transform-origin: bottom;
-  transform: rotate(-47.9deg);
+  transform: rotate(-51deg);
 }
 .is-rtl
   .display-contents
@@ -525,7 +525,7 @@ body.dark th.sortable:hover {
   right: unset;
   left: 1px;
   transform-origin: bottom;
-  transform: rotate(49.5deg);
+  transform: rotate(51deg);
 }
 .display-contents
   > [data-block="Navigation.TabsHeaderItem"]:nth-child(3)
@@ -1736,6 +1736,23 @@ span:has(textarea) {
   transform: rotate(-42deg);
 }
 
+.is-rtl
+  .content-12
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(.osui-tabs--is-active)
+  .osui-tabs__header-item::before {
+  content: "";
+  position: absolute;
+  height: 6.25rem;
+  width: 2px;
+  background: var(--border-color);
+  bottom: 0;
+  right: unset;
+  left: 1px;
+  transform-origin: bottom;
+  transform: rotate(42deg);
+}
+
 .content-13
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]
@@ -1751,6 +1768,23 @@ span:has(textarea) {
   transform: rotate(-44deg);
 }
 
+.is-rtl
+  .content-13
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(.osui-tabs--is-active)
+  .osui-tabs__header-item::before {
+  content: "";
+  position: absolute;
+  height: 6.25rem;
+  width: 2px;
+  background: var(--border-color);
+  bottom: 0;
+  right: unset;
+  left: 1px;
+  transform-origin: bottom;
+  transform: rotate(44deg);
+}
+
 .content-14
   .display-contents
   > [data-block="Navigation.TabsHeaderItem"]
@@ -1764,5 +1798,22 @@ span:has(textarea) {
   right: 0rem;
   transform-origin: bottom;
   transform: rotate(-47deg);
+}
+
+.is-rtl
+  .content-14
+  .display-contents
+  > [data-block="Navigation.TabsHeaderItem"]:not(.osui-tabs--is-active)
+  .osui-tabs__header-item::before {
+  content: "";
+  position: absolute;
+  height: 6.25rem;
+  width: 2px;
+  background: var(--border-color);
+  bottom: 0;
+  right: unset;
+  left: 1px;
+  transform-origin: bottom;
+  transform: rotate(47deg);
 }
 /* Content 12 */
