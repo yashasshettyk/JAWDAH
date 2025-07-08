@@ -510,7 +510,7 @@ body.dark th.sortable:hover {
   bottom: -0.125rem;
   right: 0rem;
   transform-origin: bottom;
-  transform: rotate(-51deg);
+  transform: rotate(-47.9deg);
 }
 .is-rtl
   .display-contents
