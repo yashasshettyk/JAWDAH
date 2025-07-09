@@ -3108,3 +3108,10 @@ a:has(.btn-inner-template) {
   padding-block: 1.5px;
   background: var(--button-reject-bg);
 }
+
+
+.animated-label:not(.active) {
+  label::after{
+    display: none;
+  }
+}
