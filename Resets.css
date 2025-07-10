@@ -696,12 +696,13 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   /* 18px */
   white-space: nowrap;
   letter-spacing: 0.0126rem;
+  line-height: normal;
 }
 .input-with-label-wrapper > div:nth-child(1) {
   position: absolute;
   /* padding: 0.0625rem 0.3875rem;
 	 */
-  height: 1.25rem;
+  /* height: 1.25rem; */
   z-index: 2;
   width: max-content;
   white-space: nowrap;
@@ -740,6 +741,8 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
 }
 .animated-label.active .animated-label-text label {
   font-size: 0.75rem;
+  opacity: 1;
+  color: var(--theme-text);
   background: var(--content-background);
   padding-inline-start: 5px;
 }
@@ -764,11 +767,16 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
 }
 .animated-label-text label {
   font-size: 0.875rem;
+  color: var(--input-placeholder-color);
 }
 .animated-label-input .form-control[data-input],
 .animated-label-input .form-control[data-textarea] {
   border-radius: var(--input-border-radius);
   resize: none;
+}
+
+.vscomp-toggle-button {
+  border-radius: var(--input-border-radius);
 }
 .is-rtl .input-with-label-wrapper.curr-ip > div:nth-child(3) {
   inset-inline-end: 1.25rem;
@@ -950,7 +958,7 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   transition: all 0.3s ease-in-out;
 }
 .layout-side:has(.osui-sidebar--is-open) .background-layer {
-  /* background: var(--layer-background); */
+  background: var(--layer-background);
   transform: scale(1);
   display: block;
   z-index: 12;
@@ -1817,3 +1825,94 @@ span:has(textarea) {
   transform: rotate(47deg);
 }
 /* Content 12 */
+
+.vscomp-ele .vscomp-clear-icon::after {
+  content: "\e900";
+  color: var(--red);
+}
+
+.vscomp-ele .vscomp-clear-icon::before {
+  display: none;
+}
+
+.vscomp-wrapper.show-value-as-tags
+  .vscomp-value-tag
+  .vscomp-value-tag-clear-button {
+  background: unset;
+  position: relative;
+  inset: unset;
+}
+
+[class^="icon-"],
+[class*=" icon-"],
+.vscomp-clear-icon::after {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icomoon" !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.vscomp-wrapper.show-value-as-tags
+  .vscomp-value-tag
+  .vscomp-value-tag-clear-button
+  .vscomp-clear-icon:before,
+.vscomp-wrapper.show-value-as-tags
+  .vscomp-value-tag
+  .vscomp-value-tag-clear-button
+  .vscomp-clear-icon:after {
+  color: var(--red);
+}
+
+.vscomp-wrapper.show-value-as-tags .vscomp-value-tag {
+  background: var(--dropdown-tag-bg);
+  font-size: 0.75rem;
+  font-style: normal;
+  padding: 8px 12px;
+  align-items: center;
+  gap: 4px;
+  font-weight: 400;
+  grid-template-columns: 1fr auto;
+  display: grid;
+  line-height: normal;
+  color: var(--dropdown-tag-text-color);
+}
+
+.vscomp-search-input {
+  color: var(--input-text-color);
+
+  &::placeholder {
+    color: var(--input-text-color);
+  }
+}
+
+.vscomp-toggle-button:after {
+  color: var(--content-color);
+}
+.vscomp-wrapper.has-value .vscomp-value {
+  padding-block: 8px;
+}
+
+.vscomp-option.focused,
+.vscomp-option.selected {
+  background-color: var(--active-menu-bg);
+  color: var(--white);
+  opacity: 1;
+  & .vscomp-option-text {
+    color: var(--white);
+  }
+}
+
+.vscomp-option {
+  background: var(--content-background);
+  opacity: 0.7;
+  & .vscomp-option-text {
+    color: var(--content-color);
+  }
+}
