@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Signature Area</title>
+    <title>Dynamic Signature Area</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -22,44 +22,71 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
-      #signatureCanvas {
-        border: 1px solid #ccc;
-        cursor: crosshair;
+      /* New styles for dynamic signature system */
+      .signature-placeholder {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        color: #666;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .signature-placeholder:hover {
+        border-color: #4caf50;
+        background-color: #f0f8f0;
+      }
+
+      .signature-placeholder.highlighted {
+        border-color: #4caf50;
+        background-color: #e8f5e8;
+        box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+      }
+
+      .signature-placeholder.signing {
+        border: 2px solid #4caf50;
+        padding: 5px;
         background: white;
       }
 
-      .button-container {
-        margin-top: 15px;
+      .signature-canvas {
+        border: 1px solid #ccc;
+        cursor: crosshair;
+        background: white;
+        width: 100%;
+        height: 150px;
+      }
+
+      .signature-controls {
+        margin-top: 10px;
         display: flex;
         gap: 10px;
         justify-content: center;
       }
 
-      button {
-        padding: 10px 20px;
+      .sign-btn {
+        background-color: #2196f3;
+        color: white;
+        padding: 15px 30px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
-        transition: background-color 0.3s;
+        margin: 20px;
       }
 
-      .ok-btn {
-        background-color: #4caf50;
-        color: white;
+      .sign-btn:hover {
+        background-color: #1976d2;
       }
 
-      .ok-btn:hover {
-        background-color: #45a049;
-      }
-
-      .clear-btn {
-        background-color: #f44336;
-        color: white;
-      }
-
-      .clear-btn:hover {
-        background-color: #da190b;
+      .sign-btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
       }
 
       .result {
@@ -74,353 +101,80 @@
     </style>
   </head>
   <body>
-    <h1>Digital Signature</h1>
-    <div class="signature-container">
-      <p>Please sign in the box below:</p>
-      <canvas id="signatureCanvas" width="500" height="200"></canvas>
-      <div class="button-container">
-        <button class="clear-btn" onclick="SignatureModule.clearSignature()">
-          Clear
-        </button>
-        <button class="ok-btn" onclick="SignatureModule.saveSignature()">
-          Okay
-        </button>
-      </div>
+    <h1>Dynamic Signature System</h1>
+    
+    <button id="signBtn" class="sign-btn" onclick="DynamicSignature.startSigning()">
+      Start Signing
+    </button>
+
+    <!-- Sample signature placeholders -->
+    <div class="signature-placeholder" data-signature-id="signature1">
+      Click to sign here - Area 1
     </div>
-    <div id="result" class="result"></div>
+    
+    <div class="signature-placeholder" data-signature-id="signature2">
+      Click to sign here - Area 2
+    </div>
+    
+    <div class="signature-placeholder" data-signature-id="signature3">
+      Click to sign here - Area 3
+    </div>
 
+    <!-- Include the signature library -->
+    <script src="signature-library.js"></script>
+    
     <script>
-      // Signature Module - Can be exported to OutSystems
-      const SignatureModule = (function () {
-        // Private variables
-        let canvas;
-        let ctx;
-        let isDrawing = false;
-        let lastX = 0;
-        let lastY = 0;
-        let onSaveCallback = null;
+      // Initialize the library when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          // Initialize with custom options
+          const initResult = DynamicSignature.init({
+            signatureClass: 'signature-placeholder',
+            onComplete: function(signatureData) {
+              console.log('Signature completed:', signatureData);
+              // Handle signature completion here
+              // You can send signatureData to your server or process it as needed
+            }
+          });
 
-        // Get mouse/touch coordinates relative to the canvas
-        function getCoordinates(e) {
-          const rect = canvas.getBoundingClientRect();
-          const scaleX = canvas.width / rect.width;
-          const scaleY = canvas.height / rect.height;
-
-          // Get client coordinates
-          let clientX, clientY;
-
-          if (e.type.includes("touch")) {
-            const touch = e.touches[0] || e.changedTouches[0];
-            clientX = touch.clientX;
-            clientY = touch.clientY;
+          if (initResult.success) {
+            console.log('Signature library ready');
+            
+            // Check for placeholders
+            const placeholderCheck = DynamicSignature.hasPlaceholders();
+            console.log('Placeholder check:', placeholderCheck.message);
           } else {
-            clientX = e.clientX;
-            clientY = e.clientY;
+            console.error('Failed to initialize:', initResult.message);
           }
-
-          // Calculate relative position with scale compensation
-          const x = (clientX - rect.left) * scaleX;
-          const y = (clientY - rect.top) * scaleY;
-
-          return [x, y];
+        } catch (error) {
+          console.error('Error during initialization:', error);
         }
-
-        // Touch event handler: convert touch to mouse events
-        function handleTouch(e) {
-          e.preventDefault();
-          e.stopPropagation();
-
-          const touch = e.touches[0] || e.changedTouches[0];
-          if (!touch) return;
-
-          const eventType =
-            e.type === "touchstart"
-              ? "mousedown"
-              : e.type === "touchmove"
-              ? "mousemove"
-              : "mouseup";
-
-          // Create synthetic mouse event with correct coordinates
-          const rect = canvas.getBoundingClientRect();
-          const mouseEvent = {
-            clientX: touch.clientX,
-            clientY: touch.clientY,
-            preventDefault: () => {},
-            stopPropagation: () => {},
-            type: eventType,
-          };
-
-          // Dispatch the appropriate handler directly
-          if (eventType === "mousedown") {
-            startDrawing(mouseEvent);
-          } else if (eventType === "mousemove") {
-            draw(mouseEvent);
-          } else if (eventType === "mouseup") {
-            stopDrawing();
-          }
-        }
-
-        function startDrawing(e) {
-          isDrawing = true;
-          [lastX, lastY] = getCoordinates(e);
-        }
-
-        function draw(e) {
-          if (!isDrawing) return;
-          const [currentX, currentY] = getCoordinates(e);
-          ctx.beginPath();
-          ctx.moveTo(lastX, lastY);
-          ctx.lineTo(currentX, currentY);
-          ctx.stroke();
-          [lastX, lastY] = [currentX, currentY];
-        }
-
-        function stopDrawing() {
-          isDrawing = false;
-        }
-
-        function setupEventListeners() {
-          // Mouse events
-          canvas.addEventListener("mousedown", startDrawing, {
-            passive: false,
-          });
-          canvas.addEventListener("mousemove", draw, { passive: false });
-          canvas.addEventListener("mouseup", stopDrawing, { passive: false });
-          canvas.addEventListener("mouseout", stopDrawing, { passive: false });
-
-          // Touch events for mobile - with passive: false to allow preventDefault
-          canvas.addEventListener("touchstart", handleTouch, {
-            passive: false,
-          });
-          canvas.addEventListener("touchmove", handleTouch, { passive: false });
-          canvas.addEventListener("touchend", handleTouch, { passive: false });
-          canvas.addEventListener("touchcancel", stopDrawing, {
-            passive: false,
-          });
-        }
-
-        function initializeCanvas() {
-          ctx.strokeStyle = "#000";
-          ctx.lineWidth = 2;
-          ctx.lineCap = "round";
-          ctx.lineJoin = "round";
-
-          // Ensure canvas has proper CSS for OutSystems
-          canvas.style.touchAction = "none";
-          canvas.style.userSelect = "none";
-          canvas.style.webkitUserSelect = "none";
-          canvas.style.mozUserSelect = "none";
-          canvas.style.msUserSelect = "none";
-        }
-
-        // Public API - Functions callable from OutSystems
-        return {
-          // Main initialization function
-          initialize: function (canvasId, saveCallback) {
-            canvas = document.getElementById(canvasId);
-            if (!canvas) {
-              throw new Error("Canvas element not found");
-            }
-
-            ctx = canvas.getContext("2d");
-            onSaveCallback = saveCallback;
-
-            // Force canvas to maintain aspect ratio in OutSystems
-            const computedStyle = window.getComputedStyle(canvas);
-            const displayWidth = parseInt(computedStyle.width);
-            const displayHeight = parseInt(computedStyle.height);
-
-            // If canvas display size differs from actual size, adjust
-            if (displayWidth && displayHeight) {
-              if (
-                canvas.width !== displayWidth ||
-                canvas.height !== displayHeight
-              ) {
-                // Maintain the original canvas resolution but ensure proper scaling
-                canvas.style.width = canvas.width + "px";
-                canvas.style.height = canvas.height + "px";
-              }
-            }
-
-            initializeCanvas();
-            setupEventListeners();
-
-            return {
-              success: true,
-              message: "Signature module initialized successfully",
-            };
-          },
-
-          // Clear the signature canvas
-          clearSignature: function () {
-            if (!canvas || !ctx) {
-              return { success: false, message: "Canvas not initialized" };
-            }
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            const resultDiv = document.getElementById("result");
-            if (resultDiv) {
-              resultDiv.style.display = "none";
-            }
-
-            return { success: true, message: "Signature cleared" };
-          },
-
-          // Save and return signature as base64 PNG
-          saveSignature: function () {
-            if (!canvas || !ctx) {
-              return { success: false, message: "Canvas not initialized" };
-            }
-
-            const imageData = ctx.getImageData(
-              0,
-              0,
-              canvas.width,
-              canvas.height
-            );
-            const isEmpty = imageData.data.every((pixel) => pixel === 0);
-
-            if (isEmpty) {
-              return {
-                success: false,
-                message: "Please provide a signature before saving",
-              };
-            }
-
-            const base64 = canvas.toDataURL("image/png");
-
-            if (onSaveCallback && typeof onSaveCallback === "function") {
-              onSaveCallback(base64);
-            }
-
-            this.displayResult(base64);
-
-            return {
-              success: true,
-              message: "Signature saved successfully",
-              data: base64,
-            };
-          },
-
-          // Get base64 signature without showing it in UI
-          getSignatureBase64: function () {
-            if (!canvas || !ctx) {
-              return { success: false, message: "Canvas not initialized" };
-            }
-
-            const imageData = ctx.getImageData(
-              0,
-              0,
-              canvas.width,
-              canvas.height
-            );
-            const isEmpty = imageData.data.every((pixel) => pixel === 0);
-
-            if (isEmpty) {
-              return {
-                success: false,
-                message: "No signature found",
-              };
-            }
-
-            const base64 = canvas.toDataURL("image/png");
-            return {
-              success: true,
-              data: base64,
-            };
-          },
-
-          // Check if any signature has been drawn
-          hasSignature: function () {
-            if (!canvas || !ctx) {
-              return false;
-            }
-
-            const imageData = ctx.getImageData(
-              0,
-              0,
-              canvas.width,
-              canvas.height
-            );
-            return !imageData.data.every((pixel) => pixel === 0);
-          },
-
-          // Customize drawing styles
-          setCanvasProperties: function (properties) {
-            if (!ctx) {
-              return { success: false, message: "Canvas not initialized" };
-            }
-
-            if (properties.strokeStyle)
-              ctx.strokeStyle = properties.strokeStyle;
-            if (properties.lineWidth) ctx.lineWidth = properties.lineWidth;
-            if (properties.lineCap) ctx.lineCap = properties.lineCap;
-            if (properties.lineJoin) ctx.lineJoin = properties.lineJoin;
-
-            return { success: true, message: "Canvas properties updated" };
-          },
-
-          // Optional: show base64 + preview
-          displayResult: function (base64) {
-            const resultDiv = document.getElementById("result");
-            if (resultDiv) {
-              resultDiv.innerHTML = `
-          <h3>Signature saved as base64 PNG:</h3>
-          <p><strong>Data:</strong></p>
-          <textarea readonly style="width: 100%; height: 100px; resize: vertical;">${base64}</textarea>
-          <p><strong>Preview:</strong></p>
-          <img src="${base64}" style="border: 1px solid #ccc; max-width: 100%;" alt="Signature Preview">
-        `;
-              resultDiv.style.display = "block";
-            }
-          },
-
-          // Resize the canvas
-          resizeCanvas: function (width, height) {
-            if (!canvas) {
-              return { success: false, message: "Canvas not initialized" };
-            }
-
-            canvas.width = width || 500;
-            canvas.height = height || 200;
-            initializeCanvas();
-
-            return { success: true, message: "Canvas resized" };
-          },
-
-          // Add method to fix coordinate issues in OutSystems
-          calibrateCanvas: function () {
-            if (!canvas) {
-              return { success: false, message: "Canvas not initialized" };
-            }
-
-            // Force redraw of canvas bounds
-            const rect = canvas.getBoundingClientRect();
-            canvas.style.width = canvas.width + "px";
-            canvas.style.height = canvas.height + "px";
-
-            // Clear any CSS transforms that might affect positioning
-            canvas.style.transform = "none";
-
-            return {
-              success: true,
-              message: "Canvas calibrated",
-              bounds: {
-                width: rect.width,
-                height: rect.height,
-                canvasWidth: canvas.width,
-                canvasHeight: canvas.height,
-              },
-            };
-          },
-        };
-      })();
-
-      // Expose globally for OutSystems
-      window.SignatureModule = SignatureModule;
-      SignatureModule.initialize("signatureCanvas", function (base64) {
-        console.log("Signature captured:", base64);
       });
+
+      // Optional: Add custom event handlers
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled promise rejection:', event.reason);
+      });
+
+      // Example usage functions (optional)
+      function getAllSignatures() {
+        const signatures = DynamicSignature.getAllSignatures();
+        console.log('All signatures:', signatures);
+        return signatures;
+      }
+
+      function downloadSignature(signatureId) {
+        const result = DynamicSignature.downloadSignature(signatureId);
+        console.log('Download result:', result);
+        return result;
+      }
+
+      function resetSignatureSystem() {
+        const result = DynamicSignature.reset();
+        console.log('Reset result:', result);
+        return result;
+      }
     </script>
   </body>
 </html>
+         
