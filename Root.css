@@ -110,7 +110,8 @@
   --button-primary-border-dark: #6c7f9f;
   --button-primary-hover-bg-light: #2a475c;
   --button-primary-hover-bg-dark: #3b6b94;
-  --button-primary-hover-box-shadow-light: 0px 0px var(--box-shadow-spread-value) #346f9a;
+  --button-primary-hover-box-shadow-light: 0px 0px
+    var(--box-shadow-spread-value) #346f9a;
   --button-primary-hover-box-shadow-dark: 0px 0px var(--box-shadow-spread-value)
     #000;
   --button-primary-hover-border-light: #fff;
@@ -205,7 +206,7 @@
   --active-tab-hover-bg-light: #9bc3dc;
   --active-tab-hover-bg-dark: #565f6d;
   --layer-background-light: rgba(0, 0, 0, 0.5);
-  --layer-background-dark: #000;
+  --layer-background-dark: #27292c40;
   --sidebar-border-color-light: #c0e7ff;
   --sidebar-border-color-dark: #4b5c74;
   --checkbox-bg-light: #fff;
@@ -283,6 +284,10 @@
   --canvas-bg-dark: #2c3440;
   --border-highlighted-color-light: #c0e7ff;
   --border-highlighted-color-dark: #c0e7ff;
+  --dropdown-tag-bg-light: #e7f6ff;
+  --dropdown-tag-bg-dark: #c8d7ee;
+  --dropdown-tag-text-color-light: #2a475c;
+  --dropdown-tag-text-color-dark: #10181e;
 }
 html {
   -webkit-font-smoothing: antialiased;
@@ -437,6 +442,8 @@ body {
   --theme-text-2: var(--theme-text-2-light);
   --canvas-bg: var(--canvas-bg-light);
   --border-highlighted-color: var(--border-highlighted-color-light);
+  --dropdown-tag-bg: var(--dropdown-tag-bg-light);
+  --dropdown-tag-text-color: var(--dropdown-tag-text-color-light);
 }
 body.dark {
   color-scheme: light;
@@ -578,4 +585,6 @@ body.dark {
   --theme-text-2: var(--theme-text-2-dark);
   --canvas-bg: var(--canvas-bg-dark);
   --border-highlighted-color: var(--border-highlighted-color-dark);
+  --dropdown-tag-bg: var(--dropdown-tag-bg-dark);
+  --dropdown-tag-text-color: var(--dropdown-tag-text-color-dark);
 }

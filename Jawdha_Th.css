@@ -644,6 +644,18 @@ body.night-mode {
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
+
+  & > div:nth-child(2) {
+    white-space: nowrap;
+    color: var(--theme-text-2);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.0168rem;
+  }
 }
 .expression-with-label-wrapper > div:nth-child(1) label {
   color: var(--theme-text);
@@ -1484,6 +1496,7 @@ a:has(.btn-inner-template) {
   font-feature-settings: "liga" off, "clig" off;
   font-size: 1.25rem;
   font-style: normal;
+  background: var(--content-bg-highlight);
   font-weight: 600;
   line-height: 150%;
   /* 30px */
@@ -1572,7 +1585,7 @@ a:has(.btn-inner-template) {
   width: 100%;
 }
 .filter-clear-text-wrapper {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -3111,6 +3124,7 @@ a:has(.btn-inner-template) {
 
 .animated-label:not(.active) {
   label::after {
+  label::after {
     display: none;
   }
 }
@@ -3156,3 +3170,9 @@ a:has(.btn-inner-template) {
   margin-block: 1rem;
 }
 /* Tab Content Field Title */
+
+
+.item-release-top-header-ilc > div {
+  align-items: center;
+}
+}
