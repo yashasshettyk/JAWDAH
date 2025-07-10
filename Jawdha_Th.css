@@ -3115,6 +3115,12 @@ a:has(.btn-inner-template) {
   }
 }
 
+/* ILC Schedule Tab Content First Section */
+.ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+  grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+}
+/* ILC Schedule Tab Content First Section */
+
 /* Adaptive Two Column */
 .adaptive-one-column.adaptive-column-template-wrapper > div {
   grid-template-columns: 1fr;
