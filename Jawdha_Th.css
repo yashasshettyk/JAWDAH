@@ -3129,6 +3129,11 @@ a:has(.btn-inner-template) {
   }
 }
 
+.item-release-top-header-ilc > div {
+  align-items: center;
+}
+}
+
 /* Adaptive Two Column */
 .adaptive-one-column.adaptive-column-template-wrapper > div {
   grid-template-columns: 1fr;
@@ -3170,9 +3175,3 @@ a:has(.btn-inner-template) {
   margin-block: 1rem;
 }
 /* Tab Content Field Title */
-
-
-.item-release-top-header-ilc > div {
-  align-items: center;
-}
-}
