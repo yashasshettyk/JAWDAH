@@ -3116,8 +3116,20 @@ a:has(.btn-inner-template) {
 }
 
 /* ILC Schedule Tab Content First Section */
-.ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+.content-12 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-13 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
   grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+}
+
+.content-14 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-15 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+}
+
+.content-16 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-17 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-18 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+  grid-template-columns: repeat(3, 1fr);
 }
 /* ILC Schedule Tab Content First Section */
 
