@@ -3175,6 +3175,13 @@ a:has(.btn-inner-template) {
     & > div:nth-child(1) .adaptive-column-template-wrapper > div {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      column-gap: 20px;
+    }
+
+    & > div:nth-child(2) .adaptive-column-template-wrapper > div {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 20px;
     }
   }
 
