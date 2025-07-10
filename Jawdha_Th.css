@@ -3115,6 +3115,16 @@ a:has(.btn-inner-template) {
   }
 }
 
+/* Adaptive Two Column */
+.adaptive-one-column.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr;
+}
+
+.adaptive-two-column.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr 1fr;
+}
+/* Adaptive Two Column */
+
 /* ILC Schedule Tab Content First Section */
 .content-12 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
 .content-13 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
@@ -3132,16 +3142,6 @@ a:has(.btn-inner-template) {
   grid-template-columns: repeat(3, 1fr);
 }
 /* ILC Schedule Tab Content First Section */
-
-/* Adaptive Two Column */
-.adaptive-one-column.adaptive-column-template-wrapper > div {
-  grid-template-columns: 1fr;
-}
-
-.adaptive-two-column.adaptive-column-template-wrapper > div {
-  grid-template-columns: 1fr 1fr;
-}
-/* Adaptive Two Column */
 
 /* Tab Content Field Title */
 .tab-content-field-title {
