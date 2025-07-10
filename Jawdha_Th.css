@@ -3124,41 +3124,51 @@ a:has(.btn-inner-template) {
 
 .animated-label:not(.active) {
   label::after {
-  label::after {
-    display: none;
+    label::after {
+      display: none;
+    }
+  }
+
+  .item-release-top-header-ilc > div {
+    align-items: center;
   }
 }
 
-.item-release-top-header-ilc > div {
-  align-items: center;
-}
-}
-
-/* Adaptive Two Column */
+/* Adaptive One Column */
 .adaptive-one-column.adaptive-column-template-wrapper > div {
   grid-template-columns: 1fr;
 }
+/* Adaptive One Column */
 
+/* Adaptive Two Column */
 .adaptive-two-column.adaptive-column-template-wrapper > div {
   grid-template-columns: 1fr 1fr;
 }
 /* Adaptive Two Column */
 
 /* ILC Schedule Tab Content First Section */
-.content-12 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
-.content-13 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+.ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
   grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
 }
 
-.content-14 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
-.content-15 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
-  grid-template-columns: 2fr 1fr 1fr 2fr;
-}
+@media (max-width: 1024px) {
+  .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+  }
 
-.content-16 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
-.content-17 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
-.content-18 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
-  grid-template-columns: repeat(3, 1fr);
+  .adaptive-one-column.adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 20px;
+  }
+
+  .adaptive-two-column.adaptive-column-template-wrapper > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
 }
 /* ILC Schedule Tab Content First Section */
 
