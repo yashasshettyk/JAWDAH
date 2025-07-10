@@ -3124,10 +3124,55 @@ a:has(.btn-inner-template) {
 
 .animated-label:not(.active) {
   label::after {
+  label::after {
     display: none;
   }
 }
 
+/* ILC Schedule Tab Content First Section */
+.content-12 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-13 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+  grid-template-columns: 2fr 1fr 1fr 2fr 1fr;
+}
+
+.content-14 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-15 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+  grid-template-columns: 2fr 1fr 1fr 2fr;
+}
+
+.content-16 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-17 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div,
+.content-18 .ilc-schedule-tab-a1.adaptive-column-template-wrapper > div {
+  grid-template-columns: repeat(3, 1fr);
+}
+/* ILC Schedule Tab Content First Section */
+
+/* Adaptive Two Column */
+.adaptive-one-column.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr;
+}
+
+.adaptive-two-column.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr 1fr;
+}
+/* Adaptive Two Column */
+
+/* Tab Content Field Title */
+.tab-content-field-title {
+  color: var(--primary-text);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.0168rem;
+  margin-block: 1rem;
+}
+/* Tab Content Field Title */
+
+
 .item-release-top-header-ilc > div {
   align-items: center;
+}
 }
