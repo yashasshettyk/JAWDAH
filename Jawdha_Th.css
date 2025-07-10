@@ -3109,9 +3109,32 @@ a:has(.btn-inner-template) {
   background: var(--button-reject-bg);
 }
 
-
 .animated-label:not(.active) {
-  label::after{
+  label::after {
     display: none;
   }
 }
+
+/* Adaptive Two Column */
+.adaptive-one-column.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr;
+}
+
+.adaptive-two-column.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr 1fr;
+}
+/* Adaptive Two Column */
+
+/* Tab Content Field Title */
+.tab-content-field-title {
+  color: var(--primary-text);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.0168rem;
+  margin-block: 1rem;
+}
+/* Tab Content Field Title */
