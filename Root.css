@@ -291,7 +291,7 @@
 
   /* Search Popup */
   --search-popup-bg-light: var(--white);
-  --search-popup-bg-dark: var(--content-background);
+  --search-popup-bg-dark: var(--dark-theme-background);
   /* Search Popup */
 }
 html {
