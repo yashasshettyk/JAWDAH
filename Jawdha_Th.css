@@ -1323,7 +1323,7 @@ a:has(.btn-inner-template) {
   min-width: 18.25rem;
   height: 2.5rem;
   padding: 0.625rem 1.25rem;
-  gap: 40px;
+  gap: 30px;
   border-radius: 8px;
 }
 .highlighted-content-wrapper > div:nth-child(1) label {
@@ -1785,7 +1785,7 @@ a:has(.btn-inner-template) {
   height: calc(100%);
   /* overflow-y: auto;
 	 */
-  width: max-content;
+  width: 100%;
   padding: 0.9375rem;
 }
 .popup-template-wrapper
@@ -2172,6 +2172,9 @@ a:has(.btn-inner-template) {
   align-items: center;
   column-gap: 10px;
   gap: 10px;
+}
+.content-hightlight-checkbox.adaptive-column-template-wrapper.ilc-item-receipt > div {
+ grid-template-columns: 30.9375rem 1fr;
 }
 
 .content-hightlight-checkbox.adaptive-column-template-wrapper
@@ -3225,16 +3228,17 @@ a:has(.btn-inner-template) {
 /* New styles for dynamic signature system */
 .signature-placeholder {
   border: 2px dashed #ccc;
-  padding: 20px;
+  /* padding: 20px; */
   margin: 10px;
+  width: 200px;
   text-align: center;
   color: #666;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 100px;
+  min-height: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .signature-placeholder:hover {
@@ -3258,7 +3262,7 @@ a:has(.btn-inner-template) {
   border: 1px solid #ccc;
   cursor: crosshair;
   background: white;
-  width: 100%;
+  width: 300px;
   height: 150px;
 }
 
