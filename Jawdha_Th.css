@@ -3299,3 +3299,93 @@ a:has(.btn-inner-template) {
   display: none;
 }
 /* Multi signature Componenet */
+
+/* Application Search Template */
+.popup-dialog.application-search-wrapper {
+  background: transparent;
+  border: none;
+
+  & .application-search-header-wrapper {
+    background: var(--search-popup-bg);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 79.3125rem;
+    height: 3.375rem;
+    padding: 0.5rem;
+    border-radius: 12px;
+
+    & > div:nth-child(2) {
+      width: 100%;
+    }
+
+    & svg path {
+      fill: var(--red);
+    }
+
+    & .dropdown-container > select.dropdown-display {
+      background: #d0ebff;
+      border: 1px solid transparent;
+      border-radius: 8px 0px 0px 8px;
+      width: 9.125rem;
+    }
+
+    & .dropdown-container > div.dropdown-display,
+    .dropdown-container > select.dropdown-display {
+      height: 100%2.5rem;
+    }
+
+    & .dropdown-container:after {
+      top: 0.9375rem;
+      border: var(--border-size-m) solid var(--primary-text);
+    }
+
+    & .form-control[data-input] {
+      border: 1px solid transparent;
+    }
+  }
+
+  & .application-search-body-wrapper {
+    background: var(--search-popup-bg);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    width: 79.3125rem;
+    height: 37.0625rem;
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 2px;
+
+    & .btn {
+      height: 100%;
+      min-width: fit-content;
+      width: 2.1875rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--search-popup-bg);
+      padding: 0.25rem;
+    }
+
+    & .list.list-group > div:not(:last-child) > div {
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    & .application-search-list-item-wrapper {
+      padding: 8px 16px;
+
+      & > div:nth-child(3) .adaptive-column-template-wrapper > div {
+        grid-template-columns: 1fr 1fr;
+        column-gap: 4.625rem;
+      }
+
+      & > div:nth-child(4) .adaptive-column-template-wrapper > div {
+        grid-template-columns: 1fr;
+
+        & > div {
+          display: flex;
+          column-gap: 4.625rem;
+        }
+      }
+    }
+  }
+}
+/* Application Search Template */
