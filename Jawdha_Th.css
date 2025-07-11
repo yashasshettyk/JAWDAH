@@ -3320,7 +3320,7 @@ a:has(.btn-inner-template) {
     border-radius: 12px;
 
     & > div:nth-child(2) {
-      width: 100%;
+      width: calc(100% - 11.875rem);
     }
 
     & svg path {
@@ -3336,7 +3336,7 @@ a:has(.btn-inner-template) {
 
     & .dropdown-container > div.dropdown-display,
     .dropdown-container > select.dropdown-display {
-      height: 100%2.5rem;
+      height: 2.5rem;
     }
 
     & .dropdown-container:after {
