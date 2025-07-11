@@ -292,6 +292,8 @@
   /* Search Popup */
   --search-popup-bg-light: var(--white);
   --search-popup-bg-dark: var(--dark-theme-background);
+  --search-dropdown-color-light: #d0ebff;
+  --search-dropdown-color-dark: var(--input-bg-dark);
   /* Search Popup */
 }
 html {
@@ -452,6 +454,7 @@ body {
 
   /* Search Popup */
   --search-popup-bg: var(--search-popup-bg-light);
+  --search-dropdown-color: var(--search-dropdown-color-light);
   /* Search Popup */
 }
 body.dark {
@@ -599,5 +602,6 @@ body.dark {
 
   /* Search Popup */
   --search-popup-bg: var(--search-popup-bg-dark);
+  --search-dropdown-color: var(--search-dropdown-color-dark);
   /* Search Popup */
 }

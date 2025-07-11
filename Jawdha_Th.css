@@ -3328,7 +3328,7 @@ a:has(.btn-inner-template) {
     }
 
     & .dropdown-container > select.dropdown-display {
-      background: #d0ebff;
+      background: var(--search-dropdown-color);
       border: 1px solid transparent;
       border-radius: 8px 0px 0px 8px;
       width: 9.125rem;
