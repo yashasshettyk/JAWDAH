@@ -3464,11 +3464,18 @@ a:has(.btn-inner-template) {
 .td-2-row-1.adaptive-column-template-wrapper > div {
   grid-template-columns: 43.75rem 1fr 1fr 1fr;
   gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .td-3-row-1.adaptive-column-template-wrapper > div {
-  grid-template-columns: 22.1875rem 32.5625rem 1fr;
+  grid-template-columns: 22.1875rem 30rem auto;
   gap: 20px;
+
+  & .doc-upload {
+    width: 100%;
+    gap: 10px;
+  }
 }
 
 .td-3-row-1-1.adaptive-column-template-wrapper > div {
@@ -3548,4 +3555,105 @@ a:has(.btn-inner-template) {
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+}
+
+.td-5-row-1.adaptive-column-template-wrapper > div {
+  display: flex;
+  gap: 20px;
+
+  & .btn {
+    margin: 0;
+  }
+
+  & > div:nth-child(1) {
+    width: 28.75rem;
+  }
+}
+
+.upload-certificate-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+
+  & > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.certificate-info > div:nth-child(1) > label {
+  display: inline-block;
+  width: max-content;
+}
+
+.certificate-info > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.certificate-info-footer {
+  color: #97adff;
+  text-align: center;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%; /* 24px */
+  letter-spacing: 0.269px;
+}
+
+.instruction-list {
+  color: var(--content-color);
+  margin: 0;
+  margin-top: 16px;
+
+  & li {
+    font-size: 0.75rem;
+    font-weight: 400;
+  }
+}
+& .instruction {
+  color: var(--content-color);
+  font-size: 0.875rem;
+
+  & > div {
+    color: var(--content-color);
+    font-weight: 500;
+  }
+}
+
+.total-count {
+  margin-inline-start: 20px;
+  & > span:nth-child(1) {
+    font-weight: 400;
+    color: var(--theme-grey);
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  & > span:nth-child(2) {
+    font-weight: 500;
+    color: var(--primary-text);
+    margin: 0;
+  }
+}
+
+.cqc-row-1.adaptive-column-template-wrapper > div {
+  grid-template-columns: 1fr auto;
+}
+
+.content-highlight-wrapper.ir-row-1 {
+  display: flex;
+  justify-content: space-between;
+
+  & .highlighted-content-wrapper {
+    gap: 10px;
+    justify-content: center;
+  }
 }
