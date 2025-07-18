@@ -1217,7 +1217,7 @@ label {
 }
 .wizard-wrapper [data-block*="WizardItem"] .wizard-item-label {
   color: #a2b5c1;
-  width: 11.25rem;
+  width: 7rem;
   max-width: max-content;
   margin-inline: auto;
   text-align: center;
