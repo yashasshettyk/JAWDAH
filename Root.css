@@ -289,6 +289,13 @@
   --dropdown-tag-text-color-light: #2a475c;
   --dropdown-tag-text-color-dark: #10181e;
 
+  /* Popup */
+  --popup-header-bg-light: #f5fbff;
+  --popup-header-bg-dark: #222831;
+  --popup-header-border-light: #c0e7ff;
+  --popup-header-border-dark: #3d4859;
+  /* Popup */
+
   /* Search Popup */
   --search-popup-bg-light: var(--white);
   --search-popup-bg-dark: var(--dark-theme-background);
@@ -452,6 +459,11 @@ body {
   --dropdown-tag-bg: var(--dropdown-tag-bg-light);
   --dropdown-tag-text-color: var(--dropdown-tag-text-color-light);
 
+  /* Popup */
+  --popup-header-bg: var(--popup-header-bg-light);
+  --popup-header-border: var(--popup-header-border-light);
+  /* Popup */
+
   /* Search Popup */
   --search-popup-bg: var(--search-popup-bg-light);
   --search-dropdown-color: var(--search-dropdown-color-light);
@@ -599,6 +611,11 @@ body.dark {
   --border-highlighted-color: var(--border-highlighted-color-dark);
   --dropdown-tag-bg: var(--dropdown-tag-bg-dark);
   --dropdown-tag-text-color: var(--dropdown-tag-text-color-dark);
+
+  /* Popup */
+  --popup-header-bg: var(--popup-header-bg-dark);
+  --popup-header-border: var(--popup-header-border-dark);
+  /* Popup */
 
   /* Search Popup */
   --search-popup-bg: var(--search-popup-bg-dark);
