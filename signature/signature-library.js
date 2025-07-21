@@ -514,8 +514,17 @@ const DynamicSignature = (function () {
         const originalContent = currentSignatureElement.getAttribute(
           "data-original-content"
         );
-        currentSignatureElement.innerHTML =
-          originalContent || "Click to sign here";
+        if (originalContent) {
+          currentSignatureElement.innerHTML = originalContent;
+        } else {
+          // Restore to original placeholder state without adding extra text
+          const signatureId =
+            currentSignatureElement.getAttribute("data-signature-id");
+          const areaText = signatureId
+            ? signatureId.replace("signature", "Area ")
+            : "Area";
+          currentSignatureElement.innerHTML = `Click to sign here - ${areaText}`;
+        }
         currentSignatureElement.classList.remove("signing");
         currentSignatureElement.removeAttribute("data-original-content");
       }

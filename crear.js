@@ -1,10 +1,35 @@
-const binaryData = new Uint8Array(e.target.result);
-const fileName = file.name.split(".")[0]; // name without extension
-const fileType = file.name.toLowerCase().endsWith(".pdf") ? "pdf" : "txt";
-let base64String = "";
-const bytes = new Uint8Array(e.target.result);
-const len = bytes.byteLength;
-for (let i = 0; i < len; i++) {
-  base64String += String.fromCharCode(bytes[i]);
+try {
+  // Initialize with custom options
+  const initResult = DynamicNameInput.init({
+    nameClass: "name-placeholder",
+    onComplete: function (nameData) {
+      console.log("Name entry completed:", nameData);
+      // Handle name completion here
+      // You can send nameData to your server or process it as needed
+    },
+  });
+
+  if (initResult.success) {
+    console.log("Name input library ready");
+
+    // Check for placeholders
+    const placeholderCheck = DynamicNameInput.hasPlaceholders();
+    console.log("Placeholder check:", placeholderCheck.message);
+  } else {
+    console.error("Failed to initialize:", initResult.message);
+  }
+} catch (error) {
+  console.error("Error during initialization:", error);
 }
-const base64 = btoa(base64String);
+
+function getAllNames() {
+  return DynamicNameInput.getAllNames();
+}
+
+function getNameById(nameId) {
+  return DynamicNameInput.getNameById(nameId);
+}
+
+function resetNameSystem() {
+  return DynamicNameInput.reset();
+}
