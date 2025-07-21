@@ -4022,7 +4022,6 @@ a:has(.btn-inner-template) {
   padding: 0.5rem;
   border-radius: 24px;
   background-color: var(--content-background);
-  
 }
 
 .download-file-template span {
@@ -4035,5 +4034,9 @@ a:has(.btn-inner-template) {
   line-height: 150%;
   /* 22.5px */
   letter-spacing: 0.0158rem;
+}
+
+.download-file-template svg path{
+  stroke: var(--primary-text);
 }
 /* Download File Template */
