@@ -1594,7 +1594,7 @@ a:has(.btn-inner-template) {
   path {
   stroke: var(--primary-text);
 }
-.adaptive-column-template-wrapper.popup-doc-wrapper > div{
+.adaptive-column-template-wrapper.popup-doc-wrapper > div {
   grid-template-columns: 1fr;
 }
 .adaptive-column-template-wrapper.popup-doc-wrapper .list {
@@ -2023,6 +2023,7 @@ a:has(.btn-inner-template) {
   > div:nth-child(2)
   textarea {
   height: 6.475rem;
+  pointer-events: auto;
 }
 .osui-accordion .review-details-wrapper .sec-1 > div:nth-child(1) {
   display: flex;
