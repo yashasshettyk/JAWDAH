@@ -347,6 +347,9 @@ body.night-mode {
   height: 1.5rem;
   width: 100%;
 }
+.details-application-info-wrapper .tag > span {
+  white-space: nowrap;
+}
 .details-application-info-wrapper.flex {
   display: flex;
   gap: 20px;
