@@ -16,10 +16,6 @@ const DynamicSignature = (function () {
   let lastY = 0;
   let onCompleteCallback = null;
 
-  // Only add mutation observer - no other new features
-  let mutationObserver = null;
-  let isListeningEnabled = false;
-
   // Signature class identifier (can be customized)
   let SIGNATURE_CLASS = "signature-placeholder";
 
@@ -106,12 +102,11 @@ const DynamicSignature = (function () {
   }
 
   function createSignatureCanvas(element) {
-    // Use fixed dimensions instead of calculating from element
+    const rect = element.getBoundingClientRect();
     const canvas = document.createElement("canvas");
 
     canvas.className = "signature-canvas";
-    // Use consistent fixed dimensions
-    canvas.width = 400;
+    canvas.width = Math.max(400, rect.width - 20);
     canvas.height = 150;
 
     const ctx = canvas.getContext("2d");
@@ -150,81 +145,6 @@ const DynamicSignature = (function () {
     controls.appendChild(cancelBtn);
 
     return controls;
-  }
-
-  // Add placeholder click handling
-  function enablePlaceholderListeners() {
-    if (isSigningMode) return;
-
-    const elements = document.querySelectorAll(`.${SIGNATURE_CLASS}`);
-    elements.forEach((element) => {
-      element.removeEventListener("click", handlePlaceholderClick);
-      element.addEventListener("click", handlePlaceholderClick);
-      element.setAttribute("data-listener-active", "true");
-    });
-
-    isListeningEnabled = true;
-    console.log(`Enabled listeners for ${elements.length} placeholder(s)`);
-  }
-
-  function disablePlaceholderListeners() {
-    const elements = document.querySelectorAll(`.${SIGNATURE_CLASS}`);
-    elements.forEach((element) => {
-      element.removeEventListener("click", handlePlaceholderClick);
-      element.removeAttribute("data-listener-active");
-    });
-
-    isListeningEnabled = false;
-  }
-
-  function handlePlaceholderClick(event) {
-    event.stopPropagation();
-    event.preventDefault();
-
-    if (isSigningMode) return;
-
-    const element = event.currentTarget;
-    disablePlaceholderListeners();
-    DynamicSignature.activateSignatureArea(element);
-  }
-
-  // Modified mutation observer setup
-  function setupMutationObserver() {
-    if (mutationObserver) {
-      mutationObserver.disconnect();
-    }
-
-    mutationObserver = new MutationObserver(function (mutations) {
-      let shouldUpdateListeners = false;
-
-      mutations.forEach(function (mutation) {
-        if (mutation.type === "childList") {
-          mutation.addedNodes.forEach(function (node) {
-            if (node.nodeType === Node.ELEMENT_NODE) {
-              if (node.classList && node.classList.contains(SIGNATURE_CLASS)) {
-                console.log("New signature placeholder detected");
-                shouldUpdateListeners = true;
-              } else if (node.querySelectorAll) {
-                const newPlaceholders = node.querySelectorAll(`.${SIGNATURE_CLASS}`);
-                if (newPlaceholders.length > 0) {
-                  console.log(`${newPlaceholders.length} new signature placeholders detected`);
-                  shouldUpdateListeners = true;
-                }
-              }
-            }
-          });
-        }
-      });
-
-      if (shouldUpdateListeners && !isSigningMode) {
-        enablePlaceholderListeners();
-      }
-    });
-
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true
-    });
   }
 
   function highlightSignatureAreas() {
@@ -279,15 +199,6 @@ const DynamicSignature = (function () {
         // Set global callback if provided
         if (options.onComplete && typeof options.onComplete === "function") {
           onCompleteCallback = options.onComplete;
-        }
-
-        // Setup mutation observer and enable listeners
-        setupMutationObserver();
-        
-        // Enable listeners for existing placeholders
-        const initialCheck = this.hasPlaceholders();
-        if (initialCheck.success && initialCheck.count > 0) {
-          enablePlaceholderListeners();
         }
 
         console.log(`${this.name} v${this.version} initialized successfully`);
@@ -416,7 +327,6 @@ const DynamicSignature = (function () {
 
         removeHighlights();
         currentSignatureElement = element;
-        isSigningMode = true; // Add this line to fix signing mode
 
         try {
           element.setAttribute("data-original-content", element.innerHTML);
@@ -470,7 +380,7 @@ const DynamicSignature = (function () {
       return { success: true, message: "Signature cleared" };
     },
 
-    // Modified: Save current signature
+    // Save current signature
     saveCurrentSignature: function () {
       try {
         const canvasValidation = this.validateCanvasState();
@@ -543,13 +453,9 @@ const DynamicSignature = (function () {
         try {
           const img = document.createElement("img");
           img.src = base64;
-          // Set consistent dimensions to prevent width growth
-          img.style.width = "100%";
-          img.style.maxWidth = "400px";
-          img.style.height = "150px";
-          img.style.objectFit = "contain";
+          img.style.maxWidth = "100%";
+          img.style.height = "auto";
           img.style.border = "1px solid #ccc";
-          img.style.display = "block";
           img.setAttribute("data-signature", base64);
 
           currentSignatureElement.innerHTML = "";
@@ -602,7 +508,7 @@ const DynamicSignature = (function () {
       }
     },
 
-    // Modified: Cancel signing process to re-enable listeners
+    // Cancel signing process
     cancelSigning: function () {
       if (currentSignatureElement) {
         const originalContent = currentSignatureElement.getAttribute(
@@ -627,7 +533,7 @@ const DynamicSignature = (function () {
       return { success: true, message: "Signing cancelled" };
     },
 
-    // Modified: Finish signing process to re-enable listeners
+    // Finish signing process
     finishSigning: function () {
       isSigningMode = false;
       currentSignatureElement = null;
@@ -642,11 +548,6 @@ const DynamicSignature = (function () {
         signBtn.disabled = false;
         signBtn.textContent = "Start Signing";
       }
-
-      // Re-enable placeholder listeners after signing is finished
-      setTimeout(() => {
-        enablePlaceholderListeners();
-      }, 100);
     },
 
     // Get all signatures
@@ -873,7 +774,7 @@ const DynamicSignature = (function () {
       return { valid: true, message: "Canvas state is valid" };
     },
 
-    // Modified: Reset module to clean up listeners
+    // Reset module
     reset: function () {
       try {
         if (isSigningMode) {
@@ -881,16 +782,8 @@ const DynamicSignature = (function () {
         }
 
         removeHighlights();
-        disablePlaceholderListeners();
-
-        // Clean up mutation observer
-        if (mutationObserver) {
-          mutationObserver.disconnect();
-          mutationObserver = null;
-        }
 
         isSigningMode = false;
-        isListeningEnabled = false;
         currentSignatureElement = null;
         currentCanvas = null;
         currentCtx = null;
@@ -915,7 +808,16 @@ const DynamicSignature = (function () {
           error: error.message,
         };
       }
-    }
+    },
   };
 })();
 
+// Expose globally
+if (typeof window !== "undefined") {
+  window.DynamicSignature = DynamicSignature;
+}
+
+// Export for Node.js/module systems
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = DynamicSignature;
+}

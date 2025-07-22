@@ -3256,11 +3256,11 @@ a:has(.btn-inner-template) {
 
 /* New styles for dynamic signature system */
 .signature-placeholder {
-  /* border: 2px dashed #ccc; */
+  border: 2px dashed #ccc;
   /* padding: 20px; */
   /* margin: 10px; */
   width: 130px;
-  height: 100%;
+  height: 50px;
   text-align: center;
   color: #666;
   cursor: pointer;
@@ -3290,6 +3290,7 @@ a:has(.btn-inner-template) {
   position: fixed;
   /* left: -14px; */
   z-index: 1000;
+  height: 100vh;
   top: 0;
   inset-inline-start: 50%;
   transform: translateX(-50%);

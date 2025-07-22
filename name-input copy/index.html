@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Name Input System</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .name-container {
+        background: white;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      /* New styles for dynamic name input system */
+      .name-placeholder {
+        border: 2px dashed #ccc;
+        padding: 20px;
+        margin: 10px;
+        text-align: center;
+        color: #666;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+      }
+
+      .name-placeholder:hover {
+        border-color: #2196f3;
+        background-color: #f0f6ff;
+      }
+
+      .name-placeholder.highlighted {
+        border-color: #2196f3;
+        background-color: #e3f2fd;
+        box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+      }
+
+      .name-placeholder.editing {
+        border: 2px solid #2196f3;
+        padding: 10px;
+        background: white;
+      }
+
+      .name-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        outline: none;
+        margin-bottom: 10px;
+      }
+
+      .name-input:focus {
+        border-color: #2196f3;
+        box-shadow: 0 0 5px rgba(33, 150, 243, 0.3);
+      }
+
+      .name-controls {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .name-btn {
+        background-color: #2196f3;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 20px;
+      }
+
+      .name-btn:hover {
+        background-color: #1976d2;
+      }
+
+      .name-btn:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      .control-btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .save-btn {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .save-btn:hover {
+        background-color: #45a049;
+      }
+
+      .cancel-btn {
+        background-color: #f44336;
+        color: white;
+      }
+
+      .cancel-btn:hover {
+        background-color: #da190b;
+      }
+
+      .clear-btn {
+        background-color: #ff9800;
+        color: white;
+      }
+
+      .clear-btn:hover {
+        background-color: #e68900;
+      }
+
+      .name-display {
+        font-weight: bold;
+        color: #333;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+
+      .result {
+        margin-top: 20px;
+        word-break: break-all;
+        max-width: 500px;
+        background: #f9f9f9;
+        padding: 10px;
+        border-radius: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Dynamic Name Input System</h1>
+
+    <button
+      id="nameBtn"
+      class="name-btn"
+      onclick="DynamicNameInput.startEditing()"
+    >
+      Start Name Entry
+    </button>
+
+    <!-- Sample name input placeholders -->
+    <div class="name-placeholder" data-name-id="name1">
+      Click to enter name - Area 1
+    </div>
+
+    <div class="name-placeholder" data-name-id="name2">
+      Click to enter name - Area 2
+    </div>
+
+    <div class="name-placeholder" data-name-id="name3">
+      Click to enter name - Area 3
+    </div>
+
+    <!-- Include the name input library -->
+    <script src="name-input-library.js"></script>
+
+    <script>
+      // Initialize the library when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        try {
+          // Initialize with custom options
+          const initResult = DynamicNameInput.init({
+            nameClass: "name-placeholder",
+            onComplete: function (nameData) {
+              console.log("Name entry completed:", nameData);
+              // Handle name completion here
+              // You can send nameData to your server or process it as needed
+            },
+          });
+
+          if (initResult.success) {
+            console.log("Name input library ready");
+
+            // Check for placeholders
+            const placeholderCheck = DynamicNameInput.hasPlaceholders();
+            console.log("Placeholder check:", placeholderCheck.message);
+          } else {
+            console.error("Failed to initialize:", initResult.message);
+          }
+        } catch (error) {
+          console.error("Error during initialization:", error);
+        }
+      });
+
+      // Helper functions
+      function getAllNames() {
+        return DynamicNameInput.getAllNames();
+      }
+
+      function getNameById(nameId) {
+        return DynamicNameInput.getNameById(nameId);
+      }
+
+      function resetNameSystem() {
+        return DynamicNameInput.reset();
+      }
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Universal File Viewer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.min.js"></script>
     <style>
       .file-viewer {
         width: 100%;
@@ -42,9 +42,37 @@
     <div id="viewer-container"></div>
 
     <script>
-      // Set PDF.js worker
-      pdfjsLib.GlobalWorkerOptions.workerSrc =
-        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+      // Clear any existing worker and force reload
+      if (typeof pdfjsLib !== "undefined") {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = null;
+      }
+
+      // Try multiple CDNs for worker
+      const workerSources = [
+        "https://unpkg.com/pdfjs-dist@3.11.174/build/pdf.worker.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js",
+        // Fallback: disable worker (will use main thread)
+        null,
+      ];
+
+      let currentWorkerIndex = 0;
+
+      function setWorkerSource() {
+        if (currentWorkerIndex < workerSources.length) {
+          pdfjsLib.GlobalWorkerOptions.workerSrc =
+            workerSources[currentWorkerIndex];
+          console.log(
+            "Trying worker source:",
+            pdfjsLib.GlobalWorkerOptions.workerSrc
+          );
+        }
+      }
+
+      // Set initial worker
+      setWorkerSource();
+
+      // Verify versions match
+      console.log("PDF.js version:", pdfjsLib.version);
 
       function createFileViewer(containerId, fileData, mimeType) {
         const container = document.getElementById(containerId);
@@ -64,63 +92,95 @@
             let pdfData;
 
             if (isBase64) {
-              // Convert base64 to Uint8Array
+              // Convert base64 to Uint8Array and clone it
               const binaryString = atob(fileData);
-              pdfData = new Uint8Array(binaryString.length);
+              const originalArray = new Uint8Array(binaryString.length);
               for (let i = 0; i < binaryString.length; i++) {
-                pdfData[i] = binaryString.charCodeAt(i);
+                originalArray[i] = binaryString.charCodeAt(i);
               }
+              // Clone the array to prevent detachment
+              pdfData = new Uint8Array(originalArray);
             } else {
-              // Convert binary string to Uint8Array
-              pdfData = new Uint8Array(fileData.length);
+              // Convert binary string to Uint8Array and clone it
+              const originalArray = new Uint8Array(fileData.length);
               for (let i = 0; i < fileData.length; i++) {
-                pdfData[i] = fileData.charCodeAt(i);
+                originalArray[i] = fileData.charCodeAt(i);
               }
+              // Clone the array to prevent detachment
+              pdfData = new Uint8Array(originalArray);
             }
 
             container.innerHTML =
               '<div class="pdf-container"><div>Loading PDF...</div></div>';
 
-            // Load PDF
-            pdfjsLib
-              .getDocument({ data: pdfData })
-              .promise.then(function (pdf) {
-                const pdfContainer = container.querySelector(".pdf-container");
-                pdfContainer.innerHTML = "";
+            // Load PDF with retry mechanism
+            const loadPDF = () => {
+              // Create a fresh copy of the data for each attempt
+              const freshPdfData = new Uint8Array(pdfData);
 
-                // Render all pages
-                const numPages = pdf.numPages;
+              pdfjsLib
+                .getDocument({
+                  data: freshPdfData,
+                  // Disable auto-fetch to prevent worker issues
+                  disableAutoFetch: true,
+                  disableStream: true,
+                })
+                .promise.then(function (pdf) {
+                  const pdfContainer =
+                    container.querySelector(".pdf-container");
+                  pdfContainer.innerHTML = "";
 
-                for (let pageNum = 1; pageNum <= numPages; pageNum++) {
-                  pdf.getPage(pageNum).then(function (page) {
-                    const scale = 1.5;
-                    const viewport = page.getViewport({ scale: scale });
+                  // Render all pages
+                  const numPages = pdf.numPages;
 
-                    const canvas = document.createElement("canvas");
-                    canvas.className = "pdf-canvas";
-                    canvas.style.marginBottom = "10px";
-                    const context = canvas.getContext("2d");
-                    canvas.height = viewport.height;
-                    canvas.width = viewport.width;
+                  for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+                    pdf.getPage(pageNum).then(function (page) {
+                      const scale = 1.5;
+                      const viewport = page.getViewport({ scale: scale });
 
-                    pdfContainer.appendChild(canvas);
+                      const canvas = document.createElement("canvas");
+                      canvas.className = "pdf-canvas";
+                      canvas.style.marginBottom = "10px";
+                      const context = canvas.getContext("2d");
+                      canvas.height = viewport.height;
+                      canvas.width = viewport.width;
 
-                    const renderContext = {
-                      canvasContext: context,
-                      viewport: viewport,
-                    };
+                      pdfContainer.appendChild(canvas);
 
-                    page.render(renderContext);
-                  });
-                }
-              })
-              .catch(function (error) {
-                container.innerHTML = `
-                <div class="error-message">
-                  Error loading PDF: ${error.message}
-                </div>
-              `;
-              });
+                      const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport,
+                      };
+
+                      page.render(renderContext);
+                    });
+                  }
+                })
+                .catch(function (error) {
+                  console.error("PDF loading error:", error);
+
+                  // If version mismatch and we have more worker sources to try
+                  if (
+                    error.message.includes(
+                      "does not match the Worker version"
+                    ) &&
+                    currentWorkerIndex < workerSources.length - 1
+                  ) {
+                    currentWorkerIndex++;
+                    setWorkerSource();
+                    console.log("Retrying with different worker source...");
+                    setTimeout(loadPDF, 100); // Retry after brief delay
+                  } else {
+                    container.innerHTML = `
+                    <div class="error-message">
+                      Error loading PDF: ${error.message}
+                    </div>
+                  `;
+                  }
+                });
+            };
+
+            loadPDF();
           } else if (mimeType.toLowerCase().includes("text")) {
             // Handle Text
             let textContent;

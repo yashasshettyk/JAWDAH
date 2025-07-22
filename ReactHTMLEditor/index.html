@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Rich Text Editor with Babel Support</title>
+
+    <!-- External Libraries -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/material-darker.min.css"
+    />
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f7fa;
+        color: #333;
+      }
+
+      .editor-wrapper {
+        max-width: 1400px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+
+      .editor-header {
+        background: white;
+        border-radius: 8px 8px 0 0;
+        padding: 20px;
+        border-bottom: 1px solid #e1e5e9;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .editor-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 5px;
+      }
+
+      .editor-subtitle {
+        color: #7f8c8d;
+        font-size: 14px;
+      }
+
+      .editor-container {
+        background: white;
+        border-radius: 0 0 8px 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .editor-toolbar {
+        background: #2c3e50;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .mode-selector {
+        display: flex;
+        background: #34495e;
+        border-radius: 6px;
+        overflow: hidden;
+        border: 1px solid #4a6741;
+      }
+
+      .mode-btn {
+        padding: 10px 16px;
+        background: transparent;
+        border: none;
+        color: #bdc3c7;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .mode-btn:hover {
+        background: #4a6741;
+        color: #ecf0f1;
+      }
+
+      .mode-btn.active {
+        background: #3498db;
+        color: white;
+      }
+
+      .toolbar-actions {
+        margin-left: auto;
+        display: flex;
+        gap: 10px;
+      }
+
+      .action-btn {
+        padding: 8px 16px;
+        border: 1px solid #4a6741;
+        border-radius: 4px;
+        background: #34495e;
+        color: #ecf0f1;
+        cursor: pointer;
+        font-size: 13px;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .action-btn:hover {
+        background: #4a6741;
+        transform: translateY(-1px);
+      }
+
+      .action-btn.primary {
+        background: #27ae60;
+        border-color: #27ae60;
+      }
+
+      .action-btn.primary:hover {
+        background: #2ecc71;
+      }
+
+      .editor-content {
+        height: 600px;
+        position: relative;
+        background: #fafbfc;
+      }
+
+      .editor-pane {
+        height: 100%;
+        display: none;
+        position: relative;
+        text-align: left;
+      }
+
+      .editor-pane.active {
+        display: block;
+      }
+
+      /* Rich Text Editor Styles */
+      .ql-container {
+        height: calc(100% - 42px);
+        border: none;
+        font-size: 16px;
+      }
+
+      .ql-editor {
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      /* Code Editor Styles */
+      .CodeMirror {
+        height: 100%;
+        font-family: "Fira Code", "Consolas", "Monaco", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      .CodeMirror-scroll {
+        text-align: left;
+      }
+
+      .CodeMirror-lines {
+        text-align: left;
+      }
+
+      .CodeMirror-line {
+        text-align: left;
+      }
+
+      .CodeMirror-code {
+        text-align: left;
+      }
+
+      /* Ensure textarea elements are also left-aligned */
+      #html-editor,
+      #babel-editor {
+        text-align: left;
+        font-family: "Fira Code", "Consolas", "Monaco", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        resize: none;
+        border: none;
+        outline: none;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+      }
+
+      /* Fix preview code alignment */
+      .preview-code {
+        background: #2c3e50;
+        color: #ecf0f1;
+        border-radius: 4px;
+        padding: 15px;
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+        line-height: 1.4;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        text-align: left;
+        direction: ltr;
+      }
+
+      .editor-footer {
+        background: #ecf0f1;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #bdc3c7;
+        font-size: 13px;
+        color: #7f8c8d;
+      }
+
+      .status-info {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #27ae60;
+      }
+
+      .status-dot.error {
+        background: #e74c3c;
+      }
+
+      .status-dot.warning {
+        background: #f39c12;
+      }
+
+      /* Preview Section */
+      .preview-section {
+        margin-top: 30px;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .preview-header {
+        background: #34495e;
+        color: white;
+        padding: 15px 20px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .preview-content {
+        padding: 20px;
+        max-height: 400px;
+        overflow: auto;
+        background: #f8f9fa;
+      }
+
+      .preview-html {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 15px;
+        min-height: 100px;
+      }
+
+      .preview-code {
+        background: #2c3e50;
+        color: #ecf0f1;
+        border-radius: 4px;
+        padding: 15px;
+        font-family: "Fira Code", monospace;
+        font-size: 13px;
+        line-height: 1.4;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        text-align: left;
+        direction: ltr;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .editor-toolbar {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .toolbar-actions {
+          margin-left: 0;
+          justify-content: center;
+        }
+
+        .mode-selector {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .editor-content {
+          height: 400px;
+        }
+      }
+
+      /* Utility Classes */
+      .hidden {
+        display: none !important;
+      }
+
+      .text-success {
+        color: #27ae60;
+      }
+
+      .text-error {
+        color: #e74c3c;
+      }
+
+      .text-warning {
+        color: #f39c12;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="editor-wrapper">
+      <!-- Header -->
+      <div class="editor-header">
+        <h1 class="editor-title">Advanced Rich Text Editor</h1>
+        <p class="editor-subtitle">
+          Create rich content with HTML and Babel/JavaScript support
+        </p>
+      </div>
+
+      <!-- Main Editor -->
+      <div class="editor-container">
+        <!-- Toolbar -->
+        <div class="editor-toolbar">
+          <div class="mode-selector">
+            <button class="mode-btn active" data-mode="rich">
+              <i class="fas fa-edit"></i>
+              Rich Text
+            </button>
+            <button class="mode-btn" data-mode="html">
+              <i class="fab fa-html5"></i>
+              HTML
+            </button>
+            <button class="mode-btn" data-mode="babel">
+              <i class="fab fa-js-square"></i>
+              Babel/JS
+            </button>
+            <button class="mode-btn" data-mode="preview">
+              <i class="fas fa-eye"></i>
+              Preview
+            </button>
+          </div>
+
+          <div class="toolbar-actions">
+            <button class="action-btn" id="format-btn">
+              <i class="fas fa-code"></i>
+              Format
+            </button>
+            <button class="action-btn" id="validate-btn">
+              <i class="fas fa-check-circle"></i>
+              Validate
+            </button>
+            <button class="action-btn" id="clear-btn">
+              <i class="fas fa-trash"></i>
+              Clear
+            </button>
+            <button class="action-btn primary" id="export-btn">
+              <i class="fas fa-download"></i>
+              Export
+            </button>
+          </div>
+        </div>
+
+        <!-- Editor Content -->
+        <div class="editor-content">
+          <!-- Rich Text Pane -->
+          <div class="editor-pane active" id="rich-pane">
+            <div id="rich-editor"></div>
+          </div>
+
+          <!-- HTML Code Pane -->
+          <div class="editor-pane" id="html-pane">
+            <textarea
+              id="html-editor"
+              placeholder="Enter your HTML code here..."
+            ></textarea>
+          </div>
+
+          <!-- Babel/JS Code Pane -->
+          <div class="editor-pane" id="babel-pane">
+            <textarea
+              id="babel-editor"
+              placeholder="Enter your Babel/JavaScript code here..."
+            ></textarea>
+          </div>
+
+          <!-- Preview Pane -->
+          <div class="editor-pane" id="preview-pane">
+            <div class="preview-content">
+              <div class="preview-html" id="preview-html">
+                <p style="color: #7f8c8d; text-align: center; padding: 40px">
+                  Switch to Rich Text or HTML mode to see preview
+                </p>
+              </div>
+              <div class="preview-code" id="preview-code">
+                // Babel/JavaScript code will appear here
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="editor-footer">
+          <div class="status-info">
+            <div class="status-indicator">
+              <div class="status-dot" id="status-dot"></div>
+              <span id="status-text">Ready</span>
+            </div>
+            <span id="char-count">0 characters</span>
+            <span id="word-count">0 words</span>
+          </div>
+          <div>
+            <span>Mode: <strong id="current-mode">Rich Text</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- External Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/jsx/jsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/foldgutter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/fold/xml-fold.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <script>
+      class AdvancedRichTextEditor {
+        constructor() {
+          this.currentMode = "rich";
+          this.content = {
+            rich: "",
+            html: "",
+            babel: "",
+          };
+          this.editors = {};
+          this.isInitialized = false;
+
+          this.init();
+        }
+
+        init() {
+          try {
+            this.initializeRichEditor();
+            this.initializeCodeEditors();
+            this.bindEvents();
+            this.updateStatus("Editor initialized successfully", "success");
+            this.isInitialized = true;
+          } catch (error) {
+            this.updateStatus(
+              "Failed to initialize editor: " + error.message,
+              "error"
+            );
+            console.error("Editor initialization error:", error);
+          }
+        }
+
+        initializeRichEditor() {
+          const toolbarOptions = [
+            [{ header: [1, 2, 3, 4, 5, 6, false] }],
+            [{ font: [] }, { size: ["small", false, "large", "huge"] }],
+            ["bold", "italic", "underline", "strike"],
+            [{ color: [] }, { background: [] }],
+            [{ script: "sub" }, { script: "super" }],
+            [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+            [{ indent: "-1" }, { indent: "+1" }],
+            [{ direction: "rtl" }, { align: [] }],
+            ["link", "image", "video", "formula"],
+            ["code-block", "blockquote"],
+            ["clean"],
+          ];
+
+          this.editors.quill = new Quill("#rich-editor", {
+            theme: "snow",
+            modules: {
+              toolbar: toolbarOptions,
+            },
+            placeholder: "Start writing your content here...",
+          });
+
+          this.editors.quill.on("text-change", () => {
+            this.content.rich = this.editors.quill.root.innerHTML;
+            this.updateCounts();
+            this.updatePreview();
+          });
+        }
+
+        initializeCodeEditors() {
+          // HTML Editor
+          this.editors.html = CodeMirror.fromTextArea(
+            document.getElementById("html-editor"),
+            {
+              mode: "text/html",
+              theme: "material-darker",
+              lineNumbers: true,
+              autoCloseBrackets: true,
+              autoCloseTags: true,
+              matchBrackets: true,
+              foldGutter: true,
+              gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+              tabSize: 2,
+              indentWithTabs: false,
+              lineWrapping: true,
+              extraKeys: {
+                "Ctrl-Space": "autocomplete",
+                "Ctrl-/": "toggleComment",
+              },
+            }
+          );
+
+          // Babel/JS Editor
+          this.editors.babel = CodeMirror.fromTextArea(
+            document.getElementById("babel-editor"),
+            {
+              mode: "jsx",
+              theme: "material-darker",
+              lineNumbers: true,
+              autoCloseBrackets: true,
+              matchBrackets: true,
+              foldGutter: true,
+              gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+              tabSize: 2,
+              indentWithTabs: false,
+              lineWrapping: true,
+              extraKeys: {
+                "Ctrl-Space": "autocomplete",
+                "Ctrl-/": "toggleComment",
+              },
+            }
+          );
+
+          // Bind change events
+          this.editors.html.on("change", () => {
+            this.content.html = this.editors.html.getValue();
+            this.updateCounts();
+            this.updatePreview();
+          });
+
+          this.editors.babel.on("change", () => {
+            this.content.babel = this.editors.babel.getValue();
+            this.updateCounts();
+            this.updatePreview();
+          });
+        }
+
+        bindEvents() {
+          // Mode switching
+          document.querySelectorAll(".mode-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+              const mode = e.currentTarget.dataset.mode;
+              this.switchMode(mode);
+            });
+          });
+
+          // Action buttons
+          document
+            .getElementById("format-btn")
+            .addEventListener("click", () => this.formatCode());
+          document
+            .getElementById("validate-btn")
+            .addEventListener("click", () => this.validateCode());
+          document
+            .getElementById("clear-btn")
+            .addEventListener("click", () => this.clearEditor());
+          document
+            .getElementById("export-btn")
+            .addEventListener("click", () => this.exportContent());
+        }
+
+        switchMode(mode) {
+          if (mode === this.currentMode) return;
+
+          // Update active button
+          document.querySelectorAll(".mode-btn").forEach((btn) => {
+            btn.classList.toggle("active", btn.dataset.mode === mode);
+          });
+
+          // Hide all panes
+          document.querySelectorAll(".editor-pane").forEach((pane) => {
+            pane.classList.remove("active");
+          });
+
+          // Show selected pane
+          document.getElementById(mode + "-pane").classList.add("active");
+
+          // Sync content when switching
+          this.syncContent(this.currentMode, mode);
+
+          // Update current mode
+          const previousMode = this.currentMode;
+          this.currentMode = mode;
+
+          // Refresh CodeMirror editors after switching
+          if (mode === "html" && this.editors.html) {
+            setTimeout(() => this.editors.html.refresh(), 100);
+          } else if (mode === "babel" && this.editors.babel) {
+            setTimeout(() => this.editors.babel.refresh(), 100);
+          }
+
+          // Update UI
+          document.getElementById("current-mode").textContent =
+            this.getModeDisplayName(mode);
+          this.updateStatus(
+            `Switched to ${this.getModeDisplayName(mode)} mode`,
+            "success"
+          );
+          this.updatePreview();
+        }
+
+        syncContent(fromMode, toMode) {
+          if (fromMode === "rich" && toMode === "html") {
+            this.editors.html.setValue(this.content.rich);
+          } else if (fromMode === "html" && toMode === "rich") {
+            this.editors.quill.root.innerHTML = this.content.html;
+            this.content.rich = this.content.html;
+          }
+        }
+
+        formatCode() {
+          try {
+            if (this.currentMode === "html") {
+              const formatted = this.formatHTML(this.editors.html.getValue());
+              this.editors.html.setValue(formatted);
+              this.updateStatus("HTML code formatted", "success");
+            } else if (this.currentMode === "babel") {
+              const formatted = this.formatJavaScript(
+                this.editors.babel.getValue()
+              );
+              this.editors.babel.setValue(formatted);
+              this.updateStatus("JavaScript code formatted", "success");
+            } else {
+              this.updateStatus(
+                "Formatting not available for this mode",
+                "warning"
+              );
+            }
+          } catch (error) {
+            this.updateStatus(
+              "Error formatting code: " + error.message,
+              "error"
+            );
+          }
+        }
+
+        formatHTML(html) {
+          if (!html.trim()) return html;
+
+          let formatted = html;
+          let indent = 0;
+          const indentSize = 2;
+
+          // Basic HTML formatting
+          formatted = formatted.replace(/>\s*</g, "><");
+          formatted = formatted.replace(/></g, ">\n<");
+
+          const lines = formatted.split("\n");
+          const result = [];
+
+          lines.forEach((line) => {
+            const trimmed = line.trim();
+            if (!trimmed) return;
+
+            if (trimmed.startsWith("</")) {
+              indent = Math.max(0, indent - 1);
+            }
+
+            result.push(" ".repeat(indent * indentSize) + trimmed);
+
+            if (
+              trimmed.startsWith("<") &&
+              !trimmed.startsWith("</") &&
+              !trimmed.endsWith("/>")
+            ) {
+              indent++;
+            }
+          });
+
+          return result.join("\n");
+        }
+
+        formatJavaScript(js) {
+          if (!js.trim()) return js;
+
+          // Basic JavaScript formatting
+          let formatted = js;
+          let indent = 0;
+          const indentSize = 2;
+
+          const lines = formatted.split("\n");
+          const result = [];
+
+          lines.forEach((line) => {
+            const trimmed = line.trim();
+            if (!trimmed) {
+              result.push("");
+              return;
+            }
+
+            if (trimmed.includes("}")) {
+              indent = Math.max(0, indent - 1);
+            }
+
+            result.push(" ".repeat(indent * indentSize) + trimmed);
+
+            if (trimmed.includes("{")) {
+              indent++;
+            }
+          });
+
+          return result.join("\n");
+        }
+
+        validateCode() {
+          try {
+            if (this.currentMode === "html") {
+              this.validateHTML();
+            } else if (this.currentMode === "babel") {
+              this.validateJavaScript();
+            } else {
+              this.updateStatus(
+                "Validation not available for this mode",
+                "warning"
+              );
+            }
+          } catch (error) {
+            this.updateStatus("Validation error: " + error.message, "error");
+          }
+        }
+
+        validateHTML() {
+          const html = this.editors.html.getValue();
+          if (!html.trim()) {
+            this.updateStatus("No HTML content to validate", "warning");
+            return;
+          }
+
+          // Basic HTML validation
+          const issues = [];
+
+          // Check for unclosed tags
+          const openTags = html.match(/<[^/][^>]*>/g) || [];
+          const closeTags = html.match(/<\/[^>]*>/g) || [];
+
+          if (openTags.length > closeTags.length) {
+            issues.push("Potential unclosed tags detected");
+          }
+
+          if (issues.length === 0) {
+            this.updateStatus("HTML validation passed", "success");
+          } else {
+            this.updateStatus(
+              "HTML validation issues: " + issues.join(", "),
+              "error"
+            );
+          }
+        }
+
+        validateJavaScript() {
+          const js = this.editors.babel.getValue();
+          if (!js.trim()) {
+            this.updateStatus("No JavaScript content to validate", "warning");
+            return;
+          }
+
+          try {
+            new Function(js);
+            this.updateStatus("JavaScript syntax is valid", "success");
+          } catch (error) {
+            this.updateStatus(
+              "JavaScript syntax error: " + error.message,
+              "error"
+            );
+          }
+        }
+
+        clearEditor() {
+          if (!confirm("Are you sure you want to clear all content?")) {
+            return;
+          }
+
+          // Clear all content
+          this.content = { rich: "", html: "", babel: "" };
+
+          // Clear editors
+          if (this.editors.quill) {
+            this.editors.quill.setContents([]);
+          }
+          if (this.editors.html) {
+            this.editors.html.setValue("");
+          }
+          if (this.editors.babel) {
+            this.editors.babel.setValue("");
+          }
+
+          this.updateCounts();
+          this.updatePreview();
+          this.updateStatus("All content cleared", "success");
+        }
+
+        exportContent() {
+          const data = {
+            timestamp: new Date().toISOString(),
+            mode: this.currentMode,
+            content: {
+              rich: this.content.rich,
+              html: this.content.html,
+              babel: this.content.babel,
+            },
+          };
+
+          const blob = new Blob([JSON.stringify(data, null, 2)], {
+            type: "application/json",
+          });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "editor-content-" + Date.now() + ".json";
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+
+          this.updateStatus("Content exported successfully", "success");
+        }
+
+        updateCounts() {
+          const content = this.getCurrentContent();
+          const charCount = content.length;
+          const wordCount = content.trim()
+            ? content.trim().split(/\s+/).length
+            : 0;
+
+          document.getElementById("char-count").textContent =
+            charCount + " characters";
+          document.getElementById("word-count").textContent =
+            wordCount + " words";
+        }
+
+        updatePreview() {
+          const htmlPreview = document.getElementById("preview-html");
+          const codePreview = document.getElementById("preview-code");
+
+          // Update HTML preview
+          if (this.content.rich) {
+            htmlPreview.innerHTML = this.content.rich;
+          } else if (this.content.html) {
+            htmlPreview.innerHTML = this.content.html;
+          } else {
+            htmlPreview.innerHTML =
+              '<p style="color: #7f8c8d; text-align: center; padding: 40px;">No HTML content to preview</p>';
+          }
+
+          // Update code preview
+          if (this.content.babel) {
+            codePreview.textContent = this.content.babel;
+          } else {
+            codePreview.textContent = "// No Babel/JavaScript code to display";
+          }
+        }
+
+        getCurrentContent() {
+          switch (this.currentMode) {
+            case "rich":
+              return this.content.rich;
+            case "html":
+              return this.content.html;
+            case "babel":
+              return this.content.babel;
+            default:
+              return "";
+          }
+        }
+
+        getModeDisplayName(mode) {
+          const names = {
+            rich: "Rich Text",
+            html: "HTML",
+            babel: "Babel/JS",
+            preview: "Preview",
+          };
+          return names[mode] || mode;
+        }
+
+        updateStatus(message, type = "info") {
+          const statusText = document.getElementById("status-text");
+          const statusDot = document.getElementById("status-dot");
+
+          statusText.textContent = message;
+
+          // Update status dot
+          statusDot.className = "status-dot";
+          if (type === "error") {
+            statusDot.classList.add("error");
+          } else if (type === "warning") {
+            statusDot.classList.add("warning");
+          }
+
+          // Auto-clear status after 5 seconds
+          setTimeout(() => {
+            statusText.textContent = "Ready";
+            statusDot.className = "status-dot";
+          }, 5000);
+        }
+
+        // Public API for external integration
+        getContent() {
+          return {
+            mode: this.currentMode,
+            content: this.content,
+            current: this.getCurrentContent(),
+          };
+        }
+
+        setContent(content, mode = null) {
+          if (typeof content === "string") {
+            const targetMode = mode || this.currentMode;
+            this.content[targetMode] = content;
+
+            if (targetMode === "rich" && this.editors.quill) {
+              this.editors.quill.root.innerHTML = content;
+            } else if (targetMode === "html" && this.editors.html) {
+              this.editors.html.setValue(content);
+            } else if (targetMode === "babel" && this.editors.babel) {
+              this.editors.babel.setValue(content);
+            }
+          } else if (typeof content === "object") {
+            this.content = { ...this.content, ...content };
+
+            if (this.editors.quill && content.rich !== undefined) {
+              this.editors.quill.root.innerHTML = content.rich;
+            }
+            if (this.editors.html && content.html !== undefined) {
+              this.editors.html.setValue(content.html);
+            }
+            if (this.editors.babel && content.babel !== undefined) {
+              this.editors.babel.setValue(content.babel);
+            }
+          }
+
+          this.updateCounts();
+          this.updatePreview();
+        }
+      }
+
+      // Initialize the editor when DOM is loaded
+      let editorInstance;
+      document.addEventListener("DOMContentLoaded", function () {
+        editorInstance = new AdvancedRichTextEditor();
+
+        // Make editor globally available for OutSystems integration
+        window.AdvancedRichTextEditor = editorInstance;
+      });
+
+      // Global API functions for OutSystems integration
+      window.setEditorContent = function (content, mode) {
+        if (editorInstance) {
+          editorInstance.setContent(content, mode);
+        }
+      };
+
+      window.getEditorContent = function () {
+        return editorInstance ? editorInstance.getContent() : null;
+      };
+
+      window.switchEditorMode = function (mode) {
+        if (editorInstance) {
+          editorInstance.switchMode(mode);
+        }
+      };
+
+      window.clearEditor = function () {
+        if (editorInstance) {
+          editorInstance.clearEditor();
+        }
+      };
+
+      window.exportEditorContent = function () {
+        if (editorInstance) {
+          editorInstance.exportContent();
+        }
+      };
+
+      // Enhanced OutSystems Integration Functions
+      window.initializeEditor = function (config) {
+        if (!config) config = {};
+
+        // Set initial configuration
+        if (editorInstance) {
+          if (config.mode) {
+            editorInstance.switchMode(config.mode);
+          }
+          if (config.content) {
+            editorInstance.setContent(config.content);
+          }
+          if (config.variables) {
+            editorInstance.setVariables(config.variables);
+          }
+          if (config.theme) {
+            editorInstance.setTheme(config.theme);
+          }
+
+          editorInstance.updateStatus(
+            "Editor initialized with OutSystems config",
+            "success"
+          );
+          return { success: true, message: "Editor initialized successfully" };
+        }
+        return { success: false, message: "Editor not available" };
+      };
+
+      // Variable management for OutSystems
+      window.setEditorVariables = function (variables) {
+        if (editorInstance && typeof variables === "object") {
+          editorInstance.setVariables(variables);
+          return { success: true, variables: editorInstance.getVariables() };
+        }
+        return {
+          success: false,
+          message: "Invalid variables or editor not available",
+        };
+      };
+
+      window.getEditorVariables = function () {
+        return editorInstance ? editorInstance.getVariables() : {};
+      };
+
+      window.updateEditorVariable = function (key, value) {
+        if (editorInstance) {
+          return editorInstance.updateVariable(key, value);
+        }
+        return { success: false, message: "Editor not available" };
+      };
+
+      // Data binding functions
+      window.bindEditorData = function (dataSource, mapping) {
+        if (editorInstance && dataSource) {
+          return editorInstance.bindData(dataSource, mapping);
+        }
+        return {
+          success: false,
+          message: "Invalid data source or editor not available",
+        };
+      };
+
+      window.getEditorData = function (format) {
+        if (editorInstance) {
+          return editorInstance.getData(format);
+        }
+        return null;
+      };
+
+      // Event handling for OutSystems
+      window.onEditorContentChange = function (callback) {
+        if (editorInstance && typeof callback === "function") {
+          editorInstance.onContentChange(callback);
+          return { success: true, message: "Content change listener added" };
+        }
+        return {
+          success: false,
+          message: "Invalid callback or editor not available",
+        };
+      };
+
+      window.onEditorModeChange = function (callback) {
+        if (editorInstance && typeof callback === "function") {
+          editorInstance.onModeChange(callback);
+          return { success: true, message: "Mode change listener added" };
+        }
+        return {
+          success: false,
+          message: "Invalid callback or editor not available",
+        };
+      };
+
+      window.onEditorValidation = function (callback) {
+        if (editorInstance && typeof callback === "function") {
+          editorInstance.onValidation(callback);
+          return { success: true, message: "Validation listener added" };
+        }
+        return {
+          success: false,
+          message: "Invalid callback or editor not available",
+        };
+      };
+
+      // Configuration functions
+      window.setEditorConfig = function (config) {
+        if (editorInstance && typeof config === "object") {
+          return editorInstance.setConfig(config);
+        }
+        return {
+          success: false,
+          message: "Invalid config or editor not available",
+        };
+      };
+
+      window.getEditorConfig = function () {
+        return editorInstance ? editorInstance.getConfig() : {};
+      };
+
+      // Utility functions for OutSystems
+      window.validateEditorContent = function (mode) {
+        if (editorInstance) {
+          return editorInstance.validateContent(mode);
+        }
+        return { success: false, message: "Editor not available" };
+      };
+
+      window.formatEditorContent = function (mode) {
+        if (editorInstance) {
+          return editorInstance.formatContent(mode);
+        }
+        return { success: false, message: "Editor not available" };
+      };
+
+      window.getEditorStats = function () {
+        if (editorInstance) {
+          return editorInstance.getStats();
+        }
+        return {};
+      };
+
+      // Template and snippet management
+      window.insertEditorTemplate = function (template, variables) {
+        if (editorInstance) {
+          return editorInstance.insertTemplate(template, variables);
+        }
+        return { success: false, message: "Editor not available" };
+      };
+
+      window.saveEditorTemplate = function (name, content) {
+        if (editorInstance) {
+          return editorInstance.saveTemplate(name, content);
+        }
+        return { success: false, message: "Editor not available" };
+      };
+
+      // Add enhanced methods to the AdvancedRichTextEditor class
+      if (typeof AdvancedRichTextEditor !== "undefined") {
+        AdvancedRichTextEditor.prototype.variables = {};
+        AdvancedRichTextEditor.prototype.config = {};
+        AdvancedRichTextEditor.prototype.eventListeners = {
+          contentChange: [],
+          modeChange: [],
+          validation: [],
+        };
+        AdvancedRichTextEditor.prototype.templates = {};
+
+        // Variable management methods
+        AdvancedRichTextEditor.prototype.setVariables = function (variables) {
+          if (typeof variables === "object") {
+            this.variables = { ...this.variables, ...variables };
+            this.processVariables();
+            return { success: true, variables: this.variables };
+          }
+          return { success: false, message: "Invalid variables object" };
+        };
+
+        AdvancedRichTextEditor.prototype.getVariables = function () {
+          return { ...this.variables };
+        };
+
+        AdvancedRichTextEditor.prototype.updateVariable = function (
+          key,
+          value
+        ) {
+          if (key && value !== undefined) {
+            this.variables[key] = value;
+            this.processVariables();
+            return { success: true, key: key, value: value };
+          }
+          return { success: false, message: "Invalid key or value" };
+        };
+
+        AdvancedRichTextEditor.prototype.processVariables = function () {
+          // Replace variables in content with {{variableName}} syntax
+          const currentContent = this.getCurrentContent();
+          let processedContent = currentContent;
+
+          Object.keys(this.variables).forEach((key) => {
+            const placeholder = `{{${key}}}`;
+            const value = this.variables[key];
+            processedContent = processedContent.replace(
+              new RegExp(placeholder, "g"),
+              value
+            );
+          });
+
+          // Update the display if content was processed
+          if (processedContent !== currentContent) {
+            this.updateContentDisplay(processedContent);
+          }
+        };
+
+        AdvancedRichTextEditor.prototype.updateContentDisplay = function (
+          content
+        ) {
+          // Update preview with processed content
+          this.updatePreview();
+        };
+
+        // Data binding methods
+        AdvancedRichTextEditor.prototype.bindData = function (
+          dataSource,
+          mapping
+        ) {
+          try {
+            if (typeof dataSource === "object" && typeof mapping === "object") {
+              const boundData = {};
+
+              Object.keys(mapping).forEach((sourceKey) => {
+                const targetKey = mapping[sourceKey];
+                if (dataSource.hasOwnProperty(sourceKey)) {
+                  boundData[targetKey] = dataSource[sourceKey];
+                }
+              });
+
+              this.setVariables(boundData);
+              return { success: true, boundData: boundData };
+            }
+            return {
+              success: false,
+              message: "Invalid data source or mapping",
+            };
+          } catch (error) {
+            return {
+              success: false,
+              message: "Error binding data: " + error.message,
+            };
+          }
+        };
+
+        AdvancedRichTextEditor.prototype.getData = function (format) {
+          const data = {
+            content: this.getContent(),
+            variables: this.getVariables(),
+            config: this.getConfig(),
+            stats: this.getStats(),
+            timestamp: new Date().toISOString(),
+          };
+
+          switch (format) {
+            case "json":
+              return JSON.stringify(data, null, 2);
+            case "xml":
+              return this.convertToXML(data);
+            case "csv":
+              return this.convertToCSV(data);
+            default:
+              return data;
+          }
+        };
+
+        // Event handling methods
+        AdvancedRichTextEditor.prototype.onContentChange = function (callback) {
+          if (typeof callback === "function") {
+            this.eventListeners.contentChange.push(callback);
+            return true;
+          }
+          return false;
+        };
+
+        AdvancedRichTextEditor.prototype.onModeChange = function (callback) {
+          if (typeof callback === "function") {
+            this.eventListeners.modeChange.push(callback);
+            return true;
+          }
+          return false;
+        };
+
+        AdvancedRichTextEditor.prototype.onValidation = function (callback) {
+          if (typeof callback === "function") {
+            this.eventListeners.validation.push(callback);
+            return true;
+          }
+          return false;
+        };
+
+        AdvancedRichTextEditor.prototype.triggerEvent = function (
+          eventType,
+          data
+        ) {
+          if (this.eventListeners[eventType]) {
+            this.eventListeners[eventType].forEach((callback) => {
+              try {
+                callback(data);
+              } catch (error) {
+                console.error("Error in event callback:", error);
+              }
+            });
+          }
+        };
+
+        // Configuration methods
+        AdvancedRichTextEditor.prototype.setConfig = function (config) {
+          try {
+            this.config = { ...this.config, ...config };
+            this.applyConfig();
+            return { success: true, config: this.config };
+          } catch (error) {
+            return {
+              success: false,
+              message: "Error setting config: " + error.message,
+            };
+          }
+        };
+
+        AdvancedRichTextEditor.prototype.getConfig = function () {
+          return { ...this.config };
+        };
+
+        AdvancedRichTextEditor.prototype.applyConfig = function () {
+          // Apply configuration settings
+          if (this.config.readOnly !== undefined) {
+            this.setReadOnly(this.config.readOnly);
+          }
+          if (this.config.theme) {
+            this.setTheme(this.config.theme);
+          }
+          if (this.config.language) {
+            this.setLanguage(this.config.language);
+          }
+        };
+
+        // Utility methods
+        AdvancedRichTextEditor.prototype.validateContent = function (mode) {
+          const targetMode = mode || this.currentMode;
+          try {
+            if (targetMode === "html") {
+              this.validateHTML();
+            } else if (targetMode === "babel") {
+              this.validateJavaScript();
+            }
+
+            const result = {
+              success: true,
+              mode: targetMode,
+              message: "Validation passed",
+            };
+            this.triggerEvent("validation", result);
+            return result;
+          } catch (error) {
+            const result = {
+              success: false,
+              mode: targetMode,
+              message: error.message,
+            };
+            this.triggerEvent("validation", result);
+            return result;
+          }
+        };
+
+        AdvancedRichTextEditor.prototype.formatContent = function (mode) {
+          const targetMode = mode || this.currentMode;
+          try {
+            if (targetMode === "html") {
+              this.formatCode();
+            } else if (targetMode === "babel") {
+              this.formatCode();
+            }
+            return {
+              success: true,
+              mode: targetMode,
+              message: "Content formatted",
+            };
+          } catch (error) {
+            return { success: false, mode: targetMode, message: error.message };
+          }
+        };
+
+        AdvancedRichTextEditor.prototype.getStats = function () {
+          const content = this.getCurrentContent();
+          return {
+            mode: this.currentMode,
+            characters: content.length,
+            words: content.trim() ? content.trim().split(/\s+/).length : 0,
+            lines: content.split("\n").length,
+            variables: Object.keys(this.variables).length,
+            lastModified: new Date().toISOString(),
+          };
+        };
+
+        // Template methods
+        AdvancedRichTextEditor.prototype.insertTemplate = function (
+          template,
+          variables
+        ) {
+          try {
+            let processedTemplate = template;
+
+            if (variables && typeof variables === "object") {
+              Object.keys(variables).forEach((key) => {
+                const placeholder = `{{${key}}}`;
+                processedTemplate = processedTemplate.replace(
+                  new RegExp(placeholder, "g"),
+                  variables[key]
+                );
+              });
+            }
+
+            // Insert into current editor
+            if (this.currentMode === "rich" && this.editors.quill) {
+              const currentLength = this.editors.quill.getLength();
+              this.editors.quill.insertText(currentLength, processedTemplate);
+            } else if (this.currentMode === "html" && this.editors.html) {
+              const cursor = this.editors.html.getCursor();
+              this.editors.html.replaceRange(processedTemplate, cursor);
+            } else if (this.currentMode === "babel" && this.editors.babel) {
+              const cursor = this.editors.babel.getCursor();
+              this.editors.babel.replaceRange(processedTemplate, cursor);
+            }
+
+            return { success: true, template: processedTemplate };
+          } catch (error) {
+            return {
+              success: false,
+              message: "Error inserting template: " + error.message,
+            };
+          }
+        };
+
+        AdvancedRichTextEditor.prototype.saveTemplate = function (
+          name,
+          content
+        ) {
+          if (name && content) {
+            this.templates[name] = {
+              content: content || this.getCurrentContent(),
+              created: new Date().toISOString(),
+              mode: this.currentMode,
+            };
+            return {
+              success: true,
+              name: name,
+              template: this.templates[name],
+            };
+          }
+          return { success: false, message: "Invalid name or content" };
+        };
+
+        // Helper methods for data conversion
+        AdvancedRichTextEditor.prototype.convertToXML = function (data) {
+          let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<editorData>\n';
+
+          function objectToXML(obj, indent = "  ") {
+            let result = "";
+            Object.keys(obj).forEach((key) => {
+              const value = obj[key];
+              if (typeof value === "object" && value !== null) {
+                result += `${indent}<${key}>\n${objectToXML(
+                  value,
+                  indent + "  "
+                )}${indent}</${key}>\n`;
+              } else {
+                result += `${indent}<${key}>${String(value).replace(
+                  /[<>&'"]/g,
+                  function (c) {
+                    return {
+                      "<": "&lt;",
+                      ">": "&gt;",
+                      "&": "&amp;",
+                      "'": "&apos;",
+                      '"': "&quot;",
+                    }[c];
+                  }
+                )}</${key}>\n`;
+              }
+            });
+            return result;
+          }
+
+          xml += objectToXML(data);
+          xml += "</editorData>";
+          return xml;
+        };
+
+        AdvancedRichTextEditor.prototype.convertToCSV = function (data) {
+          const rows = [["Key", "Value", "Type"]];
+
+          function flattenObject(obj, prefix = "") {
+            Object.keys(obj).forEach((key) => {
+              const value = obj[key];
+              const fullKey = prefix ? `${prefix}.${key}` : key;
+
+              if (typeof value === "object" && value !== null) {
+                flattenObject(value, fullKey);
+              } else {
+                rows.push([fullKey, String(value), typeof value]);
+              }
+            });
+          }
+
+          flattenObject(data);
+          return rows
+            .map((row) =>
+              row
+                .map((cell) => `"${String(cell).replace(/"/g, '""')}"`)
+                .join(",")
+            )
+            .join("\n");
+        };
+
+        // Override existing methods to trigger events
+        const originalSwitchMode = AdvancedRichTextEditor.prototype.switchMode;
+        AdvancedRichTextEditor.prototype.switchMode = function (mode) {
+          const previousMode = this.currentMode;
+          originalSwitchMode.call(this, mode);
+
+          this.triggerEvent("modeChange", {
+            previousMode: previousMode,
+            currentMode: this.currentMode,
+            timestamp: new Date().toISOString(),
+          });
+        };
+
+        // Override updateCounts to trigger content change events
+        const originalUpdateCounts =
+          AdvancedRichTextEditor.prototype.updateCounts;
+        AdvancedRichTextEditor.prototype.updateCounts = function () {
+          originalUpdateCounts.call(this);
+
+          this.triggerEvent("contentChange", {
+            content: this.getContent(),
+            stats: this.getStats(),
+            variables: this.getVariables(),
+            timestamp: new Date().toISOString(),
+          });
+        };
+      }
+    </script>
+  </body>
+</html>

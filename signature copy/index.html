@@ -32,20 +32,9 @@
         cursor: pointer;
         transition: all 0.3s ease;
         min-height: 100px;
-        width: 400px; /* Fixed width to prevent growth */
-        max-width: 400px; /* Ensure it doesn't exceed this */
-        box-sizing: border-box; /* Include padding and border in width calculation */
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-
-      .signature-placeholder img {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: 150px !important;
-        object-fit: contain !important;
-        display: block !important;
       }
 
       .signature-placeholder:hover {
@@ -113,83 +102,79 @@
   </head>
   <body>
     <h1>Dynamic Signature System</h1>
+    
+    <button id="signBtn" class="sign-btn" onclick="DynamicSignature.startSigning()">
+      Start Signing
+    </button>
 
     <!-- Sample signature placeholders -->
     <div class="signature-placeholder" data-signature-id="signature1">
       Click to sign here - Area 1
     </div>
-
+    
     <div class="signature-placeholder" data-signature-id="signature2">
       Click to sign here - Area 2
     </div>
-
+    
     <div class="signature-placeholder" data-signature-id="signature3">
       Click to sign here - Area 3
     </div>
 
     <!-- Include the signature library -->
     <script src="signature-library.js"></script>
-
+    
     <script>
       // Initialize the library when DOM is loaded
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener('DOMContentLoaded', function() {
         try {
           // Initialize with custom options
           const initResult = DynamicSignature.init({
-            signatureClass: "signature-placeholder",
-            onComplete: function (signatureData) {
-              console.log("Signature completed:", signatureData);
+            signatureClass: 'signature-placeholder',
+            onComplete: function(signatureData) {
+              console.log('Signature completed:', signatureData);
               // Handle signature completion here
-            },
+              // You can send signatureData to your server or process it as needed
+            }
           });
 
           if (initResult.success) {
-            console.log(
-              "Signature library ready - placeholders are listening for clicks"
-            );
-
+            console.log('Signature library ready');
+            
             // Check for placeholders
             const placeholderCheck = DynamicSignature.hasPlaceholders();
-            console.log("Placeholder check:", placeholderCheck.message);
+            console.log('Placeholder check:', placeholderCheck.message);
           } else {
-            console.error("Failed to initialize:", initResult.message);
+            console.error('Failed to initialize:', initResult.message);
           }
         } catch (error) {
-          console.error("Error during initialization:", error);
+          console.error('Error during initialization:', error);
         }
       });
 
-      // Listen for modal state changes
-      window.addEventListener("signatureModalStateChange", function (event) {
-        console.log(
-          "Modal state changed:",
-          event.detail.isOpen ? "opened" : "closed"
-        );
-      });
-
       // Optional: Add custom event handlers
-      window.addEventListener("unhandledrejection", function (event) {
-        console.error("Unhandled promise rejection:", event.reason);
+      window.addEventListener('unhandledrejection', function(event) {
+        console.error('Unhandled promise rejection:', event.reason);
       });
 
       // Example usage functions (optional)
       function getAllSignatures() {
         const signatures = DynamicSignature.getAllSignatures();
-        console.log("All signatures:", signatures);
+        console.log('All signatures:', signatures);
         return signatures;
       }
 
       function downloadSignature(signatureId) {
         const result = DynamicSignature.downloadSignature(signatureId);
-        console.log("Download result:", result);
+        console.log('Download result:', result);
         return result;
       }
 
       function resetSignatureSystem() {
         const result = DynamicSignature.reset();
-        console.log("Reset result:", result);
+        console.log('Reset result:', result);
         return result;
       }
     </script>
   </body>
 </html>
+         
