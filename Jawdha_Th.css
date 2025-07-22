@@ -30,6 +30,62 @@ body.night-mode {
   animation: var(--move-and-show);
   animation-delay: 0.1s;
 }
+
+/* Menu Style */
+.layout-side .app-menu-links a,
+.menu-visible .app-menu-links a {
+  border: none;
+  padding: 0;
+  margin: 0;
+  /* height: fit-content;
+	 */
+}
+.layout-side .sidemenu-search-wrapper > div > div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.sidemenu-search-wrapper > div > div > div:nth-child(2) {
+  animation: var(--move-and-hide);
+}
+.menu-visible .sidemenu-search-wrapper > div > div > div:nth-child(2) {
+  opacity: 0;
+  animation: var(--move-and-show);
+  animation-delay: 0.1s;
+  line-height: 0;
+}
+.sidemenu-search-wrapper > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: var(--sidemenu-items-min-height);
+  color: var(--sidemenu-text) !important;
+  margin-inline: 0.31rem;
+  text-decoration: none;
+  transition: var(--transition);
+  width: 100%;
+}
+.menu-visible .sidemenu-search-wrapper > div > div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start !important;
+  position: relative;
+  min-height: var(--sidemenu-items-min-height);
+  cursor: pointer;
+  width: 100%;
+  gap: var(--sidemenu-item-gap);
+}
+.sidemenu-search-wrapper > div > div > div:nth-child(2) {
+  animation: var(--move-and-hide);
+}
+.sidemenu-search-wrapper > div {
+  display: flex;
+  height: 100%;
+}
+/* Menu Style */
+
 @keyframes move-and-hide {
   0% {
     display: block;
@@ -346,6 +402,9 @@ body.night-mode {
   line-height: normal;
   height: 1.5rem;
   width: 100%;
+}
+.details-application-info-wrapper .tag > span {
+  white-space: nowrap;
 }
 .details-application-info-wrapper.flex {
   display: flex;
@@ -1594,7 +1653,7 @@ a:has(.btn-inner-template) {
   path {
   stroke: var(--primary-text);
 }
-.adaptive-column-template-wrapper.popup-doc-wrapper > div{
+.adaptive-column-template-wrapper.popup-doc-wrapper > div {
   grid-template-columns: 1fr;
 }
 .adaptive-column-template-wrapper.popup-doc-wrapper .list {
@@ -2023,6 +2082,7 @@ a:has(.btn-inner-template) {
   > div:nth-child(2)
   textarea {
   height: 6.475rem;
+  pointer-events: auto;
 }
 .osui-accordion .review-details-wrapper .sec-1 > div:nth-child(1) {
   display: flex;
@@ -3953,3 +4013,31 @@ a:has(.btn-inner-template) {
   border: 1px solid var(--button-reject-border);
   color: var(--button-reject-text);
 }
+
+/* Download File Template */
+.download-file-template {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem;
+  border-radius: 24px;
+  background-color: var(--content-background);
+}
+
+.download-file-template span {
+  color: var(--primary-text);
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "liga" off, "clig" off;
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  /* 22.5px */
+  letter-spacing: 0.0158rem;
+}
+
+.download-file-template svg path{
+  stroke: var(--primary-text);
+}
+/* Download File Template */
