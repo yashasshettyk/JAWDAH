@@ -12,6 +12,10 @@ const DynamicNameInput = (function () {
   let currentInput = null;
   let onCompleteCallback = null;
 
+  // Add mutation observer and listening state (like signature library)
+  let mutationObserver = null;
+  let isListeningEnabled = false;
+
   // Name class identifier (can be customized)
   let NAME_CLASS = "name-placeholder";
 
@@ -109,6 +113,83 @@ const DynamicNameInput = (function () {
       .replace(/\s+/g, " ");
   }
 
+  // Add placeholder click handling (like signature library)
+  function enablePlaceholderListeners() {
+    if (isEditingMode) return;
+
+    const elements = document.querySelectorAll(`.${NAME_CLASS}`);
+    elements.forEach((element) => {
+      element.removeEventListener("click", handlePlaceholderClick);
+      element.addEventListener("click", handlePlaceholderClick);
+      element.setAttribute("data-listener-active", "true");
+    });
+
+    isListeningEnabled = true;
+    console.log(`Enabled listeners for ${elements.length} placeholder(s)`);
+  }
+
+  function disablePlaceholderListeners() {
+    const elements = document.querySelectorAll(`.${NAME_CLASS}`);
+    elements.forEach((element) => {
+      element.removeEventListener("click", handlePlaceholderClick);
+      element.removeAttribute("data-listener-active");
+    });
+
+    isListeningEnabled = false;
+  }
+
+  function handlePlaceholderClick(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (isEditingMode) return;
+
+    const element = event.currentTarget;
+    disablePlaceholderListeners();
+    DynamicNameInput.activateNameArea(element);
+  }
+
+  // Add mutation observer setup (like signature library)
+  function setupMutationObserver() {
+    if (mutationObserver) {
+      mutationObserver.disconnect();
+    }
+
+    mutationObserver = new MutationObserver(function (mutations) {
+      let shouldUpdateListeners = false;
+
+      mutations.forEach(function (mutation) {
+        if (mutation.type === "childList") {
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.classList && node.classList.contains(NAME_CLASS)) {
+                console.log("New name placeholder detected");
+                shouldUpdateListeners = true;
+              } else if (node.querySelectorAll) {
+                const newPlaceholders = node.querySelectorAll(`.${NAME_CLASS}`);
+                if (newPlaceholders.length > 0) {
+                  console.log(
+                    `${newPlaceholders.length} new name placeholders detected`
+                  );
+                  shouldUpdateListeners = true;
+                }
+              }
+            }
+          });
+        }
+      });
+
+      if (shouldUpdateListeners && !isEditingMode) {
+        enablePlaceholderListeners();
+      }
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
   // Public API
   return {
     // Library information
@@ -128,8 +209,14 @@ const DynamicNameInput = (function () {
           onCompleteCallback = options.onComplete;
         }
 
-        // Auto-enable placeholder clicking by default (like signature library)
-        highlightNameAreas();
+        // Setup mutation observer and enable listeners (like signature library)
+        setupMutationObserver();
+
+        // Enable listeners for existing placeholders
+        const initialCheck = this.hasPlaceholders();
+        if (initialCheck.success && initialCheck.count > 0) {
+          enablePlaceholderListeners();
+        }
 
         console.log(`${this.name} v${this.version} initialized successfully`);
         return { success: true, message: "Library initialized" };
@@ -254,6 +341,7 @@ const DynamicNameInput = (function () {
 
         removeHighlights();
         currentNameElement = element;
+        isEditingMode = true; // Set editing mode like signature library
 
         try {
           element.setAttribute("data-original-content", element.innerHTML);
@@ -426,14 +514,18 @@ const DynamicNameInput = (function () {
       currentNameElement = null;
       currentInput = null;
 
-      // Re-enable highlights for all placeholders (like signature library)
-      highlightNameAreas();
+      removeHighlights();
 
       const nameBtn = document.getElementById("nameBtn");
       if (nameBtn) {
         nameBtn.disabled = false;
         nameBtn.textContent = "Start Name Entry";
       }
+
+      // Re-enable placeholder listeners after editing is finished
+      setTimeout(() => {
+        enablePlaceholderListeners();
+      }, 100);
     },
 
     // Get all names
@@ -607,8 +699,16 @@ const DynamicNameInput = (function () {
         }
 
         removeHighlights();
+        disablePlaceholderListeners();
+
+        // Clean up mutation observer
+        if (mutationObserver) {
+          mutationObserver.disconnect();
+          mutationObserver = null;
+        }
 
         isEditingMode = false;
+        isListeningEnabled = false;
         currentNameElement = null;
         currentInput = null;
         onCompleteCallback = null;

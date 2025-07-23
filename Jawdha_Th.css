@@ -3320,7 +3320,7 @@ a:has(.btn-inner-template) {
   /* padding: 20px; */
   /* margin: 10px; */
   width: 130px;
-  height: 50px;
+  height: 100%;
   text-align: center;
   color: #666;
   cursor: pointer;
@@ -3346,7 +3346,7 @@ a:has(.btn-inner-template) {
 .signature-placeholder.signing {
   border: 2px solid #4caf50;
   padding: 5px;
-  background: white;
+  background: #080e25;
   position: fixed;
   /* left: -14px; */
   z-index: 1000;
@@ -3368,6 +3368,7 @@ a:has(.btn-inner-template) {
   background: white;
   width: 500px;
   height: 300px;
+  border-radius: 10px;
 }
 
 .signature-controls {
@@ -3941,6 +3942,7 @@ a:has(.btn-inner-template) {
 .name-placeholder {
   /* padding: 20px; */
   /* margin: 10px; */
+  border: 2px dashed #ccc;
   text-align: center;
   color: #777777;
   display: none;

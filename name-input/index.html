@@ -154,13 +154,7 @@
   <body>
     <h1>Dynamic Name Input System</h1>
 
-    <button
-      id="nameBtn"
-      class="name-btn"
-      onclick="DynamicNameInput.startEditing()"
-    >
-      Start Name Entry
-    </button>
+    <!-- Button removed - placeholders listen automatically -->
 
     <!-- Sample name input placeholders -->
     <div class="name-placeholder" data-name-id="name1">
@@ -188,12 +182,13 @@
             onComplete: function (nameData) {
               console.log("Name entry completed:", nameData);
               // Handle name completion here
-              // You can send nameData to your server or process it as needed
             },
           });
 
           if (initResult.success) {
-            console.log("Name input library ready");
+            console.log(
+              "Name input library ready - placeholders are listening for clicks"
+            );
 
             // Check for placeholders
             const placeholderCheck = DynamicNameInput.hasPlaceholders();

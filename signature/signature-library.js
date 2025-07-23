@@ -205,9 +205,13 @@ const DynamicSignature = (function () {
                 console.log("New signature placeholder detected");
                 shouldUpdateListeners = true;
               } else if (node.querySelectorAll) {
-                const newPlaceholders = node.querySelectorAll(`.${SIGNATURE_CLASS}`);
+                const newPlaceholders = node.querySelectorAll(
+                  `.${SIGNATURE_CLASS}`
+                );
                 if (newPlaceholders.length > 0) {
-                  console.log(`${newPlaceholders.length} new signature placeholders detected`);
+                  console.log(
+                    `${newPlaceholders.length} new signature placeholders detected`
+                  );
                   shouldUpdateListeners = true;
                 }
               }
@@ -223,7 +227,7 @@ const DynamicSignature = (function () {
 
     mutationObserver.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
     });
   }
 
@@ -283,7 +287,7 @@ const DynamicSignature = (function () {
 
         // Setup mutation observer and enable listeners
         setupMutationObserver();
-        
+
         // Enable listeners for existing placeholders
         const initialCheck = this.hasPlaceholders();
         if (initialCheck.success && initialCheck.count > 0) {
@@ -405,18 +409,12 @@ const DynamicSignature = (function () {
 
         const existingImg = element.querySelector("img[data-signature]");
         if (existingImg) {
-          console.warn("Element already contains a signature");
-          const shouldReplace = confirm(
-            "This area already has a signature. Replace it?"
-          );
-          if (!shouldReplace) {
-            return { success: false, message: "User cancelled replacement" };
-          }
+          console.log("Element already contains a signature - replacing it");
         }
 
         removeHighlights();
         currentSignatureElement = element;
-        isSigningMode = true; // Add this line to fix signing mode
+        isSigningMode = true;
 
         try {
           element.setAttribute("data-original-content", element.innerHTML);
@@ -915,7 +913,6 @@ const DynamicSignature = (function () {
           error: error.message,
         };
       }
-    }
+    },
   };
 })();
-

@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced HTML Editor with Babel</title>
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.css">
+    
+    <style>
+        :root {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #252526;
+            --bg-tertiary: #2d2d30;
+            --border-color: #3e3e42;
+            --text-primary: #cccccc;
+            --text-secondary: #969696;
+            --accent-blue: #007acc;
+            --accent-green: #4ec9b0;
+            --accent-red: #f14c4c;
+            --accent-orange: #ce9178;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .header-left, .header-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo {
+            font-weight: bold;
+            color: var(--accent-blue);
+            font-size: 16px;
+        }
+
+        .btn {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn:hover {
+            background: var(--border-color);
+        }
+
+        .btn.primary {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+        }
+
+        .btn.primary:hover {
+            background: #1177bb;
+        }
+
+        .btn.success {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+
+        .btn.danger {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            color: white;
+        }
+
+        .select {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 6px 8px;
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .editor-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .preview-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-header {
+            background: var(--bg-secondary);
+            padding: 8px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-content {
+            flex: 1;
+            position: relative;
+        }
+
+        /* CodeMirror Customization */
+        .CodeMirror {
+            height: 100% !important;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        /* Preview */
+        .preview-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .preview-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            z-index: 10;
+        }
+
+        /* Error Panel */
+        .error-panel {
+            background: var(--accent-red);
+            color: white;
+            padding: 12px 16px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 120px;
+            overflow-y: auto;
+            display: none;
+            white-space: pre-wrap;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: 4px 16px;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .status-left, .status-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent-green);
+        }
+
+        .status-dot.error {
+            background: var(--accent-red);
+        }
+
+        /* OutSystems Integration Indicator */
+        .integration-status {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            opacity: 0.8;
+            z-index: 1000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .editor-section {
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">⚡ HTML Editor</div>
+                <button class="btn" onclick="EditorApp.newFile()">📄 New</button>
+                <button class="btn" onclick="EditorApp.openFile()">📁 Open</button>
+                <button class="btn" onclick="EditorApp.saveFile()">💾 Save</button>
+            </div>
+            
+            <div class="header-right">
+                <select class="select" id="languageSelect" onchange="EditorApp.changeLanguage()">
+                    <option value="htmlmixed">HTML</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="css">CSS</option>
+                    <option value="jsx">JSX</option>
+                    <option value="typescript">TypeScript</option>
+                </select>
+                <button class="btn primary" onclick="EditorApp.runCode()">▶️ Run</button>
+                <button class="btn success" onclick="EditorApp.transpile()">🔄 Transpile</button>
+                <button class="btn" onclick="EditorApp.exportCode()">📤 Export</button>
+            </div>
+            
+            <input type="file" id="fileInput" class="file-input" accept=".html,.js,.css,.jsx,.ts" onchange="EditorApp.handleFileOpen(event)">
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Editor Section -->
+            <section class="editor-section">
+                <div class="section-header">
+                    <span>Code Editor</span>
+                    <span id="fileName">untitled.html</span>
+                </div>
+                <div class="section-content">
+                    <textarea id="codeEditor"></textarea>
+                </div>
+            </section>
+
+            <!-- Preview Section -->
+            <section class="preview-section">
+                <div class="section-header">
+                    <span>Live Preview</span>
+                    <div>
+                        <button class="btn" onclick="EditorApp.refreshPreview()">🔄 Refresh</button>
+                        <button class="btn" onclick="EditorApp.openPreviewInNewTab()">🔗 Open</button>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <iframe id="previewFrame" class="preview-frame"></iframe>
+                    <div id="previewOverlay" class="preview-overlay" style="display: none;">
+                        <div>No preview available for this file type</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Error Panel -->
+        <div id="errorPanel" class="error-panel"></div>
+
+        <!-- Status Bar -->
+        <footer class="status-bar">
+            <div class="status-left">
+                <div class="status-indicator">
+                    <div id="statusDot" class="status-dot"></div>
+                    <span id="statusText">Ready</span>
+                </div>
+                <span id="fileSize">0 bytes</span>
+            </div>
+            
+            <div class="status-right">
+                <span id="cursorPosition">Ln 1, Col 1</span>
+                <span id="selectionInfo"></span>
+                <span>Babel Ready</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Integration Status -->
+    <div class="integration-status">
+        OutSystems Integration: ✅ Ready
+    </div>
+
+    <!-- CodeMirror Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/jsx/jsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/edit/closetag.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/foldgutter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/addon/fold/brace-fold.min.js"></script>
+
+    <!-- Babel Standalone -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        // Main Application Class
+        class HTMLEditorApp {
+            constructor() {
+                this.editor = null;
+                this.currentFileName = 'untitled.html';
+                this.currentContent = '';
+                this.isModified = false;
+                
+                this.init();
+            }
+
+            init() {
+                this.initEditor();
+                this.setupEventListeners();
+                this.updateStatus('Editor initialized');
+                this.loadDefaultContent();
+            }
+
+            initEditor() {
+                this.editor = CodeMirror.fromTextArea(document.getElementById('codeEditor'), {
+                    lineNumbers: true,
+                    mode: 'htmlmixed',
+                    theme: 'dracula',
+                    autoCloseBrackets: true,
+                    autoCloseTags: true,
+                    indentUnit: 2,
+                    tabSize: 2,
+                    lineWrapping: true,
+                    foldGutter: true,
+                    gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+                    extraKeys: {
+                        'Ctrl-S': () => this.saveFile(),
+                        'Ctrl-O': () => this.openFile(),
+                        'Ctrl-N': () => this.newFile(),
+                        'F5': () => this.runCode(),
+                        'Ctrl-/': 'toggleComment'
+                    }
+                });
+
+                this.editor.setSize('100%', '100%');
+                
+                // Editor event listeners
+                this.editor.on('change', () => {
+                    this.onContentChange();
+                });
+                
+                this.editor.on('cursorActivity', () => {
+                    this.updateCursorPosition();
+                });
+            }
+
+            setupEventListeners() {
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    if (e.ctrlKey || e.metaKey) {
+                        switch (e.key.toLowerCase()) {
+                            case 's':
+                                e.preventDefault();
+                                this.saveFile();
+                                break;
+                            case 'o':
+                                e.preventDefault();
+                                this.openFile();
+                                break;
+                            case 'n':
+                                e.preventDefault();
+                                this.newFile();
+                                break;
+                        }
+                    }
+                    
+                    if (e.key === 'F5') {
+                        e.preventDefault();
+                        this.runCode();
+                    }
+                });
+
+                // Window events
+                window.addEventListener('beforeunload', (e) => {
+                    if (this.isModified) {
+                        e.preventDefault();
+                        e.returnValue = 'You have unsaved changes. Are you sure you want to leave?';
+                    }
+                });
+            }
+
+            loadDefaultContent() {
+                const defaultHTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Editor Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .container {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .feature {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Advanced HTML Editor</h1>
+        
+        <div class="feature">
+            <h3>✨ ES6+ Support</h3>
+            <p>Write modern JavaScript with arrow functions, template literals, and more!</p>
+        </div>
+        
+        <div class="feature">
+            <h3>⚛️ JSX Ready</h3>
+            <p>Create React components with full JSX support and Babel transpilation.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>🔧 OutSystems Integration</h3>
+            <p>Seamlessly integrate with OutSystems platform for enterprise development.</p>
+        </div>
+        
+        <div id="demo-content"></div>
+    </div>
+    
+    <script>
+        // Modern JavaScript Demo
+        const features = [
+            { name: 'Live Preview', icon: '👁️' },
+            { name: 'Syntax Highlighting', icon: '🎨' },
+            { name: 'Code Transpilation', icon: '🔄' },
+            { name: 'File Management', icon: '📁' }
+        ];
+        
+        const renderFeatures = () => {
+            const container = document.getElementById('demo-content');
+            container.innerHTML = \`
+                <div class="feature">
+                    <h3>🎯 Interactive Features</h3>
+                    <ul>
+                        \${features.map(f => \`<li>\${f.icon} \${f.name}</li>\`).join('')}
+                    </ul>
+                </div>
+            \`;
+        };
+        
+        // Execute on load
+        document.addEventListener('DOMContentLoaded', renderFeatures);
+    </script>
+</body>
+</html>`;
+
+                this.editor.setValue(defaultHTML);
+                this.currentContent = defaultHTML;
+                this.updatePreview();
+            }
+
+            onContentChange() {
+                const content = this.editor.getValue();
+                this.isModified = (content !== this.currentContent);
+                this.updateFileSize();
+                this.updatePreview();
+                this.validateCode();
+            }
+
+            updatePreview() {
+                const code = this.editor.getValue();
+                const mode = this.editor.getOption('mode');
+                
+                if (mode === 'htmlmixed' || code.includes('<html')) {
+                    this.showPreview();
+                    try {
+                        const processedCode = this.processCode(code);
+                        document.getElementById('previewFrame').srcdoc = processedCode;
+                        this.hideError();
+                    } catch (error) {
+                        this.showError('Preview Error: ' + error.message);
+                    }
+                } else {
+                    this.hidePreview();
+                }
+            }
+
+            processCode(code) {
+                try {
+                    // Check if code contains modern JS features
+                    if (this.needsTranspilation(code)) {
+                        return this.transpileHTML(code);
+                    }
+                    return code;
+                } catch (error) {
+                    console.warn('Code processing failed:', error);
+                    return code;
+                }
+            }
+
+            needsTranspilation(code) {
+                const modernFeatures = [
+                    /const\s+\w+\s*=/,
+                    /let\s+\w+\s*=/,
+                    /\w+\s*=>\s*{/,
+                    /`[^`]*\$\{[^}]*\}[^`]*`/,
+                    /class\s+\w+/,
+                    /<[A-Z]\w*\s*[/>]/,
+                    /import\s+/,
+                    /export\s+/
+                ];
+                
+                return modernFeatures.some(pattern => pattern.test(code));
+            }
+
+            transpileHTML(htmlCode) {
+                return htmlCode.replace(/<script(?:\s[^>]*)?>([^]*?)<\/script>/gi, (match, scriptContent) => {
+                    try {
+                        if (this.needsTranspilation(scriptContent)) {
+                            const transpiled = Babel.transform(scriptContent, {
+                                presets: ['env', 'react'],
+                                plugins: ['transform-class-properties']
+                            }).code;
+                            return match.replace(scriptContent, transpiled);
+                        }
+                        return match;
+                    } catch (error) {
+                        console.warn('Script transpilation failed:', error);
+                        return match;
+                    }
+                });
+            }
+
+            validateCode() {
+                try {
+                    const code = this.editor.getValue();
+                    const mode = this.editor.getOption('mode');
+                    
+                    if (mode === 'javascript' || mode === 'jsx') {
+                        Babel.transform(code, { presets: ['env', 'react'] });
+                    }
+                    
+                    this.setStatus('valid', 'Code is valid');
+                } catch (error) {
+                    this.setStatus('error', 'Syntax error detected');
+                }
+            }
+
+            // File Operations
+            newFile() {
+                if (this.isModified) {
+                    if (!confirm('You have unsaved changes. Create new file anyway?')) {
+                        return;
+                    }
+                }
+                
+                this.editor.setValue('');
+                this.currentFileName = 'untitled.html';
+                this.currentContent = '';
+                this.isModified = false;
+                this.updateFileName();
+                this.updateStatus('New file created');
+            }
+
+            openFile() {
+                document.getElementById('fileInput').click();
+            }
+
+            handleFileOpen(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const content = e.target.result;
+                    this.editor.setValue(content);
+                    this.currentFileName = file.name;
+                    this.currentContent = content;
+                    this.isModified = false;
+                    this.updateFileName();
+                    this.autoDetectLanguage(file.name);
+                    this.updateStatus(`Opened: ${file.name}`);
+                };
+                reader.readAsText(file);
+            }
+
+            saveFile() {
+                const content = this.editor.getValue();
+                const blob = new Blob([content], { type: 'text/plain' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = this.currentFileName;
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                this.currentContent = content;
+                this.isModified = false;
+                this.updateStatus(`Saved: ${this.currentFileName}`);
+            }
+
+            exportCode() {
+                const code = this.editor.getValue();
+                const exportData = {
+                    filename: this.currentFileName,
+                    originalCode: code,
+                    transpiledCode: null,
+                    language: this.editor.getOption('mode'),
+                    timestamp: new Date().toISOString(),
+                    editorVersion: '2.0.0'
+                };
+
+                try {
+                    if (this.needsTranspilation(code)) {
+                        exportData.transpiledCode = this.processCode(code);
+                    }
+                } catch (error) {
+                    console.warn('Export transpilation failed:', error);
+                }
+
+                const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = this.currentFileName.replace(/\.[^/.]+$/, '') + '_export.json';
+                a.click();
+                
+                URL.revokeObjectURL(url);
+                this.updateStatus('Code exported successfully');
+            }
+
+            // Editor Operations
+            runCode() {
+                this.updatePreview();
+                this.updateStatus('Code executed');
+            }
+
+            transpile() {
+                const code = this.editor.getValue();
+                
+                try {
+                    let transpiled;
+                    if (code.includes('<script') || code.includes('<html')) {
+                        transpiled = this.transpileHTML(code);
+                    } else {
+                        transpiled = Babel.transform(code, {
+                            presets: ['env', 'react'],
+                            plugins: ['transform-class-properties']
+                        }).code;
+                    }
+
+                    this.openTranspiledCode(transpiled);
+                    this.updateStatus('Code transpiled successfully');
+                } catch (error) {
+                    this.showError('Transpilation Error: ' + error.message);
+                }
+            }
+
+            openTranspiledCode(code) {
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Transpiled Code - ${this.currentFileName}</title>
+                        <style>
+                            body { 
+                                background: #1a1a1a; 
+                                color: #cccccc; 
+                                padding: 20px; 
+                                font-family: 'Consolas', monospace; 
+                                line-height: 1.5;
+                            }
+                            pre { 
+                                white-space: pre-wrap; 
+                                word-wrap: break-word; 
+                                background: #252526;
+                                padding: 20px;
+                                border-radius: 8px;
+                                border: 1px solid #3e3e42;
+                            }
+                            .header {
+                                background: #007acc;
+                                color: white;
+                                padding: 10px 20px;
+                                margin: -20px -20px 20px -20px;
+                                border-radius: 8px 8px 0 0;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h2>🔄 Transpiled Code</h2>
+                            <p>Original: ${this.currentFileName}</p>
+                        </div>
+                        <pre>${this.escapeHtml(code)}</pre>
+                    </body>
+                    </html>
+                `);
+            }
+
+            changeLanguage() {
+                const select = document.getElementById('languageSelect');
+                const mode = select.value;
+                this.editor.setOption('mode', mode);
+                this.updatePreview();
+                this.updateStatus(`Language changed to: ${mode}`);
+            }
+
+            autoDetectLanguage(filename) {
+                const ext = filename.split('.').pop().toLowerCase();
+                const modeMap = {
+                    'html': 'htmlmixed',
+                    'htm': 'htmlmixed',
+                    'js': 'javascript',
+                    'jsx': 'jsx',
+                    'ts': 'javascript',
+                    'tsx': 'jsx',
+                    'css': 'css'
+                };
+                
+                const mode = modeMap[ext] || 'htmlmixed';
+                this.editor.setOption('mode', mode);
+                document.getElementById('languageSelect').value = mode;
+            }
+
+            refreshPreview() {
+                this.updatePreview();
+                this.updateStatus('Preview refreshed');
+            }
+
+            openPreviewInNewTab() {
+                const code = this.processCode(this.editor.getValue());
+                const newWindow = window.open('', '_blank');
+                newWindow.document.write(code);
+                newWindow.document.title = `Preview - ${this.currentFileName}`;
+            }
+
+            // UI Helper Methods
+            showPreview() {
+                document.getElementById('previewOverlay').style.display = 'none';
+            }
+
+            hidePreview() {
+                document.getElementById('previewOverlay').style.display = 'flex';
+            }
+
+            updateFileName() {
+                document.getElementById('fileName').textContent = this.currentFileName + (this.isModified ? ' •' : '');
+            }
+
+            updateFileSize() {
+                const size = new Blob([this.editor.getValue()]).size;
+                const formatted = size < 1024 ? `${size} bytes` : `${(size/1024).toFixed(1)} KB`;
+                document.getElementById('fileSize').textContent = formatted;
+            }
+
+            updateCursorPosition() {
+                const cursor = this.editor.getCursor();
+                const selection = this.editor.getSelection();
+                
+                document.getElementById('cursorPosition').textContent = `Ln ${cursor.line + 1}, Col ${cursor.ch + 1}`;
+                
+                if (selection) {
+                    document.getElementById('selectionInfo').textContent = `(${selection.length} selected)`;
+                } else {
+                    document.getElementById('selectionInfo').textContent = '';
+                }
+            }
+
+            updateStatus(message) {
+                document.getElementById('statusText').textContent = message;
+                setTimeout(() => {
+                    document.getElementById('statusText').textContent = 'Ready';
+                }, 3000);
+            }
+
+            setStatus(type, message) {
+                const dot = document.getElementById('statusDot');
+                const text = document.getElementById('statusText');
+                
+                dot.className = `status-dot ${type === 'error' ? 'error' : ''}`;
+                text.textContent = message;
+            }
+
+            showError(message) {
+                const panel = document.getElementById('errorPanel');
+                panel.textContent = message;
+                panel.style.display = 'block';
+                this.setStatus('error', 'Error detected');
+            }
+
+            hideError() {
+                document.getElementById('errorPanel').style.display = 'none';
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        // OutSystems Integration API
+        class OutSystemsAPI {
+            constructor(app) {
+                this.app = app;
+            }
+
+            getCode() {
+                return this.app.editor.getValue();
+            }
+
+            setCode(code) {
+                this.app.editor.setValue(code || '');
+                this.app.updatePreview();
+            }
+
+            getTranspiledCode() {
+                const code = this.app.editor.getValue();
+                if (this.app.needsTranspilation(code)) {
+                    return this.app.processCode(code);
+                }
+                return code;
+            }
+
+            setLanguage(mode) {
+                this.app.editor.setOption('mode', mode);
+                document.getElementById('languageSelect').value = mode;
+                this.app.updatePreview();
+            }
+
+            getLanguage() {
+                return this.app.editor.getOption('mode');
+            }
+
+            exportData() {
+                const code = this.app.editor.getValue();
+                return {
+                    originalCode: code,
+                    transpiledCode: this.app.needsTranspilation(code) ? this.app.processCode(code) : code,
+                    language: this.app.editor.getOption('mode'),
+                    filename: this.app.currentFileName,
+                    timestamp: new Date().toISOString(),
+                    isModified: this.app.isModified
+                };
+            }
+
+            importData(data) {
+                if (!data) return;
+                
+                if (data.originalCode) {
+                    this.app.editor.setValue(data.originalCode);
+                }
+                if (data.language) {
+                    this.setLanguage(data.language);
+                }
+                if (data.filename) {
+                    this.app.currentFileName = data.filename;
+                    this.app.updateFileName();
+                }
+                this.app.updatePreview();
+            }
+
+            onCodeChange(callback) {
+                if (typeof callback === 'function') {
+                    this.app.editor.on('change', callback);
+                }
+            }
+
+            validateCode() {
+                try {
+                    const code = this.app.editor.getValue();
+                    if (this.app.needsTranspilation(code)) {
+                        this.app.processCode(code);
+                    }
+                    return { valid: true, errors: [] };
+                } catch (error) {
+                    return { valid: false, errors: [error.message] };
+                }
+            }
+
+            getEditorInstance() {
+                return this.app.editor;
+            }
+
+            getAppInstance() {
+                return this.app;
+            }
+        }
+
+        // Initialize Application
+        let EditorApp;
+        let OutSystems;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            EditorApp = new HTMLEditorApp();
+            OutSystems = new OutSystemsAPI(EditorApp);
+            
+            // Expose to global scope for OutSystems integration
+            window.HTMLEditor = OutSystems;
+            window.EditorApp = EditorApp;
+            
+            console.log('✅ HTML Editor with Babel support initialized');
+            console.log('🔌 OutSystems API ready:', window.HTMLEditor);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested Dropdown</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        padding: 50px;
+        background-color: #f5f5f5;
+      }
+
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-btn {
+        background-color: #3498db;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+
+      .dropdown-btn:hover {
+        background-color: #2980b9;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        border-radius: 4px;
+        top: 100%;
+        left: 0;
+      }
+
+      .dropdown-content a {
+        color: #333;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        border-bottom: 1px solid #eee;
+      }
+
+      .dropdown-content a:hover {
+        background-color: #f1f1f1;
+      }
+
+      .dropdown-content a:last-child {
+        border-bottom: none;
+      }
+
+      .dropdown.show .dropdown-content {
+        display: block;
+      }
+
+      /* Nested dropdown styles */
+      .dropdown-item {
+        position: relative;
+      }
+
+      .nested-dropdown {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        display: none;
+        background-color: white;
+        min-width: 180px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+      }
+
+      .dropdown-item:hover .nested-dropdown {
+        display: block;
+      }
+
+      .arrow {
+        float: right;
+        margin-top: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Simple Dropdown inside Dropdown</h2>
+
+    <div class="dropdown">
+      <button class="dropdown-btn" onclick="toggleDropdown()">
+        Main Menu ▼
+      </button>
+      <div class="dropdown-content" id="mainDropdown">
+        <a href="#" onclick="handleClick(event, 'Home')">Home</a>
+
+        <div class="dropdown-item">
+          <a href="#" onclick="handleClick(event, 'Products')">
+            Products <span class="arrow">▶</span>
+          </a>
+          <div class="nested-dropdown">
+            <a href="#" onclick="handleClick(event, 'Laptops')">Laptops</a>
+            <a href="#" onclick="handleClick(event, 'Phones')">Phones</a>
+            <a href="#" onclick="handleClick(event, 'Tablets')">Tablets</a>
+          </div>
+        </div>
+
+        <div class="dropdown-item">
+          <a href="#" onclick="handleClick(event, 'Services')">
+            Services <span class="arrow">▶</span>
+          </a>
+          <div class="nested-dropdown">
+            <a href="#" onclick="handleClick(event, 'Support')">Support</a>
+            <a href="#" onclick="handleClick(event, 'Consultation')"
+              >Consultation</a
+            >
+            <a href="#" onclick="handleClick(event, 'Training')">Training</a>
+          </div>
+        </div>
+
+        <a href="#" onclick="handleClick(event, 'About')">About</a>
+        <a href="#" onclick="handleClick(event, 'Contact')">Contact</a>
+      </div>
+    </div>
+
+    <div style="margin-top: 50px">
+      <p><strong>Selected:</strong> <span id="selected">None</span></p>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        document
+          .getElementById("mainDropdown")
+          .parentElement.classList.toggle("show");
+      }
+
+      function handleClick(event, item) {
+        event.preventDefault();
+        event.stopPropagation();
+        document.getElementById("selected").textContent = item;
+
+        // Close dropdown after selection
+        document
+          .getElementById("mainDropdown")
+          .parentElement.classList.remove("show");
+      }
+
+      // Close dropdown when clicking outside
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropdown-btn")) {
+          var dropdowns = document.getElementsByClassName("dropdown");
+          for (var i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].classList.remove("show");
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
