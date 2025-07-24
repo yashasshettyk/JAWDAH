@@ -431,7 +431,17 @@ const DynamicSignature = (function () {
           currentCanvas = canvas;
           currentCtx = ctx;
 
+          // Create heading element
+          const heading = document.createElement("h3");
+          heading.textContent = "Please Sign In the Below Canvas";
+          heading.style.textAlign = "center";
+          heading.style.margin = "0 0 15px 0";
+          heading.style.color = "#333";
+          heading.style.fontSize = "16px";
+          heading.style.fontWeight = "bold";
+
           element.innerHTML = "";
+          element.appendChild(heading);
           element.appendChild(canvas);
           element.appendChild(controls);
 

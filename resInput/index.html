@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restricted Input - No Negative Values</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+
+      input[type="number"]:focus {
+        outline: none;
+        border-color: #4caf50;
+      }
+
+      .error {
+        border-color: #f44336 !important;
+        background-color: #ffebee;
+      }
+
+      .error-message {
+        color: #f44336;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .info {
+        background-color: #e3f2fd;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        border-left: 4px solid #2196f3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Restricted Input Demo</h1>
+
+      <div class="info">
+        <strong>Info:</strong> The inputs below are configured to prevent
+        negative values. Try entering negative numbers - they will be
+        automatically blocked or reset to 0.
+      </div>
+
+      <div class="input-group">
+        <label for="restricted-input-1"
+          >Restricted Input 1 (ID: restricted-input-1):</label
+        >
+        <input
+          type="number"
+          id="restricted-input-1"
+          placeholder="Enter a positive number"
+        />
+        <div class="error-message" id="error-restricted-input-1">
+          Negative values are not allowed!
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="restricted-input-2"
+          >Restricted Input 2 (ID: restricted-input-2):</label
+        >
+        <input
+          type="number"
+          id="restricted-input-2"
+          placeholder="Enter a positive number"
+        />
+        <div class="error-message" id="error-restricted-input-2">
+          Negative values are not allowed!
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="restricted-input-3"
+          >Restricted Input 3 (ID: restricted-input-3):</label
+        >
+        <input
+          type="number"
+          id="restricted-input-3"
+          placeholder="Enter a positive number"
+        />
+        <div class="error-message" id="error-restricted-input-3">
+          Negative values are not allowed!
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="normal-input">Normal Input (No restrictions):</label>
+        <input
+          type="number"
+          id="normal-input"
+          placeholder="This input allows negative values"
+        />
+      </div>
+    </div>
+
+    <!-- Include the external script -->
+    <script src="preventNegativeValues.js"></script>
+
+    <script>
+      // Initialize when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        // Apply restrictions to specific inputs by calling the function with their IDs
+        preventNegativeValues("restricted-input-1");
+        preventNegativeValues("restricted-input-2");
+        preventNegativeValues("restricted-input-3");
+
+        console.log("Usage: preventNegativeValues('your-input-id')");
+      });
+    </script>
+  </body>
+</html>

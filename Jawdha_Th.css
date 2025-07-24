@@ -3346,7 +3346,7 @@ a:has(.btn-inner-template) {
 .signature-placeholder.signing {
   border: 2px solid #4caf50;
   padding: 5px;
-  background: #080e25;
+  background: linear-gradient(45deg, #080e25, #343b58, #080e25);
   position: fixed;
   /* left: -14px; */
   z-index: 1000;
@@ -3365,10 +3365,15 @@ a:has(.btn-inner-template) {
 .signature-canvas {
   border: 1px solid #ccc;
   cursor: crosshair;
-  background: white;
+  background: #ffffff;
+  /* opacity: 0.7; */
   width: 500px;
   height: 300px;
   border-radius: 10px;
+  transition: 0.4s ease;
+}
+.signature-canvas:hover {
+  opacity: 1;
 }
 
 .signature-controls {
@@ -4039,7 +4044,21 @@ a:has(.btn-inner-template) {
   letter-spacing: 0.0158rem;
 }
 
-.download-file-template svg path{
+.download-file-template svg path {
   stroke: var(--primary-text);
 }
 /* Download File Template */
+
+.button-wrapper-template.place-content-left {
+  justify-content: flex-start;
+}
+
+.sign-heading {
+  margin-bottom: 15px;
+  color: var(--white);
+}
+
+.signer-name {
+  color: var(--white);
+  font-weight: 500;
+}
