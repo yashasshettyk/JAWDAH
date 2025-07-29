@@ -1420,6 +1420,7 @@ body.dark .dropdown-container .dropdown-popup-row-selected {
 .animated-label-input .form-control[data-input] {
   height: 2.5rem;
   padding: var(--space-none) var(--space-base);
+  /* color: var(--input-text-color); */
 }
 .osui-accordion-item__content
   [data-block*="AnimatedLabel"]:first-child

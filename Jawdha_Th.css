@@ -3320,6 +3320,7 @@ a:has(.btn-inner-template) {
   /* padding: 20px; */
   /* margin: 10px; */
   width: 130px;
+  margin: 0 auto;
   height: 100%;
   text-align: center;
   color: #666;
@@ -3951,6 +3952,9 @@ a:has(.btn-inner-template) {
   text-align: center;
   color: #777777;
   display: none;
+  height: 100%;
+  /* min-height: 93px; */
+  width: 100%;
   cursor: pointer;
   transition: all 0.3s ease;
   min-height: 60px;
@@ -4061,4 +4065,17 @@ a:has(.btn-inner-template) {
 .signer-name {
   color: var(--white);
   font-weight: 500;
+}
+
+.item-release-top-header-ilc > div {
+  display: grid;
+  flex-direction: row;
+  grid-template-columns: 200px 200px 1fr;
+  align-items: center;
+}
+.column-two-wrapper.flexer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }

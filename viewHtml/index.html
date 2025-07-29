@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Item Release Form</title>
+    <style>
+      /* Easily adjustable cell dimensions */
+      .table-cell {
+        padding: 5px;
+        min-height: 40px;
+      }
+
+      .signature-cell {
+        padding: 5px;
+        min-height: 40px;
+      }
+
+      .header-cell {
+        padding: 5px;
+        min-height: 35px;
+      }
+
+      .remarks-cell {
+        padding: 5px;
+        min-height: 40px;
+      }
+    </style>
+  </head>
+  <body
+    style="
+      background-color: #fff;
+      color: #000;
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 20px;
+      line-height: 1.5;
+      font-size: 11pt;
+    "
+  >
+    <div
+      style="
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+          padding: 10px 0;
+          border-bottom: 2px solid #2f5b91;
+        "
+      >
+        <img
+          style="width: 140px; height: auto"
+          src="blob:https://outsystems-dev.qcc.gov.ae/55a225d5-fe9a-4f19-b8ca-af966bf3b7d6"
+          alt="Logo 1"
+        />
+        <img
+          style="width: 140px; height: auto"
+          src="blob:https://outsystems-dev.qcc.gov.ae/433eb25b-4920-4da2-9780-225ad4a09317"
+          alt="Logo 2"
+        />
+      </div>
+      <h2
+        style="
+          text-align: center;
+          font-size: 18pt;
+          margin: 25px 0;
+          font-weight: bold;
+          color: #2f5b91;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-bottom: 1px solid #b0c4de;
+          padding-bottom: 10px;
+        "
+      >
+        Item Release Form
+      </h2>
+      <div style="width: 100%; margin: 0 auto 25px auto">
+        <div
+          style="
+            font-size: 12pt;
+            font-weight: bold;
+            color: #2f5b91;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          "
+        >
+          Customer Information
+        </div>
+        <table
+          style="
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 25px;
+            background-color: #fff;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <tbody>
+            <tr>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                "
+                colspan="2"
+              >
+                Customer Details
+              </th>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  width: 35%;
+                  font-weight: bold;
+                  background-color: #f8f9fa;
+                "
+              >
+                Name
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                {Name}
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  width: 35%;
+                  font-weight: bold;
+                  background-color: #f8f9fa;
+                "
+              >
+                Quotation Reference
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                {Quotation}
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  width: 35%;
+                  font-weight: bold;
+                  background-color: #f8f9fa;
+                "
+              >
+                Date of Receipt
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                {Date}
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  width: 35%;
+                  font-weight: bold;
+                  background-color: #f8f9fa;
+                "
+              >
+                Work Order Number
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                {WorkOrder}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="width: 100%; margin: 0 auto 25px auto">
+        <div
+          style="
+            font-size: 12pt;
+            font-weight: bold;
+            color: #2f5b91;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          "
+        >
+          Item Details
+        </div>
+        <table
+          style="
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 25px;
+            background-color: #fff;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <tbody>
+            <tr>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 25%;
+                "
+              >
+                Description
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 25%;
+                "
+              >
+                Model/Serial No.
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 15%;
+                "
+              >
+                Amount
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 35%;
+                "
+              >
+                Accessories
+              </th>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                {Description}
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                {ModelSerialNo}
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                {Amount}
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                {Accessories}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="width: 100%; margin: 0 auto 25px auto">
+        <div
+          style="
+            font-size: 12pt;
+            font-weight: bold;
+            color: #2f5b91;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          "
+        >
+          Release Authorization
+        </div>
+        <table
+          style="
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 25px;
+            background-color: #fff;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <tbody>
+            <tr>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 40%;
+                "
+              >
+                Released By
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 30%;
+                "
+              >
+                Name
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 30%;
+                "
+              >
+                Signature
+              </th>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                Lab Representative
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                <span
+                  class="name-placeholder"
+                  style="
+                    font-size: 10pt;
+                    display: inline-block;
+                    min-height: 20px;
+                  "
+                  data-name-id="LRSN"
+                  >{LabRepName}</span
+                >
+              </td>
+              <td
+                class="signature-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: white;
+                "
+              >
+                <span
+                  class="signature-placeholder"
+                  style="
+                    font-size: 10pt;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 60px;
+                  "
+                  data-signature-id="LRSS"
+                  data-signing-for="Lab Representative"
+                >
+                  <img src="{LabRepSign_Base64}" />
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="remarks-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  font-weight: bold;
+                  background-color: #e9ecef;
+                  font-size: 11pt;
+                "
+                colspan="3"
+              >
+                <strong>Lab Remarks</strong>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="remarks-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+                colspan="3"
+              >
+                {LabRemarks}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="width: 100%; margin: 0 auto 25px auto">
+        <div
+          style="
+            font-size: 12pt;
+            font-weight: bold;
+            color: #2f5b91;
+            margin: 20px 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          "
+        >
+          Receipt Confirmation
+        </div>
+        <table
+          style="
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 25px;
+            background-color: #fff;
+            font-size: 10pt;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <tbody>
+            <tr>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 40%;
+                "
+              >
+                Received By
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 30%;
+                "
+              >
+                Name
+              </th>
+              <th
+                class="header-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #b0c4de;
+                  font-weight: bold;
+                  font-size: 11pt;
+                  text-transform: uppercase;
+                  letter-spacing: 0.5px;
+                  width: 30%;
+                "
+              >
+                Signature
+              </th>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                C.H Representative
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                <span
+                  class="name-placeholder"
+                  style="
+                    font-size: 10pt;
+                    display: inline-block;
+                    min-height: 20px;
+                  "
+                  data-name-id="CHRN"
+                  >{CHName}</span
+                >
+              </td>
+              <td
+                class="signature-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: white;
+                "
+              >
+                <span
+                  class="signature-placeholder"
+                  style="
+                    font-size: 10pt;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 60px;
+                  "
+                  data-signature-id="CHRS"
+                  data-signing-for="C.H Representative"
+                >
+                  <img src="{CHSign_Base64}" />
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: #f8f9fa;
+                "
+              >
+                Customer Representative
+              </td>
+              <td
+                class="table-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: left;
+                  background-color: white;
+                "
+              >
+                <span
+                  class="name-placeholder"
+                  style="
+                    font-size: 10pt;
+                    display: inline-block;
+                    min-height: 20px;
+                  "
+                  data-name-id="CUSTRN"
+                  >{CustomerRepName}</span
+                >
+              </td>
+              <td
+                class="signature-cell"
+                style="
+                  border: 1.5px solid #000;
+                  vertical-align: top;
+                  text-align: center;
+                  background-color: #f8f9fa;
+                "
+              >
+                <span
+                  class="signature-placeholder"
+                  style="
+                    font-size: 10pt;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    min-height: 60px;
+                  "
+                  data-signature-id="CUSTRS"
+                  data-signing-for="Customer Representative"
+                >
+                  <img src="{CustomerRepSign_Base64}" />
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 10px; margin-bottom: 20px">
+        <p
+          style="
+            font-size: 12pt;
+            margin: 10px 0;
+            color: #2f5b91;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          "
+        >
+          Authorized Stamp
+        </p>
+      </div>
+      <div style="width: 100%; margin-top: 20px">
+        <img
+          style="width: 100%; height: auto; display: block"
+          src="blob:https://outsystems-dev.qcc.gov.ae/ad222042-e5c8-4cf0-8fe1-7f9fa07ed5b0"
+          alt="Official Authorization Footer"
+        />
+      </div>
+    </div>
+  </body>
+</html>

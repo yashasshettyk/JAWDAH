@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Template Builder for OutSystems</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: #f5f5f5;
+      }
+
+      .header {
+        background: #2c3e50;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header h1 {
+        font-size: 20px;
+        margin-right: auto;
+      }
+
+      .btn {
+        background: #3498db;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: #2980b9;
+      }
+
+      .btn.success {
+        background: #27ae60;
+      }
+
+      .btn.success:hover {
+        background: #229954;
+      }
+
+      .btn.secondary {
+        background: #95a5a6;
+      }
+
+      .btn.secondary:hover {
+        background: #7f8c8d;
+      }
+
+      .main-container {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .editor-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        border-right: 1px solid #ddd;
+        background: white;
+      }
+
+      .tabs {
+        display: flex;
+        background: #ecf0f1;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .tab {
+        padding: 12px 20px;
+        cursor: pointer;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .tab.active {
+        background: white;
+        border-bottom-color: #3498db;
+      }
+
+      .tab:hover:not(.active) {
+        background: #d5dbdb;
+      }
+
+      .editor-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .code-editor {
+        flex: 1;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: 20px;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.6;
+        resize: none;
+      }
+
+      .preview-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: white;
+      }
+
+      .preview-header {
+        background: #34495e;
+        color: white;
+        padding: 12px 20px;
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .preview-frame {
+        flex: 1;
+        border: none;
+        width: 100%;
+      }
+
+      .variable-tags {
+        background: #f8f9fa;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        max-height: 150px;
+        overflow-y: auto;
+      }
+
+      .variable-tags h4 {
+        margin-bottom: 10px;
+        color: #2c3e50;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #3498db;
+        color: white;
+        padding: 4px 8px;
+        margin: 2px;
+        border-radius: 3px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .tag:hover {
+        background: #2980b9;
+      }
+
+      .error-message {
+        background: #e74c3c;
+        color: white;
+        padding: 10px 20px;
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .success-message {
+        background: #27ae60;
+        color: white;
+        padding: 10px 20px;
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        border-radius: 5px;
+        z-index: 1000;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .template-actions {
+        padding: 15px;
+        background: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+
+      .template-name {
+        flex: 1;
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>📝 HTML Template Builder</h1>
+      <button class="btn success" id="saveBtn">💾 Save Template</button>
+      <button class="btn secondary" id="loadBtn">📁 Load Template</button>
+      <button class="btn secondary" id="exportBtn">📤 Export JSON</button>
+      <button class="btn" id="previewBtn">👁️ Preview</button>
+    </div>
+
+    <div class="error-message" id="errorMessage"></div>
+    <div class="success-message" id="successMessage"></div>
+
+    <div class="main-container">
+      <div class="editor-panel">
+        <div class="template-actions">
+          <input
+            type="text"
+            class="template-name"
+            id="templateName"
+            placeholder="Enter template name..."
+            value="MyTemplate"
+          />
+          <button class="btn" id="addVariableBtn">+ Add Variable</button>
+        </div>
+
+        <div class="tabs">
+          <div class="tab active" data-tab="html">📄 HTML</div>
+          <div class="tab" data-tab="css">🎨 CSS</div>
+        </div>
+
+        <div class="editor-content">
+          <textarea
+            id="htmlEditor"
+            class="code-editor"
+            placeholder="Write your HTML template here...
+Use {variableName} for dynamic content
+Example: <h1>Hello {userName}!</h1>"
+          >
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{title}</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome {userName}!</h1>
+        <p>Email: {userEmail}</p>
+        <p>Date: {currentDate}</p>
+        
+        <div class="content">
+            <h2>{contentTitle}</h2>
+            <p>{contentBody}</p>
+        </div>
+    </div>
+</body>
+</html></textarea
+          >
+
+          <textarea
+            id="cssEditor"
+            class="code-editor"
+            style="display: none"
+            placeholder="Write your CSS styles here..."
+          >
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+.content {
+    margin-top: 20px;
+    padding: 20px;
+    background: #ecf0f1;
+    border-radius: 5px;
+}</textarea
+          >
+        </div>
+
+        <div class="variable-tags">
+          <h4>Available Variables (Click to insert):</h4>
+          <div id="variablesList">
+            <span class="tag" data-var="userName">userName</span>
+            <span class="tag" data-var="userEmail">userEmail</span>
+            <span class="tag" data-var="currentDate">currentDate</span>
+            <span class="tag" data-var="title">title</span>
+            <span class="tag" data-var="contentTitle">contentTitle</span>
+            <span class="tag" data-var="contentBody">contentBody</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-panel">
+        <div class="preview-header">
+          👁️ Live Preview
+          <span id="previewStatus">Ready</span>
+        </div>
+        <iframe
+          id="previewFrame"
+          class="preview-frame"
+          sandbox="allow-same-origin"
+        ></iframe>
+      </div>
+    </div>
+
+    <script src="template-builder.js"></script>
+  </body>
+</html>
