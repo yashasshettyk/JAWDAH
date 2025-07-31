@@ -3316,20 +3316,37 @@ a:has(.btn-inner-template) {
 
 /* New styles for dynamic signature system */
 .signature-placeholder {
-  border: 2px dashed #ccc;
-  /* padding: 20px; */
+  border: 2px dashed #e1e1e1;
+  padding: 0px;
   /* margin: 10px; */
   width: 130px;
+  /* display: flex; */
   margin: 0 auto;
-  height: 100%;
+  box-sizing: border-box;
+  height: 46px;
+  max-height: 50px;
   text-align: center;
   color: #666;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 50px;
-  display: flex;
+  /* min-height: 50px; */
+  /* display: flex; */
   align-items: center;
   /* justify-content: center; */
+  
+  
+  
+  
+  
+  
+
+	& > *{
+	display:none;
+	}
+
+    & > img{
+		display:flex;
+	}
 }
 
 /* .signature-placeholder:hover {
@@ -3351,7 +3368,9 @@ a:has(.btn-inner-template) {
   position: fixed;
   /* left: -14px; */
   z-index: 1000;
-  height: 100vh;
+  height: 100vh !important;
+  width: 100vw !important;
+  max-height: unset !important;
   top: 0;
   inset-inline-start: 50%;
   transform: translateX(-50%);
@@ -3361,6 +3380,24 @@ a:has(.btn-inner-template) {
   align-items: center;
   justify-content: center;
   place-items: center;
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+	& > *{
+		display:flex;
+	}
 }
 
 .signature-canvas {
@@ -3948,21 +3985,23 @@ a:has(.btn-inner-template) {
 .name-placeholder {
   /* padding: 20px; */
   /* margin: 10px; */
-  border: 2px dashed #ccc;
+  border: 2px dashed #e6e6e6;
   text-align: center;
   color: #777777;
   display: none;
+  box-sizing: border-box;
   height: 100%;
-  /* min-height: 93px; */
+  border-right: none;
+  min-height: 50px;
   width: 100%;
   cursor: pointer;
   transition: all 0.3s ease;
-  min-height: 60px;
+  /* min-height: 45px; */
   display: flex;
   /* visibility: hidden; */
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  /* border-radius: 5px; */
 }
 
 /* .name-placeholder:hover {

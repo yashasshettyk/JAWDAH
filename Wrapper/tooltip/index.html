@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tooltip Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 50px;
+        background-color: #f5f5f5;
+      }
+
+      .tooltip-container {
+        position: relative;
+        display: inline-block;
+        max-width: 300px; /* Responsive container */
+      }
+
+      .clickable-tag {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        width: 100%;
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 150px;
+        display: block;
+        text-decoration: none;
+      }
+
+      .clickable-tag:hover {
+        background-color: #0056b3;
+      }
+
+      .tooltip {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 250px;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+        margin-top: 10px;
+      }
+
+      .tooltip.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .tooltip::before {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #333;
+      }
+
+      .tooltip-content {
+        margin-bottom: 10px;
+        line-height: 1.4;
+      }
+
+      .tooltip-link {
+        color: #4da6ff;
+        text-decoration: none;
+        font-weight: bold;
+        border-bottom: 1px solid #4da6ff;
+        transition: color 0.3s;
+      }
+
+      .tooltip-link:hover {
+        color: #66b3ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tooltip Demo</h1>
+
+    <div class="tooltip-container">
+      <a
+        href="https://www.example.com"
+        class="clickable-tag"
+        id="triggerBtn"
+        target="_blank"
+      >
+        This is a very long text that will definitely exceed 100 characters and
+        should trigger the ellipsis functionality when displayed in the
+        responsive container element.
+      </a>
+
+      <div class="tooltip" id="tooltip">
+        <div class="tooltip-content">
+          This is a very long text that will definitely exceed 100 characters
+          and should trigger the ellipsis functionality when displayed in the
+          responsive container element.
+        </div>
+        <a href="https://www.example.com" class="tooltip-link" target="_blank">
+          Go To
+        </a>
+      </div>
+    </div>
+
+    <script>
+      const triggerBtn = document.getElementById("triggerBtn");
+      const tooltip = document.getElementById("tooltip");
+
+      function checkTextOverflow() {
+        return triggerBtn.scrollWidth > triggerBtn.clientWidth;
+      }
+
+      function updateBehavior() {
+        if (checkTextOverflow()) {
+          // Text is overflowing, enable tooltip behavior
+          triggerBtn.style.cursor = "pointer";
+          triggerBtn.removeAttribute("href");
+          triggerBtn.onclick = function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tooltip.classList.toggle("show");
+          };
+        } else {
+          // No overflow, act as direct link
+          triggerBtn.style.cursor = "pointer";
+          triggerBtn.href = "https://www.example.com";
+          triggerBtn.onclick = null;
+        }
+      }
+
+      // Check on load and resize
+      window.addEventListener("load", updateBehavior);
+      window.addEventListener("resize", updateBehavior);
+
+      // Close tooltip when clicking outside
+      document.addEventListener("click", function (e) {
+        if (!triggerBtn.contains(e.target) && !tooltip.contains(e.target)) {
+          tooltip.classList.remove("show");
+        }
+      });
+
+      // Prevent tooltip from closing when clicking inside it
+      tooltip.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    </script>
+  </body>
+</html>
