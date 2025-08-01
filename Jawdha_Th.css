@@ -1788,6 +1788,9 @@ a:has(.btn-inner-template) {
   padding-inline-start: 5px;
   font-weight: 600;
 }
+.timeline-wrapper:has(.empty-icon-container) {
+  padding-inline-start: 0px;
+}
 .timeline-sb .timeline-wrapper .timeline-list-item .source {
   font-size: 1rem;
   font-weight: 400;
@@ -3333,20 +3336,14 @@ a:has(.btn-inner-template) {
   /* display: flex; */
   align-items: center;
   /* justify-content: center; */
-  
-  
-  
-  
-  
-  
 
-	& > *{
-	display:none;
-	}
+  & > * {
+    display: none;
+  }
 
-    & > img{
-		display:flex;
-	}
+  & > img {
+    display: flex;
+  }
 }
 
 /* .signature-placeholder:hover {
@@ -3380,24 +3377,10 @@ a:has(.btn-inner-template) {
   align-items: center;
   justify-content: center;
   place-items: center;
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
-	& > *{
-		display:flex;
-	}
+  & > * {
+    display: flex;
+  }
 }
 
 .signature-canvas {
