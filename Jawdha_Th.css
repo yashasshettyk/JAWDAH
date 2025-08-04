@@ -4103,10 +4103,10 @@ a:has(.btn-inner-template) {
 }
 
 /* List - Adaptive Column Template */
-.list.list-group {
+.list.list-group.list-supporting-doc {
     display: grid;
 }
-.list.list-group > [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+.list.list-group.list-supporting-doc > [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
   grid-template-columns: repeat(4, 1fr);
 }
 /* List - Adaptive Column Template */
