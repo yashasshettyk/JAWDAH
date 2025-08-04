@@ -4105,8 +4105,13 @@ a:has(.btn-inner-template) {
 /* List - Adaptive Column Template */
 .list.list-group.list-supporting-doc {
     display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
-.list.list-group.list-supporting-doc > [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
-  grid-template-columns: repeat(4, 1fr);
+
+.list.list-group.list-supporting-doc [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+  + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
+    margin-top: 0px;
+    display: block;
 }
 /* List - Adaptive Column Template */
