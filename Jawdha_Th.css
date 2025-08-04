@@ -4101,3 +4101,9 @@ a:has(.btn-inner-template) {
   align-items: center;
   gap: 10px;
 }
+
+/* List - Adaptive Column Template */
+.list .adaptive-column-template-wrapper.doc-grid > div {
+  grid-template-columns: repeat(4, 1fr);
+}
+/* List - Adaptive Column Template */
