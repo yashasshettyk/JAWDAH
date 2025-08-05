@@ -768,7 +768,7 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
 .animated-label.input-with-aed-text .animated-label-input .aed-text {
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;
+  right: 2.2rem;
   font-weight: 600;
 }
 .animated-label-text {
