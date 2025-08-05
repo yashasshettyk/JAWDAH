@@ -4212,3 +4212,9 @@ a:has(.btn-inner-template) {
 .check svg path {
   stroke: var(--primary-text);
 }
+
+.notification-details{
+  background: var(--content-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
