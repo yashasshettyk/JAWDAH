@@ -4104,14 +4104,111 @@ a:has(.btn-inner-template) {
 
 /* List - Adaptive Column Template */
 .list.list-group.list-supporting-doc {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.list.list-group.list-supporting-doc [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+.list.list-group.list-supporting-doc
+  [data-block="COMPONENTS.AdaptiveColumnTemplate"]
   + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
-    margin-top: 0px;
-    display: block;
+  margin-top: 0px;
+  display: block;
 }
 /* List - Adaptive Column Template */
+
+.notification-header-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-inline-end: 10px;
+  gap: 10px;
+	& > div{
+		display:flex;
+	}
+
+  & .fill svg path {
+    fill: var(--primary-text);
+  }
+
+  & .stroke svg path {
+    stroke: var(--primary-text);
+  }
+}
+
+.notification-list-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 150px;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-color);
+
+  &:hover {
+    background: var(--content-bg-highlight);
+    filter: brightness(0.95);
+  }
+}
+
+.sidebar-main-section:has(.notification-list-item) {
+  padding: 0;
+}
+
+.notifications-action {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: end;
+  & > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > div:nth-child(1) svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  & .pill-datetime {
+    color: var(--primary-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    padding: 1px 2px;
+    line-height: 150%;
+    filter: saturate(2);
+    background: var(--content-bg-highlight);
+  }
+}
+
+.notification-body {
+  & > div:nth-child(1) {
+    color: var(--theme-text-2);
+    font-weight: 500;
+  }
+
+  & > div:nth-child(2) {
+    color: var(--theme-text-2);
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+}
+
+.sidebar-header-template:has(.notification-icons-wrapper) {
+  & > div:nth-child(1) {
+    flex: 1;
+  }
+}
+
+.check svg path {
+  stroke: var(--primary-text);
+}
