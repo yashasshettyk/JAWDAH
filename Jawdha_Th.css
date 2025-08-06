@@ -4253,7 +4253,11 @@ a:has(.btn-inner-template) {
 
 
 /* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
-.total-price-view-icon svg path {
+.total-price-view-icon .stroke svg path {
+  stroke: var(--primary-text);
+}
+
+.total-price-view-icon .fill svg path {
   fill: var(--primary-text);
 }
 /* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
