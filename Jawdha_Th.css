@@ -4261,3 +4261,14 @@ a:has(.btn-inner-template) {
   fill: var(--primary-text);
 }
 /* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
+
+
+/* Trainer Program Tab - Table - View Icon */
+.training-program-table-view-icon .stroke svg path {
+  stroke: var(--primary-text);
+}
+
+.training-program-table-view-icon .fill svg path {
+  fill: var(--primary-text);
+}
+/* Trainer Program Tab - Table - View Icon */
