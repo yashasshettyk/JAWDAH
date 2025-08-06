@@ -1,0 +1,226 @@
+/* VS Code inspired UI for HTML + Babel Editor */
+body {
+  background: #1e1e1e;
+  color: #d4d4d4;
+  font-family: "Segoe UI", "Fira Mono", "Consolas", monospace;
+  margin: 0;
+}
+.vsc-root {
+  max-width: 1100px;
+  margin: 40px auto;
+/* Modern App-like UI for Babel Editor */
+body {
+  background: #181a20;
+  color: #e2e6ee;
+  font-family: 'Segoe UI', 'Fira Mono', 'Consolas', monospace;
+  margin: 0;
+}
+.app-root {
+  max-width: 1200px;
+  margin: 32px auto;
+  background: #23272f;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.app-topbar {
+  background: #23272f;
+  color: #e2e6ee;
+  padding: 0 32px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #222;
+}
+.app-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4f8cff;
+  letter-spacing: 1px;
+}
+.app-tabs {
+  display: flex;
+  gap: 8px;
+}
+.app-tab {
+  background: none;
+  border: none;
+  color: #e2e6ee;
+  font-size: 1rem;
+  padding: 8px 20px;
+  border-radius: 8px 8px 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.app-tab.active, .app-tab:hover {
+  background: #181a20;
+  color: #4f8cff;
+}
+.app-user {
+  display: flex;
+  align-items: center;
+}
+.app-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #4f8cff;
+  background: #fff;
+}
+.app-main {
+  display: flex;
+  min-height: 600px;
+}
+.app-sidebar {
+  background: #23272f;
+  width: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 32px;
+  border-right: 1px solid #222;
+}
+.app-sidebar-btn {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e2e6ee;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+.app-sidebar-btn.active, .app-sidebar-btn:hover {
+  background: #4f8cff;
+  color: #fff;
+}
+.app-content {
+  display: flex;
+  flex: 1;
+  gap: 0;
+}
+.app-editor-panel, .app-preview-panel {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  background: #181a20;
+  border-right: 1px solid #222;
+  border-radius: 0 0 0 16px;
+}
+.app-preview-panel {
+  border-right: none;
+  border-radius: 0 0 16px 0;
+}
+.app-editor-header, .app-preview-header {
+  background: #23272f;
+  padding: 18px 32px;
+  font-weight: 600;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.app-editor-title {
+  font-size: 1.1rem;
+  color: #4f8cff;
+}
+.app-editor-actions {
+  display: flex;
+  gap: 12px;
+}
+.app-btn {
+  background: #4f8cff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.08);
+  transition: background 0.2s;
+}
+.app-btn:hover {
+  background: #005fa3;
+}
+.app-editor-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+}
+.app-editor-textarea {
+  flex: 1;
+  width: 100%;
+  min-height: 350px;
+  background: #23272f;
+  color: #e2e6ee;
+  border: 1px solid #222;
+  border-radius: 12px;
+  font-size: 16px;
+  font-family: 'Fira Mono', 'Consolas', monospace;
+  padding: 20px;
+  resize: vertical;
+  outline: none;
+  margin-bottom: 8px;
+}
+.app-suggestion-list {
+  background: #23272f;
+  color: #e2e6ee;
+  border: 1px solid #4f8cff;
+  border-radius: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  z-index: 10;
+  max-height: 180px;
+  overflow-y: auto;
+  box-shadow: 0 2px 8px rgba(79,140,255,0.12);
+}
+.app-suggestion-list li {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.app-suggestion-list li.selected, .app-suggestion-list li:hover {
+  background: #4f8cff;
+  color: #fff;
+}
+.app-preview-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+}
+.app-preview-title {
+  font-size: 1.1rem;
+  color: #4f8cff;
+}
+.app-preview-frame {
+  flex: 1;
+  width: 100%;
+  min-height: 350px;
+  border: 1px solid #222;
+  border-radius: 12px;
+  background: #fff;
+}
+@media (max-width: 900px) {
+  .app-main {
+    flex-direction: column;
+  }
+  .app-content {
+    flex-direction: column;
+  }
+  .app-editor-panel, .app-preview-panel {
+    border-right: none;
+    border-bottom: 1px solid #222;
+    min-height: 200px;
+    border-radius: 0 0 16px 16px;
+  }
+}

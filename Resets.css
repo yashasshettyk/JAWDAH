@@ -15,6 +15,7 @@
   transform: none;
   font-size: 0.875rem;
   font-weight: 400;
+  z-index: 9;
   width: var(--side-menu-size-collapsed);
   background: var(--theme-background);
   color: var(--sidemenu-text);
@@ -971,7 +972,7 @@ div:has(> .input-with-label-wrapper.mul-col-ip) {
   background: var(--layer-background);
   transform: scale(1);
   display: block;
-  z-index: 12;
+  z-index: 9;
   backdrop-filter: blur(1px);
 }
 .osui-sidebar__header,

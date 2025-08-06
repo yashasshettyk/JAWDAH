@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OutSystems HTML + Babel Editor</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- CodeMirror CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css"
+    />
+    <!-- Babel CDN -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body class="bg-light">
+    <!-- Single container for the editor -->
+    <div id="editor-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- CodeMirror JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/htmlmixed/htmlmixed.min.js"></script>
+    <script src="editor-ui.js"></script>
+    <script src="editor-core.js"></script>
+    <script>
+      // Global reference to default editor instance
+      window.editorInstance = null;
+
+      // Auto-initialize default instance
+      document.addEventListener("DOMContentLoaded", () => {
+        setTimeout(() => {
+          const defaultContainer = document.getElementById("editor-container");
+
+          if (defaultContainer && window.EditorUI && window.OutSystemsEditor) {
+            try {
+              // Inject styles and HTML structure
+              window.EditorUI.injectStyles();
+              defaultContainer.innerHTML =
+                window.EditorUI.createEditorHTML("editor-container");
+              window.EditorUI.setupAccordionListeners(defaultContainer);
+
+              // Initialize the editor instance
+              window.editorInstance = new OutSystemsEditor("editor-container");
+              console.log("Editor initialized successfully!");
+            } catch (error) {
+              console.error("Error initializing editor:", error);
+            }
+          } else {
+            console.error("Required dependencies not loaded");
+          }
+        }, 300);
+      });
+
+      // Simple getter and setter methods
+      window.setEditorConfigs = function (config) {
+        if (window.editorInstance) {
+          return window.editorInstance.setEditorConfigs(config);
+        } else {
+          console.error("Editor instance not initialized yet");
+          return { success: false, message: "Editor not ready" };
+        }
+      };
+
+      window.getEditorConfigs = function () {
+        if (window.editorInstance) {
+          return window.editorInstance.getEditorConfigs();
+        } else {
+          console.error("Editor instance not initialized yet");
+          return null;
+        }
+      };
+    </script>
+  </body>
+</html>

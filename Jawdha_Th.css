@@ -3920,10 +3920,13 @@ a:has(.btn-inner-template) {
 }
 
 .popup-template-wrapper.doc-item-receipt {
-  max-height: 18.75rem;
+  /* max-height: 18.75rem; */
+  
+  
+  
 
   & .pdf-canvas-wrapper {
-    max-height: calc(18.75rem - 6rem);
+    /* max-height: calc(18.75rem - 6rem); */
     overflow: hidden;
   }
 }
@@ -3970,7 +3973,7 @@ a:has(.btn-inner-template) {
   /* margin: 10px; */
   border: 2px dashed #e6e6e6;
   text-align: center;
-  color: #777777;
+  color: #242424;
   display: none;
   box-sizing: border-box;
   height: 100%;
@@ -3983,7 +3986,7 @@ a:has(.btn-inner-template) {
   display: flex;
   /* visibility: hidden; */
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   /* border-radius: 5px; */
 }
 
@@ -4104,20 +4107,146 @@ a:has(.btn-inner-template) {
 
 /* List - Adaptive Column Template */
 .list.list-group.list-supporting-doc {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
-.list.list-group.list-supporting-doc [data-block="COMPONENTS.AdaptiveColumnTemplate"]
+.list.list-group.list-supporting-doc
+  [data-block="COMPONENTS.AdaptiveColumnTemplate"]
   + [data-block="COMPONENTS.AdaptiveColumnTemplate"] {
-    margin-top: 0px;
-    display: block;
+  margin-top: 0px;
+  display: block;
 }
 /* List - Adaptive Column Template */
 
-/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
-.total-price-view-icon svg path {
-  fill: var(--primary-text);
+.notification-header-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-inline-end: 10px;
+  gap: 10px;
+  & > div {
+    display: flex;
+  }
+
+  & .fill svg path {
+    fill: var(--primary-text);
+  }
+
+  & .stroke svg path {
+    stroke: var(--primary-text);
+  }
 }
-/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
+
+.notification-list-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr 150px;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-color);
+
+  &:hover {
+    background: var(--content-bg-highlight);
+    filter: brightness(0.95);
+  }
+}
+
+.sidebar-main-section:has(.notification-list-item) {
+  padding: 0;
+}
+
+.notifications-action {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: end;
+  & > div:nth-child(1) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > div:nth-child(1) svg {
+      height: 20px;
+      width: 20px;
+    }
+  }
+
+  & > div:nth-child(2) {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  & .pill-datetime {
+    color: var(--primary-text);
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "liga" off, "clig" off;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: 500;
+    padding: 1px 2px;
+    line-height: 150%;
+    filter: saturate(2);
+    background: var(--content-bg-highlight);
+  }
+}
+
+.notification-body {
+  & > div:nth-child(1) {
+    color: var(--theme-text-2);
+    font-weight: 500;
+  }
+
+  & > div:nth-child(2) {
+    color: var(--theme-text-2);
+    font-weight: 400;
+    font-size: 0.75rem;
+  }
+}
+
+.sidebar-header-template:has(.notification-icons-wrapper) {
+  & > div:nth-child(1) {
+    flex: 1;
+  }
+}
+
+.check svg path {
+  stroke: var(--primary-text);
+}
+
+.notification-details {
+  background: var(--content-background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.popup-template-wrapper:has(.name-placeholder.editing)
+  > div:nth-child(1)
+  > div:nth-child(3) {
+  pointer-events: none !important;
+  filter: saturate(0);
+  opacity: 0.5;
+  transform: scale(0.7);
+}
+
+.pdf-canvas {
+  border: 1px solid var(--border-color);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-section,
+  .printable-section * {
+    visibility: visible;
+  }
+  .printable-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+}
