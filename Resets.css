@@ -1930,9 +1930,3 @@ span:has(textarea) {
     color: var(--content-color);
   }
 }
-
-/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
-.total-price-view-icon svg path {
-  fill: var(--primary-text);
-}
-/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */

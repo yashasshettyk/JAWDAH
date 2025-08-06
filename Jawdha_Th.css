@@ -4250,3 +4250,10 @@ a:has(.btn-inner-template) {
     width: 100%;
   }
 }
+
+
+/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
+.total-price-view-icon svg path {
+  fill: var(--primary-text);
+}
+/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
