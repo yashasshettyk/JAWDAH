@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @media print {
+        body * {
+          visibility: hidden;
+        }
+        .printable-section,
+        .printable-section * {
+          visibility: visible;
+        }
+        .printable-section {
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          transform-origin: 0 0 !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="printManager.print()">Print Section</button>
+
+    <div id="printable-section">
+      <h1>This content will be printed</h1>
+      <p>Only this section appears in the print dialog.</p>
+    </div>
+
+    <script>
+      class PrintManager {
+        constructor(sectionId) {
+          this.sectionId = sectionId;
+        }
+
+        print() {
+          const element = document.getElementById(this.sectionId);
+          console.log("Element found:", element);
+          if (element) {
+            console.log(
+              "Element dimensions before:",
+              element.getBoundingClientRect()
+            );
+            this.preparePrintContent(element);
+            setTimeout(() => {
+              window.print();
+              this.restoreContent(element);
+            }, 200); // Increased delay for complex content
+          } else {
+            console.error("Element not found with ID:", this.sectionId);
+          }
+        }
+
+        preparePrintContent(element) {
+          // Store original styles comprehensively
+          this.originalStyles = {
+            transform: element.style.transform,
+            transformOrigin: element.style.transformOrigin,
+            width: element.style.width,
+            height: element.style.height,
+            overflow: element.style.overflow,
+            fontSize: element.style.fontSize,
+            position: element.style.position,
+            visibility: element.style.visibility,
+            display: element.style.display,
+            left: element.style.left,
+            top: element.style.top,
+            right: element.style.right,
+            bottom: element.style.bottom,
+            margin: element.style.margin,
+            padding: element.style.padding,
+            maxWidth: element.style.maxWidth,
+            zIndex: element.style.zIndex,
+          };
+
+          // Add printable class dynamically
+          element.classList.add("printable-section");
+
+          // Reset and prepare element for printing
+          element.style.position = "absolute";
+          element.style.left = "0";
+          element.style.top = "0";
+          element.style.right = "auto";
+          element.style.bottom = "auto";
+          element.style.visibility = "visible";
+          element.style.display = "block";
+          element.style.transform = "none";
+          element.style.transformOrigin = "0 0";
+          element.style.width = "100%";
+          element.style.maxWidth = "794px"; // A4 width
+          element.style.height = "auto";
+          element.style.overflow = "visible";
+          element.style.margin = "0";
+          element.style.padding = "20px";
+          element.style.zIndex = "9999";
+
+          // Handle tables specifically
+          const tables = element.querySelectorAll("table");
+          tables.forEach((table) => {
+            table.style.width = "100%";
+            table.style.maxWidth = "100%";
+            table.style.tableLayout = "auto";
+            table.style.wordBreak = "break-word";
+            table.style.fontSize = "12px";
+          });
+
+          // Handle lists
+          const lists = element.querySelectorAll("ul, ol");
+          lists.forEach((list) => {
+            list.style.width = "100%";
+            list.style.maxWidth = "100%";
+            list.style.wordBreak = "break-word";
+          });
+
+          // Handle wide content containers
+          const wideElements = element.querySelectorAll(
+            "div, section, article"
+          );
+          wideElements.forEach((el) => {
+            if (el !== element) {
+              // Don't modify the root element
+              el.style.maxWidth = "100%";
+              el.style.width = "100%";
+              el.style.wordBreak = "break-word";
+              el.style.overflow = "visible";
+            }
+          });
+
+          // Handle images
+          const images = element.querySelectorAll("img");
+          images.forEach((img) => {
+            img.style.maxWidth = "100%";
+            img.style.height = "auto";
+          });
+
+          console.log("Print preparation complete");
+        }
+
+        restoreContent(element) {
+          // Remove the printable class
+          element.classList.remove("printable-section");
+
+          // Restore original styles
+          Object.keys(this.originalStyles).forEach((key) => {
+            if (this.originalStyles[key] !== undefined) {
+              element.style[key] = this.originalStyles[key];
+            }
+          });
+
+          // Reset any modified child elements by removing inline styles we added
+          const modifiedElements = element.querySelectorAll(
+            "table, ul, ol, div, section, article, img"
+          );
+          modifiedElements.forEach((el) => {
+            // Only remove the specific styles we added, preserve existing ones
+            const computedStyle = window.getComputedStyle(el);
+            if (el.style.maxWidth === "100%" || el.style.width === "100%") {
+              el.style.maxWidth = "";
+              el.style.width = "";
+              el.style.wordBreak = "";
+              el.style.overflow = "";
+              el.style.tableLayout = "";
+              el.style.fontSize = "";
+              el.style.height = "";
+            }
+          });
+        }
+      }
+
+      // Declare printManager in global scope
+      window.printManager = new PrintManager("printable-section");
+    </script>
+  </body>
+</html>

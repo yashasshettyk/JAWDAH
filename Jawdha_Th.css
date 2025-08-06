@@ -3920,10 +3920,13 @@ a:has(.btn-inner-template) {
 }
 
 .popup-template-wrapper.doc-item-receipt {
-  max-height: 18.75rem;
+  /* max-height: 18.75rem; */
+  
+  
+  
 
   & .pdf-canvas-wrapper {
-    max-height: calc(18.75rem - 6rem);
+    /* max-height: calc(18.75rem - 6rem); */
     overflow: hidden;
   }
 }
@@ -4123,9 +4126,9 @@ a:has(.btn-inner-template) {
   justify-content: flex-end;
   margin-inline-end: 10px;
   gap: 10px;
-	& > div{
-		display:flex;
-	}
+  & > div {
+    display: flex;
+  }
 
   & .fill svg path {
     fill: var(--primary-text);
@@ -4213,8 +4216,37 @@ a:has(.btn-inner-template) {
   stroke: var(--primary-text);
 }
 
-.notification-details{
+.notification-details {
   background: var(--content-background);
   border: 1px solid var(--border-color);
   border-radius: 8px;
+}
+
+.popup-template-wrapper:has(.name-placeholder.editing)
+  > div:nth-child(1)
+  > div:nth-child(3) {
+  pointer-events: none !important;
+  filter: saturate(0);
+  opacity: 0.5;
+  transform: scale(0.7);
+}
+
+.pdf-canvas {
+  border: 1px solid var(--border-color);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-section,
+  .printable-section * {
+    visibility: visible;
+  }
+  .printable-section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
 }
