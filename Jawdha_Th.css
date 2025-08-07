@@ -3921,9 +3921,6 @@ a:has(.btn-inner-template) {
 
 .popup-template-wrapper.doc-item-receipt {
   /* max-height: 18.75rem; */
-  
-  
-  
 
   & .pdf-canvas-wrapper {
     /* max-height: calc(18.75rem - 6rem); */
@@ -4251,16 +4248,35 @@ a:has(.btn-inner-template) {
   }
 }
 
-
-.stamp img{
-    height: 35px;
-    object-fit: contain;
-    width: auto;
+/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
+.total-price-view-icon .stroke svg path {
+  stroke: var(--primary-text);
 }
 
-.stamp p{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.total-price-view-icon .fill svg path {
+  fill: var(--primary-text);
+}
+/* Trainer Review Tab - Isolation Quotation - Total Price View Icon */
+
+/* Trainer Program Tab - Table - View Icon */
+.training-program-table-view-icon .stroke svg path {
+  stroke: var(--primary-text);
+}
+
+.training-program-table-view-icon .fill svg path {
+  fill: var(--primary-text);
+}
+/* Trainer Program Tab - Table - View Icon */
+
+.stamp img {
+  height: 35px;
+  object-fit: contain;
+  width: auto;
+}
+
+.stamp p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
