@@ -55,7 +55,7 @@ const DynamicNameInput = (function () {
     clearBtn.onclick = () => DynamicNameInput.clearCurrentName();
 
     const saveBtn = document.createElement("button");
-    saveBtn.textContent = "Save";
+    saveBtn.textContent = "Done";
     saveBtn.className = "control-btn save-btn";
     saveBtn.onclick = () => DynamicNameInput.saveCurrentName();
 
@@ -331,12 +331,23 @@ const DynamicNameInput = (function () {
           return { success: false, message: validation.message };
         }
 
+        // Check for existing name in span element first
         const existingNameSpan = element.querySelector("span[data-name]");
         let existingValue = "";
 
         if (existingNameSpan) {
           existingValue = existingNameSpan.getAttribute("data-name") || "";
-          console.log("Found existing name:", existingValue);
+          console.log("Found existing name in span:", existingValue);
+        } else {
+          // If no span with data-name, get the text content from the placeholder
+          const textContent = element.textContent.trim();
+          if (textContent && textContent !== "") {
+            existingValue = textContent;
+            console.log(
+              "Found existing name in placeholder text:",
+              existingValue
+            );
+          }
         }
 
         removeHighlights();
@@ -498,7 +509,7 @@ const DynamicNameInput = (function () {
           // Restore to original placeholder state without adding extra text
           const nameId = currentNameElement.getAttribute("data-name-id");
           const areaText = nameId ? nameId.replace("name", "Area ") : "Area";
-          currentNameElement.innerHTML = `Click to enter name - ${areaText}`;
+          currentNameElement.innerHTML = "";
         }
         currentNameElement.classList.remove("editing");
         currentNameElement.removeAttribute("data-original-content");

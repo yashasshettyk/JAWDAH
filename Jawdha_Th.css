@@ -4250,3 +4250,17 @@ a:has(.btn-inner-template) {
     width: 100%;
   }
 }
+
+
+.stamp img{
+    height: 35px;
+    object-fit: contain;
+    width: auto;
+}
+
+.stamp p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
